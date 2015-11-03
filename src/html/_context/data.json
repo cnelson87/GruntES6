@@ -1,0 +1,62 @@
+{
+	"title" : "Grunt ES6",
+	"description": "Grunt-based ES6 sandbox.",
+	"keywords" : "Grunt ES6 Babelify Browserify",
+
+	"homepage": {
+		"title" : "Homepage",
+		"description" : "Description for the Homepage",
+		"keywords" : "homepage placeholder keywords",
+		"h1" : "Homepage H1",
+		"intro" : "This is the Homepage intro content area. This content is stored in a 'context/data.json' file and compiled server-side via the grunt-handlebars-layouts plugin."
+	},
+
+	"grids": {
+		"title" : "Grids",
+		"description" : "Description for the Grids page",
+		"keywords" : "grids grids grids",
+		"h1" : "Grids H1",
+		"intro" : "This is the Grids page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
+	},
+
+	"carousel": {
+		"title" : "Carousel",
+		"description" : "Description for the Carousel page",
+		"keywords" : "carousel widget",
+		"h1" : "Carousel H1",
+		"intro" : "This is the Carousel page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
+	},
+
+	"accordion": {
+		"title" : "Accordion",
+		"description" : "Description for the Accordion page",
+		"keywords" : "accordion widget",
+		"h1" : "Accordion H1",
+		"intro" : "This is the Accordion page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
+	},
+
+	"tabswitcher": {
+		"title" : "TabSwitcher",
+		"description" : "Description for the TabSwitcher page",
+		"keywords" : "tabswitcher widget",
+		"h1" : "TabSwitcher H1",
+		"intro" : "This is the TabSwitcher page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
+	},
+
+	"modals": {
+		"title" : "Modals",
+		"description" : "Description for the Modals page",
+		"keywords" : "modals modal window",
+		"h1" : "Modals H1",
+		"intro" : "This is the Modals page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
+	},
+
+	"test": {
+		"title" : "Test",
+		"description" : "Description for the Test page",
+		"keywords" : "test",
+		"h1" : "Test H1",
+		"intro" : "This is the Test page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
+	}
+
+}

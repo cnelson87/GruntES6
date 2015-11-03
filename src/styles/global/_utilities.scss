@@ -1,0 +1,217 @@
+//
+// Utilities
+// -----------------------------------------------------
+
+
+/**
+/*	General styles
+/**/
+
+big, .big {font-size: 16px;}
+
+small, .small, .note {font-size: 10px;}
+
+.alert, .error, .important, .required {
+	color: $error-color;
+	font-weight: bold;
+}
+
+.pull-right {float: right;}
+.pull-left {float: left;}
+.clear {clear: both;}
+
+.accelerate {
+	@include accelerate();
+}
+
+.clearfix {
+	@include clearfix();
+}
+
+.hidden {
+	@include hidden();
+}
+
+.visible {
+	@include visible();
+}
+
+
+.hidetext {
+	@include hidetext();
+}
+
+.offscreen {
+	@include offscreen();
+}
+
+.align-right {text-align: right;}
+.align-left {text-align: left;}
+.align-center {text-align: center;}
+
+.block {display: block;}
+.inline {display: inline;}
+.inline-block {display: inline-block;}
+
+.nowrap {white-space: nowrap;}
+
+.normal {
+	font-style: normal;
+	font-weight: normal;
+	text-transform: none;
+}
+
+.lower {text-transform: lowercase;}
+
+.upper {text-transform: uppercase;}
+
+.underline {text-decoration: underline;}
+
+.strike {text-decoration: line-through;}
+
+/*** /General styles ***/
+
+
+/**
+/*	List styles
+/**/
+
+nav ul, nav ol {list-style: none;}
+
+ul.disc-list {list-style-type: disc;}
+ul.circle-list {list-style-type: circle;}
+ul.square-list {list-style-type: square;}
+ol.numbered-list {list-style: decimal;}
+ol.lower-alpha {list-style: lower-alpha;}
+ol.upper-alpha {list-style: upper-alpha;}
+ol.lower-roman {list-style: lower-roman;}
+ol.upper-roman {list-style: upper-roman;}
+
+ul.plain, ol.plain {list-style: none;}
+
+ul.inline, ol.inline {
+	list-style: none;
+	> li {
+		display: inline-block;
+		margin: 0 0.5em;
+	}
+}
+
+/*** /List styles ***/
+
+
+/**
+/*	Img styles
+/**/
+
+img.block {
+	display: block;
+	margin: 0 0 1.0em 0;
+}
+
+img.inline {
+	display: inline;
+	margin: 0 0.2em;
+	vertical-align: bottom;
+}
+
+img.inset-left {
+	float: left;
+	margin: 0 20px 1.0em 0;
+}
+
+img.inset-right {
+	float: right;
+	margin: 0 0 1.0em 20px;
+}
+
+/*** /Img styles ***/
+
+
+/**
+/*	Link styles
+/**/
+
+
+// Placeholder
+
+
+/*** /Link styles ***/
+
+
+/**
+*	Responsive iframe (youtube, vimeo, google maps, etc)
+**/
+.responsive-iframe-16x9,
+.responsive-iframe-4x3 {
+	width: 100%;
+	margin-bottom: 1.0em;
+	position: relative;
+	> iframe {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+}
+.responsive-iframe-16x9 {
+	padding-top: 56.25%; //16x9 aspect ratio
+}
+.responsive-iframe-4x3 {
+	padding-top: 75.0%; //4x3 aspect ratio
+}
+/*** /Responsive iframe ***/
+
+
+/**
+/*	Misc styles
+/**/
+
+div.intro {
+	color: $gray-med;
+	font-size: 1.2em;
+	margin-bottom: 1.5em;
+}
+
+/*** /Misc styles ***/
+
+
+/**
+*	Responsive show / hide utility classes
+**/
+
+.show-mobile-block,
+.show-mobile-inline,
+.show-mobile-inline-block,
+.show-tablet-block,
+.show-tablet-inline,
+.show-tablet-inline-block,
+.show-desktop-block,
+.show-desktop-inline,
+.show-desktop-inline-block {
+	@include hidden();
+}
+// Mobile
+@media (max-width: $mobile-max) {
+	.hide-mobile {@include hidden();}
+	.show-mobile-block {@include visible(block);}
+	.show-mobile-inline {@include visible(inline);}
+	.show-mobile-inline-block {@include visible(inline-block);}
+}
+// Tablet
+@media (min-width: $tablet-min) and (max-width: $tablet-max) {
+	.hide-tablet {@include hidden();}
+	.show-tablet-block {@include visible(block);}
+	.show-tablet-inline {@include visible(inline);}
+	.show-tablet-inline-block {@include visible(inline-block);}
+}
+// Desktop
+@media (min-width: $desktop-min) {
+	.hide-desktop {@include hidden();}
+	.show-desktop-block {@include visible(block);}
+	.show-desktop-inline {@include visible(inline);}
+	.show-desktop-inline-block {@include visible(inline-block);}
+}
+
+/*** /Responsive show / hide utility classes ***/

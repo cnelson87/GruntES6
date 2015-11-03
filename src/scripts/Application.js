@@ -1,0 +1,183 @@
+/**
+ * Application Module
+ * @author Chris Nelson
+ */
+
+import AppConfig from 'config/AppConfig';
+import AppEvents from 'config/AppEvents';
+import PubSub from 'utilities/PubSub';
+import breakpointChangeEvent from 'utilities/breakpointChangeEvent';
+import resizeStartStopEvents from 'utilities/resizeStartStopEvents';
+import scrollStartStopEvents from 'utilities/scrollStartStopEvents';
+import AppState from 'models/AppState';
+import HomepageView from 'views/Homepage/HomepageView';
+
+import ResponsiveCarousel from 'widgets/ResponsiveCarousel';
+import Accordion from 'widgets/Accordion';
+import TabSwitcher from 'widgets/TabSwitcher';
+import ModalWindow from 'widgets/ModalWindow';
+import AjaxModal from 'widgets/AjaxModal';
+import {SuperClass, SubClass} from 'widgets/SuperSubClass';
+
+const Application = {
+
+	initialize: function() {
+		// console.log('Application:initialize');
+
+		this.$window = $(window);
+		this.$document = $(document);
+		this.$html = $('html');
+		this.$body = $('body');
+
+		this.bodyID = this.$body.attr('id');
+
+		if (AppConfig.isIE9) {this.$html.addClass('ie9');}
+		if (AppConfig.isIE10) {this.$html.addClass('ie10');}
+		if (AppConfig.isIE11) {this.$html.addClass('ie11');}
+
+		this.appState = new AppState();
+
+		// Initialize custom events
+		breakpointChangeEvent();
+		resizeStartStopEvents();
+		scrollStartStopEvents();
+
+		this.bindEvents();
+
+		// init specific page views
+		switch(this.bodyID) {
+			case 'homepage':
+				this.initHomePage();
+				break;
+			case 'carouselpage':
+				this.initCarouselPage();
+				break;
+			case 'accordionpage':
+				this.initAccordionPage();
+				break;
+			case 'tabswitcherpage':
+				this.initTabswitcherPage();
+				break;
+			case 'modalspage':
+				this.initModalsPage();
+				break;
+			case 'testpage':
+				this.initTestPage();
+				break;
+			default:
+				//console.log('default');
+		}
+
+	},
+
+	initHomePage: function() {
+		this.homepageView = new HomepageView({
+			controller: this,
+			el: $('#homepage-app')
+		});
+	},
+
+	initCarouselPage: function() {
+		new ResponsiveCarousel( $('#carousel-m1-t1-d1'), {
+			numVisibleItemsMobile: 1,
+			numItemsToAnimateMobile: 1,
+			numVisibleItemsTablet: 1,
+			numItemsToAnimateTablet: 1,
+			numVisibleItemsDesktop: 1,
+			numItemsToAnimateDesktop: 1,
+			loopEndToEnd: false,
+			autoRotate: true
+		});
+		new ResponsiveCarousel( $('#carousel-m1-t2-d3'), {
+			numVisibleItemsMobile: 1,
+			numItemsToAnimateMobile: 1,
+			numVisibleItemsTablet: 2,
+			numItemsToAnimateTablet: 1,
+			numVisibleItemsDesktop: 3,
+			numItemsToAnimateDesktop: 2,
+			loopEndToEnd: true,
+			autoRotate: false
+		});
+		new ResponsiveCarousel( $('#carousel-m1-t3-d5'), {
+			numVisibleItemsMobile: 1,
+			numItemsToAnimateMobile: 1,
+			numVisibleItemsTablet: 3,
+			numItemsToAnimateTablet: 2,
+			numVisibleItemsDesktop: 5,
+			numItemsToAnimateDesktop: 4,
+			loopEndToEnd: true,
+			autoRotate: false
+		});
+	},
+
+	initAccordionPage: function() {
+		new Accordion($('#accordion-default'), {});
+		new Accordion($('#accordion-custom'), {
+			initialIndex: null,
+			equalizeHeight: true
+		});
+	},
+
+	initTabswitcherPage: function() {
+		new TabSwitcher($('#tabswitcher-default'), {});
+		new TabSwitcher($('#tabswitcher-custom'), {
+			equalizeHeight: true,
+			autoRotate: true
+		});
+	},
+
+	initModalsPage: function() {
+		new ModalWindow($('a.modal-trigger'), {
+			extraClasses: 'modal-wide'
+		});
+		new AjaxModal($('a.ajax-modal-trigger'), {
+			// extraClasses: 'modal-wide'
+		});
+	},
+
+	initTestPage: function() {
+		// Super / Sub class demo
+		new SubClass();
+	},
+
+	bindEvents: function() {
+		PubSub.on(AppEvents.WINDOW_RESIZE_START, this.onWindowResizeStart, this);
+		PubSub.on(AppEvents.WINDOW_RESIZE_STOP, this.onWindowResizeStop, this);
+		PubSub.on(AppEvents.WINDOW_SCROLL_START, this.onWindowScrollStart, this);
+		PubSub.on(AppEvents.WINDOW_SCROLL_STOP, this.onWindowScrollStop, this);
+		PubSub.on(AppEvents.BREAKPOINT_CHANGE, this.onBreakpointChange, this);
+	},
+
+	unbindEvents: function() {
+		PubSub.off(AppEvents.WINDOW_RESIZE_START, this.onWindowResizeStart, this);
+		PubSub.off(AppEvents.WINDOW_RESIZE_STOP, this.onWindowResizeStop, this);
+		PubSub.off(AppEvents.WINDOW_SCROLL_START, this.onWindowScrollStart, this);
+		PubSub.off(AppEvents.WINDOW_SCROLL_STOP, this.onWindowScrollStop, this);
+		PubSub.off(AppEvents.BREAKPOINT_CHANGE, this.onBreakpointChange, this);
+	},
+
+	onWindowResizeStart: function() {
+		console.log('onWindowResizeStart');
+	},
+
+	onWindowResizeStop: function() {
+		console.log('onWindowResizeStop');
+	},
+
+	onWindowScrollStart: function() {
+		console.log('onWindowScrollStart');
+	},
+
+	onWindowScrollStop: function() {
+		console.log('onWindowScrollStop');
+	},
+
+	onBreakpointChange: function(params) {
+		console.log('onBreakpointChange', params);
+		// Store currentBreakpoint in a Backbone model
+		this.appState.set({currentBreakpoint: AppConfig.currentBreakpoint});
+	}
+
+};
+
+export default Application;

@@ -1,0 +1,245 @@
+//
+// Grid System
+// -----------------------------------------------------
+
+
+@mixin row() {
+	display: block;
+	/*width: calc(100% + #{$mobile-gutter-width});*/
+	margin: 0 -#{$mobile-gutter-half-width};
+	position: relative;
+	@include clearfix();
+	// Tablet+
+	@media (min-width: $tablet-min) {
+		/*width: calc(100% + #{$tablet-gutter-width});*/
+		margin: 0 -#{$tablet-gutter-half-width};
+	}
+	// Desktop+
+	@media (min-width: $desktop-min) {
+		/*width: calc(100% + #{$desktop-gutter-width});*/
+		margin: 0 -#{$desktop-gutter-half-width};
+	}
+}
+
+@mixin column($gutter: 0) {
+	float: left;
+	padding-left: $gutter;
+	padding-right: $gutter;
+	position: relative;
+}
+
+@mixin column-width($num, $den) {
+	width: percentage($num / $den);
+}
+
+
+// Column-class based grid system
+
+.row {
+	@include row();
+}
+
+.col-mobi-1-1, .col-mobi-1-2,
+.col-mobi-1-3, .col-mobi-2-3,
+.col-mobi-1-4, .col-mobi-3-4,
+.col-mobi-1-5, .col-mobi-2-5, .col-mobi-3-5, .col-mobi-4-5,
+.col-mobi-1-6, .col-mobi-5-6,
+.col-mobi-1-8, .col-mobi-3-8, .col-mobi-5-8, .col-mobi-7-8,
+.col-mobi-1-12, .col-mobi-5-12, .col-mobi-7-12, .col-mobi-11-12 {
+	@include column($mobile-gutter-half-width);
+}
+.col-mobi-1-1 {width: 100%;}
+.col-mobi-1-2 {@include column-width(1,2);}
+.col-mobi-1-3 {@include column-width(1,3);}
+.col-mobi-2-3 {@include column-width(2,3);}
+.col-mobi-1-4 {@include column-width(1,4);}
+.col-mobi-3-4 {@include column-width(3,4);}
+.col-mobi-1-5 {@include column-width(1,5);}
+.col-mobi-2-5 {@include column-width(2,5);}
+.col-mobi-3-5 {@include column-width(3,5);}
+.col-mobi-4-5 {@include column-width(4,5);}
+.col-mobi-1-6 {@include column-width(1,6);}
+.col-mobi-5-6 {@include column-width(5,6);}
+.col-mobi-1-8 {@include column-width(1,8);}
+.col-mobi-3-8 {@include column-width(3,8);}
+.col-mobi-5-8 {@include column-width(5,8);}
+.col-mobi-7-8 {@include column-width(7,8);}
+.col-mobi-1-12 {@include column-width(1,12);}
+.col-mobi-5-12 {@include column-width(5,12);}
+.col-mobi-7-12 {@include column-width(7,12);}
+.col-mobi-11-12 {@include column-width(11,12);}
+
+// Tablet+
+@media (min-width: $tablet-min) {
+	.col-tabt-1-1, .col-tabt-1-2,
+	.col-tabt-1-3, .col-tabt-2-3,
+	.col-tabt-1-4, .col-tabt-3-4,
+	.col-tabt-1-5, .col-tabt-2-5, .col-tabt-3-5, .col-tabt-4-5,
+	.col-tabt-1-6, .col-tabt-5-6,
+	.col-tabt-1-8, .col-tabt-3-8, .col-tabt-5-8, .col-tabt-7-8,
+	.col-tabt-1-12, .col-tabt-5-12, .col-tabt-7-12, .col-tabt-11-12 {
+		@include column($tablet-gutter-half-width);
+	}
+	.col-tabt-1-1 {width: 100%;}
+	.col-tabt-1-2 {@include column-width(1,2);}
+	.col-tabt-1-3 {@include column-width(1,3);}
+	.col-tabt-2-3 {@include column-width(2,3);}
+	.col-tabt-1-4 {@include column-width(1,4);}
+	.col-tabt-3-4 {@include column-width(3,4);}
+	.col-tabt-1-5 {@include column-width(1,5);}
+	.col-tabt-2-5 {@include column-width(2,5);}
+	.col-tabt-3-5 {@include column-width(3,5);}
+	.col-tabt-4-5 {@include column-width(4,5);}
+	.col-tabt-1-6 {@include column-width(1,6);}
+	.col-tabt-5-6 {@include column-width(5,6);}
+	.col-tabt-1-8 {@include column-width(1,8);}
+	.col-tabt-3-8 {@include column-width(3,8);}
+	.col-tabt-5-8 {@include column-width(5,8);}
+	.col-tabt-7-8 {@include column-width(7,8);}
+	.col-tabt-1-12 {@include column-width(1,12);}
+	.col-tabt-5-12 {@include column-width(5,12);}
+	.col-tabt-7-12 {@include column-width(7,12);}
+	.col-tabt-11-12 {@include column-width(11,12);}
+}
+
+// Desktop+
+@media (min-width: $desktop-min) {
+	.col-desk-1-1, .col-desk-1-2,
+	.col-desk-1-3, .col-desk-2-3,
+	.col-desk-1-4, .col-desk-3-4,
+	.col-desk-1-5, .col-desk-2-5, .col-desk-3-5, .col-desk-4-5,
+	.col-desk-1-6, .col-desk-5-6,
+	.col-desk-1-8, .col-desk-3-8, .col-desk-5-8, .col-desk-7-8,
+	.col-desk-1-12, .col-desk-5-12, .col-desk-7-12, .col-desk-11-12 {
+		@include column($desktop-gutter-half-width);
+	}
+	.col-desk-1-1 {width: 100%;}
+	.col-desk-1-2 {@include column-width(1,2);}
+	.col-desk-1-3 {@include column-width(1,3);}
+	.col-desk-2-3 {@include column-width(2,3);}
+	.col-desk-1-4 {@include column-width(1,4);}
+	.col-desk-3-4 {@include column-width(3,4);}
+	.col-desk-1-5 {@include column-width(1,5);}
+	.col-desk-2-5 {@include column-width(2,5);}
+	.col-desk-3-5 {@include column-width(3,5);}
+	.col-desk-4-5 {@include column-width(4,5);}
+	.col-desk-1-6 {@include column-width(1,6);}
+	.col-desk-5-6 {@include column-width(5,6);}
+	.col-desk-1-8 {@include column-width(1,8);}
+	.col-desk-3-8 {@include column-width(3,8);}
+	.col-desk-5-8 {@include column-width(5,8);}
+	.col-desk-7-8 {@include column-width(7,8);}
+	.col-desk-1-12 {@include column-width(1,12);}
+	.col-desk-5-12 {@include column-width(5,12);}
+	.col-desk-7-12 {@include column-width(7,12);}
+	.col-desk-11-12 {@include column-width(11,12);}
+}
+
+
+// Row-class cascade based grid system
+
+.grid-row {
+	@include row();
+}
+
+.grid-mobi-1-1, .grid-mobi-1-2,
+.grid-mobi-1-3, .grid-mobi-2-3,
+.grid-mobi-1-4, .grid-mobi-3-4,
+.grid-mobi-1-5, .grid-mobi-2-5, .grid-mobi-3-5, .grid-mobi-4-5,
+.grid-mobi-1-6, .grid-mobi-5-6,
+.grid-mobi-1-8, .grid-mobi-3-8, .grid-mobi-5-8, .grid-mobi-7-8,
+.grid-mobi-1-12, .grid-mobi-5-12, .grid-mobi-7-12, .grid-mobi-11-12 {
+	.grid-cell {
+		@include column($mobile-gutter-half-width);
+	}
+}
+.grid-mobi-1-1 .grid-cell {width: 100%;}
+.grid-mobi-1-2 .grid-cell {@include column-width(1,2);}
+.grid-mobi-1-3 .grid-cell {@include column-width(1,3);}
+.grid-mobi-2-3 .grid-cell {@include column-width(2,3);}
+.grid-mobi-1-4 .grid-cell {@include column-width(1,4);}
+.grid-mobi-3-4 .grid-cell {@include column-width(3,4);}
+.grid-mobi-1-5 .grid-cell {@include column-width(1,5);}
+.grid-mobi-2-5 .grid-cell {@include column-width(2,5);}
+.grid-mobi-3-5 .grid-cell {@include column-width(3,5);}
+.grid-mobi-4-5 .grid-cell {@include column-width(4,5);}
+.grid-mobi-1-6 .grid-cell {@include column-width(1,6);}
+.grid-mobi-5-6 .grid-cell {@include column-width(5,6);}
+.grid-mobi-1-8 .grid-cell {@include column-width(1,8);}
+.grid-mobi-3-8 .grid-cell {@include column-width(3,8);}
+.grid-mobi-5-8 .grid-cell {@include column-width(5,8);}
+.grid-mobi-7-8 .grid-cell {@include column-width(7,8);}
+.grid-mobi-1-12 .grid-cell {@include column-width(1,12);}
+.grid-mobi-5-12 .grid-cell {@include column-width(5,12);}
+.grid-mobi-7-12 .grid-cell {@include column-width(7,12);}
+.grid-mobi-11-12 .grid-cell {@include column-width(11,12);}
+
+// Tablet+
+@media (min-width: $tablet-min) {
+	.grid-tabt-1-1, .grid-tabt-1-2,
+	.grid-tabt-1-3, .grid-tabt-2-3,
+	.grid-tabt-1-4, .grid-tabt-3-4,
+	.grid-tabt-1-5, .grid-tabt-2-5, .grid-tabt-3-5, .grid-tabt-4-5,
+	.grid-tabt-1-6, .grid-tabt-5-6,
+	.grid-tabt-1-8, .grid-tabt-3-8, .grid-tabt-5-8, .grid-tabt-7-8,
+	.grid-tabt-1-12, .grid-tabt-5-12, .grid-tabt-7-12, .grid-tabt-11-12 {
+		.grid-cell {
+			@include column($tablet-gutter-half-width);
+		}
+	}
+	.grid-tabt-1-1 .grid-cell {width: 100%;}
+	.grid-tabt-1-2 .grid-cell {@include column-width(1,2);}
+	.grid-tabt-1-3 .grid-cell {@include column-width(1,3);}
+	.grid-tabt-2-3 .grid-cell {@include column-width(2,3);}
+	.grid-tabt-1-4 .grid-cell {@include column-width(1,4);}
+	.grid-tabt-3-4 .grid-cell {@include column-width(3,4);}
+	.grid-tabt-1-5 .grid-cell {@include column-width(1,5);}
+	.grid-tabt-2-5 .grid-cell {@include column-width(2,5);}
+	.grid-tabt-3-5 .grid-cell {@include column-width(3,5);}
+	.grid-tabt-4-5 .grid-cell {@include column-width(4,5);}
+	.grid-tabt-1-6 .grid-cell {@include column-width(1,6);}
+	.grid-tabt-5-6 .grid-cell {@include column-width(5,6);}
+	.grid-tabt-1-8 .grid-cell {@include column-width(1,8);}
+	.grid-tabt-3-8 .grid-cell {@include column-width(3,8);}
+	.grid-tabt-5-8 .grid-cell {@include column-width(5,8);}
+	.grid-tabt-7-8 .grid-cell {@include column-width(7,8);}
+	.grid-tabt-1-12 .grid-cell {@include column-width(1,12);}
+	.grid-tabt-5-12 .grid-cell {@include column-width(5,12);}
+	.grid-tabt-7-12 .grid-cell {@include column-width(7,12);}
+	.grid-tabt-11-12 .grid-cell {@include column-width(11,12);}
+}
+
+// Desktop+
+@media (min-width: $desktop-min) {
+	.grid-desk-1-1, .grid-desk-1-2,
+	.grid-desk-1-3, .grid-desk-2-3,
+	.grid-desk-1-4, .grid-desk-3-4,
+	.grid-desk-1-5, .grid-desk-2-5, .grid-desk-3-5, .grid-desk-4-5,
+	.grid-desk-1-6, .grid-desk-5-6,
+	.grid-desk-1-8, .grid-desk-3-8, .grid-desk-5-8, .grid-desk-7-8,
+	.grid-desk-1-12, .grid-desk-5-12, .grid-desk-7-12, .grid-desk-11-12 {
+		.grid-cell {
+			@include column($tablet-gutter-half-width);
+		}
+	}
+	.grid-desk-1-1 .grid-cell {width: 100%;}
+	.grid-desk-1-2 .grid-cell {@include column-width(1,2);}
+	.grid-desk-1-3 .grid-cell {@include column-width(1,3);}
+	.grid-desk-2-3 .grid-cell {@include column-width(2,3);}
+	.grid-desk-1-4 .grid-cell {@include column-width(1,4);}
+	.grid-desk-3-4 .grid-cell {@include column-width(3,4);}
+	.grid-desk-1-5 .grid-cell {@include column-width(1,5);}
+	.grid-desk-2-5 .grid-cell {@include column-width(2,5);}
+	.grid-desk-3-5 .grid-cell {@include column-width(3,5);}
+	.grid-desk-4-5 .grid-cell {@include column-width(4,5);}
+	.grid-desk-1-6 .grid-cell {@include column-width(1,6);}
+	.grid-desk-5-6 .grid-cell {@include column-width(5,6);}
+	.grid-desk-1-8 .grid-cell {@include column-width(1,8);}
+	.grid-desk-3-8 .grid-cell {@include column-width(3,8);}
+	.grid-desk-5-8 .grid-cell {@include column-width(5,8);}
+	.grid-desk-7-8 .grid-cell {@include column-width(7,8);}
+	.grid-desk-1-12 .grid-cell {@include column-width(1,12);}
+	.grid-desk-5-12 .grid-cell {@include column-width(5,12);}
+	.grid-desk-7-12 .grid-cell {@include column-width(7,12);}
+	.grid-desk-11-12 .grid-cell {@include column-width(11,12);}
+}

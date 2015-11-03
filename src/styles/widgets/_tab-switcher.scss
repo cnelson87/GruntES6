@@ -1,0 +1,83 @@
+//
+// Tab Switcher
+// -----------------------------------------------------
+
+
+.tabswitcher {
+	margin-bottom: 1.5em;
+	position: relative;
+
+	.tabnav {
+		margin-bottom: 1em;
+		position: relative;
+
+		> ul {
+			list-style: none;
+			margin: 0;
+
+			> li {
+				display: inline-block;
+				margin: 0;
+
+				> a {
+					display: block;
+					color: $near-black;
+					text-decoration: none;
+					background: $gray-xlight;
+					padding: 0.5em 1em;
+
+					&.active {
+						color: $white;
+						background: $gray-dark;
+					}
+					&:hover,
+					&:focus {
+						color: $white;
+						background: $gray-med;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	.tabpanels {
+		border-top: 2px solid $border-color-dark;
+		border-bottom: 2px solid $border-color-dark;
+		position: relative;
+	}
+
+	.tab-panel {
+		opacity: 0;
+		overflow: hidden;
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 1;
+		// transform: scale(0.9);
+
+		&.active {
+			opacity: 1.0;
+			position: relative;
+			z-index: 3;
+			// transform: scale(1.0);
+			// transition: opacity 0.2s, transform 0.2s;
+			transition: opacity 0.4s ease-in;
+		}
+
+		> .panel-content {
+			padding: 1.5em;
+			position: relative;
+		}
+
+		&:focus {
+			/* note: focus style for demo purpose */
+			background: #f9f9f9;
+		}
+
+	}
+
+}

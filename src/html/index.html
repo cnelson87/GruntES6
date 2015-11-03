@@ -1,0 +1,19 @@
+{{#extend "homepage"}}
+
+	{{#replace "title"}}{{homepage.title}} - {{title}}{{/replace}}
+	{{#replace "description"}}{{homepage.description}}{{/replace}}
+	{{#replace "keywords"}}{{keywords}}, {{homepage.keywords}}{{/replace}}
+
+	{{#replace "content"}}
+
+		<h1>{{homepage.h1}}</h1>
+
+		<div class="intro">
+			<p>{{homepage.intro}}</p>
+		</div>
+
+		<div id="homepage-app"></div>
+
+	{{/replace}}
+
+{{/extend}}

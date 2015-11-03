@@ -1,0 +1,14 @@
+{
+	"name": "GruntES6",
+	"version": "0.1.0",
+	"dependencies": {
+		"modernizr": "~2.8.3",
+		"jquery": "~2.1.4",
+		"jquery-touchswipe": "~1.6.9",
+		"greensock": "~1.18.0",
+		"picturefill": "~2.3.1",
+		"underscore": "~1.8.3",
+		"backbone": "~1.2.3",
+		"backbone.super": "~1.0.4"
+	}
+}

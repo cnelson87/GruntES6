@@ -1,0 +1,28 @@
+//
+// Breakpoint Indicator
+// -----------------------------------------------------
+
+
+// Mobile / Defaults
+#breakpoint-indicator {
+	width: 1px;
+	height: 1px;
+	position: fixed;
+	left: -1px;
+	top: -1px;
+	z-index: 1;
+}
+
+// Tablet
+@media (min-width: $tablet-min) {
+	#breakpoint-indicator {
+		z-index: 2;
+	}
+}
+
+// Desktop
+@media (min-width: $desktop-min) {
+	#breakpoint-indicator {
+		z-index: 3;
+	}
+}

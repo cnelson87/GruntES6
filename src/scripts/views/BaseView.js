@@ -1,0 +1,36 @@
+/**
+ * Base View
+ */
+
+import LoaderSpinner from 'widgets/LoaderSpinner';
+
+const BaseView = Backbone.View.extend({
+
+	model: null,
+
+	template: null,
+
+	initialize: function(options) {
+		console.log('BaseView:initialize');
+		this.controller = options.controller;
+		this.loader = new LoaderSpinner(this.$el);
+		this.loader.addLoader();
+		this.model.fetch().done(function(response) {
+			this.render();
+		}.bind(this));
+	},
+
+	render: function() {
+		console.log('BaseView:render');
+		var viewModel = this.model.attributes;
+		var html = this.template(viewModel);
+		// Add delay to demonstrate loader
+		setTimeout(function() {
+			this.loader.removeLoader();
+			this.$el.html(html);
+		}.bind(this), 400);
+	}
+
+});
+
+export default BaseView;

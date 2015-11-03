@@ -1,0 +1,68 @@
+//
+// Accordion
+// -----------------------------------------------------
+
+
+.accordion {
+	border-bottom: 2px solid $border-color-dark;
+	margin-bottom: 1.5em;
+	position: relative;
+
+	.accordion-header {
+		border-top: 2px solid $border-color-dark;
+		border-bottom: 2px solid $border-color-dark;
+		margin-bottom: -2px;
+		position: relative;
+		z-index: 2;
+
+		> a {
+			display: block;
+			color: $near-black;
+			text-decoration: none;
+			background: $gray-xlight;
+			padding: 0.5em 1em;
+			position: relative;
+
+			&:after {
+				content: ">";
+				display: block;
+				position: absolute;
+				right: 20px;
+				top: calc(50% - 0.75em);
+				transform: scaleX(2.5) rotate(90deg);
+			}
+			&.active {
+				color: $white;
+				background: $gray-dark;
+			}
+			&:hover,
+			&:focus {
+				color: $white;
+				background: $gray-med;
+			}
+			&.active:after {
+				transform: scaleX(2.5) rotate(-90deg);
+			}
+
+		}
+
+	}
+
+	.accordion-panel {
+		overflow: hidden;
+		position: relative;
+		z-index: 1;
+
+		> .panel-content {
+			padding: 1.5em;
+			position: relative;
+		}
+
+		&:focus {
+			/* note: focus style for demo purpose */
+			background: #f9f9f9;
+		}
+
+	}
+
+}

@@ -1,0 +1,31 @@
+//
+// Application
+// -----------------------------------------------------
+
+// 3rd party
+@import "font-awesome/font-awesome";
+
+// configuration
+@import "config/variables";
+@import "config/mixins";
+@import "config/grid";
+
+// global styles
+@import "global/base";
+@import "global/bp-indicator";
+@import "global/utilities";
+@import "global/arrow-nav";
+@import "global/forms";
+@import "global/layout";
+
+// widgets & components
+@import "widgets/loader-spinner";
+@import "widgets/responsive-carousel";
+@import "widgets/accordion";
+@import "widgets/tab-switcher";
+@import "widgets/modal-window";
+@import "widgets/ajax-modal";
+
+// specific views
+@import "views/home";
+@import "views/grids";

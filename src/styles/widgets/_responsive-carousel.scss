@@ -1,0 +1,236 @@
+//
+// Responsive Carousel
+// -----------------------------------------------------
+
+
+/******************************************************************
+	Assumes 10 items in carousel, 1 visible item in all views.
+	JS will re-calculate widths based on actual length of items.
+******************************************************************/
+
+.responsive-carousel {
+	width: calc(100% - 80px);
+	height: 0;
+	margin: 0 40px 1.0em 40px;
+	padding-top: 56.25%; /* creates 16x9 ratio */
+	opacity: 1;
+	position: relative;
+	transition: opacity 0.2s ease-out;
+
+	.arrow-nav {
+		position: absolute;
+		top: calc(50% - 20px);
+
+		&.nav-prev { left: -40px; }
+		&.nav-next { right: -40px; }
+
+	}
+
+	.outer-mask {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		position: absolute;
+		left: 0;
+		top: 0;
+
+		> .inner-track {
+			list-style: none;
+			display: block;
+			width: calc(100% * 10);
+			height: 100%;
+			margin: 0;
+			position: absolute;
+			left: 0;
+			top: 0;
+
+			> article {
+				float: left;
+				width: calc(100% / 10);
+				height: 100%;
+				margin: 0;
+				position: relative;
+			}
+
+		}
+
+	}
+
+	.media-container {
+		width: 100%;
+		height: 100%;
+		position: relative;
+		overflow: hidden;
+
+		> img {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+
+	}
+
+	.media-info {
+		width: calc(100% - 40px);
+		min-height: 80px;
+		background: rgba(0,0,0,0.4);
+		padding: 12px;
+		position: absolute;
+		left: 20px;
+		right: 20px;
+		bottom: 20px;
+		opacity: 0;
+		transition: opacity 0.1s;
+
+		h3, p {
+			color: #fff;
+			margin: 0;
+		}
+		a {
+			color: #fff;
+		}
+
+	}
+
+	article.active .media-info {
+		opacity: 1.0;
+		transition: opacity 0.4s ease-out;
+	}
+
+
+	/**************************************************************
+		Assumed defaults are as follows (restyle as necessary):
+		mobile: 1 visible item
+		tablet: 2 visible items
+		desktop: 3 visible items
+	**************************************************************/
+
+	&.carousel-m1-t2-d3 {
+		padding-top: 56.25%; /* creates 16x9 ratio */
+	}
+
+
+	/**************************************************************
+		Assumed defaults are as follows (restyle as necessary):
+		mobile: 1 visible item
+		tablet: 3 visible items
+		desktop: 5 visible items
+	**************************************************************/
+
+	&.carousel-m1-t3-d5 {
+		padding-top: 56.25%; /* creates 16x9 ratio */
+	}
+
+}
+
+
+
+// Mobile
+@media (max-width: $mobile-max) {
+	.responsive-carousel {
+		width: 100%;
+		margin: 0 0 1.0em 0;
+		background: #000;
+		padding-bottom: 100px; /* equal to .media-info height */
+
+		.arrow-nav {
+			height: calc(100% - 100px);
+			top: 0;
+
+			.arrow {
+				width: 40px;
+				height: 40px;
+				position: absolute;
+				top: calc(50% - 20px);
+			}
+
+			&.nav-prev { left: 0; }
+			&.nav-next { right: 0; }
+
+		}
+
+		.media-container {
+			height: calc(100% - 100px);
+		}
+
+		.media-info {
+			width: 100%;
+			min-height: 100px;
+			background: #000;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+
+	}
+}
+
+// Tablet
+@media (min-width: $tablet-min) and (max-width: $tablet-max) {
+	.responsive-carousel {
+
+		&.carousel-m1-t2-d3 {
+			padding-top: 28.125%; /* creates 16x9 ratio x 2 items */
+
+			.media-info {
+				width: 100%;
+				min-height: 0;
+				height: auto;
+				left: 0;
+				right: 0;
+				bottom: 0;
+			}
+
+		}
+
+		&.carousel-m1-t3-d5 {
+			padding-top: 18.75%; /* creates 16x9 ratio x 3 items */
+
+			.media-info {
+				width: 100%;
+				min-height: 0;
+				height: auto;
+				left: 0;
+				right: 0;
+				bottom: 0;
+			}
+
+		}
+
+	}
+}
+
+// Desktop
+@media (min-width: $desktop-min) {
+	.responsive-carousel {
+
+		&.carousel-m1-t2-d3 {
+			padding-top: 18.75%; /* creates 16x9 ratio x 3 items */
+
+			.media-info {
+				width: 100%;
+				min-height: 0;
+				height: auto;
+				left: 0;
+				right: 0;
+				bottom: 0;
+			}
+
+		}
+
+		&.carousel-m1-t3-d5 {
+			padding-top: 11.25%; /* creates 16x9 ratio x 5 items */
+
+			.media-info {
+				width: 100%;
+				min-height: 0;
+				height: auto;
+				left: 0;
+				right: 0;
+				bottom: 0;
+			}
+
+		}
+
+	}
+}

@@ -1,0 +1,164 @@
+//
+// Layout
+// -----------------------------------------------------
+
+
+html, body {
+	width: 100%;
+	max-width: 100%;
+	// height: 100%;
+	min-height: 100%;
+	overflow-x: hidden;
+}
+
+#wrapper {
+	width: 100%;
+	min-width: $min-width;
+	// height: 100%;
+	min-height: 100vh;
+	margin: 0 auto;
+	// padding: 64px 0;
+	position: relative;
+}
+
+#header {
+	width: 100%;
+	min-width: $min-width;
+	background: $gray-xlight;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 3;
+
+	.header-content {
+		width: $mobile-container-width;
+		height: $header-height;
+		background: $gray-xlight-alt;
+		margin: 0 auto;
+		padding: 20px $mobile-gutter-width;
+		position: relative;
+	}
+
+}
+
+#footer {
+	width: 100%;
+	min-width: $min-width;
+	background: $gray-xlight;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: 2;
+
+	.footer-content {
+		width: $mobile-container-width;
+		height: $footer-height;
+		background: $gray-xlight-alt;
+		margin: 0 auto;
+		padding: 20px $mobile-gutter-width;
+		position: relative;
+	}
+
+}
+
+#main {
+	width: 100%;
+	min-width: $min-width;
+	min-height: 100vh;
+	padding: $header-height 0 $footer-height 0;
+	background: $gray-xlight-alt;
+	position: relative;
+	z-index: 1;
+
+	.main-inner {
+		width: $mobile-container-width;
+		min-height: calc(100vh - #{$header-height + $footer-height});
+		background: $white;
+		margin: 0 auto;
+		padding: 0 $mobile-gutter-width;
+		position: relative;
+		overflow: auto;
+		@include clearfix();
+
+		#content,
+		#subcol {
+			width: 100%;
+			min-height: 200px;
+			padding: 20px 0;
+			position: relative;
+		}
+
+	}
+
+}
+
+
+// Mobile
+@media (max-width: $mobile-max) {
+	#header .header-content,
+	#footer .footer-content,
+	#main .main-inner {
+		max-width: $mobile-container-max-width;
+	}
+}
+
+// Tablet
+@media (min-width: $tablet-min) and (max-width: $tablet-max) {
+	#header .header-content,
+	#footer .footer-content,
+	#main .main-inner {
+		width: $tablet-container-width;
+		padding: 20px $tablet-gutter-width;
+	}
+}
+
+// Desktop
+@media (min-width: $desktop-min) {
+	#header .header-content,
+	#footer .footer-content,
+	#main .main-inner {
+		width: $desktop-container-width;
+		padding: 20px $desktop-gutter-width;
+	}
+	#main .main-inner {
+		#content,
+		#subcol {
+			padding: 40px 0;
+		}
+	}
+	#main .main-inner.twocols {
+		#content {
+			float: left;
+			width: 690px;
+			min-height: 400px;
+		}
+		#subcol {
+			// float: right;
+			width: 220px;
+			min-height: 400px;
+			background: $near-white;
+			padding: 40px 10px;
+			position: absolute;
+			top: 20px;
+			bottom: 20px;
+			right: $desktop-gutter-width;
+		}
+	}
+}
+
+// Desktop Wide
+@media (min-width: $desktop-lrg) {
+	#header .header-content,
+	#footer .footer-content,
+	#main .main-inner {
+		width: $desktop-wide-container-width;
+	}
+	#main .main-inner.twocols {
+		#content {
+			width: 830px;
+		}
+		#subcol {
+			width: 280px;
+		}
+	}
+}

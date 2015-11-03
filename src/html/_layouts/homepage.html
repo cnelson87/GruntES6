@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+{{> head}}
+</head>
+<body id="homepage" class="homepage">
+
+<div id="wrapper">
+
+	{{> header}}
+
+		<div id="main">
+			<div class="main-inner">
+
+				<div id="content">
+
+					{{#block "content"}}
+					<h1>Homepage Content</h1>
+					{{/block}}
+
+				</div>
+
+			</div>
+		</div>
+
+	{{> footer}}
+
+</div>
+
+</body>
+</html>

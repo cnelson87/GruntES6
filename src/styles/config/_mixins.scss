@@ -1,0 +1,61 @@
+//
+// Mixins
+// -----------------------------------------------------
+
+
+@mixin accelerate() {
+	transform: translate3d(0,0,0);
+	backface-visibility: hidden;
+	perspective: 1000;
+}
+
+@mixin clearfix {
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+}
+
+@mixin hidden() {
+	display: none;
+	visibility: hidden;
+}
+
+@mixin visible($display: block) {
+	display: $display;
+	visibility: visible;
+}
+
+@mixin hidetext {
+	text-indent: 200%;
+	white-space: nowrap;
+	overflow: hidden;
+ }
+
+
+@mixin offscreen {
+	display: block;
+	position: fixed;
+	left: -9999px;
+ }
+
+
+// Animations
+@mixin animation($name, $duration: 1s, $timing: linear, $iteration: infinite, $direction: normal, $fillMode: none) {
+	animation-name: #{$name};
+	animation-duration: #{$duration};
+	animation-timing-function: #{$timing};
+	animation-iteration-count: #{$iteration};
+	animation-direction: #{$direction};
+	animation-fill-mode: #{$fillMode};
+}
+
+// Gradients
+@mixin background-linear-gradient($from, $to) {
+	background-color: $from;
+	@if $to != $from {
+		background-image: linear-gradient($from, $to);
+	}
+}
+
