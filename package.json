@@ -27,7 +27,7 @@
 		"grunt-contrib-watch": "~0.6.1",
 		"grunt-handlebars-layouts": "~0.2.1",
 		"grunt-newer": "~1.1.1",
-		"handlebars": "~4.0.3",
+		"handlebars": "~4.0.4",
 
 		"browserify": "11.2.0",
 		"grunt-browserify": "4.0.1",
