@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic Accordion widget
 
-	VERSION: 0.2.6
+	VERSION: 0.2.7
 
 	USAGE: var myAccordion = new Accordion('Element', 'Options')
 		@param {jQuery Object}
@@ -123,6 +123,20 @@ class Accordion {
 				this.focusOnPanel($activePanel);
 			}.bind(this));
 		}
+
+	}
+
+	uninitDOM() {
+
+		this.$el.removeAttr('role aria-live');
+		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(this.options.activeClass);
+		this.$panels.removeAttr('role tabindex aria-hidden').removeClass(this.options.activeClass);
+		this.$panels.find(this.options.selectorFocusEls).removeAttr('tabindex');
+
+		TweenMax.set(this.$panels, {
+			display: '',
+			height: ''
+		});
 
 	}
 
@@ -274,6 +288,15 @@ class Accordion {
 		} else {
 			$panel.focus();
 		}
+	}
+
+	unInitialize() {
+		this.unbindEvents();
+		this.uninitDOM();
+		this.$el = null;
+		this.$tabs = null;
+		this.$panels = null;
+		$.event.trigger(this.options.customEventName + ':unInitialized');
 	}
 
 }

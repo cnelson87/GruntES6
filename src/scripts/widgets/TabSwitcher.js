@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic TabSwitcher widget
 
-	VERSION: 0.2.6
+	VERSION: 0.2.7
 
 	USAGE: var myTabSwitcher = new TabSwitcher('Element', 'Options')
 		@param {jQuery Object}
@@ -123,6 +123,19 @@ class TabSwitcher {
 
 	}
 
+	uninitDOM() {
+
+		this.$el.removeAttr('role aria-live');
+		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(this.options.activeClass);
+		this.$panels.removeAttr('role tabindex aria-hidden').removeClass(this.options.activeClass);
+		this.$panels.find(this.options.selectorFocusEls).removeAttr('tabindex');
+
+		if (this.options.autoRotate) {
+			clearInterval(this.setAutoRotation);
+		}
+
+	}
+
 	bindEvents() {
 		this.$window.on('resize', this.__onWindowResize.bind(this));
 		this.$tabs.on('click', this.__clickTab.bind(this));
@@ -227,6 +240,15 @@ class TabSwitcher {
 		} else {
 			$panel.focus();
 		}
+	}
+
+	unInitialize() {
+		this.unbindEvents();
+		this.uninitDOM();
+		this.$el = null;
+		this.$tabs = null;
+		this.$panels = null;
+		$.event.trigger(this.options.customEventName + ':unInitialized');
 	}
 
 }
