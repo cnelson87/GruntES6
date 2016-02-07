@@ -98,15 +98,15 @@ h1 {
 	font-size: 40px;
 	font-weight: normal;
 	line-height: 1.0;
-	margin-bottom: 16px;
+	margin-bottom: 20px;
 }
 h2, .h2 {
 	color: $gray-dark;
 	font-family: $alt-font;
-	font-size: 28px;
+	font-size: 30px;
 	font-weight: normal;
 	line-height: 1.0;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 }
 h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	font-weight: bold;
@@ -154,8 +154,8 @@ blockquote {
 	font-size: 20px;
 	font-family: $serif-font;
 	font-weight: normal;
-	line-height: 24px;
-	margin-bottom: 24px;
+	line-height: 1.0;
+	margin-bottom: 20px;
 	padding: 0 20px;
 }
 
