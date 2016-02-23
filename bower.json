@@ -1,12 +1,12 @@
 {
 	"name": "GruntES6",
-	"version": "0.2.5",
+	"version": "0.2.6",
 	"dependencies": {
 		"modernizr": "~2.8.3",
-		"jquery": "~2.1.4",
-		"jquery-touchswipe": "~1.6.15",
+		"jquery": "~2.2.1",
+		"jquery-touchswipe": "1.6.9",
 		"greensock": "~1.18.2",
-		"picturefill": "~3.0.1",
+		"picturefill": "~3.0.2",
 		"ScrollMagic": "~2.0.5",
 		"underscore": "~1.8.3",
 		"backbone": "~1.2.3",
