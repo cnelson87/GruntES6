@@ -14,7 +14,7 @@ const AppConfig = {
 	isIE10: navigator.userAgent.indexOf('MSIE 10') !== -1,
 	isIE11: navigator.userAgent.indexOf('MSIE 11') !== -1,
 	hasFormValidation: typeof document.createElement('input').checkValidity === 'function',
-	hasTouch: Modernizr.touch,
+	hasTouch: !!('ontouchstart' in window),
 
 	urls: {
 		homepageContent: '/_api/homepage/content.json'

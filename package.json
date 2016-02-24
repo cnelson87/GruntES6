@@ -3,7 +3,7 @@
 	"title": "Grunt ES6",
 	"description": "A Grunt-based ES6 sandbox.",
 	"namespace": "gruntes6",
-	"version": "0.2.6",
+	"version": "0.2.7",
 	"main": "Gruntfile.js",
 	"portNumber": 8376,
 	"livereloadPortNum": 30376,
