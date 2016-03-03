@@ -180,4 +180,6 @@ const Application = {
 
 };
 
+window.Application = Application;
+
 export default Application;
