@@ -1,4 +1,3 @@
-
 /**
  * uglify
  * Minify files with UglifyJS.

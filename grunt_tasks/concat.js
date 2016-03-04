@@ -1,4 +1,3 @@
-
 /**
  * concat
  * Concatenate files.

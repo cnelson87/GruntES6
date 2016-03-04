@@ -1,4 +1,3 @@
-
 /**
  * handlebarslayouts
  * Handlebars task to render Handlebars templates to HTML

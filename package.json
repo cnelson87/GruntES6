@@ -1,10 +1,11 @@
 {
 	"name": "GruntES6",
+	"version": "0.2.8",
 	"title": "Grunt ES6",
 	"description": "A Grunt-based ES6 sandbox.",
 	"namespace": "gruntes6",
-	"version": "0.2.7",
 	"main": "Gruntfile.js",
+	"readmeFilename": "README.md",
 	"portNumber": 8376,
 	"livereloadPortNum": 30376,
 	"devDependencies": {
@@ -38,13 +39,12 @@
 		"load-grunt-config": "~0.19.1",
 		"load-grunt-tasks": "~3.4.1"
 	},
+
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/cnelson87/GruntES6"
 	},
-	"license": "MIT",
 	"author": "Chris Nelson <cnelson87@gmail.com>",
-	"readmeFilename": "README.md",
 
 	"browserify": {
 		"transform": ["browserify-shim", "browserify-handlebars", "babelify"]
@@ -53,6 +53,7 @@
 		"jquery": "global:$",
 		"underscore": "global:_",
 		"backbone": "global:Backbone"
-	}
+	},
 
+	"license": "MIT"
 }

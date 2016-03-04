@@ -1,4 +1,3 @@
-
 /**
  * browserify
  * Grunt task for node-browserify.
@@ -21,11 +20,6 @@ module.exports = function (grunt) {
 			expose: 'config'
 		},
 		{
-			cwd: './src/scripts/utilities',
-			src: './**/*.js',
-			expose: 'utilities'
-		},
-		{
 			cwd: './src/scripts/collections',
 			src: './**/*.js',
 			expose: 'collections'
@@ -34,6 +28,11 @@ module.exports = function (grunt) {
 			cwd: './src/scripts/models',
 			src: './**/*.js',
 			expose: 'models'
+		},
+		{
+			cwd: './src/scripts/utilities',
+			src: './**/*.js',
+			expose: 'utilities'
 		},
 		{
 			cwd: './src/scripts/views',

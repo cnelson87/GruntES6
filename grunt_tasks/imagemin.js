@@ -1,4 +1,3 @@
-
 /**
  * imagemin
  * Minify images

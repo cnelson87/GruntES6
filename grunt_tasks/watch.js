@@ -1,4 +1,3 @@
-
 /**
  * watch
  * Run predefined tasks whenever watched file patterns are added, changed or deleted.
@@ -19,15 +18,11 @@ module.exports = function (grunt) {
 		},
 
 		html: {
-			files: [
-				'<%= sourceHTML %>/**/*.html', '!<%= sourceHTML %>/_layouts/**/*.html', '!<%= sourceHTML %>/_partials/**/*.html'
-			],
+			files: ['<%= sourceHTML %>/**/*.html', '!<%= sourceHTML %>/_layouts/**/*.html', '!<%= sourceHTML %>/_partials/**/*.html'],
 			tasks: ['newer:handlebarslayouts:dev']
 		},
 		htmlIncludes: {
-			files: [
-				'<%= sourceHTML %>/_layouts/**/*.html', '<%= sourceHTML %>/_partials/**/*.html'
-			],
+			files: ['<%= sourceHTML %>/_layouts/**/*.html', '<%= sourceHTML %>/_partials/**/*.html'],
 			tasks: ['handlebarslayouts:dev']
 		},
 		htmlContext: {
@@ -50,9 +45,9 @@ module.exports = function (grunt) {
 			tasks: ['browserify:dev']
 		},
 
-		images: {
-			files: ['<%= sourceImages %>/**/*.*'],
-			tasks: ['newer:copy:images']
+		assets: {
+			files: ['<%= sourceAssets %>/**/*.*'],
+			tasks: ['newer:copy:assets']
 		}
 
 	};

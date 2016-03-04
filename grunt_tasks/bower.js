@@ -1,4 +1,3 @@
-
 /**
  * bower
  * Copy bower installed components to dist folder.
@@ -15,14 +14,14 @@ module.exports = function (grunt) {
 				expand: false,
 				packageSpecific: {
 					greensock: {
-						dest: '<%= vendorPath %>/greensock',
+						dest: '<%= sourceVendor %>/greensock',
 						files: [
 							'src/minified/TweenMax.min.js',
 							'src/minified/plugins/ScrollToPlugin.min.js'
 						]
 					},
 					ScrollMagic: {
-						dest: '<%= vendorPath %>/scrollmagic',
+						dest: '<%= sourceVendor %>/scrollmagic',
 						files: [
 							'scrollmagic/minified/ScrollMagic.min.js',
 							'scrollmagic/minified/plugins/jquery.ScrollMagic.min.js',
