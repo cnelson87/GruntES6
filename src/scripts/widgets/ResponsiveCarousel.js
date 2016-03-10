@@ -225,9 +225,9 @@ class ResponsiveCarousel {
 	}
 
 	unbindEvents() {
-		this.$window.off('breakpointChange');
-		this.$navPrev.off('click');
-		this.$navNext.off('click');
+		this.$window.off(AppEvents.BREAKPOINT_CHANGE, function(){});
+		this.$navPrev.off('click', function(){});
+		this.$navNext.off('click', function(){});
 		if (this.options.enableSwipe) {
 			this.$el.swipe('destroy');
 		}

@@ -94,7 +94,7 @@ html, body {
 
 
 // Mobile
-@media (max-width: $mobile-max) {
+@media (max-width: $mobile-breakpoint-max) {
 	#header .header-content,
 	#footer .footer-content,
 	#main .main-inner {
@@ -103,7 +103,7 @@ html, body {
 }
 
 // Tablet
-@media (min-width: $tablet-min) and (max-width: $tablet-max) {
+@media (min-width: $tablet-breakpoint-min) and (max-width: $tablet-breakpoint-max) {
 	#header .header-content,
 	#footer .footer-content,
 	#main .main-inner {
@@ -113,7 +113,7 @@ html, body {
 }
 
 // Desktop
-@media (min-width: $desktop-min) {
+@media (min-width: $desktop-breakpoint-min) {
 	#header .header-content,
 	#footer .footer-content,
 	#main .main-inner {
@@ -147,7 +147,7 @@ html, body {
 }
 
 // Desktop Wide
-@media (min-width: $desktop-lrg) {
+@media (min-width: $desktop-breakpoint-lrg) {
 	#header .header-content,
 	#footer .footer-content,
 	#main .main-inner {

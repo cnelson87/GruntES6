@@ -13,9 +13,14 @@
 	height: 0;
 	margin: 0 40px 1.0em 40px;
 	padding-top: 56.25%; /* creates 16x9 ratio */
-	opacity: 1;
 	position: relative;
-	transition: opacity 0.2s ease-out;
+
+	// &.carousel-ar4x3 {
+	// 	padding-top: 75.0%; /* creates 4x3 aspect ratio */
+	// }
+	// &.carousel-ar16x9 {
+	// 	padding-top: 56.25%; /* creates 16x9 aspect ratio */
+	// }
 
 	.arrow-nav {
 		position: absolute;
@@ -35,20 +40,18 @@
 		top: 0;
 
 		> .inner-track {
-			list-style: none;
 			display: block;
 			width: calc(100% * 10);
 			height: 100%;
-			margin: 0;
 			position: absolute;
 			left: 0;
 			top: 0;
+			@include clearfix();
 
 			> article {
 				float: left;
 				width: calc(100% / 10);
 				height: 100%;
-				margin: 0;
 				position: relative;
 			}
 
@@ -71,14 +74,15 @@
 	}
 
 	.media-info {
-		width: calc(100% - 40px);
+		width: 100%;
+		height: auto;
 		min-height: 80px;
 		background: rgba(0,0,0,0.4);
 		padding: 12px;
 		position: absolute;
-		left: 20px;
-		right: 20px;
-		bottom: 20px;
+		left: 0;
+		right: 0;
+		bottom: 0;
 		opacity: 0;
 		transition: opacity 0.1s;
 
@@ -126,7 +130,7 @@
 
 
 // Mobile
-@media (max-width: $mobile-max) {
+@media (max-width: $mobile-breakpoint-max) {
 	.responsive-carousel {
 		width: 100%;
 		margin: 0 0 1.0em 0;
@@ -154,82 +158,38 @@
 		}
 
 		.media-info {
-			width: 100%;
 			min-height: 100px;
 			background: #000;
-			left: 0;
-			right: 0;
-			bottom: 0;
 		}
 
 	}
 }
 
 // Tablet
-@media (min-width: $tablet-min) and (max-width: $tablet-max) {
+@media (min-width: $tablet-breakpoint-min) and (max-width: $tablet-breakpoint-max) {
 	.responsive-carousel {
 
 		&.carousel-m1-t2-d3 {
 			padding-top: 28.125%; /* creates 16x9 ratio x 2 items */
-
-			.media-info {
-				width: 100%;
-				min-height: 0;
-				height: auto;
-				left: 0;
-				right: 0;
-				bottom: 0;
-			}
-
 		}
 
 		&.carousel-m1-t3-d5 {
 			padding-top: 18.75%; /* creates 16x9 ratio x 3 items */
-
-			.media-info {
-				width: 100%;
-				min-height: 0;
-				height: auto;
-				left: 0;
-				right: 0;
-				bottom: 0;
-			}
-
 		}
 
 	}
 }
 
 // Desktop
-@media (min-width: $desktop-min) {
+@media (min-width: $desktop-breakpoint-min) {
 	.responsive-carousel {
 
 		&.carousel-m1-t2-d3 {
 			padding-top: 18.75%; /* creates 16x9 ratio x 3 items */
-
-			.media-info {
-				width: 100%;
-				min-height: 0;
-				height: auto;
-				left: 0;
-				right: 0;
-				bottom: 0;
-			}
-
 		}
 
 		&.carousel-m1-t3-d5 {
 			padding-top: 11.25%; /* creates 16x9 ratio x 5 items */
-
-			.media-info {
-				width: 100%;
-				min-height: 0;
-				height: auto;
-				left: 0;
-				right: 0;
-				bottom: 0;
-			}
-
 		}
 
 	}

@@ -94,7 +94,7 @@ a.btn-closeX, a.lnk-closeX {
 
 
 // Mobile
-@media (max-width: $mobile-max) {
+@media (max-width: $mobile-breakpoint-max) {
 
 	/* iOS fix: fill the blank/white area behind the bottom bar */
 	#modaloverlay {
@@ -121,7 +121,7 @@ a.btn-closeX, a.lnk-closeX {
 
 
 // Tablet
-@media (min-width: $tablet-min) and (max-width: $tablet-max) {
+@media (min-width: $tablet-breakpoint-min) and (max-width: $tablet-breakpoint-max) {
 
 	.modalwindow {
 		width: 480px;
@@ -144,7 +144,7 @@ a.btn-closeX, a.lnk-closeX {
 
 
 // Desktop
-@media (min-width: $desktop-min) {
+@media (min-width: $desktop-breakpoint-min) {
 
 	.modalwindow {
 		width: 600px;

@@ -6,18 +6,18 @@
 
 
 // Mobile
-@media (max-width: $mobile-max) {
+@media (max-width: $mobile-breakpoint-max) {
 
 }
 
 
 // Tablet
-@media (min-width: $tablet-min) and (max-width: $tablet-max) {
+@media (min-width: $tablet-breakpoint-min) and (max-width: $tablet-breakpoint-max) {
 
 }
 
 
 // Desktop
-@media (min-width: $desktop-min) {
+@media (min-width: $desktop-breakpoint-min) {
 
 }

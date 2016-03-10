@@ -193,21 +193,21 @@ div.intro {
 	@include hidden();
 }
 // Mobile
-@media (max-width: $mobile-max) {
+@media (max-width: $mobile-breakpoint-max) {
 	.hide-mobile {@include hidden();}
 	.show-mobile-block {@include visible(block);}
 	.show-mobile-inline {@include visible(inline);}
 	.show-mobile-inline-block {@include visible(inline-block);}
 }
 // Tablet
-@media (min-width: $tablet-min) and (max-width: $tablet-max) {
+@media (min-width: $tablet-breakpoint-min) and (max-width: $tablet-breakpoint-max) {
 	.hide-tablet {@include hidden();}
 	.show-tablet-block {@include visible(block);}
 	.show-tablet-inline {@include visible(inline);}
 	.show-tablet-inline-block {@include visible(inline-block);}
 }
 // Desktop
-@media (min-width: $desktop-min) {
+@media (min-width: $desktop-breakpoint-min) {
 	.hide-desktop {@include hidden();}
 	.show-desktop-block {@include visible(block);}
 	.show-desktop-inline {@include visible(inline);}

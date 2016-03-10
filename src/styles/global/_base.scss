@@ -48,7 +48,7 @@ body {
 	background: $white;
 
 	// Tablet+
-	@media (min-width: $tablet-min) {
+	@media (min-width: $tablet-breakpoint-min) {
 		font-size: 87.5%; //14px
 		line-height: 1.5; //21px
 	}

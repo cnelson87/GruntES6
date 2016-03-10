@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Universal Ajax loader & spinner overlay
 
-	VERSION: 0.2.0
+	VERSION: 0.2.2
 
 	USAGE: var myLoaderSpinner = new LoaderSpinner('Element', 'Options')
 		@param {jQuery Object}
@@ -12,7 +12,7 @@
 	AUTHOR: Chris Nelson <cnelson87@gmail.com>
 
 	DEPENDENCIES:
-		- jquery 2.1x+
+		- jquery 2.2x+
 
 */
 

@@ -5,14 +5,14 @@
 
 	VERSION: 0.2.2
 
-	USAGE: var myHeightEqualizer = new HeightEqualizer('El', 'Options')
+	USAGE: var myHeightEqualizer = new HeightEqualizer('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
 	AUTHOR: Chris Nelson <cnelson87@gmail.com>
 
 	DEPENDENCIES:
-		- jquery 2.1x+
+		- jquery 2.2x+
 
 */
 

@@ -19,7 +19,6 @@
 
 import AppConfig from 'config/AppConfig';
 import AppEvents from 'config/AppEvents';
-
 import HeightEqualizer from 'widgets/HeightEqualizer';
 
 class TabSwitcher {

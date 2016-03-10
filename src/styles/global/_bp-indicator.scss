@@ -14,14 +14,14 @@
 }
 
 // Tablet
-@media (min-width: $tablet-min) {
+@media (min-width: $tablet-breakpoint-min) {
 	#breakpoint-indicator {
 		z-index: 2;
 	}
 }
 
 // Desktop
-@media (min-width: $desktop-min) {
+@media (min-width: $desktop-breakpoint-min) {
 	#breakpoint-indicator {
 		z-index: 3;
 	}
