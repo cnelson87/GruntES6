@@ -33,7 +33,6 @@
 		"browserify": "13.0.0",
 		"grunt-browserify": "4.0.1",
 		"browserify-handlebars": "~1.0.0",
-		"browserify-shim": "3.8.12",
 		"remapify": "2.1.0",
 
 		"load-grunt-config": "~0.19.1",
@@ -47,7 +46,7 @@
 	"author": "Chris Nelson <cnelson87@gmail.com>",
 
 	"browserify": {
-		"transform": ["browserify-shim", "browserify-handlebars", "babelify"]
+		"transform": ["browserify-handlebars", "babelify"]
 	},
 	"browserify-shim": {
 		"jquery": "global:$",

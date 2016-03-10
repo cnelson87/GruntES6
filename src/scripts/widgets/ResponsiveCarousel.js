@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desaktop media queries
 
-	VERSION: 0.2.7
+	VERSION: 0.2.8
 
 	USAGE: var myCarousel = new ResponsiveCarousel('Element', 'Options')
 		@param {jQuery Object}
@@ -12,7 +12,7 @@
 	AUTHOR: Chris Nelson <cnelson87@gmail.com>
 
 	DEPENDENCIES:
-		- jquery 2.1x+
+		- jquery 2.2x+
 		- greensock
 
 */
@@ -54,6 +54,7 @@ class ResponsiveCarousel {
 			animDuration: 0.6,
 			animEasing: 'Power4.easeInOut',
 			selectorFocusEls: 'a, button, input, select, textarea',
+			enableTracking: false,
 			customEventName: 'ResponsiveCarousel'
 		}, objOptions || {});
 
@@ -328,6 +329,8 @@ class ResponsiveCarousel {
 
 		$.event.trigger(this.options.customEventName + ':carouselUpdated', [this.currentIndex]);
 
+		this.fireTracking();
+
 	}
 
 	updateNav() {
@@ -380,6 +383,12 @@ class ResponsiveCarousel {
 		} else {
 			$panel.focus();
 		}
+	}
+
+	fireTracking() {
+		if (!this.options.enableTracking) {return;}
+		var $activePanel = this.$panels.eq(this.currentIndex);
+		$.event.trigger(AppEvents.TRACKING_STATE, {activeEl: $activePanel});
 	}
 
 	unInitialize() {

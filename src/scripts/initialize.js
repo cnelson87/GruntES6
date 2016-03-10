@@ -1,6 +1,6 @@
 /**
- * Application Initializer
- * @author Chris Nelson
+ * initialize
+ * @author Chris Nelson <cnelson87@gmail.com>
  */
 
 import Application from './Application';

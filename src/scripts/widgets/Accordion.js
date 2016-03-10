@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic Accordion widget
 
-	VERSION: 0.2.7
+	VERSION: 0.2.8
 
 	USAGE: var myAccordion = new Accordion('Element', 'Options')
 		@param {jQuery Object}
@@ -12,11 +12,14 @@
 	AUTHOR: Chris Nelson <cnelson87@gmail.com>
 
 	DEPENDENCIES:
-		- jquery 2.1x+
+		- jquery 2.2x+
 		- greensock
 		- HeightEqualizer.js
 
 */
+
+import AppConfig from 'config/AppConfig';
+import AppEvents from 'config/AppEvents';
 
 import HeightEqualizer from 'widgets/HeightEqualizer';
 
@@ -42,6 +45,7 @@ class Accordion {
 			animDuration: 0.4,
 			animEasing: 'Power4.easeOut',
 			selectorFocusEls: 'a, button, input, select, textarea',
+			enableTracking: false,
 			customEventName: 'Accordion'
 		}, objOptions || {});
 
@@ -105,6 +109,8 @@ class Accordion {
 		$activeTab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
 		$activePanel.addClass(this.options.activeClass).attr({'tabindex':'0', 'aria-hidden':'false'});
 		$activePanel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
+		//experimental
+		$activeTab.append('<span class="offscreen selected-text"> - currently selected</span>');
 
 		TweenMax.set(this.$panels, {
 			display: 'none',
@@ -132,6 +138,8 @@ class Accordion {
 		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(this.options.activeClass);
 		this.$panels.removeAttr('role tabindex aria-hidden').removeClass(this.options.activeClass);
 		this.$panels.find(this.options.selectorFocusEls).removeAttr('tabindex');
+		//experimental
+		this.$tabs.find('.selected-text').remove();
 
 		TweenMax.set(this.$panels, {
 			display: '',
@@ -222,10 +230,12 @@ class Accordion {
 		$inactiveTab.removeClass(this.options.activeClass).attr({'aria-selected':'false'});
 		$inactivePanel.removeClass(this.options.activeClass).attr({'tabindex':'-1', 'aria-hidden':'true'});
 		$inactivePanel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
+		//experimental
+		$inactiveTab.find('.selected-text').remove();
 
 		TweenMax.to($inactivePanel, this.options.animDuration, {
 			height: 0,
-			ease: self.options.animEasing,
+			ease: this.options.animEasing,
 			onComplete: function() {
 				self.isAnimating = false;
 				$inactiveTab.focus();
@@ -249,6 +259,8 @@ class Accordion {
 		$activeTab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
 		$activePanel.addClass(this.options.activeClass).attr({'tabindex':'0', 'aria-hidden':'false'});
 		$activePanel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
+		//experimental
+		$activeTab.append('<span class="offscreen selected-text"> - currently selected</span>');
 
 		if (this.options.equalizeHeight) {
 			panelHeight = this.maxHeight;
@@ -274,6 +286,8 @@ class Accordion {
 
 		$.event.trigger(this.options.customEventName + ':panelOpened', [this.currentIndex]);
 
+		this.fireTracking();
+
 	}
 
 	focusOnPanel($panel) {
@@ -288,6 +302,12 @@ class Accordion {
 		} else {
 			$panel.focus();
 		}
+	}
+
+	fireTracking() {
+		if (!this.options.enableTracking) {return;}
+		var $activePanel = this.$panels.eq(this.currentIndex);
+		$.event.trigger(AppEvents.TRACKING_STATE, {activeEl: $activePanel});
 	}
 
 	unInitialize() {
