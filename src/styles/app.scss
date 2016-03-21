@@ -14,11 +14,13 @@
 @import "global/base";
 @import "global/bp-indicator";
 @import "global/utilities";
-@import "global/arrow-nav";
 @import "global/forms";
 @import "global/layout";
 
-// widgets & components
+// components
+@import "components/arrow-nav";
+
+// widgets
 @import "widgets/loader-spinner";
 @import "widgets/responsive-carousel";
 @import "widgets/accordion";
