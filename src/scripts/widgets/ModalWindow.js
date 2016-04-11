@@ -79,6 +79,7 @@ class ModalWindow {
 				'id': this.options.modalID,
 				'class': this.options.modalClass + ' ' + this.options.extraClasses,
 				'aria-hidden': 'true',
+				'aria-live': 'polite',
 				'role': 'dialog',
 				'tabindex': '-1'
 			});

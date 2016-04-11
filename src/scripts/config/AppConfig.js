@@ -13,8 +13,14 @@ const AppConfig = {
 	isIE9: navigator.userAgent.indexOf('MSIE 9') !== -1,
 	isIE10: navigator.userAgent.indexOf('MSIE 10') !== -1,
 	isIE11: navigator.userAgent.indexOf('MSIE 11') !== -1,
+
+	isAndroid: /(android)/i.test(navigator.userAgent),
+	isIOS: navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false,
+
 	hasFormValidation: typeof document.createElement('input').checkValidity === 'function',
 	hasTouch: !!('ontouchstart' in window),
+
+	topOffset : 0,
 
 	urls: {
 		homepageContent: '/_api/homepage/content.json'

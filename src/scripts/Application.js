@@ -28,12 +28,16 @@ const Application = {
 		this.$document = $(document);
 		this.$html = $('html');
 		this.$body = $('body');
+		this.$header = $('#header');
+		this.$footer = $('#footer');
 
 		this.bodyID = this.$body.attr('id');
 
 		if (AppConfig.isIE9) {this.$html.addClass('ie9');}
 		if (AppConfig.isIE10) {this.$html.addClass('ie10');}
 		if (AppConfig.isIE11) {this.$html.addClass('ie11');}
+		if (AppConfig.isAndroid) {this.$html.addClass('android');}
+		if (AppConfig.isIOS) {this.$html.addClass('ios');}
 
 		this.appState = new AppState();
 
@@ -43,6 +47,8 @@ const Application = {
 		scrollStartStopEvents();
 
 		this.bindEvents();
+
+		this.setTopOffset();
 
 		// init specific page views
 		switch(this.bodyID) {
@@ -176,6 +182,10 @@ const Application = {
 		console.log('onBreakpointChange', params);
 		// Store currentBreakpoint in a Backbone model
 		this.appState.set({currentBreakpoint: AppConfig.currentBreakpoint});
+	},
+
+	setTopOffset: function() {
+		AppConfig.topOffset = this.$header.height();
 	}
 
 };

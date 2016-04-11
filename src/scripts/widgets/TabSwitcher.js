@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic TabSwitcher widget
 
-	VERSION: 0.2.8
+	VERSION: 0.3.0
 
 	USAGE: var myTabSwitcher = new TabSwitcher('Element', 'Options')
 		@param {jQuery Object}
@@ -30,6 +30,7 @@ class TabSwitcher {
 	}
 
 	initialize($el, objOptions) {
+		var urlHash = window.location.hash.replace('#','') || false;
 
 		// defaults
 		this.$el = $el;
@@ -44,6 +45,8 @@ class TabSwitcher {
 			maxAutoRotations: 5,
 			animDuration: 400,
 			selectorFocusEls: 'a, button, input, select, textarea',
+			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl',
+			selectedText: 'currently selected',
 			enableTracking: false,
 			customEventName: 'TabSwitcher'
 		}, objOptions || {});
@@ -59,13 +62,13 @@ class TabSwitcher {
 		this.previousIndex = null;
 		this.heightEqualizer = null;
 		this.isAnimating = false;
+		this.selectedLabel = '<span class="offscreen selected-text"> - ' + this.options.selectedText + '</span>';
 
 		// check url hash to override currentIndex
 		this.focusOnInit = false;
-		this.urlHash = window.location.hash.replace('#','') || false;
-		if (this.urlHash) {
+		if (urlHash) {
 			for (var i=0; i<this._length; i++) {
-				if (this.$panels[i].id === this.urlHash) {
+				if (this.$panels[i].id === urlHash) {
 					this.currentIndex = i;
 					this.focusOnInit = true;
 					break;
@@ -92,7 +95,7 @@ class TabSwitcher {
 
 		this.$el.attr({'role':'tablist', 'aria-live':'polite'});
 		this.$tabs.attr({'role':'tab', 'tabindex':'0', 'aria-selected':'false'});
-		this.$panels.attr({'role':'tabpanel', 'tabindex':'-1', 'aria-hidden':'true'});
+		this.$panels.attr({'role':'tabpanel', 'aria-hidden':'true'});
 		this.$panels.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
 
 		// equalize items height
@@ -104,10 +107,10 @@ class TabSwitcher {
 		}
 
 		$activeTab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
-		$activePanel.addClass(this.options.activeClass).attr({'tabindex':'0', 'aria-hidden':'false'});
+		$activePanel.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
 		$activePanel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
 		//experimental
-		$activeTab.append('<span class="offscreen selected-text"> - currently selected</span>');
+		$activeTab.append(this.selectedLabel);
 
 		// auto-rotate items
 		if (this.options.autoRotate) {
@@ -132,7 +135,7 @@ class TabSwitcher {
 
 		this.$el.removeAttr('role aria-live');
 		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(this.options.activeClass);
-		this.$panels.removeAttr('role tabindex aria-hidden').removeClass(this.options.activeClass);
+		this.$panels.removeAttr('role aria-hidden').removeClass(this.options.activeClass);
 		this.$panels.find(this.options.selectorFocusEls).removeAttr('tabindex');
 		//experimental
 		this.$tabs.find('.selected-text').remove();
@@ -213,9 +216,9 @@ class TabSwitcher {
 
 		this.updateNav();
 
-		$inactivePanel.removeClass(this.options.activeClass).attr({'tabindex':'-1', 'aria-hidden':'true'});
+		$inactivePanel.removeClass(this.options.activeClass).attr({'aria-hidden':'true'});
 		$inactivePanel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
-		$activePanel.addClass(this.options.activeClass).attr({'tabindex':'0', 'aria-hidden':'false'});
+		$activePanel.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
 		$activePanel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
 
 		setTimeout(function() {
@@ -239,7 +242,7 @@ class TabSwitcher {
 		$activeTab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
 		//experimental
 		$inactiveTab.find('.selected-text').remove();
-		$activeTab.append('<span class="offscreen selected-text"> - currently selected</span>');
+		$activeTab.append(this.selectedLabel);
 
 	}
 
@@ -248,12 +251,14 @@ class TabSwitcher {
 		var pnlHeight = $panel.outerHeight();
 		var winTop = this.$window.scrollTop();
 		var winHeight = this.$window.height();
+		var scrollTop = pnlTop - AppConfig.topOffset;
+		var $focusContentEl = $panel.find(this.options.selectorContentEls).first();
 		if (pnlHeight > winHeight || pnlTop < winTop) {
-			this.$htmlBody.animate({scrollTop: pnlTop}, 200, function() {
-				$panel.focus();
+			this.$htmlBody.animate({scrollTop: scrollTop}, 200, function() {
+				$focusContentEl.attr({'tabindex':'-1'}).focus();
 			});
 		} else {
-			$panel.focus();
+			$focusContentEl.attr({'tabindex':'-1'}).focus();
 		}
 	}
 

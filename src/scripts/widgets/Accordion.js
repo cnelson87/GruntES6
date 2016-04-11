@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic Accordion widget
 
-	VERSION: 0.2.8
+	VERSION: 0.3.0
 
 	USAGE: var myAccordion = new Accordion('Element', 'Options')
 		@param {jQuery Object}
@@ -31,6 +31,7 @@ class Accordion {
 	}
 
 	initialize($el, objOptions) {
+		var urlHash = window.location.hash.replace('#','') || false;
 
 		// defaults
 		this.$el = $el;
@@ -44,6 +45,8 @@ class Accordion {
 			animDuration: 0.4,
 			animEasing: 'Power4.easeOut',
 			selectorFocusEls: 'a, button, input, select, textarea',
+			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl',
+			selectedText: 'currently selected',
 			enableTracking: false,
 			customEventName: 'Accordion'
 		}, objOptions || {});
@@ -60,13 +63,13 @@ class Accordion {
 		this.heightEqualizer = null;
 		this.maxHeight = 'auto';
 		this.isAnimating = false;
+		this.selectedLabel = '<span class="offscreen selected-text"> - ' + this.options.selectedText + '</span>';
 
 		// check url hash to override currentIndex
 		this.focusOnInit = false;
-		this.urlHash = window.location.hash.replace('#','') || false;
-		if (this.urlHash) {
+		if (urlHash) {
 			for (var i=0; i<this._length; i++) {
-				if (this.$panels[i].id === this.urlHash) {
+				if (this.$panels[i].id === urlHash) {
 					this.currentIndex = i;
 					this.focusOnInit = true;
 					break;
@@ -93,7 +96,7 @@ class Accordion {
 
 		this.$el.attr({'role':'tablist', 'aria-live':'polite'});
 		this.$tabs.attr({'role':'tab', 'tabindex':'0', 'aria-selected':'false'});
-		this.$panels.attr({'role':'tabpanel', 'tabindex':'-1', 'aria-hidden':'true'});
+		this.$panels.attr({'role':'tabpanel', 'aria-hidden':'true'});
 		this.$panels.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
 
 		// equalize items height
@@ -106,10 +109,10 @@ class Accordion {
 		}
 
 		$activeTab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
-		$activePanel.addClass(this.options.activeClass).attr({'tabindex':'0', 'aria-hidden':'false'});
+		$activePanel.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
 		$activePanel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
 		//experimental
-		$activeTab.append('<span class="offscreen selected-text"> - currently selected</span>');
+		$activeTab.append(this.selectedLabel);
 
 		TweenMax.set(this.$panels, {
 			display: 'none',
@@ -135,7 +138,7 @@ class Accordion {
 
 		this.$el.removeAttr('role aria-live');
 		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(this.options.activeClass);
-		this.$panels.removeAttr('role tabindex aria-hidden').removeClass(this.options.activeClass);
+		this.$panels.removeAttr('role aria-hidden').removeClass(this.options.activeClass);
 		this.$panels.find(this.options.selectorFocusEls).removeAttr('tabindex');
 		//experimental
 		this.$tabs.find('.selected-text').remove();
@@ -227,7 +230,7 @@ class Accordion {
 		this.isAnimating = true;
 
 		$inactiveTab.removeClass(this.options.activeClass).attr({'aria-selected':'false'});
-		$inactivePanel.removeClass(this.options.activeClass).attr({'tabindex':'-1', 'aria-hidden':'true'});
+		$inactivePanel.removeClass(this.options.activeClass).attr({'aria-hidden':'true'});
 		$inactivePanel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
 		//experimental
 		$inactiveTab.find('.selected-text').remove();
@@ -256,10 +259,10 @@ class Accordion {
 		this.isAnimating = true;
 
 		$activeTab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
-		$activePanel.addClass(this.options.activeClass).attr({'tabindex':'0', 'aria-hidden':'false'});
+		$activePanel.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
 		$activePanel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
 		//experimental
-		$activeTab.append('<span class="offscreen selected-text"> - currently selected</span>');
+		$activeTab.append(this.selectedLabel);
 
 		if (this.options.equalizeHeight) {
 			panelHeight = this.maxHeight;
@@ -294,12 +297,14 @@ class Accordion {
 		var pnlHeight = $panel.outerHeight();
 		var winTop = this.$window.scrollTop();
 		var winHeight = this.$window.height();
+		var scrollTop = pnlTop - AppConfig.topOffset;
+		var $focusContentEl = $panel.find(this.options.selectorContentEls).first();
 		if (pnlHeight > winHeight || pnlTop < winTop) {
-			this.$htmlBody.animate({scrollTop: pnlTop}, 200, function() {
-				$panel.focus();
+			this.$htmlBody.animate({scrollTop: scrollTop}, 200, function() {
+				$focusContentEl.attr({'tabindex':'-1'}).focus();
 			});
 		} else {
-			$panel.focus();
+			$focusContentEl.attr({'tabindex':'-1'}).focus();
 		}
 	}
 
