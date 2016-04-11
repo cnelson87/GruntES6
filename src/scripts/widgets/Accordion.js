@@ -91,8 +91,8 @@ class Accordion {
 **/
 
 	initDOM() {
-		var $activeTab = this.$tabs.eq(this.currentIndex);
-		var $activePanel = this.$panels.eq(this.currentIndex);
+		var $activeTab = this.$tabs.eq(this.currentIndex === -1 ? 9999 : this.currentIndex);
+		var $activePanel = this.$panels.eq(this.currentIndex === -1 ? 9999 : this.currentIndex);
 
 		this.$el.attr({'role':'tablist', 'aria-live':'polite'});
 		this.$tabs.attr({'role':'tab', 'tabindex':'0', 'aria-selected':'false'});
@@ -127,7 +127,6 @@ class Accordion {
 		// initial focus on content
 		if (this.focusOnInit) {
 			$(window).load(function() {
-				this.$htmlBody.animate({scrollTop: 0}, 1);
 				this.focusOnPanel($activePanel);
 			}.bind(this));
 		}
@@ -293,19 +292,23 @@ class Accordion {
 	}
 
 	focusOnPanel($panel) {
+		var index = this.$panels.index($panel);
+		var topOffset = AppConfig.topOffset + this.$tabs.eq(index).outerHeight();
 		var pnlTop = $panel.offset().top;
 		var pnlHeight = $panel.outerHeight();
-		var winTop = this.$window.scrollTop();
-		var winHeight = this.$window.height();
-		var scrollTop = pnlTop - AppConfig.topOffset;
+		var winTop = this.$window.scrollTop() + topOffset;
+		var winHeight = this.$window.height() - topOffset;
+		var scrollTop = pnlTop - topOffset;
 		var $focusContentEl = $panel.find(this.options.selectorContentEls).first();
-		if (pnlHeight > winHeight || pnlTop < winTop) {
+
+		if (pnlTop < winTop || pnlTop + pnlHeight > winTop + winHeight) {
 			this.$htmlBody.animate({scrollTop: scrollTop}, 200, function() {
 				$focusContentEl.attr({'tabindex':'-1'}).focus();
 			});
 		} else {
 			$focusContentEl.attr({'tabindex':'-1'}).focus();
 		}
+
 	}
 
 	fireTracking() {

@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desaktop media queries
 
-	VERSION: 0.2.8
+	VERSION: 0.3.0
 
 	USAGE: var myCarousel = new ResponsiveCarousel('Element', 'Options')
 		@param {jQuery Object}
@@ -29,6 +29,7 @@ class ResponsiveCarousel {
 	}
 
 	initialize($el, objOptions) {
+		var urlHash = window.location.hash.replace('#','') || false;
 
 		// defaults
 		this.$el = $el;
@@ -54,6 +55,7 @@ class ResponsiveCarousel {
 			animDuration: 0.6,
 			animEasing: 'Power4.easeInOut',
 			selectorFocusEls: 'a, button, input, select, textarea',
+			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl',
 			enableTracking: false,
 			customEventName: 'ResponsiveCarousel'
 		}, objOptions || {});
@@ -75,6 +77,18 @@ class ResponsiveCarousel {
 		this.numVisibleItems = null;
 		this.numItemsToAnimate = null;
 		this.isAnimating = false;
+
+		// check url hash to override currentIndex
+		this.focusOnInit = false;
+		if (urlHash) {
+			for (var i=0, $panel; i<this._length; i++) {
+				if (this.$panels.eq(i).data('id') === urlHash) {
+					this.currentIndex = i;
+					this.focusOnInit = true;
+					break;
+				}
+			}
+		}
 
 		this.initDOM();
 
@@ -98,16 +112,7 @@ class ResponsiveCarousel {
 		this.$el.attr({'role':'tablist', 'aria-live':'polite'});
 		this.$navPrev.attr({'role':'button', 'tabindex':'0'});
 		this.$navNext.attr({'role':'button', 'tabindex':'0'});
-		this.$panels.attr({'role':'tabpanel', 'tabindex':'-1', 'aria-hidden':'true'});
-
-		// auto-rotate items
-		if (this.options.autoRotate) {
-			this.rotationInterval = this.options.autoRotateInterval;
-			this.autoRotationCounter = this._length * this.options.maxAutoRotations;
-			this.setAutoRotation = setInterval(function() {
-				this.autoRotation();
-			}.bind(this), this.rotationInterval);
-		}
+		this.$panels.attr({'role':'tabpanel', 'aria-hidden':'true'});
 
 	}
 
@@ -140,6 +145,7 @@ class ResponsiveCarousel {
 	}
 
 	setDOM() {
+		var $activePanel = this.$panels.eq(this.currentIndex);
 		var itemWidth = this.itemWidth + '%';
 		var trackWidth = this.trackWidth + '%';
 		var leftPos = (this.scrollAmt * this.currentIndex) + '%';
@@ -161,6 +167,22 @@ class ResponsiveCarousel {
 		this.deactivateItems();
 		this.activateItems();
 
+		// auto-rotate items
+		if (this.options.autoRotate) {
+			this.rotationInterval = this.options.autoRotateInterval;
+			this.autoRotationCounter = this._length * this.options.maxAutoRotations;
+			this.setAutoRotation = setInterval(function() {
+				this.autoRotation();
+			}.bind(this), this.rotationInterval);
+		}
+
+		// initial focus on content
+		this.$window.load(function() {
+			if (this.focusOnInit) {
+				this.focusOnPanel($activePanel);
+			}
+		}.bind(this));
+
 	}
 
 	uninitDOM() {
@@ -168,7 +190,7 @@ class ResponsiveCarousel {
 		this.$el.removeAttr('role aria-live');
 		this.$navPrev.removeAttr('role tabindex');
 		this.$navNext.removeAttr('role tabindex');
-		this.$panels.removeAttr('role tabindex aria-hidden').removeClass(this.options.classActiveItem);
+		this.$panels.removeAttr('role aria-hidden').removeClass(this.options.classActiveItem);
 		this.$panels.find(this.options.selectorFocusEls).removeAttr('tabindex');
 
 		TweenMax.set(this.$innerTrack, {
@@ -312,7 +334,7 @@ class ResponsiveCarousel {
 		this.isAnimating = true;
 
 		this.deactivateItems();
-
+		// this.activateItems();
 		this.updateNav();
 
 		TweenMax.to(this.$innerTrack, this.options.animDuration, {
@@ -350,7 +372,7 @@ class ResponsiveCarousel {
 	}
 
 	deactivateItems() {
-		this.$panels.removeClass(this.options.classActiveItem).attr({'tabindex':'-1', 'aria-hidden':'true'});
+		this.$panels.removeClass(this.options.classActiveItem).attr({'aria-hidden':'true'});
 		this.$panels.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
 	}
 
@@ -361,28 +383,38 @@ class ResponsiveCarousel {
 		var $activeItems = this.$panels.slice(first, last);
 		var delay = 100;
 
+		//activate all items incrementally
 		$activeItems.each(function(index) {
 			var $item = $(this);
 			$item.delay(delay*index).queue(function() {
 				$item.find(self.options.selectorFocusEls).attr({'tabindex':'0'});
-				$item.addClass(self.options.classActiveItem).attr({'tabindex':'0', 'aria-hidden':'false'}).dequeue();
+				$item.addClass(self.options.classActiveItem).attr({'aria-hidden':'false'}).dequeue();
 			});
 		});
+
+		//activate all items at once
+		// $activeItems.addClass(this.options.classActiveItem).attr({'aria-hidden':'false'});
+		// $activeItems.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
 
 	}
 
 	focusOnPanel($panel) {
+		var topOffset = AppConfig.topOffset;
 		var pnlTop = $panel.offset().top;
 		var pnlHeight = $panel.outerHeight();
-		var winTop = this.$window.scrollTop();
-		var winHeight = this.$window.height();
-		if (pnlHeight > winHeight || pnlTop < winTop) {
-			this.$htmlBody.animate({scrollTop: pnlTop}, 200, function() {
-				$panel.focus();
+		var winTop = this.$window.scrollTop() + topOffset;
+		var winHeight = this.$window.height() - topOffset;
+		var scrollTop = pnlTop - topOffset;
+		var $focusContentEl = $panel.find(this.options.selectorContentEls).first();
+
+		if (pnlTop < winTop || pnlTop + pnlHeight > winTop + winHeight) {
+			this.$htmlBody.animate({scrollTop: scrollTop}, 200, function() {
+				$focusContentEl.attr({'tabindex':'-1'}).focus();
 			});
 		} else {
-			$panel.focus();
+			$focusContentEl.attr({'tabindex':'-1'}).focus();
 		}
+
 	}
 
 	fireTracking() {

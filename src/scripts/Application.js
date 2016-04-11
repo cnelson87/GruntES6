@@ -119,7 +119,7 @@ const Application = {
 	initAccordionPage: function() {
 		new Accordion($('#accordion-default'), {});
 		new Accordion($('#accordion-custom'), {
-			initialIndex: null,
+			initialIndex: -1,
 			equalizeHeight: true
 		});
 	},

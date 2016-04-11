@@ -124,7 +124,6 @@ class TabSwitcher {
 		// initial focus on content
 		if (this.focusOnInit) {
 			$(window).load(function() {
-				this.$htmlBody.animate({scrollTop: 0}, 1);
 				this.focusOnPanel($activePanel);
 			}.bind(this));
 		}
@@ -247,19 +246,22 @@ class TabSwitcher {
 	}
 
 	focusOnPanel($panel) {
+		var topOffset = AppConfig.topOffset;
 		var pnlTop = $panel.offset().top;
 		var pnlHeight = $panel.outerHeight();
-		var winTop = this.$window.scrollTop();
-		var winHeight = this.$window.height();
-		var scrollTop = pnlTop - AppConfig.topOffset;
+		var winTop = this.$window.scrollTop() + topOffset;
+		var winHeight = this.$window.height() - topOffset;
+		var scrollTop = pnlTop - topOffset;
 		var $focusContentEl = $panel.find(this.options.selectorContentEls).first();
-		if (pnlHeight > winHeight || pnlTop < winTop) {
+
+		if (pnlTop < winTop || pnlTop + pnlHeight > winTop + winHeight) {
 			this.$htmlBody.animate({scrollTop: scrollTop}, 200, function() {
 				$focusContentEl.attr({'tabindex':'-1'}).focus();
 			});
 		} else {
 			$focusContentEl.attr({'tabindex':'-1'}).focus();
 		}
+
 	}
 
 	fireTracking() {

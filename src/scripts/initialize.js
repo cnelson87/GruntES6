@@ -6,5 +6,9 @@
 import Application from './Application';
 
 $(function() {
-	Application.initialize();
+	setTimeout(function() {
+		window.scrollTo(0, 0);
+		Application.initialize();
+	}, 1);
+
 });
