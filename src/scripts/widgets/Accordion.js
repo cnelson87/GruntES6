@@ -69,7 +69,7 @@ class Accordion {
 		this.focusOnInit = false;
 		if (urlHash) {
 			for (var i=0; i<this._length; i++) {
-				if (this.$panels[i].id === urlHash) {
+				if (this.$panels.eq(i).data('id') === urlHash) {
 					this.currentIndex = i;
 					this.focusOnInit = true;
 					break;
