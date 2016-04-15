@@ -3,62 +3,38 @@
  * Grunt task for node-browserify.
  */
 
-var remapify = require('remapify');
+var path = require('path');
+var pathmodify = require('pathmodify');
 
 module.exports = function (grunt) {
 
-	// list all aliases
-	var aliases = [
-		{
-			cwd: './src/templates',
-			src: './**/*.hbs',
-			expose: 'templates'
-		},
-		{
-			cwd: './src/scripts/config',
-			src: './**/*.js',
-			expose: 'config'
-		},
-		{
-			cwd: './src/scripts/collections',
-			src: './**/*.js',
-			expose: 'collections'
-		},
-		{
-			cwd: './src/scripts/models',
-			src: './**/*.js',
-			expose: 'models'
-		},
-		{
-			cwd: './src/scripts/utilities',
-			src: './**/*.js',
-			expose: 'utilities'
-		},
-		{
-			cwd: './src/scripts/views',
-			src: './**/*.js',
-			expose: 'views'
-		},
-		{
-			cwd: './src/scripts/widgets',
-			src: './**/*.js',
-			expose: 'widgets'
-		}
+	var paths = [
+		pathmodify.mod.dir('config', path.join(__dirname, '../src/scripts/config')),
+		pathmodify.mod.dir('collections', path.join(__dirname, '../src/scripts/collections')),
+		pathmodify.mod.dir('models', path.join(__dirname, '../src/scripts/models')),
+		pathmodify.mod.dir('utilities', path.join(__dirname, '../src/scripts/utilities')),
+		pathmodify.mod.dir('views', path.join(__dirname, '../src/scripts/views')),
+		pathmodify.mod.dir('widgets', path.join(__dirname, '../src/scripts/widgets')),
+		pathmodify.mod.dir('templates', path.join(__dirname, '../src/templates'))
 	];
 
 	return {
+
+		options: {
+			transform: ['browserify-handlebars', ['babelify', {presets: ['es2015']}]],
+			configure: function(b) {
+				b.plugin(pathmodify, {mods: paths});
+			},
+			browserifyOptions: {
+				extensions: ['.hbs'],
+				fullPaths: false
+			}
+		},
 
 		dev: {
 			src: '<%= sourceScripts %>/initialize.js',
 			dest: '<%= localScripts %>/<%= assetName %>.js',
 			options: {
-				preBundleCB: function(b) {
-					b.plugin(remapify, aliases);
-				},
-				browserifyOptions: {
-					extensions: ['.hbs'],
-					fullPaths: false
-				},
 				debug: true
 			}
 		},
@@ -67,13 +43,6 @@ module.exports = function (grunt) {
 			src: '<%= sourceScripts %>/initialize.js',
 			dest: '<%= publicScripts %>/<%= assetName %>.js',
 			options: {
-				preBundleCB: function(b) {
-					b.plugin(remapify, aliases);
-				},
-				browserifyOptions: {
-					extensions: ['.hbs'],
-					fullPaths: false
-				},
 				debug: false
 			}
 		}
