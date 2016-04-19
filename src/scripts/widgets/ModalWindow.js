@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Base class to create modal windows
 
-	VERSION: 0.2.2
+	VERSION: 0.2.4
 
 	USAGE: var myModalWindow = new ModalWindow('Elements', 'Options')
 		@param {jQuery Object}
@@ -12,13 +12,17 @@
 	AUTHOR: Chris Nelson <cnelson87@gmail.com>
 
 	DEPENDENCIES:
-		- jquery 2.1x+
+		- jquery 2.2x+
 
 */
+
+import AppConfig from 'config/AppConfig';
+import AppEvents from 'config/AppEvents';
 
 class ModalWindow {
 
 	constructor($triggers, objOptions) {
+		this.$window = $(window);
 		this.$document = $(document);
 		this.$body = $('body');
 		this.initialize($triggers, objOptions);
@@ -35,10 +39,11 @@ class ModalWindow {
 			extraClasses: '',
 			overlayID: 'modaloverlay',
 			closeBtnClass: 'btn-closeX',
-			closeBtnInnerHTML: '<span>X</span>', //ex: '<span class="offscreen">close window</span>'
+			closeBtnText: 'X', //ex: 'close modal dialog'
 			activeClass: 'active',
 			activeBodyClass: 'modal-active',
 			animDuration: 400,
+			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl',
 			customEventName: 'ModalWindow'
 		}, objOptions || {});
 
@@ -52,6 +57,7 @@ class ModalWindow {
 		// setup & properties
 		this.isModalActivated = false;
 		this.contentHTML = null;
+		this.windowScrollTop = 0;
 
 		this.initDOM();
 
@@ -80,8 +86,7 @@ class ModalWindow {
 				'class': this.options.modalClass + ' ' + this.options.extraClasses,
 				'aria-hidden': 'true',
 				'aria-live': 'polite',
-				'role': 'dialog',
-				'tabindex': '-1'
+				'role': 'dialog'
 			});
 		}
 
@@ -99,9 +104,8 @@ class ModalWindow {
 		if (!this.$closeBtn.length) {
 			this.$closeBtn = $('<a></a>', {
 				'class': this.options.closeBtnClass,
-				'href': '#close',
-				'title': 'close'
-			}).html(this.options.closeBtnInnerHTML).appendTo(this.$modal);
+				'href': '#close'
+			}).html('<span>' + this.options.closeBtnText + '</span>').appendTo(this.$modal);
 		}
 
 		//insert into DOM
@@ -146,14 +150,6 @@ class ModalWindow {
 
 	}
 
-	unbindEvents() {
-		this.$triggers.off('click', function(event){});
-		this.$closeBtn.off('click', function(event){});
-		this.$overlay.off('click', function(event){});
-		this.$document.off('focusin', function(event){});
-		this.$document.off('keydown', function(event){});
-	}
-
 
 /**
 *	Public Methods
@@ -175,9 +171,11 @@ class ModalWindow {
 
 		this.isModalActivated = true;
 
+		this.windowScrollTop = this.$window.scrollTop();
+
 		this.getContent();
 
-		this.$body.addClass(this.options.activeBodyClass);
+		this.$body.addClass(this.options.activeBodyClass).css({position: 'fixed', top: this.windowScrollTop * -1});
 		this.$overlay.show();
 		this.$modal.show();
 
@@ -187,7 +185,7 @@ class ModalWindow {
 			this.$modal.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
 
 			setTimeout(function() {
-				this.$modal.focus();
+				this.$content.find(this.options.selectorContentEls).first().attr({'tabindex':'-1'}).focus();
 				$.event.trigger(this.options.customEventName + ':modalOpened', [this.options.modalID]);
 			}.bind(this), this.options.animDuration);
 
@@ -197,9 +195,11 @@ class ModalWindow {
 
 	closeModal() {
 
-		this.$body.removeClass(this.options.activeBodyClass);
+		this.$body.removeClass(this.options.activeBodyClass).css({position: '', top: ''});
 		this.$overlay.removeClass(this.options.activeClass);
 		this.$modal.removeClass(this.options.activeClass).attr({'aria-hidden':'true'});
+
+		this.$window.scrollTop(this.windowScrollTop);
 
 		setTimeout(function() {
 
