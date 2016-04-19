@@ -276,14 +276,12 @@ class Accordion {
 			ease: this.options.animEasing,
 			onComplete: function() {
 				self.isAnimating = false;
-				$activePanel.focus();
+				self.focusOnPanel($activePanel);
 				TweenMax.set($activePanel, {
 					height: self.maxHeight
 				});
 			}
 		});
-
-		this.focusOnPanel($activePanel);
 
 		$.event.trigger(this.options.customEventName + ':panelOpened', [this.currentIndex]);
 

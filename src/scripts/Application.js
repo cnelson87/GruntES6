@@ -13,6 +13,7 @@ import AppState from 'models/AppState';
 import HomepageView from 'views/Homepage/HomepageView';
 
 import ResponsiveCarousel from 'widgets/ResponsiveCarousel';
+import MiniAccordion from 'widgets/MiniAccordion';
 import Accordion from 'widgets/Accordion';
 import TabSwitcher from 'widgets/TabSwitcher';
 import ModalWindow from 'widgets/ModalWindow';
@@ -57,6 +58,9 @@ const Application = {
 				break;
 			case 'carouselpage':
 				this.initCarouselPage();
+				break;
+			case 'miniaccordionpage':
+				this.initMiniAccordionPage();
 				break;
 			case 'accordionpage':
 				this.initAccordionPage();
@@ -114,6 +118,15 @@ const Application = {
 			loopEndToEnd: true,
 			autoRotate: false
 		});
+	},
+
+	initMiniAccordionPage: function() {
+		var $miniAccordions = $('.accordion');
+		for (var i=0, len=$miniAccordions.length; i<len; i++) {
+			new MiniAccordion($miniAccordions.eq(i), {
+				initialOpen: (i === 0) ? true : false,
+			});
+		}
 	},
 
 	initAccordionPage: function() {

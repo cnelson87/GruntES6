@@ -1,0 +1,250 @@
+/*
+	TITLE: MiniAccordion
+
+	DESCRIPTION: A single Accordion item
+
+	VERSION: 0.1.0
+
+	USAGE: var myAccordion = new Accordion('Element', 'Options')
+		@param {jQuery Object}
+		@param {Object}
+
+	AUTHOR: Chris Nelson <cnelson87@gmail.com>
+
+	DEPENDENCIES:
+		- jquery 2.2x+
+		- greensock
+
+*/
+
+import AppConfig from 'config/AppConfig';
+import AppEvents from 'config/AppEvents';
+
+class MiniAccordion {
+
+	constructor($el, objOptions) {
+		this.$window = $(window);
+		this.$htmlBody = $('html, body');
+		this.initialize($el, objOptions);
+	}
+
+	initialize($el, objOptions) {
+		var urlHash = window.location.hash.replace('#','') || false;
+
+		// defaults
+		this.$el = $el;
+		this.options = $.extend({
+			initialOpen: false,
+			selectorTabs: '.accordion-header a',
+			selectorPanels: '.accordion-panel',
+			activeClass: 'active',
+			animDuration: 0.4,
+			animEasing: 'Power4.easeOut',
+			selectorFocusEls: 'a, button, input, select, textarea',
+			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl',
+			selectedText: 'currently selected',
+			enableTracking: false,
+			customEventName: 'MiniAccordion'
+		}, objOptions || {});
+
+		// element references
+		this.$tab = this.$el.find(this.options.selectorTabs);
+		this.$panel = this.$el.find(this.options.selectorPanels);
+
+		// setup & properties
+		this.isActive = this.options.initialOpen;
+		this.isAnimating = false;
+		this.selectedLabel = '<span class="offscreen selected-text"> - ' + this.options.selectedText + '</span>';
+
+		// check url hash to override currentIndex
+		this.focusOnInit = false;
+		if (urlHash && this.$panel.data('id') === urlHash) {
+			this.focusOnInit = true;
+		}
+
+		this.initDOM();
+
+		this.bindEvents();
+
+		$.event.trigger(this.options.customEventName + ':isInitialized', [this.$el]);
+
+	}
+
+
+/**
+*	Private Methods
+**/
+
+	initDOM() {
+
+		this.$el.attr({'role':'tablist', 'aria-live':'polite'});
+		this.$tab.attr({'role':'tab', 'tabindex':'0', 'aria-selected':'false'});
+		this.$panel.attr({'role':'tabpanel', 'aria-hidden':'true'});
+		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
+
+		if (this.isActive) {
+			this.$tab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
+			this.$panel.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
+			this.$panel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
+			//experimental
+			this.$tab.append(this.selectedLabel);
+		}
+
+		TweenMax.set(this.$panel, {
+			display: this.isActive ? 'block' : 'none',
+			height: 'auto'
+		});
+
+		// initial focus on content
+		if (this.focusOnInit) {
+			$(window).load(function() {
+				this.focusOnPanel();
+			}.bind(this));
+		}
+
+	}
+
+	uninitDOM() {
+
+		this.$el.removeAttr('role aria-live');
+		this.$tab.removeAttr('role tabindex aria-selected').removeClass(this.options.activeClass);
+		this.$panel.removeAttr('role aria-hidden').removeClass(this.options.activeClass);
+		this.$panel.find(this.options.selectorFocusEls).removeAttr('tabindex');
+		//experimental
+		this.$tab.find('.selected-text').remove();
+
+		TweenMax.set(this.$panel, {
+			display: '',
+			height: ''
+		});
+
+	}
+
+	bindEvents() {
+		this.$tab.on('click', this.__clickTab.bind(this));
+	}
+
+	unbindEvents() {
+		this.$tab.off('click', this.__clickTab.bind(this));
+	}
+
+
+/**
+*	Event Handlers
+**/
+
+	__clickTab(event) {
+		event.preventDefault();
+
+		if (this.isAnimating) {return;}
+
+		if (this.isActive) {
+			this.animateClosed();
+		} else {
+			this.animateOpen();
+		}
+
+	}
+
+
+/**
+*	Public Methods
+**/
+
+	animateClosed() {
+		var self = this;
+
+		this.isAnimating = true;
+
+		this.isActive = false;
+
+		this.$tab.removeClass(this.options.activeClass).attr({'aria-selected':'false'});
+		this.$panel.removeClass(this.options.activeClass).attr({'aria-hidden':'true'});
+		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
+		//experimental
+		this.$tab.find('.selected-text').remove();
+
+		TweenMax.to(this.$panel, this.options.animDuration, {
+			height: 0,
+			ease: this.options.animEasing,
+			onComplete: function() {
+				self.isAnimating = false;
+				self.$tab.focus();
+				TweenMax.set(self.$panel, {
+					display: 'none',
+					height: 'auto'
+				});
+			}
+		});
+
+	}
+
+	animateOpen() {
+		var self = this;
+		var panelHeight = this.$panel.outerHeight();
+
+		this.isAnimating = true;
+
+		this.isActive = true;
+
+		this.$tab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
+		this.$panel.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
+		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
+		//experimental
+		this.$tab.append(this.selectedLabel);
+
+		TweenMax.to(this.$panel, this.options.animDuration, {
+			display: 'block',
+			height: panelHeight,
+			ease: this.options.animEasing,
+			onComplete: function() {
+				self.isAnimating = false;
+				self.focusOnPanel();
+				TweenMax.set(self.$panel, {
+					height: 'auto'
+				});
+			}
+		});
+
+		$.event.trigger(this.options.customEventName + ':panelOpened', [this.currentIndex]);
+
+		this.fireTracking();
+
+	}
+
+	focusOnPanel() {
+		var topOffset = AppConfig.topOffset;
+		var elTop = this.$el.offset().top;
+		var elHeight = this.$el.outerHeight();
+		var winTop = this.$window.scrollTop() + topOffset;
+		var winHeight = this.$window.height() - topOffset;
+		var scrollTop = elTop - topOffset;
+		var $focusContentEl = this.$panel.find(this.options.selectorContentEls).first();
+
+		if (elTop < winTop || elTop + elHeight > winTop + winHeight) {
+			this.$htmlBody.animate({scrollTop: scrollTop}, 200, function() {
+				$focusContentEl.attr({'tabindex':'-1'}).focus();
+			});
+		} else {
+			$focusContentEl.attr({'tabindex':'-1'}).focus();
+		}
+
+	}
+
+	fireTracking() {
+		if (!this.options.enableTracking) {return;}
+		$.event.trigger(AppEvents.TRACKING_STATE, {activeEl: this.$panel});
+	}
+
+	unInitialize() {
+		this.unbindEvents();
+		this.uninitDOM();
+		this.$el = null;
+		this.$tab = null;
+		this.$panel = null;
+		$.event.trigger(this.options.customEventName + ':unInitialized');
+	}
+
+}
+
+export default MiniAccordion;

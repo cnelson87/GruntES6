@@ -27,6 +27,14 @@
 		"intro" : "This is the Carousel page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
 	},
 
+	"miniaccordion": {
+		"title" : "MiniAccordion",
+		"description" : "Description for the MiniAccordion page",
+		"keywords" : "mini accordion widget",
+		"h1" : "MiniAccordion H1",
+		"intro" : "This is the MiniAccordion page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
+	},
+
 	"accordion": {
 		"title" : "Accordion",
 		"description" : "Description for the Accordion page",

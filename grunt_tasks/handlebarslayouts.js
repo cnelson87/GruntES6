@@ -12,6 +12,7 @@ module.exports = function (grunt) {
 		'index',
 		'grids',
 		'carousel',
+		'miniaccordion',
 		'accordion',
 		'tabswitcher',
 		'modals',
