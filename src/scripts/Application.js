@@ -13,6 +13,7 @@ import AppState from 'models/AppState';
 import HomepageView from 'views/Homepage/HomepageView';
 
 import ResponsiveCarousel from 'widgets/ResponsiveCarousel';
+import ResponsiveTabCarousel from 'widgets/ResponsiveTabCarousel';
 import MiniAccordion from 'widgets/MiniAccordion';
 import Accordion from 'widgets/Accordion';
 import TabSwitcher from 'widgets/TabSwitcher';
@@ -58,6 +59,9 @@ const Application = {
 				break;
 			case 'carouselpage':
 				this.initCarouselPage();
+				break;
+			case 'tabcarouselpage':
+				this.initTabCarouselPage();
 				break;
 			case 'miniaccordionpage':
 				this.initMiniAccordionPage();
@@ -117,6 +121,19 @@ const Application = {
 			numItemsToAnimateDesktop: 4,
 			loopEndToEnd: true,
 			autoRotate: false
+		});
+	},
+
+	initTabCarouselPage: function() {
+		new ResponsiveTabCarousel( $('#carousel-m1-t1-d1'), {
+			numVisibleItemsMobile: 1,
+			numItemsToAnimateMobile: 1,
+			numVisibleItemsTablet: 1,
+			numItemsToAnimateTablet: 1,
+			numVisibleItemsDesktop: 1,
+			numItemsToAnimateDesktop: 1,
+			loopEndToEnd: false,
+			autoRotate: true
 		});
 	},
 
