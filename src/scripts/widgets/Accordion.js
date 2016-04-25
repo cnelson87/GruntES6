@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic Accordion widget
 
-	VERSION: 0.3.0
+	VERSION: 0.3.1
 
 	USAGE: var myAccordion = new Accordion('Element', 'Options')
 		@param {jQuery Object}
@@ -108,11 +108,9 @@ class Accordion {
 			this.maxHeight = this.heightEqualizer.maxHeight;
 		}
 
-		$activeTab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
-		$activePanel.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
-		$activePanel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
-		//experimental
-		$activeTab.append(this.selectedLabel);
+		this.activateTab($activeTab);
+
+		this.activatePanel($activePanel);
 
 		TweenMax.set(this.$panels, {
 			display: 'none',
@@ -139,7 +137,6 @@ class Accordion {
 		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(this.options.activeClass);
 		this.$panels.removeAttr('role aria-hidden').removeClass(this.options.activeClass);
 		this.$panels.find(this.options.selectorFocusEls).removeAttr('tabindex');
-		//experimental
 		this.$tabs.find('.selected-text').remove();
 
 		TweenMax.set(this.$panels, {
@@ -184,32 +181,32 @@ class Accordion {
 			if (this.currentIndex === index) {
 				this.previousIndex = null;
 				this.currentIndex = -1;
-				this.animatePanelClosed(index);
+				this.animateClosed(index);
 
 			// currentIndex is -1, all are closed
 			} else if (this.currentIndex === -1) {
 				this.previousIndex = null;
 				this.currentIndex = index;
-				this.animatePanelOpen(index);
+				this.animateOpen(index);
 
 			// default behaviour
 			} else {
 				this.previousIndex = this.currentIndex;
 				this.currentIndex = index;
-				this.animatePanelClosed(this.previousIndex);
-				this.animatePanelOpen(this.currentIndex);
+				this.animateClosed(this.previousIndex);
+				this.animateOpen(this.currentIndex);
 			}
 
 		// else accordion operates as normal
 		} else {
 
 			if (this.currentIndex === index) {
-				this.$panels[index].focus();
+				this.focusOnPanel(this.$panels.eq(index));
 			} else {
 				this.previousIndex = this.currentIndex;
 				this.currentIndex = index;
-				this.animatePanelClosed(this.previousIndex);
-				this.animatePanelOpen(this.currentIndex);
+				this.animateClosed(this.previousIndex);
+				this.animateOpen(this.currentIndex);
 			}
 
 		}
@@ -221,18 +218,16 @@ class Accordion {
 *	Public Methods
 **/
 
-	animatePanelClosed(index) {
+	animateClosed(index) {
 		var self = this;
 		var $inactiveTab = this.$tabs.eq(index);
 		var $inactivePanel = this.$panels.eq(index);
 
 		this.isAnimating = true;
 
-		$inactiveTab.removeClass(this.options.activeClass).attr({'aria-selected':'false'});
-		$inactivePanel.removeClass(this.options.activeClass).attr({'aria-hidden':'true'});
-		$inactivePanel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
-		//experimental
-		$inactiveTab.find('.selected-text').remove();
+		this.deactivateTab($inactiveTab);
+
+		this.deactivatePanel($inactivePanel);
 
 		TweenMax.to($inactivePanel, this.options.animDuration, {
 			height: 0,
@@ -249,7 +244,7 @@ class Accordion {
 
 	}
 
-	animatePanelOpen(index) {
+	animateOpen(index) {
 		var self = this;
 		var $activeTab = this.$tabs.eq(index);
 		var $activePanel = this.$panels.eq(index);
@@ -257,11 +252,9 @@ class Accordion {
 
 		this.isAnimating = true;
 
-		$activeTab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
-		$activePanel.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
-		$activePanel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
-		//experimental
-		$activeTab.append(this.selectedLabel);
+		this.activateTab($activeTab);
+
+		this.activatePanel($activePanel);
 
 		if (this.options.equalizeHeight) {
 			panelHeight = this.maxHeight;
@@ -283,10 +276,30 @@ class Accordion {
 			}
 		});
 
-		$.event.trigger(this.options.customEventName + ':panelOpened', [this.currentIndex]);
+		$.event.trigger(this.options.customEventName + ':panelOpened', {activeEl: $activePanel});
 
 		this.fireTracking();
 
+	}
+
+	deactivateTab($tab) {
+		$tab.removeClass(this.options.activeClass).attr({'aria-selected':'false'});
+		$tab.find('.selected-text').remove();
+	}
+
+	activateTab($tab) {
+		$tab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
+		$tab.append(this.selectedLabel);
+	}
+
+	deactivatePanel($panel) {
+		$panel.removeClass(this.options.activeClass).attr({'aria-hidden':'true'});
+		$panel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
+	}
+
+	activatePanel($panel) {
+		$panel.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
+		$panel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
 	}
 
 	focusOnPanel($panel) {

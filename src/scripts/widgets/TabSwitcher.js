@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic TabSwitcher widget
 
-	VERSION: 0.3.0
+	VERSION: 0.3.1
 
 	USAGE: var myTabSwitcher = new TabSwitcher('Element', 'Options')
 		@param {jQuery Object}
@@ -106,11 +106,9 @@ class TabSwitcher {
 			});
 		}
 
-		$activeTab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
-		$activePanel.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
-		$activePanel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
-		//experimental
-		$activeTab.append(this.selectedLabel);
+		this.activateTab($activeTab);
+
+		this.activatePanel($activePanel);
 
 		// auto-rotate items
 		if (this.options.autoRotate) {
@@ -193,7 +191,7 @@ class TabSwitcher {
 		}
 
 		if (this.currentIndex === index) {
-			this.$panels[index].focus();
+			this.focusOnPanel(this.$panels.eq(index));
 		} else {
 			this.previousIndex = this.currentIndex;
 			this.currentIndex = index;
@@ -208,17 +206,20 @@ class TabSwitcher {
 **/
 
 	switchPanels(event) {
+		var $inactiveTab = this.$tabs.eq(this.previousIndex);
+		var $activeTab = this.$tabs.eq(this.currentIndex);
 		var $inactivePanel = this.$panels.eq(this.previousIndex);
 		var $activePanel = this.$panels.eq(this.currentIndex);
 
 		this.isAnimating = true;
 
-		this.updateNav();
+		this.deactivateTab($inactiveTab);
 
-		$inactivePanel.removeClass(this.options.activeClass).attr({'aria-hidden':'true'});
-		$inactivePanel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
-		$activePanel.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
-		$activePanel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
+		this.activateTab($activeTab);
+
+		this.deactivatePanel($inactivePanel);
+
+		this.activatePanel($activePanel);
 
 		setTimeout(function() {
 			this.isAnimating = false;
@@ -227,26 +228,35 @@ class TabSwitcher {
 			}
 		}.bind(this), this.options.animDuration);
 
-		$.event.trigger(this.options.customEventName + ':panelOpened', [this.currentIndex]);
+		$.event.trigger(this.options.customEventName + ':panelOpened', {activeEl: $activePanel});
 
 		this.fireTracking();
 
 	}
 
-	updateNav() {
-		var $inactiveTab = this.$tabs.eq(this.previousIndex);
-		var $activeTab = this.$tabs.eq(this.currentIndex);
+	deactivateTab($tab) {
+		$tab.removeClass(this.options.activeClass).attr({'aria-selected':'false'});
+		$tab.find('.selected-text').remove();
+	}
 
-		$inactiveTab.removeClass(this.options.activeClass).attr({'aria-selected':'false'});
-		$activeTab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
-		//experimental
-		$inactiveTab.find('.selected-text').remove();
-		$activeTab.append(this.selectedLabel);
+	activateTab($tab) {
+		$tab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
+		$tab.append(this.selectedLabel);
+	}
 
+	deactivatePanel($panel) {
+		$panel.removeClass(this.options.activeClass).attr({'aria-hidden':'true'});
+		$panel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
+	}
+
+	activatePanel($panel) {
+		$panel.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
+		$panel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
 	}
 
 	focusOnPanel($panel) {
-		var topOffset = AppConfig.topOffset;
+		var index = this.$panels.index($panel);
+		var topOffset = AppConfig.topOffset + this.$tabs.eq(index).outerHeight();
 		var pnlTop = $panel.offset().top;
 		var pnlHeight = $panel.outerHeight();
 		var winTop = this.$window.scrollTop() + topOffset;

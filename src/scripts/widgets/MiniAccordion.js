@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A single Accordion item
 
-	VERSION: 0.1.0
+	VERSION: 0.1.1
 
 	USAGE: var myAccordion = new Accordion('Element', 'Options')
 		@param {jQuery Object}
@@ -56,9 +56,10 @@ class MiniAccordion {
 		this.isAnimating = false;
 		this.selectedLabel = '<span class="offscreen selected-text"> - ' + this.options.selectedText + '</span>';
 
-		// check url hash to override currentIndex
+		// check url hash to override isActive
 		this.focusOnInit = false;
 		if (urlHash && this.$panel.data('id') === urlHash) {
+			this.isActive = true;
 			this.focusOnInit = true;
 		}
 
@@ -83,11 +84,8 @@ class MiniAccordion {
 		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
 
 		if (this.isActive) {
-			this.$tab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
-			this.$panel.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
-			this.$panel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
-			//experimental
-			this.$tab.append(this.selectedLabel);
+			this.activateTab();
+			this.activatePanel();
 		}
 
 		TweenMax.set(this.$panel, {
@@ -110,7 +108,6 @@ class MiniAccordion {
 		this.$tab.removeAttr('role tabindex aria-selected').removeClass(this.options.activeClass);
 		this.$panel.removeAttr('role aria-hidden').removeClass(this.options.activeClass);
 		this.$panel.find(this.options.selectorFocusEls).removeAttr('tabindex');
-		//experimental
 		this.$tab.find('.selected-text').remove();
 
 		TweenMax.set(this.$panel, {
@@ -158,11 +155,9 @@ class MiniAccordion {
 
 		this.isActive = false;
 
-		this.$tab.removeClass(this.options.activeClass).attr({'aria-selected':'false'});
-		this.$panel.removeClass(this.options.activeClass).attr({'aria-hidden':'true'});
-		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
-		//experimental
-		this.$tab.find('.selected-text').remove();
+		this.deactivateTab();
+
+		this.deactivatePanel();
 
 		TweenMax.to(this.$panel, this.options.animDuration, {
 			height: 0,
@@ -187,11 +182,9 @@ class MiniAccordion {
 
 		this.isActive = true;
 
-		this.$tab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
-		this.$panel.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
-		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
-		//experimental
-		this.$tab.append(this.selectedLabel);
+		this.activateTab();
+
+		this.activatePanel();
 
 		TweenMax.to(this.$panel, this.options.animDuration, {
 			display: 'block',
@@ -206,10 +199,30 @@ class MiniAccordion {
 			}
 		});
 
-		$.event.trigger(this.options.customEventName + ':panelOpened', [this.currentIndex]);
+		$.event.trigger(this.options.customEventName + ':panelOpened');
 
 		this.fireTracking();
 
+	}
+
+	deactivateTab() {
+		this.$tab.removeClass(this.options.activeClass).attr({'aria-selected':'false'});
+		this.$tab.find('.selected-text').remove();
+	}
+
+	activateTab() {
+		this.$tab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
+		this.$tab.append(this.selectedLabel);
+	}
+
+	deactivatePanel() {
+		this.$panel.removeClass(this.options.activeClass).attr({'aria-hidden':'true'});
+		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
+	}
+
+	activatePanel() {
+		this.$panel.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
+		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
 	}
 
 	focusOnPanel() {
@@ -233,7 +246,7 @@ class MiniAccordion {
 
 	fireTracking() {
 		if (!this.options.enableTracking) {return;}
-		$.event.trigger(AppEvents.TRACKING_STATE, {activeEl: this.$panel});
+		$.event.trigger(AppEvents.TRACKING_STATE, {activeEl: this.$el});
 	}
 
 	unInitialize() {

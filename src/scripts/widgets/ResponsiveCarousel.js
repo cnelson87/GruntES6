@@ -349,7 +349,7 @@ class ResponsiveCarousel {
 			}
 		});
 
-		$.event.trigger(this.options.customEventName + ':carouselUpdated', [this.currentIndex]);
+		$.event.trigger(this.options.customEventName + ':carouselUpdated', {activeEl: $activePanel});
 
 		this.fireTracking();
 
@@ -383,7 +383,7 @@ class ResponsiveCarousel {
 		var $activeItems = this.$panels.slice(first, last);
 		var delay = 100;
 
-		//activate all items incrementally
+		//activate all current items incrementally
 		$activeItems.each(function(index) {
 			var $item = $(this);
 			$item.delay(delay*index).queue(function() {
@@ -392,7 +392,7 @@ class ResponsiveCarousel {
 			});
 		});
 
-		//activate all items at once
+		//activate all current items at once
 		// $activeItems.addClass(this.options.classActiveItem).attr({'aria-hidden':'false'});
 		// $activeItems.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
 

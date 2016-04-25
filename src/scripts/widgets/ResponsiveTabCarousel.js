@@ -61,14 +61,12 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 		var $activeTab = this.$tabs.eq(this.currentIndex);
 		this.$tabs.attr({'role':'tab', 'tabindex':'0', 'aria-selected':'false'});
 		$activeTab.addClass(this.options.classActiveNav).attr({'aria-selected':'true'});
-		//experimental
 		$activeTab.append(this.selectedLabel);
 	}
 
 	uninitDOM() {
 		super.uninitDOM();
 		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(this.options.classActiveNav);
-		//experimental
 		this.$tabs.find('.selected-text').remove();
 	}
 
@@ -99,7 +97,7 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 		}
 
 		if (this.currentIndex === index) {
-			this.$panels[index].focus();
+			this.focusOnPanel(this.$panels.eq(index));
 		} else {
 			this.currentIndex = index;
 			this.updateCarousel(event);
@@ -120,7 +118,6 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 
 		$inactiveTab.removeClass(this.options.classActiveNav).attr({'aria-selected':'false'});
 		$activeTab.addClass(this.options.classActiveNav).attr({'aria-selected':'true'});
-		//experimental
 		$inactiveTab.find('.selected-text').remove();
 		$activeTab.append(this.selectedLabel);
 
