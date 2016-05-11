@@ -220,7 +220,7 @@
 	.grid-desk-1-8, .grid-desk-3-8, .grid-desk-5-8, .grid-desk-7-8,
 	.grid-desk-1-12, .grid-desk-5-12, .grid-desk-7-12, .grid-desk-11-12 {
 		.grid-cell {
-			@include column($tablet-gutter-half-width);
+			@include column($desktop-gutter-half-width);
 		}
 	}
 	.grid-desk-1-1 .grid-cell {width: 100%;}
