@@ -3,7 +3,7 @@
 	"version": "0.4.0",
 	"dependencies": {
 		"modernizr": "~2.8.3",
-		"jquery": "~2.2.3",
+		"jquery": "~2.2.4",
 		"jquery-touchswipe": "1.6.9",
 		"greensock": "~1.18.4",
 		"picturefill": "~3.0.2",
