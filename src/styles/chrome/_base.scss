@@ -140,6 +140,9 @@ sub, sup {
 sup {top: -0.5em;}
 sub {bottom: -0.25em;}
 
+big, .big {font-size: 1.2em;}
+small, .small {font-size: 0.9em;}
+
 blockquote, q {quotes: none;}
 blockquote::before, blockquote::after,
 q::before, q::after {
