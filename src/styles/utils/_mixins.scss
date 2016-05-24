@@ -10,7 +10,7 @@
 }
 
 @mixin clearfix {
-	&:after {
+	&::after {
 		content: "";
 		display: block;
 		clear: both;

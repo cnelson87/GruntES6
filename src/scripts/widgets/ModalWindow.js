@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Base class to create modal windows
 
-	VERSION: 0.2.4
+	VERSION: 0.2.5
 
 	USAGE: var myModalWindow = new ModalWindow('Elements', 'Options')
 		@param {jQuery Object}
@@ -38,9 +38,9 @@ class ModalWindow {
 			modalClass: 'modalwindow',
 			extraClasses: '',
 			overlayID: 'modaloverlay',
-			closeBtnClass: 'btn-closeX',
-			closeBtnText: 'X', //ex: 'close modal dialog'
-			activeClass: 'active',
+			closeBtnClass: 'closeX',
+			closeBtnText: 'close modal dialog',
+			activeClass: 'is-active',
 			activeBodyClass: 'modal-active',
 			animDuration: 400,
 			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl',
@@ -138,7 +138,7 @@ class ModalWindow {
 
 		this.$document.on('focusin', function(event) {
 			if (this.isModalActivated && !this.$modal[0].contains(event.target)) {
-				this.$modal.focus();
+				this.setContentFocus();
 			}
 		}.bind(this));
 
@@ -175,7 +175,7 @@ class ModalWindow {
 
 		this.getContent();
 
-		this.$body.addClass(this.options.activeBodyClass).css({position: 'fixed', top: this.windowScrollTop * -1});
+		this.$body.addClass(this.options.activeBodyClass).css({top: this.windowScrollTop * -1});
 		this.$overlay.show();
 		this.$modal.show();
 
@@ -185,9 +185,10 @@ class ModalWindow {
 			this.$modal.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
 
 			setTimeout(function() {
-				this.$content.find(this.options.selectorContentEls).first().attr({'tabindex':'-1'}).focus();
-				$.event.trigger(this.options.customEventName + ':modalOpened', [this.options.modalID]);
+				this.setContentFocus();
 			}.bind(this), this.options.animDuration);
+
+			$.event.trigger(`${this.options.customEventName}:modalOpened`, [this.$modal]);
 
 		}.bind(this), 10);
 
@@ -208,10 +209,14 @@ class ModalWindow {
 			this.$modal.hide();
 			this.$content.empty();
 			this.$activeTrigger.focus();
-			$.event.trigger(this.options.customEventName + ':modalClosed', [this.options.modalID]);
+			$.event.trigger(`${this.options.customEventName}:modalClosed`, [this.$modal]);
 
 		}.bind(this), this.options.animDuration);
 
+	}
+
+	setContentFocus() {
+		this.$content.find(this.options.selectorContentEls).first().attr({'tabindex':'-1'}).focus();
 	}
 
 }

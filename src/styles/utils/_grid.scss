@@ -3,12 +3,12 @@
 // -----------------------------------------------------
 
 
-@mixin row() {
+@mixin row {
 	display: block;
 	/*width: calc(100% + #{$mobile-gutter-width});*/
 	margin: 0 -#{$mobile-gutter-half-width};
 	position: relative;
-	@include clearfix();
+	@include clearfix;
 	// Tablet+
 	@media (min-width: $tablet-breakpoint-min) {
 		/*width: calc(100% + #{$tablet-gutter-width});*/
@@ -37,7 +37,7 @@
 // Column-class based grid system
 
 .row {
-	@include row();
+	@include row;
 }
 
 .col-mobi-1-1, .col-mobi-1-2,
@@ -140,7 +140,7 @@
 // Row-class cascade based grid system
 
 .grid-row {
-	@include row();
+	@include row;
 }
 
 .grid-mobi-1-1, .grid-mobi-1-2,

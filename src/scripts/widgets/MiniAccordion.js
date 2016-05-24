@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A single Accordion item
 
-	VERSION: 0.1.1
+	VERSION: 0.1.2
 
 	USAGE: var myAccordion = new Accordion('Element', 'Options')
 		@param {jQuery Object}
@@ -37,7 +37,7 @@ class MiniAccordion {
 			initialOpen: false,
 			selectorTabs: '.accordion-header a',
 			selectorPanels: '.accordion-panel',
-			activeClass: 'active',
+			activeClass: 'is-active',
 			animDuration: 0.4,
 			animEasing: 'Power4.easeOut',
 			selectorFocusEls: 'a, button, input, select, textarea',
@@ -54,7 +54,7 @@ class MiniAccordion {
 		// setup & properties
 		this.isActive = this.options.initialOpen;
 		this.isAnimating = false;
-		this.selectedLabel = '<span class="offscreen selected-text"> - ' + this.options.selectedText + '</span>';
+		this.selectedLabel = `<span class="offscreen selected-text"> - ${this.options.selectedText}</span>`;
 
 		// check url hash to override isActive
 		this.focusOnInit = false;
@@ -67,7 +67,7 @@ class MiniAccordion {
 
 		this.bindEvents();
 
-		$.event.trigger(this.options.customEventName + ':isInitialized', [this.$el]);
+		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
 
 	}
 
@@ -199,7 +199,7 @@ class MiniAccordion {
 			}
 		});
 
-		$.event.trigger(this.options.customEventName + ':panelOpened');
+		$.event.trigger(`${this.options.customEventName}:panelOpened`, [this.$el]);
 
 		this.fireTracking();
 
@@ -255,7 +255,7 @@ class MiniAccordion {
 		this.$el = null;
 		this.$tab = null;
 		this.$panel = null;
-		$.event.trigger(this.options.customEventName + ':unInitialized');
+		$.event.trigger(`${this.options.customEventName}:unInitialized`);
 	}
 
 }

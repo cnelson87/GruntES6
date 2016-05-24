@@ -78,7 +78,7 @@ html, body {
 		padding: 0 $mobile-gutter-width;
 		position: relative;
 		overflow: auto;
-		@include clearfix();
+		@include clearfix;
 
 		#content,
 		#subcol {

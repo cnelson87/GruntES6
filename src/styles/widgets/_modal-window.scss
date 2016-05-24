@@ -5,32 +5,7 @@
 
 body.modal-active {
 	overflow: hidden;
-}
-html.touch body.modal-active {
-	position: fixed; /* needed for mobile / touch */
-}
-
-script[type="text/template"] {
-	@include hidden();
-}
-
-a.btn-closeX, a.lnk-closeX {
-	display: inline-block;
-	width: 32px;
-	height: 32px;
-	background: $gray-light;
-	border: 2px solid $near-black;
-	color: $near-black;
-	font-size: 16px;
-	line-height: 32px;
-	text-align: center;
-	text-decoration: none;
-
-	&:focus, &:hover {
-		color: $white;
-		background: $gray-med;
-	}
-
+	position: fixed;
 }
 
 #modaloverlay {
@@ -47,7 +22,7 @@ a.btn-closeX, a.lnk-closeX {
 	transition: opacity 0.2s, visibility 0.2s;
 	transition-delay: 0.1s;
 
-	&.active {
+	&.is-active {
 		// display: block; //set in script
 		visibility: visible;
 		opacity: 1;
@@ -68,7 +43,7 @@ a.btn-closeX, a.lnk-closeX {
 	transition: opacity 0.2s, visibility 0.2s;
 	transition-delay: 0;
 
-	&.active {
+	&.is-active {
 		// display: block; //set in script
 		visibility: visible;
 		opacity: 1;
@@ -76,6 +51,7 @@ a.btn-closeX, a.lnk-closeX {
 		transition-delay: 0.1s;
 	}
 
+	a.closeX,
 	a.btn-closeX,
 	a.lnk-closeX {
 		position: absolute;

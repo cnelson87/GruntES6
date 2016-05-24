@@ -26,7 +26,7 @@
 					background: $gray-xlight;
 					padding: 0.5em 1em;
 
-					&.active {
+					&.is-active {
 						color: $white;
 						background: $gray-dark;
 					}
@@ -59,7 +59,7 @@
 		z-index: 1;
 		// transform: scale(0.9);
 
-		&.active {
+		&.is-active {
 			opacity: 1.0;
 			position: relative;
 			z-index: 3;

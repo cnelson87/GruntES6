@@ -1,10 +1,10 @@
 /*
 	TITLE: ResponsiveTabCarousel
 
-	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desaktop media queries
+	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desktop media queries
 	NOTE: The tabs only work if mobile/tablet/desktop views all display one 'panel' at a time.
 
-	VERSION: 0.2.5
+	VERSION: 0.2.6
 
 	USAGE: var myTabCarousel = new ResponsiveTabCarousel('Element', 'Options')
 		@param {jQuery Object}
@@ -37,7 +37,7 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 			numVisibleItemsDesktop: 1,
 			numItemsToAnimateDesktop: 1,
 			selectorTabs: '.tabnav a',
-			classActiveNav: 'active',
+			classActiveNav: 'is-active',
 			selectedText: 'currently selected',
 			customEventName: 'ResponsiveTabCarousel'
 		}, objOptions || {});
@@ -46,7 +46,7 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 		this.$tabs = this.$el.find(this.options.selectorTabs);
 
 		// setup & properties
-		this.selectedLabel = '<span class="offscreen selected-text"> - ' + this.options.selectedText + '</span>';
+		this.selectedLabel = `<span class="offscreen selected-text"> - ${this.options.selectedText}</span>`;
 
 		super.initialize($el, this.options);
 	}
@@ -114,12 +114,12 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 		var $inactiveTab = this.$tabs.filter('.'+this.options.classActiveNav);
 		var $activeTab = this.$tabs.eq(this.currentIndex);
 
-		super.updateNav();
-
 		$inactiveTab.removeClass(this.options.classActiveNav).attr({'aria-selected':'false'});
 		$activeTab.addClass(this.options.classActiveNav).attr({'aria-selected':'true'});
 		$inactiveTab.find('.selected-text').remove();
 		$activeTab.append(this.selectedLabel);
+
+		super.updateNav();
 
 	}
 

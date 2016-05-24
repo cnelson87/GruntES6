@@ -7,6 +7,10 @@
 /*	General styles
 /**/
 
+script[type="text/template"] {
+	@include hidden;
+}
+
 big, .big {font-size: 16px;}
 
 small, .small, .note {font-size: 10px;}
@@ -25,7 +29,7 @@ small, .small, .note {font-size: 10px;}
 }
 
 .clearfix {
-	@include clearfix();
+	@include clearfix;
 }
 
 .hidden {

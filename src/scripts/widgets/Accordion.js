@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic Accordion widget
 
-	VERSION: 0.3.1
+	VERSION: 0.3.2
 
 	USAGE: var myAccordion = new Accordion('Element', 'Options')
 		@param {jQuery Object}
@@ -39,7 +39,7 @@ class Accordion {
 			initialIndex: 0,
 			selectorTabs: '.accordion-header a',
 			selectorPanels: '.accordion-panel',
-			activeClass: 'active',
+			activeClass: 'is-active',
 			equalizeHeight: false,
 			selfClosing: true,
 			animDuration: 0.4,
@@ -63,7 +63,7 @@ class Accordion {
 		this.heightEqualizer = null;
 		this.maxHeight = 'auto';
 		this.isAnimating = false;
-		this.selectedLabel = '<span class="offscreen selected-text"> - ' + this.options.selectedText + '</span>';
+		this.selectedLabel = `<span class="offscreen selected-text"> - ${this.options.selectedText}</span>`;
 
 		// check url hash to override currentIndex
 		this.focusOnInit = false;
@@ -81,7 +81,7 @@ class Accordion {
 
 		this.bindEvents();
 
-		$.event.trigger(this.options.customEventName + ':isInitialized', [this.$el]);
+		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
 
 	}
 
@@ -276,7 +276,7 @@ class Accordion {
 			}
 		});
 
-		$.event.trigger(this.options.customEventName + ':panelOpened', {activeEl: $activePanel});
+		$.event.trigger(`${this.options.customEventName}:panelOpened`, {activeEl: $activePanel});
 
 		this.fireTracking();
 
@@ -334,7 +334,7 @@ class Accordion {
 		this.$el = null;
 		this.$tabs = null;
 		this.$panels = null;
-		$.event.trigger(this.options.customEventName + ':unInitialized');
+		$.event.trigger(`${this.options.customEventName}:unInitialized`);
 	}
 
 }

@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desaktop media queries
 
-	VERSION: 0.3.0
+	VERSION: 0.3.1
 
 	USAGE: var myCarousel = new ResponsiveCarousel('Element', 'Options')
 		@param {jQuery Object}
@@ -47,8 +47,8 @@ class ResponsiveCarousel {
 			selectorNavNext: '.nav-next',
 			selectorInnerTrack: '.inner-track',
 			selectorPanels: 'article',
-			classActiveItem: 'active',
-			classNavDisabled: 'disabled',
+			classActiveItem: 'is-active',
+			classNavDisabled: 'is-disabled',
 			autoRotate: false,
 			autoRotateInterval: 8000,
 			maxAutoRotations: 5,
@@ -98,7 +98,7 @@ class ResponsiveCarousel {
 
 		this.bindEvents();
 
-		$.event.trigger(this.options.customEventName + ':isInitialized', [this.$el]);
+		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
 
 	}
 
@@ -349,7 +349,7 @@ class ResponsiveCarousel {
 			}
 		});
 
-		$.event.trigger(this.options.customEventName + ':carouselUpdated', {activeEl: $activePanel});
+		$.event.trigger(`${this.options.customEventName}:carouselUpdated`, {activeEl: $activePanel});
 
 		this.fireTracking();
 
@@ -431,7 +431,7 @@ class ResponsiveCarousel {
 		this.$navNext = null;
 		this.$innerTrack = null;
 		this.$panels = null;
-		$.event.trigger(this.options.customEventName + ':unInitialized');
+		$.event.trigger(`${this.options.customEventName}:unInitialized`);
 	}
 
 }

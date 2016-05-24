@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic TabSwitcher widget
 
-	VERSION: 0.3.1
+	VERSION: 0.3.2
 
 	USAGE: var myTabSwitcher = new TabSwitcher('Element', 'Options')
 		@param {jQuery Object}
@@ -38,7 +38,7 @@ class TabSwitcher {
 			initialIndex: 0,
 			selectorTabs: '.tabnav a',
 			selectorPanels: '.tab-panel',
-			activeClass: 'active',
+			activeClass: 'is-active',
 			equalizeHeight: false,
 			autoRotate: false,
 			autoRotateInterval: 6000,
@@ -62,7 +62,7 @@ class TabSwitcher {
 		this.previousIndex = null;
 		this.heightEqualizer = null;
 		this.isAnimating = false;
-		this.selectedLabel = '<span class="offscreen selected-text"> - ' + this.options.selectedText + '</span>';
+		this.selectedLabel = `<span class="offscreen selected-text"> - ${this.options.selectedText}</span>`;
 
 		// check url hash to override currentIndex
 		this.focusOnInit = false;
@@ -80,7 +80,7 @@ class TabSwitcher {
 
 		this.bindEvents();
 
-		$.event.trigger(this.options.customEventName + ':isInitialized', [this.$el]);
+		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
 
 	}
 
@@ -134,7 +134,6 @@ class TabSwitcher {
 		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(this.options.activeClass);
 		this.$panels.removeAttr('role aria-hidden').removeClass(this.options.activeClass);
 		this.$panels.find(this.options.selectorFocusEls).removeAttr('tabindex');
-		//experimental
 		this.$tabs.find('.selected-text').remove();
 
 		if (this.options.autoRotate) {
@@ -228,7 +227,7 @@ class TabSwitcher {
 			}
 		}.bind(this), this.options.animDuration);
 
-		$.event.trigger(this.options.customEventName + ':panelOpened', {activeEl: $activePanel});
+		$.event.trigger(`${this.options.customEventName}:panelOpened`, {activeEl: $activePanel});
 
 		this.fireTracking();
 
@@ -286,7 +285,7 @@ class TabSwitcher {
 		this.$el = null;
 		this.$tabs = null;
 		this.$panels = null;
-		$.event.trigger(this.options.customEventName + ':unInitialized');
+		$.event.trigger(`${this.options.customEventName}:unInitialized`);
 	}
 
 }

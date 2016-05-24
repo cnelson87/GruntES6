@@ -36,14 +36,14 @@
 			position: relative;
 			left: 0;
 			top: 0;
-			@include clearfix();
+			@include clearfix;
 
 			> article {
 				float: left;
 				width: calc(100% / 10);
 				height: auto;
 				position: relative;
-				@include clearfix();
+				@include clearfix;
 			}
 
 		}
@@ -87,7 +87,7 @@
 
 	}
 
-	article.active .media-info {
+	article.is-active .media-info {
 		opacity: 1.0;
 		transition: opacity 0.4s ease-out;
 	}
@@ -126,7 +126,7 @@
 							background-color: $gray-med;
 						}
 
-						&.active {
+						&.is-active {
 							background-color: $gray-dark;
 						}
 

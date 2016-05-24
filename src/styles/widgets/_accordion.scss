@@ -23,7 +23,7 @@
 			padding: 0.5em 1em;
 			position: relative;
 
-			&:after {
+			&::after {
 				content: ">";
 				display: block;
 				position: absolute;
@@ -31,7 +31,7 @@
 				top: calc(50% - 0.75em);
 				transform: scaleX(2.5) rotate(90deg);
 			}
-			&.active {
+			&.is-active {
 				color: $white;
 				background: $gray-dark;
 			}
@@ -40,7 +40,7 @@
 				color: $white;
 				background: $gray-med;
 			}
-			&.active:after {
+			&.is-active::after {
 				transform: scaleX(2.5) rotate(-90deg);
 			}
 

@@ -3,43 +3,48 @@
 // -----------------------------------------------------
 
 
-// Colors
+// Color Definitions
 $black: #000;
 $white: #fff;
-$near-black: #101010;
+$near-black: #1a1a1a;
 $near-white: #efefef;
 $gray-dark: #333;
 $gray-med: #999;
 $gray-light: #ccc;
 $gray-xlight: #dedede;
 $gray-xlight-alt: #cdcdcd;
-$text-primary: #101010;
-$link-color: #900;
-$link-color-active: #c00;
-$button-color: #900;
-$button-color-active: #c00;
-$error-color: #900;
-$border-color-dark: #333;
-$border-color-med: #999;
-$border-color-light: #ccc;
-$border-color-xlight: #dedede;
+$red1: #900;
+$red2: #c00;
+// Color Usage
+$body-bg: $near-white;
+$text-color: $near-black;
+$link-color: $red1;
+$link-hover-color: $red2;
+$border-color-dark: $gray-dark;
+$border-color-med: $gray-med;
+$border-color-light: $gray-light;
+$border-color-xlight: $gray-xlight;
+$error-color: $red1;
+
 
 // Fonts
-$base-font: Arial, sans-serif;
+$main-font: Arial, sans-serif;
 $alt-font: "Lato", "Helvetica Neue", Helvetica, sans-serif;
 $serif-font: "Arvo", Georgia, Times, serif;
+
 
 // Paths
 $image-path: "../images";
 $font-path: "../fonts";
+
 
 // Breakpoints
 $mobile-breakpoint-med:    400px;
 $mobile-breakpoint-wide:   600px;
 $mobile-breakpoint-max:    767px;
 $tablet-breakpoint-min:    768px;
-$tablet-breakpoint-max:    1023px;
-$desktop-breakpoint-min:   1024px;
+$tablet-breakpoint-max:    1024px;
+$desktop-breakpoint-min:   1025px;
 $desktop-breakpoint-lrg:   1280px;
 $desktop-breakpoint-xlrg:  1600px;
 $desktop-breakpoint-xxlrg: 1920px;

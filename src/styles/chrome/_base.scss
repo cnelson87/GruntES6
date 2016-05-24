@@ -3,7 +3,7 @@
 // -----------------------------------------------------
 
 
-*, *:before, *:after {
+*, *::before, *::after {
 	box-sizing: border-box;
 }
 
@@ -37,8 +37,8 @@ audio, canvas, video {
 }
 
 body {
-	color: $text-primary;
-	font-family: $base-font;
+	color: $text-color;
+	font-family: $main-font;
 	// uncomment appropriate line to set default type size
 	font-size: 100%; //16px
 	// font-size: 87.5%; //14px
@@ -61,7 +61,7 @@ a {
 	transition: color 0.2s, background-color 0.2s;
 }
 a:active, a:focus, a:hover {
-	color: $link-color-active;
+	color: $link-hover-color;
 	text-decoration: underline;
 }
 
@@ -141,8 +141,8 @@ sup {top: -0.5em;}
 sub {bottom: -0.25em;}
 
 blockquote, q {quotes: none;}
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote::before, blockquote::after,
+q::before, q::after {
 	content: '';
 	content: none;
 }

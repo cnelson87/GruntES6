@@ -6,28 +6,32 @@
 @import "font-awesome/font-awesome";
 
 // configuration
-@import "config/variables";
-@import "config/mixins";
-@import "config/grid";
+@import 'utils/variables';
+@import 'utils/mixins';
+@import 'utils/animations';
+@import "utils/grid";
 
 // global styles
-@import "global/base";
-@import "global/bp-indicator";
-@import "global/utilities";
-@import "global/forms";
-@import "global/layout";
+@import "chrome/base";
+@import "chrome/bp-indicator";
+@import "chrome/classes";
+@import "chrome/forms";
+@import "chrome/layout";
 
-// components
-@import "components/arrow-nav";
+// common re-usable styles
+@import "common/arrow-nav";
+@import "common/buttons";
 
-// widgets
+// components used for a specific purpose
+// @import "components/store-listing";
+
+// JS widgets
 @import "widgets/loader-spinner";
 @import "widgets/responsive-carousel";
 @import "widgets/accordion";
 @import "widgets/tab-switcher";
 @import "widgets/modal-window";
-@import "widgets/ajax-modal";
 
-// specific views
+// unique views
 @import "views/home";
 @import "views/grids";
