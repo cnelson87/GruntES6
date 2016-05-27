@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Base class to create modal windows
 
-	VERSION: 0.2.5
+	VERSION: 0.2.6
 
 	USAGE: var myModalWindow = new ModalWindow('Elements', 'Options')
 		@param {jQuery Object}
@@ -42,6 +42,7 @@ class ModalWindow {
 			closeBtnText: 'close modal dialog',
 			activeClass: 'is-active',
 			activeBodyClass: 'modal-active',
+			contentCloseTrigger: '.close-modal',
 			animDuration: 400,
 			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl',
 			customEventName: 'ModalWindow'
@@ -124,6 +125,13 @@ class ModalWindow {
 		}.bind(this));
 
 		this.$closeBtn.on('click', function(event) {
+			event.preventDefault();
+			if (this.isModalActivated) {
+				this.closeModal();
+			}
+		}.bind(this));
+
+		this.$content.on('click', this.options.contentCloseTrigger, function(event) {
 			event.preventDefault();
 			if (this.isModalActivated) {
 				this.closeModal();
