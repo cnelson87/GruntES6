@@ -194,9 +194,8 @@ class ModalWindow {
 
 			setTimeout(function() {
 				this.setContentFocus();
+				$.event.trigger(`${this.options.customEventName}:modalOpened`, [this.$modal]);
 			}.bind(this), this.options.animDuration);
-
-			$.event.trigger(`${this.options.customEventName}:modalOpened`, [this.$modal]);
 
 		}.bind(this), 10);
 
