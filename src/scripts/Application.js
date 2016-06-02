@@ -125,7 +125,7 @@ const Application = {
 	},
 
 	initTabCarouselPage: function() {
-		new ResponsiveTabCarousel( $('#carousel-m1-t1-d1'), {
+		new ResponsiveTabCarousel($('#carousel-m1-t1-d1'), {
 			numVisibleItemsMobile: 1,
 			numItemsToAnimateMobile: 1,
 			numVisibleItemsTablet: 1,
@@ -138,8 +138,8 @@ const Application = {
 	},
 
 	initMiniAccordionPage: function() {
-		var $miniAccordions = $('.accordion');
-		for (var i=0, len=$miniAccordions.length; i<len; i++) {
+		let $miniAccordions = $('.accordion');
+		for (let i=0, len=$miniAccordions.length; i<len; i++) {
 			new MiniAccordion($miniAccordions.eq(i), {
 				initialOpen: (i === 0) ? true : false,
 			});

@@ -5,7 +5,7 @@
 
 	VERSION: 0.2.6
 
-	USAGE: var myModalWindow = new ModalWindow('Elements', 'Options')
+	USAGE: let myModalWindow = new ModalWindow('Elements', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -165,8 +165,8 @@ class ModalWindow {
 
 	// extend or override getContent in subclass to create custom modal
 	getContent() {
-		var targetID = this.$activeTrigger.data('targetid') || this.$activeTrigger.attr('href').replace('#','');
-		var targetEl = $('#' + targetID);
+		let targetID = this.$activeTrigger.data('targetid') || this.$activeTrigger.attr('href').replace('#','');
+		let targetEl = $('#' + targetID);
 		this.contentHTML = targetEl.html();
 		this.setContent();
 	}

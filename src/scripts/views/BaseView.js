@@ -22,8 +22,8 @@ const BaseView = Backbone.View.extend({
 
 	render: function() {
 		console.log('BaseView:render');
-		var viewModel = this.model.attributes;
-		var html = this.template(viewModel);
+		let viewModel = this.model.attributes;
+		let html = this.template(viewModel);
 		// Add delay to demonstrate loader
 		setTimeout(function() {
 			this.loader.removeLoader();

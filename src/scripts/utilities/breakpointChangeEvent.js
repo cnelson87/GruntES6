@@ -10,12 +10,12 @@ import PubSub from 'utilities/PubSub';
 
 const breakpointChangeEvent = function() {
 
-	var $elIndicator = $('<div></div>',{
+	let $elIndicator = $('<div></div>',{
 		'id': 'breakpoint-indicator'
 	}).appendTo($('body'));
-	var zIndex = $elIndicator.css('z-index');
+	let zIndex = $elIndicator.css('z-index');
 
-	var updateAppConfig = function() {
+	let updateAppConfig = function() {
 		AppConfig.currentBreakpoint = AppConfig.breakpoints[zIndex];
 		AppConfig.isMobileView = AppConfig.currentBreakpoint === 'mobile' ? true : false;
 		AppConfig.isTabletView = AppConfig.currentBreakpoint === 'tablet' ? true : false;
@@ -24,7 +24,7 @@ const breakpointChangeEvent = function() {
 	updateAppConfig();
 
 	$(window).on('resize', function(event) {
-		var newZI = $elIndicator.css('z-index');
+		let newZI = $elIndicator.css('z-index');
 		if (newZI !== zIndex) {
 			zIndex = newZI;
 			updateAppConfig();

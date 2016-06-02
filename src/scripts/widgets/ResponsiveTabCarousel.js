@@ -6,7 +6,7 @@
 
 	VERSION: 0.2.6
 
-	USAGE: var myTabCarousel = new ResponsiveTabCarousel('Element', 'Options')
+	USAGE: let myTabCarousel = new ResponsiveTabCarousel('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -58,7 +58,7 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 
 	initDOM() {
 		super.initDOM();
-		var $activeTab = this.$tabs.eq(this.currentIndex);
+		let $activeTab = this.$tabs.eq(this.currentIndex);
 		this.$tabs.attr({'role':'tab', 'tabindex':'0', 'aria-selected':'false'});
 		$activeTab.addClass(this.options.classActiveNav).attr({'aria-selected':'true'});
 		$activeTab.append(this.selectedLabel);
@@ -87,7 +87,7 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 
 	__clickTab(event) {
 		event.preventDefault();
-		var index = this.$tabs.index(event.currentTarget);
+		let index = this.$tabs.index(event.currentTarget);
 
 		if (this.isAnimating) {return;}
 
@@ -111,8 +111,8 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 **/
 
 	updateNav() {
-		var $inactiveTab = this.$tabs.filter('.'+this.options.classActiveNav);
-		var $activeTab = this.$tabs.eq(this.currentIndex);
+		let $inactiveTab = this.$tabs.filter('.'+this.options.classActiveNav);
+		let $activeTab = this.$tabs.eq(this.currentIndex);
 
 		$inactiveTab.removeClass(this.options.classActiveNav).attr({'aria-selected':'false'});
 		$activeTab.addClass(this.options.classActiveNav).attr({'aria-selected':'true'});

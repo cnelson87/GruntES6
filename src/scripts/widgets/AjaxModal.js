@@ -5,7 +5,7 @@
 
 	VERSION: 0.2.2
 
-	USAGE: var myAjaxModal = new AjaxModal('Elements', 'Options')
+	USAGE: let myAjaxModal = new AjaxModal('Elements', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -31,7 +31,7 @@ class AjaxModal extends ModalWindow {
 
 	initialize($triggers, objOptions) {
 
-		var options = $.extend({
+		let options = $.extend({
 			ajaxErrorMsg: '<div class="errormessage"><p>Sorry. Ajax request failed.</p></div>',
 			customEventName: 'AjaxModal'
 		}, objOptions || {});
@@ -59,10 +59,10 @@ class AjaxModal extends ModalWindow {
 **/
 
 	getContent() {
-		var self = this;
-		var ajaxUrl = this.$activeTrigger.data('ajaxurl') || this.$activeTrigger.attr('href');
-		var targetID = ajaxUrl.split('#')[1] || false;
-		var targetEl;
+		let self = this;
+		let ajaxUrl = this.$activeTrigger.data('ajaxurl') || this.$activeTrigger.attr('href');
+		let targetID = ajaxUrl.split('#')[1] || false;
+		let targetEl;
 
 		this.ajaxLoader.addLoader();
 

@@ -5,7 +5,7 @@
 
 	VERSION: 0.3.1
 
-	USAGE: var myCarousel = new ResponsiveCarousel('Element', 'Options')
+	USAGE: let myCarousel = new ResponsiveCarousel('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -29,7 +29,7 @@ class ResponsiveCarousel {
 	}
 
 	initialize($el, objOptions) {
-		var urlHash = window.location.hash.replace('#','') || false;
+		let urlHash = window.location.hash.replace('#','') || false;
 
 		// defaults
 		this.$el = $el;
@@ -81,7 +81,7 @@ class ResponsiveCarousel {
 		// check url hash to override currentIndex
 		this.focusOnInit = false;
 		if (urlHash) {
-			for (var i=0, $panel; i<this._length; i++) {
+			for (let i=0, $panel; i<this._length; i++) {
 				if (this.$panels.eq(i).data('id') === urlHash) {
 					this.currentIndex = i;
 					this.focusOnInit = true;
@@ -145,10 +145,10 @@ class ResponsiveCarousel {
 	}
 
 	setDOM() {
-		var $activePanel = this.$panels.eq(this.currentIndex);
-		var itemWidth = this.itemWidth + '%';
-		var trackWidth = this.trackWidth + '%';
-		var leftPos = (this.scrollAmt * this.currentIndex) + '%';
+		let $activePanel = this.$panels.eq(this.currentIndex);
+		let itemWidth = this.itemWidth + '%';
+		let trackWidth = this.trackWidth + '%';
+		let leftPos = (this.scrollAmt * this.currentIndex) + '%';
 
 		// disable nav links if not enough visible items
 		this.updateNav();
@@ -204,7 +204,7 @@ class ResponsiveCarousel {
 	}
 
 	_attachEventListeners() {
-		var self = this;
+		let self = this;
 
 		this.$window.on(AppEvents.BREAKPOINT_CHANGE, function(event, params) {
 			self.__onBreakpointChange(event, params);
@@ -327,9 +327,9 @@ class ResponsiveCarousel {
 **/
 
 	updateCarousel(event) {
-		var self = this;
-		var leftPos = (this.scrollAmt * this.currentIndex) + '%';
-		var $activePanel = this.$panels.eq(this.currentIndex);
+		let self = this;
+		let leftPos = (this.scrollAmt * this.currentIndex) + '%';
+		let $activePanel = this.$panels.eq(this.currentIndex);
 
 		this.isAnimating = true;
 
@@ -377,15 +377,15 @@ class ResponsiveCarousel {
 	}
 
 	activateItems() {
-		var self = this;
-		var first = this.currentIndex;
-		var last = this.currentIndex + this.numVisibleItems;
-		var $activeItems = this.$panels.slice(first, last);
-		var delay = 100;
+		let self = this;
+		let first = this.currentIndex;
+		let last = this.currentIndex + this.numVisibleItems;
+		let $activeItems = this.$panels.slice(first, last);
+		let delay = 100;
 
 		//activate all current items incrementally
 		$activeItems.each(function(index) {
-			var $item = $(this);
+			let $item = $(this);
 			$item.delay(delay*index).queue(function() {
 				$item.find(self.options.selectorFocusEls).attr({'tabindex':'0'});
 				$item.addClass(self.options.classActiveItem).attr({'aria-hidden':'false'}).dequeue();
@@ -399,13 +399,13 @@ class ResponsiveCarousel {
 	}
 
 	focusOnPanel($panel) {
-		var topOffset = AppConfig.topOffset;
-		var pnlTop = $panel.offset().top;
-		var pnlHeight = $panel.outerHeight();
-		var winTop = this.$window.scrollTop() + topOffset;
-		var winHeight = this.$window.height() - topOffset;
-		var scrollTop = pnlTop - topOffset;
-		var $focusContentEl = $panel.find(this.options.selectorContentEls).first();
+		let topOffset = AppConfig.topOffset;
+		let pnlTop = $panel.offset().top;
+		let pnlHeight = $panel.outerHeight();
+		let winTop = this.$window.scrollTop() + topOffset;
+		let winHeight = this.$window.height() - topOffset;
+		let scrollTop = pnlTop - topOffset;
+		let $focusContentEl = $panel.find(this.options.selectorContentEls).first();
 
 		if (pnlTop < winTop || pnlTop + pnlHeight > winTop + winHeight) {
 			this.$htmlBody.animate({scrollTop: scrollTop}, 200, function() {
@@ -419,7 +419,7 @@ class ResponsiveCarousel {
 
 	fireTracking() {
 		if (!this.options.enableTracking) {return;}
-		var $activePanel = this.$panels.eq(this.currentIndex);
+		let $activePanel = this.$panels.eq(this.currentIndex);
 		$.event.trigger(AppEvents.TRACKING_STATE, {activeEl: $activePanel});
 	}
 

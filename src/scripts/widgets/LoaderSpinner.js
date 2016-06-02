@@ -5,7 +5,7 @@
 
 	VERSION: 0.2.2
 
-	USAGE: var myLoaderSpinner = new LoaderSpinner('Element', 'Options')
+	USAGE: let myLoaderSpinner = new LoaderSpinner('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 

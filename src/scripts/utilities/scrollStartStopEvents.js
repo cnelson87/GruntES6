@@ -9,7 +9,7 @@ import AppEvents from 'config/AppEvents';
 import PubSub from 'utilities/PubSub';
 
 const scrollStartStopEvents = function() {
-	var timer;
+	let timer;
 	$(window).on('scroll', function(event) {
 		if (timer) {
 			clearTimeout(timer);

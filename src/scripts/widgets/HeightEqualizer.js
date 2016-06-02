@@ -5,7 +5,7 @@
 
 	VERSION: 0.2.2
 
-	USAGE: var myHeightEqualizer = new HeightEqualizer('Element', 'Options')
+	USAGE: let myHeightEqualizer = new HeightEqualizer('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -42,8 +42,8 @@ class HeightEqualizer {
 	}
 
 	calcHeight() {
-		var heightCheck = 0;
-		for (var i=0; i<this._len; i++) {
+		let heightCheck = 0;
+		for (let i=0; i<this._len; i++) {
 			//outerHeight includes height + padding + border
 			heightCheck = $(this.$items[i]).outerHeight();
 			if (heightCheck > this.maxHeight) {

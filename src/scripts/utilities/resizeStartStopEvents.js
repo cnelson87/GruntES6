@@ -9,7 +9,7 @@ import AppEvents from 'config/AppEvents';
 import PubSub from 'utilities/PubSub';
 
 const resizeStartStopEvents = function() {
-	var timer;
+	let timer;
 	$(window).on('resize', function(event) {
 		if (timer) {
 			clearTimeout(timer);

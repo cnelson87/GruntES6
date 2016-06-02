@@ -5,7 +5,7 @@
 
 	VERSION: 0.1.2
 
-	USAGE: var myAccordion = new Accordion('Element', 'Options')
+	USAGE: let myAccordion = new Accordion('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -29,7 +29,7 @@ class MiniAccordion {
 	}
 
 	initialize($el, objOptions) {
-		var urlHash = window.location.hash.replace('#','') || false;
+		let urlHash = window.location.hash.replace('#','') || false;
 
 		// defaults
 		this.$el = $el;
@@ -149,7 +149,7 @@ class MiniAccordion {
 **/
 
 	animateClosed() {
-		var self = this;
+		let self = this;
 
 		this.isAnimating = true;
 
@@ -175,8 +175,8 @@ class MiniAccordion {
 	}
 
 	animateOpen() {
-		var self = this;
-		var panelHeight = this.$panel.outerHeight();
+		let self = this;
+		let panelHeight = this.$panel.outerHeight();
 
 		this.isAnimating = true;
 
@@ -226,13 +226,13 @@ class MiniAccordion {
 	}
 
 	focusOnPanel() {
-		var topOffset = AppConfig.topOffset;
-		var elTop = this.$el.offset().top;
-		var elHeight = this.$el.outerHeight();
-		var winTop = this.$window.scrollTop() + topOffset;
-		var winHeight = this.$window.height() - topOffset;
-		var scrollTop = elTop - topOffset;
-		var $focusContentEl = this.$panel.find(this.options.selectorContentEls).first();
+		let topOffset = AppConfig.topOffset;
+		let elTop = this.$el.offset().top;
+		let elHeight = this.$el.outerHeight();
+		let winTop = this.$window.scrollTop() + topOffset;
+		let winHeight = this.$window.height() - topOffset;
+		let scrollTop = elTop - topOffset;
+		let $focusContentEl = this.$panel.find(this.options.selectorContentEls).first();
 
 		if (elTop < winTop || elTop + elHeight > winTop + winHeight) {
 			this.$htmlBody.animate({scrollTop: scrollTop}, 200, function() {

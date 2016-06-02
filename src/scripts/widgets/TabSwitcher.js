@@ -5,7 +5,7 @@
 
 	VERSION: 0.3.2
 
-	USAGE: var myTabSwitcher = new TabSwitcher('Element', 'Options')
+	USAGE: let myTabSwitcher = new TabSwitcher('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -30,7 +30,7 @@ class TabSwitcher {
 	}
 
 	initialize($el, objOptions) {
-		var urlHash = window.location.hash.replace('#','') || false;
+		let urlHash = window.location.hash.replace('#','') || false;
 
 		// defaults
 		this.$el = $el;
@@ -67,7 +67,7 @@ class TabSwitcher {
 		// check url hash to override currentIndex
 		this.focusOnInit = false;
 		if (urlHash) {
-			for (var i=0; i<this._length; i++) {
+			for (let i=0; i<this._length; i++) {
 				if (this.$panels.eq(i).data('id') === urlHash) {
 					this.currentIndex = i;
 					this.focusOnInit = true;
@@ -90,8 +90,8 @@ class TabSwitcher {
 **/
 
 	initDOM() {
-		var $activeTab = this.$tabs.eq(this.currentIndex);
-		var $activePanel = this.$panels.eq(this.currentIndex);
+		let $activeTab = this.$tabs.eq(this.currentIndex);
+		let $activePanel = this.$panels.eq(this.currentIndex);
 
 		this.$el.attr({'role':'tablist', 'aria-live':'polite'});
 		this.$tabs.attr({'role':'tab', 'tabindex':'0', 'aria-selected':'false'});
@@ -180,7 +180,7 @@ class TabSwitcher {
 
 	__clickTab(event) {
 		event.preventDefault();
-		var index = this.$tabs.index(event.currentTarget);
+		let index = this.$tabs.index(event.currentTarget);
 
 		if (this.isAnimating) {return;}
 
@@ -205,10 +205,10 @@ class TabSwitcher {
 **/
 
 	switchPanels(event) {
-		var $inactiveTab = this.$tabs.eq(this.previousIndex);
-		var $activeTab = this.$tabs.eq(this.currentIndex);
-		var $inactivePanel = this.$panels.eq(this.previousIndex);
-		var $activePanel = this.$panels.eq(this.currentIndex);
+		let $inactiveTab = this.$tabs.eq(this.previousIndex);
+		let $activeTab = this.$tabs.eq(this.currentIndex);
+		let $inactivePanel = this.$panels.eq(this.previousIndex);
+		let $activePanel = this.$panels.eq(this.currentIndex);
 
 		this.isAnimating = true;
 
@@ -254,14 +254,14 @@ class TabSwitcher {
 	}
 
 	focusOnPanel($panel) {
-		var index = this.$panels.index($panel);
-		var topOffset = AppConfig.topOffset + this.$tabs.eq(index).outerHeight();
-		var pnlTop = $panel.offset().top;
-		var pnlHeight = $panel.outerHeight();
-		var winTop = this.$window.scrollTop() + topOffset;
-		var winHeight = this.$window.height() - topOffset;
-		var scrollTop = pnlTop - topOffset;
-		var $focusContentEl = $panel.find(this.options.selectorContentEls).first();
+		let index = this.$panels.index($panel);
+		let topOffset = AppConfig.topOffset + this.$tabs.eq(index).outerHeight();
+		let pnlTop = $panel.offset().top;
+		let pnlHeight = $panel.outerHeight();
+		let winTop = this.$window.scrollTop() + topOffset;
+		let winHeight = this.$window.height() - topOffset;
+		let scrollTop = pnlTop - topOffset;
+		let $focusContentEl = $panel.find(this.options.selectorContentEls).first();
 
 		if (pnlTop < winTop || pnlTop + pnlHeight > winTop + winHeight) {
 			this.$htmlBody.animate({scrollTop: scrollTop}, 200, function() {
@@ -275,7 +275,7 @@ class TabSwitcher {
 
 	fireTracking() {
 		if (!this.options.enableTracking) {return;}
-		var $activePanel = this.$panels.eq(this.currentIndex);
+		let $activePanel = this.$panels.eq(this.currentIndex);
 		$.event.trigger(AppEvents.TRACKING_STATE, {activeEl: $activePanel});
 	}
 
