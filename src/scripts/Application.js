@@ -48,7 +48,7 @@ const Application = {
 		resizeStartStopEvents();
 		scrollStartStopEvents();
 
-		this.bindEvents();
+		this._attachEventListeners();
 
 		this.setTopOffset();
 
@@ -176,7 +176,7 @@ const Application = {
 		new SubClass();
 	},
 
-	bindEvents: function() {
+	_attachEventListeners: function() {
 		PubSub.on(AppEvents.WINDOW_RESIZE_START, this.onWindowResizeStart, this);
 		PubSub.on(AppEvents.WINDOW_RESIZE_STOP, this.onWindowResizeStop, this);
 		PubSub.on(AppEvents.WINDOW_SCROLL_START, this.onWindowScrollStart, this);
@@ -184,7 +184,7 @@ const Application = {
 		PubSub.on(AppEvents.BREAKPOINT_CHANGE, this.onBreakpointChange, this);
 	},
 
-	unbindEvents: function() {
+	_removeEventListeners: function() {
 		PubSub.off(AppEvents.WINDOW_RESIZE_START, this.onWindowResizeStart, this);
 		PubSub.off(AppEvents.WINDOW_RESIZE_STOP, this.onWindowResizeStop, this);
 		PubSub.off(AppEvents.WINDOW_SCROLL_START, this.onWindowScrollStart, this);

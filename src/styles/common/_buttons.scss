@@ -19,7 +19,7 @@ button.button {
 	text-transform: uppercase;
 	background: rgba($text-color, 0);
 	border: 1px solid $border-color-med;
-	border-radius: 3px;
+	border-radius: 4px;
 	padding: 4px 12px;
 	transition: background 0.3s ease-in-out;
 
@@ -34,19 +34,15 @@ a.btn-closeX,
 a.lnk-closeX {
 	@include text-hide;
 	display: inline-block;
-	width: 32px;
-	height: 32px;
-	background: $gray-light;
-	border: 2px solid $near-black;
-	color: $near-black;
-	font-size: 16px;
-	line-height: 32px;
-	text-align: center;
-	text-decoration: none;
+	width: 30px;
+	height: 30px;
+	background: rgba($gray-dark, 0) url($image-path + '/action-icons.png') no-repeat 0 0;
+	background-origin: border-box;
+	border-radius: 4px;
 
 	&:focus, &:hover {
-		color: $white;
-		background: $gray-med;
+		background-color: $gray-dark;
+		background-position: 0 -90px;
 	}
 
 }

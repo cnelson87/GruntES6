@@ -79,7 +79,7 @@ class Accordion {
 
 		this.initDOM();
 
-		this.bindEvents();
+		this._attachEventListeners();
 
 		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
 
@@ -146,12 +146,12 @@ class Accordion {
 
 	}
 
-	bindEvents() {
+	_attachEventListeners() {
 		this.$window.on('resize', this.__onWindowResize.bind(this));
 		this.$tabs.on('click', this.__clickTab.bind(this));
 	}
 
-	unbindEvents() {
+	_removeEventListeners() {
 		this.$window.off('resize', this.__onWindowResize.bind(this));
 		this.$tabs.off('click', this.__clickTab.bind(this));
 	}
@@ -329,7 +329,7 @@ class Accordion {
 	}
 
 	unInitialize() {
-		this.unbindEvents();
+		this._removeEventListeners();
 		this.uninitDOM();
 		this.$el = null;
 		this.$tabs = null;

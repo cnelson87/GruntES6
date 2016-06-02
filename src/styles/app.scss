@@ -3,36 +3,36 @@
 // -----------------------------------------------------
 
 // 3rd party
-@import "font-awesome/font-awesome";
+@import 'font-awesome/font-awesome';
 
 // configuration
 @import 'utils/variables';
 @import 'utils/mixins';
 @import 'utils/animations';
-@import "utils/grid";
+@import 'utils/grid';
 
 // global styles
-@import "chrome/base";
-@import "chrome/bp-indicator";
-@import "chrome/classes";
-@import "chrome/forms";
-@import "chrome/layout";
+@import 'chrome/base';
+@import 'chrome/bp-indicator';
+@import 'chrome/classes';
+@import 'chrome/forms';
+@import 'chrome/layout';
 
 // common re-usable styles
-@import "common/arrow-nav";
-@import "common/buttons";
-@import "common/responsive-iframe";
+@import 'common/arrow-nav';
+@import 'common/buttons';
+@import 'common/responsive-iframe';
 
 // components used for a specific purpose
-// @import "components/store-listing";
+// @import 'components/store-listing';
 
 // JS widgets
-@import "widgets/loader-spinner";
-@import "widgets/responsive-carousel";
-@import "widgets/accordion";
-@import "widgets/tab-switcher";
-@import "widgets/modal-window";
+@import 'widgets/loader-spinner';
+@import 'widgets/responsive-carousel';
+@import 'widgets/accordion';
+@import 'widgets/tab-switcher';
+@import 'widgets/modal-window';
 
 // unique views
-@import "views/home";
-@import "views/grids";
+@import 'views/home';
+@import 'views/grids';

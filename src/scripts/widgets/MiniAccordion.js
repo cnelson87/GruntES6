@@ -65,7 +65,7 @@ class MiniAccordion {
 
 		this.initDOM();
 
-		this.bindEvents();
+		this._attachEventListeners();
 
 		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
 
@@ -117,11 +117,11 @@ class MiniAccordion {
 
 	}
 
-	bindEvents() {
+	_attachEventListeners() {
 		this.$tab.on('click', this.__clickTab.bind(this));
 	}
 
-	unbindEvents() {
+	_removeEventListeners() {
 		this.$tab.off('click', this.__clickTab.bind(this));
 	}
 
@@ -250,7 +250,7 @@ class MiniAccordion {
 	}
 
 	unInitialize() {
-		this.unbindEvents();
+		this._removeEventListeners();
 		this.uninitDOM();
 		this.$el = null;
 		this.$tab = null;

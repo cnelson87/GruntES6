@@ -17,8 +17,8 @@
 	.arrow-nav {
 		position: absolute;
 		top: calc(50% - 20px);
-		&.nav-prev { left: -40px; }
-		&.nav-next { right: -40px; }
+		&.nav-prev {left: -40px;}
+		&.nav-next {right: -40px;}
 	}
 
 	.outer-mask {
@@ -30,20 +30,28 @@
 		top: 0;
 
 		> .inner-track {
+			@include clearfix;
 			display: block;
 			width: calc(100% * 10);
 			height: 100%;
 			position: relative;
 			left: 0;
 			top: 0;
-			@include clearfix;
 
 			> article {
+				@include clearfix;
 				float: left;
 				width: calc(100% / 10);
 				height: auto;
 				position: relative;
-				@include clearfix;
+
+				> .article-content {
+					@include clearfix;
+					width: 100%;
+					height: auto;
+					position: relative;
+				}
+
 			}
 
 		}
@@ -68,7 +76,7 @@
 		width: 100%;
 		height: auto;
 		min-height: 80px;
-		background: rgba(0,0,0,0.4);
+		background: rgba($black, 0.4);
 		padding: 12px;
 		position: absolute;
 		left: 0;
@@ -78,11 +86,11 @@
 		transition: opacity 0.1s;
 
 		h3, p {
-			color: #fff;
+			color: $white;
 			margin: 0;
 		}
 		a {
-			color: #fff;
+			color: $white;
 		}
 
 	}
@@ -96,9 +104,9 @@
 
 		.tabnav {
 			width: 100%;
-			height: 16px;
-			line-height: 16px;
-			margin-top: 10px;
+			height: 1.0em;
+			line-height: 1.0em;
+			margin-top: 1.0em;
 			text-align: center;
 			position: relative;
 
@@ -108,8 +116,8 @@
 
 				> li {
 					display: inline-block;
-					width: 16px;
-					height: 16px;
+					width: 1.0em;
+					height: 1.0em;
 					margin: 0 0.25em;
 
 					> a {

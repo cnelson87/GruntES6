@@ -62,7 +62,7 @@ class ModalWindow {
 
 		this.initDOM();
 
-		this.bindEvents();
+		this._attachEventListeners();
 
 	}
 
@@ -114,7 +114,7 @@ class ModalWindow {
 
 	}
 
-	bindEvents() {
+	_attachEventListeners() {
 
 		this.$triggers.on('click', function(event) {
 			event.preventDefault();

@@ -96,7 +96,7 @@ class ResponsiveCarousel {
 
 		this.setDOM();
 
-		this.bindEvents();
+		this._attachEventListeners();
 
 		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
 
@@ -203,7 +203,7 @@ class ResponsiveCarousel {
 
 	}
 
-	bindEvents() {
+	_attachEventListeners() {
 		var self = this;
 
 		this.$window.on(AppEvents.BREAKPOINT_CHANGE, function(event, params) {
@@ -246,7 +246,7 @@ class ResponsiveCarousel {
 
 	}
 
-	unbindEvents() {
+	_removeEventListeners() {
 		this.$window.off(AppEvents.BREAKPOINT_CHANGE, function(){});
 		this.$navPrev.off('click', function(){});
 		this.$navNext.off('click', function(){});
@@ -424,7 +424,7 @@ class ResponsiveCarousel {
 	}
 
 	unInitialize() {
-		this.unbindEvents();
+		this._removeEventListeners();
 		this.uninitDOM();
 		this.$el = null;
 		this.$navPrev = null;

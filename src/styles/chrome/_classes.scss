@@ -58,54 +58,6 @@
 }
 
 
-//** List styles **//
-
-nav ul, nav ol {list-style: none;}
-
-ul.disc-list {list-style-type: disc;}
-ul.circle-list {list-style-type: circle;}
-ul.square-list {list-style-type: square;}
-ol.numbered-list {list-style: decimal;}
-ol.lower-alpha {list-style: lower-alpha;}
-ol.upper-alpha {list-style: upper-alpha;}
-ol.lower-roman {list-style: lower-roman;}
-ol.upper-roman {list-style: upper-roman;}
-
-ul.plain, ol.plain {list-style: none;}
-
-ul.inline, ol.inline {
-	list-style: none;
-	> li {
-		display: inline-block;
-		margin: 0 0.5em;
-	}
-}
-
-
-//** Img styles **//
-
-img.block {
-	display: block;
-	margin: 0 0 1.0em 0;
-}
-
-img.inline {
-	display: inline;
-	margin: 0 0.2em;
-	vertical-align: bottom;
-}
-
-img.inset-left {
-	float: left;
-	margin: 0 20px 1.0em 0;
-}
-
-img.inset-right {
-	float: right;
-	margin: 0 0 1.0em 20px;
-}
-
-
 //** Responsive utilities **//
 
 .show-ios-block,
@@ -162,9 +114,9 @@ html.android {
 }
 
 
-// misc
+//** Misc **//
 
-script[type="text/template"] {
+script[type='text/template'] {
 	@include hidden;
 }
 
@@ -176,4 +128,75 @@ script[type="text/template"] {
 .intro, .lead {
 	font-size: 1.2em;
 	margin-bottom: 1.5em;
+}
+
+
+// Lists
+
+nav ul, nav ol {list-style: none;}
+
+ul.disc-list {list-style-type: disc;}
+ul.circle-list {list-style-type: circle;}
+ul.square-list {list-style-type: square;}
+ol.numbered-list {list-style: decimal;}
+ol.lower-alpha {list-style: lower-alpha;}
+ol.upper-alpha {list-style: upper-alpha;}
+ol.lower-roman {list-style: lower-roman;}
+ol.upper-roman {list-style: upper-roman;}
+
+ul.plain, ol.plain {list-style: none;}
+
+ul.inline, ol.inline {
+	list-style: none;
+	> li {
+		display: inline-block;
+		margin: 0 0.5em;
+	}
+}
+
+
+// Images
+
+img.block {
+	display: block;
+	margin: 0 0 1.0em 0;
+}
+
+img.inline {
+	display: inline;
+	margin: 0 0.2em;
+	vertical-align: bottom;
+}
+
+img.inset-left {
+	float: left;
+	margin: 0 20px 1.0em 0;
+}
+
+img.inset-right {
+	float: right;
+	margin: 0 0 1.0em 20px;
+}
+
+
+// Links
+
+//link with an arrow
+a.arrow-link {
+	text-decoration: none;
+	&::after {
+		content: '\00a0\00a0>';
+		display: inline-block;
+		height: calc(1.2em - 2px);
+		overflow: hidden;
+		line-height: 1.2em;
+		text-decoration: none;
+	}
+	&:hover::after, &:focus::after {
+		text-decoration: none;
+	}
+	&.small-arrow-link {
+		font-size: 14px;
+		text-transform: uppercase;
+	}
 }

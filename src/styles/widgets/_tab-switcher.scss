@@ -8,7 +8,7 @@
 	position: relative;
 
 	.tabnav {
-		margin-bottom: 1em;
+		margin-bottom: 1.0em;
 		position: relative;
 
 		> ul {
@@ -24,14 +24,13 @@
 					color: $near-black;
 					text-decoration: none;
 					background: $gray-xlight;
-					padding: 0.5em 1em;
+					padding: 0.5em 1.0em;
 
 					&.is-active {
 						color: $white;
 						background: $gray-dark;
 					}
-					&:hover,
-					&:focus {
+					&:hover, &:focus {
 						color: $white;
 						background: $gray-med;
 					}
@@ -51,32 +50,33 @@
 	}
 
 	.tab-panel {
+		@include clearfix;
 		opacity: 0;
 		overflow: hidden;
 		position: absolute;
 		left: 0;
 		top: 0;
 		z-index: 1;
-		// transform: scale(0.9);
+		transform: scale(0.95);
 
 		&.is-active {
 			opacity: 1.0;
 			position: relative;
 			z-index: 3;
-			// transform: scale(1.0);
-			// transition: opacity 0.2s, transform 0.2s;
-			transition: opacity 0.4s ease-in;
+			transform: scale(1.0);
+			transition: opacity 0.2s, transform 0.2s;
 		}
 
 		> .panel-content {
+			@include clearfix;
 			padding: 1.5em;
 			position: relative;
 		}
 
-		&:focus {
-			/* note: focus style for demo purpose */
-			background: #f9f9f9;
-		}
+		// &:focus {
+		// 	/* note: focus style for demo purpose */
+		// 	background: #f9f9f9;
+		// }
 
 	}
 

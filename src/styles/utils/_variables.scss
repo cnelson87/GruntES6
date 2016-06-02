@@ -29,13 +29,13 @@ $error-color: $red1;
 
 // Fonts
 $main-font: Arial, sans-serif;
-$alt-font: "Lato", "Helvetica Neue", Helvetica, sans-serif;
-$serif-font: "Arvo", Georgia, Times, serif;
+$alt-font: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+$serif-font: 'Arvo', Georgia, Times, serif;
 
 
 // Paths
-$image-path: "../images";
-$font-path: "../fonts";
+$image-path: '../images';
+$font-path: '../fonts';
 
 
 // Breakpoints
@@ -50,14 +50,14 @@ $desktop-breakpoint-xlrg:  1600px;
 $desktop-breakpoint-xxlrg: 1920px;
 
 // Container Widths
-$min-width: 360px;
+$min-width: 320px;
 $mobile-container-width: 100%;
 $mobile-container-max-width: 640px;
 $tablet-container-width: 740px;
 $desktop-container-width: 1000px;
 $desktop-wide-container-width: 1200px;
-$header-height: 64px;
-$footer-height: 64px;
+$header-height: 60px;
+$footer-height: 60px;
 
 // Grid System
 $mobile-gutter-width: 10px;
