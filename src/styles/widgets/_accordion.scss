@@ -8,7 +8,7 @@
 	margin-bottom: 1.5em;
 	position: relative;
 
-	.accordion-header {
+	.accordion--header {
 		border-top: 2px solid $border-color-dark;
 		border-bottom: 2px solid $border-color-dark;
 		margin-bottom: -2px;
@@ -47,7 +47,7 @@
 
 	}
 
-	.accordion-panel {
+	.accordion--panel {
 		@include clearfix;
 		overflow: hidden;
 		position: relative;

@@ -21,7 +21,7 @@
 		&.nav-next {right: -40px;}
 	}
 
-	.outer-mask {
+	.carousel--outer-mask {
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
@@ -29,7 +29,7 @@
 		left: 0;
 		top: 0;
 
-		> .inner-track {
+		> .carousel--inner-track {
 			@include clearfix;
 			display: block;
 			width: calc(100% * 10);

@@ -37,8 +37,8 @@ class Accordion {
 		this.$el = $el;
 		this.options = $.extend({
 			initialIndex: 0,
-			selectorTabs: '.accordion-header a',
-			selectorPanels: '.accordion-panel',
+			selectorTabs: '.accordion--header a',
+			selectorPanels: '.accordion--panel',
 			activeClass: 'is-active',
 			equalizeHeight: false,
 			selfClosing: true,
@@ -79,7 +79,7 @@ class Accordion {
 
 		this.initDOM();
 
-		this._attachEventListeners();
+		this._addEventListeners();
 
 		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
 
@@ -146,7 +146,7 @@ class Accordion {
 
 	}
 
-	_attachEventListeners() {
+	_addEventListeners() {
 		this.$window.on('resize', this.__onWindowResize.bind(this));
 		this.$tabs.on('click', this.__clickTab.bind(this));
 	}

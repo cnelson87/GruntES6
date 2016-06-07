@@ -35,8 +35,8 @@ class MiniAccordion {
 		this.$el = $el;
 		this.options = $.extend({
 			initialOpen: false,
-			selectorTabs: '.accordion-header a',
-			selectorPanels: '.accordion-panel',
+			selectorTabs: '.accordion--header a',
+			selectorPanels: '.accordion--panel',
 			activeClass: 'is-active',
 			animDuration: 0.4,
 			animEasing: 'Power4.easeOut',
@@ -65,7 +65,7 @@ class MiniAccordion {
 
 		this.initDOM();
 
-		this._attachEventListeners();
+		this._addEventListeners();
 
 		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
 
@@ -117,7 +117,7 @@ class MiniAccordion {
 
 	}
 
-	_attachEventListeners() {
+	_addEventListeners() {
 		this.$tab.on('click', this.__clickTab.bind(this));
 	}
 

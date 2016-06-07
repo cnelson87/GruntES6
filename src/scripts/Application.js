@@ -48,7 +48,7 @@ const Application = {
 		resizeStartStopEvents();
 		scrollStartStopEvents();
 
-		this._attachEventListeners();
+		this._addEventListeners();
 
 		this.setTopOffset();
 
@@ -176,7 +176,7 @@ const Application = {
 		new SubClass();
 	},
 
-	_attachEventListeners: function() {
+	_addEventListeners: function() {
 		PubSub.on(AppEvents.WINDOW_RESIZE_START, this.onWindowResizeStart, this);
 		PubSub.on(AppEvents.WINDOW_RESIZE_STOP, this.onWindowResizeStop, this);
 		PubSub.on(AppEvents.WINDOW_SCROLL_START, this.onWindowScrollStart, this);

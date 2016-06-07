@@ -62,7 +62,7 @@ class ModalWindow {
 
 		this.initDOM();
 
-		this._attachEventListeners();
+		this._addEventListeners();
 
 	}
 
@@ -92,10 +92,10 @@ class ModalWindow {
 		}
 
 		//create modal content
-		this.$content = this.$modal.find('.' + this.options.modalClass + '-content');
+		this.$content = this.$modal.find('.' + this.options.modalClass + '--content');
 		if (!this.$content.length) {
 			this.$content = $('<div></div>', {
-				'class': this.options.modalClass + '-content',
+				'class': this.options.modalClass + '--content',
 				'role': 'document'
 			}).appendTo(this.$modal);
 		}
@@ -114,7 +114,7 @@ class ModalWindow {
 
 	}
 
-	_attachEventListeners() {
+	_addEventListeners() {
 
 		this.$triggers.on('click', function(event) {
 			event.preventDefault();

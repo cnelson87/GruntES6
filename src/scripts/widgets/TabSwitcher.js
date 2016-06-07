@@ -78,7 +78,7 @@ class TabSwitcher {
 
 		this.initDOM();
 
-		this._attachEventListeners();
+		this._addEventListeners();
 
 		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
 
@@ -142,7 +142,7 @@ class TabSwitcher {
 
 	}
 
-	_attachEventListeners() {
+	_addEventListeners() {
 		this.$window.on('resize', this.__onWindowResize.bind(this));
 		this.$tabs.on('click', this.__clickTab.bind(this));
 	}

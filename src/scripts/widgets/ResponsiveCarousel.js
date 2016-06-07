@@ -45,7 +45,7 @@ class ResponsiveCarousel {
 			loopEndToEnd: false,
 			selectorNavPrev: '.nav-prev',
 			selectorNavNext: '.nav-next',
-			selectorInnerTrack: '.inner-track',
+			selectorInnerTrack: '.carousel--inner-track',
 			selectorPanels: 'article',
 			classActiveItem: 'is-active',
 			classNavDisabled: 'is-disabled',
@@ -96,7 +96,7 @@ class ResponsiveCarousel {
 
 		this.setDOM();
 
-		this._attachEventListeners();
+		this._addEventListeners();
 
 		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
 
@@ -203,7 +203,7 @@ class ResponsiveCarousel {
 
 	}
 
-	_attachEventListeners() {
+	_addEventListeners() {
 		let self = this;
 
 		this.$window.on(AppEvents.BREAKPOINT_CHANGE, function(event, params) {

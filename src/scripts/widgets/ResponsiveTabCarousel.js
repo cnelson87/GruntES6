@@ -70,8 +70,8 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 		this.$tabs.find('.selected-text').remove();
 	}
 
-	_attachEventListeners() {
-		super._attachEventListeners();
+	_addEventListeners() {
+		super._addEventListeners();
 		this.$tabs.on('click', this.__clickTab.bind(this));
 	}
 
