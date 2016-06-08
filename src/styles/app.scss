@@ -24,14 +24,14 @@
 @import 'common/responsive-iframe';
 
 // components used for a specific purpose
-// @import 'components/store-listing';
+@import 'components/mediablock';
 
 // JS widgets
 @import 'widgets/loader-spinner';
 @import 'widgets/responsive-carousel';
 @import 'widgets/accordion';
-@import 'widgets/tab-switcher';
-@import 'widgets/modal-window';
+@import 'widgets/tabswitcher';
+@import 'widgets/modalwindow';
 
 // unique views
 @import 'views/home';

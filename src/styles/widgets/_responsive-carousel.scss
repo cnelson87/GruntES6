@@ -37,72 +37,29 @@
 			position: relative;
 			left: 0;
 			top: 0;
-
-			> article {
-				@include clearfix;
-				float: left;
-				width: calc(100% / 10);
-				height: auto;
-				position: relative;
-
-				> .article-content {
-					@include clearfix;
-					width: 100%;
-					height: auto;
-					position: relative;
-				}
-
-			}
-
 		}
 
 	}
 
-	.media-container {
-		width: 100%;
-		height: 100%;
-		position: relative;
-		overflow: hidden;
-
-		> img {
-			display: block;
-			width: 100%;
-			height: 100%;
-		}
-
-	}
-
-	.media-info {
-		width: 100%;
+	.carousel--panel {
+		@include clearfix;
+		float: left;
+		width: calc(100% / 10);
 		height: auto;
-		min-height: 80px;
-		background: rgba($black, 0.4);
-		padding: 12px;
-		position: absolute;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		opacity: 0;
-		transition: opacity 0.1s;
+		position: relative;
 
-		h3, p {
-			color: $white;
-			margin: 0;
-		}
-		a {
-			color: $white;
+		> .carousel--panel-content {
+			@include clearfix;
+			width: 100%;
+			height: auto;
+			position: relative;
 		}
 
-	}
-
-	article.is-active .media-info {
-		opacity: 1.0;
-		transition: opacity 0.4s ease-out;
 	}
 
 	&.tab-carousel {
 
-		.tabnav {
+		.carousel--tabnav {
 			width: 100%;
 			height: 1.0em;
 			line-height: 1.0em;

@@ -4,7 +4,7 @@
 	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desktop media queries
 	NOTE: The tabs only work if mobile/tablet/desktop views all display one 'panel' at a time.
 
-	VERSION: 0.2.6
+	VERSION: 0.2.7
 
 	USAGE: let myTabCarousel = new ResponsiveTabCarousel('Element', 'Options')
 		@param {jQuery Object}
@@ -36,7 +36,7 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 			numItemsToAnimateTablet: 1,
 			numVisibleItemsDesktop: 1,
 			numItemsToAnimateDesktop: 1,
-			selectorTabs: '.tabnav a',
+			selectorTabs: '.carousel--tabnav a',
 			classActiveNav: 'is-active',
 			selectedText: 'currently selected',
 			customEventName: 'ResponsiveTabCarousel'

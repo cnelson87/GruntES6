@@ -7,7 +7,7 @@
 	margin-bottom: 1.5em;
 	position: relative;
 
-	.tabnav {
+	.tabswitcher--tabnav {
 		margin-bottom: 1.0em;
 		position: relative;
 
@@ -23,16 +23,16 @@
 					display: block;
 					color: $near-black;
 					text-decoration: none;
-					background: $gray-xlight;
+					background: $near-white;
 					padding: 0.5em 1.0em;
+
+					&:hover, &:focus {
+						background: $gray-light;
+					}
 
 					&.is-active {
 						color: $white;
 						background: $gray-dark;
-					}
-					&:hover, &:focus {
-						color: $white;
-						background: $gray-med;
 					}
 
 				}
@@ -43,13 +43,13 @@
 
 	}
 
-	.tabpanels {
+	.tabswitcher--panels-container {
 		border-top: 2px solid $border-color-dark;
 		border-bottom: 2px solid $border-color-dark;
 		position: relative;
 	}
 
-	.tab-panel {
+	.tabswitcher--panel {
 		@include clearfix;
 		opacity: 0;
 		overflow: hidden;
@@ -67,7 +67,7 @@
 			transition: opacity 0.2s, transform 0.2s;
 		}
 
-		> .panel-content {
+		> .tabswitcher--panel-content {
 			@include clearfix;
 			padding: 1.5em;
 			position: relative;

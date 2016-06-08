@@ -2,9 +2,9 @@ module.exports = function(grunt) {
 
 	'use strict';
 
-	var path		= require('path');
-	var cwd			= process.cwd();
-	var pkg			= grunt.file.readJSON('package.json');
+	var path = require('path');
+	var cwd = process.cwd();
+	var pkg = grunt.file.readJSON('package.json');
 
 	/**
 	 * GRUNT INIT
@@ -12,10 +12,9 @@ module.exports = function(grunt) {
 	require('load-grunt-config')(grunt, {
 
 		configPath: path.join(cwd,'grunt_tasks'),
-		init: true,
+		init: true, //auto grunt.initConfig
 
 		data: {
-
 			// Pkg data
 			pkg			: pkg,
 			pkgName		: pkg.name,
@@ -101,6 +100,10 @@ module.exports = function(grunt) {
 		}
 		grunt.task.run(tasks);
 	});
+
+	/**
+	 * Create a dev build and start a static server from the 'local' directory
+	 */
 	grunt.registerTask('run', ['build:dev', 'connect', 'watch']);
 
 };

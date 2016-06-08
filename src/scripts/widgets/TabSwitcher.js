@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic TabSwitcher widget
 
-	VERSION: 0.3.2
+	VERSION: 0.3.3
 
 	USAGE: let myTabSwitcher = new TabSwitcher('Element', 'Options')
 		@param {jQuery Object}
@@ -36,8 +36,8 @@ class TabSwitcher {
 		this.$el = $el;
 		this.options = $.extend({
 			initialIndex: 0,
-			selectorTabs: '.tabnav a',
-			selectorPanels: '.tab-panel',
+			selectorTabs: '.tabswitcher--tabnav a',
+			selectorPanels: '.tabswitcher--panel',
 			activeClass: 'is-active',
 			equalizeHeight: false,
 			autoRotate: false,

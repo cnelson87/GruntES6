@@ -19,28 +19,35 @@
 			display: block;
 			color: $near-black;
 			text-decoration: none;
-			background: $gray-xlight;
+			background: $near-white;
 			padding: 0.5em 1.0em;
 			position: relative;
 
 			&::after {
-				content: '>';
+				content: '';
 				display: block;
+				width: 30px;
+				height: 30px;
+				background: rgba($gray-dark, 0) url($image-path + '/action-icons.png') no-repeat 0 -30px;
+				background-origin: border-box;
 				position: absolute;
-				right: 20px;
-				top: calc(50% - 0.75em);
-				transform: scaleX(2.5) rotate(90deg);
+				right: 10px;
+				top: calc(50% - 15px);
 			}
+
+			&:hover, &:focus {
+				background: $gray-light;
+			}
+
 			&.is-active {
 				color: $white;
 				background: $gray-dark;
 			}
-			&:hover, &:focus {
-				color: $white;
-				background: $gray-med;
-			}
-			&.is-active::after {
-				transform: scaleX(2.5) rotate(-90deg);
+
+			&.is-active {
+				&::after {
+					background-position: 0 -150px;
+				}
 			}
 
 		}
@@ -53,7 +60,7 @@
 		position: relative;
 		z-index: 1;
 
-		> .panel-content {
+		> .accordion--panel-content {
 			@include clearfix;
 			padding: 1.5em;
 			position: relative;

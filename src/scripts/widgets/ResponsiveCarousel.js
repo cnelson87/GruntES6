@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desaktop media queries
 
-	VERSION: 0.3.1
+	VERSION: 0.3.2
 
 	USAGE: let myCarousel = new ResponsiveCarousel('Element', 'Options')
 		@param {jQuery Object}
@@ -46,7 +46,7 @@ class ResponsiveCarousel {
 			selectorNavPrev: '.nav-prev',
 			selectorNavNext: '.nav-next',
 			selectorInnerTrack: '.carousel--inner-track',
-			selectorPanels: 'article',
+			selectorPanels: '.carousel--panel',
 			classActiveItem: 'is-active',
 			classNavDisabled: 'is-disabled',
 			autoRotate: false,
