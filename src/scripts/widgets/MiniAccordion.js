@@ -246,7 +246,7 @@ class MiniAccordion {
 
 	fireTracking() {
 		if (!this.options.enableTracking) {return;}
-		$.event.trigger(AppEvents.TRACKING_STATE, {activeEl: this.$el});
+		$.event.trigger(AppEvents.TRACKING_STATE, [this.$el]);
 	}
 
 	unInitialize() {

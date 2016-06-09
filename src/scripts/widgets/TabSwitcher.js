@@ -276,7 +276,7 @@ class TabSwitcher {
 	fireTracking() {
 		if (!this.options.enableTracking) {return;}
 		let $activePanel = this.$panels.eq(this.currentIndex);
-		$.event.trigger(AppEvents.TRACKING_STATE, {activeEl: $activePanel});
+		$.event.trigger(AppEvents.TRACKING_STATE, [$activePanel]);
 	}
 
 	unInitialize() {
