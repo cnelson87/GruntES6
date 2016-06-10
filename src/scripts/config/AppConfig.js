@@ -1,6 +1,6 @@
 /**
  * Application Config
- * @author Chris Nelson
+ * @author: Chris Nelson <cnelson87@gmail.com>
  */
 
 if (!window.location.origin) {

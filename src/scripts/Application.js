@@ -1,6 +1,6 @@
 /**
  * Application
- * @author Chris Nelson <cnelson87@gmail.com>
+ * @author: Chris Nelson <cnelson87@gmail.com>
  */
 
 import AppConfig from 'config/AppConfig';
@@ -24,7 +24,7 @@ import {SuperClass, SubClass} from 'widgets/SuperSubClass';
 const Application = {
 
 	initialize: function() {
-		// console.log('Application:initialize');
+		console.log('Application:initialize');
 
 		this.$window = $(window);
 		this.$document = $(document);
@@ -42,6 +42,14 @@ const Application = {
 		if (AppConfig.isIOS) {this.$html.addClass('ios');}
 
 		this.appState = new AppState();
+
+		this.hashParams = getQueryStringParams(location.hash.substring(1));
+		this.queryParams = getQueryStringParams();
+		if (!!this.queryParams || !!this.hashParams) {
+			this.queryParams = $.extend(this.queryParams, this.hashParams);
+		}
+		console.log(this.hashParams);
+		console.log(this.queryParams);
 
 		// Initialize custom events
 		breakpointChangeEvent();

@@ -1,10 +1,13 @@
 /**
- *  serializeFormFields
- *  @author Chris Nelson
- *	returns serialized form data, container element $el is required
+ * serializeFormFields
+ * @author: Chris Nelson <cnelson87@gmail.com>
+ * @description: Serialize form data
+ * @param: jQuery $element required
+ * @return: {}
  */
 
 const serializeFormFields = function($el) {
+	if (!$el) {return false;}
 	return $el.find('input, select, textarea').serialize();
 };
 

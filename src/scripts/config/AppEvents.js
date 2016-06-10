@@ -1,6 +1,6 @@
 /**
  * Application Events
- * @author Chris Nelson
+ * @author: Chris Nelson <cnelson87@gmail.com>
  */
 
 const AppEvents = {

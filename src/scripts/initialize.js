@@ -1,6 +1,5 @@
 /**
  * initialize
- * @author Chris Nelson <cnelson87@gmail.com>
  */
 
 import HandlebarsHelpers from 'config/HandlebarsHelpers';

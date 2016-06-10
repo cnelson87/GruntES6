@@ -1,19 +1,19 @@
 /**
- *  ajaxPost
- *  @author Chris Nelson
- *	Returns an Ajax POST response using deferred, url & data are required,
- *  contentType, dataType, and crossDomain are optional.
- *  @return: json, html, text
+ * ajaxPost
+ * @author: Chris Nelson <cnelson87@gmail.com>
+ * @description: Returns an Ajax POST response using deferred.
+ * @param: url & data are required, contentType & dataType are optional.
+ * @return: json, html, text
  */
 
-const ajaxPost = function(url, data, contentType, dataType, crossDomain) {
+const ajaxPost = function(url, data, contentType, dataType) {
+	if (!url || !data) return;
 	return $.ajax({
 		type: 'POST',
 		url: url,
 		data: data,
-		contentType: 'application/json; charset=utf-8',
-		dataType: dataType || 'json',
-		crossDomain: crossDomain || false
+		contentType: contentType || 'application/json; charset=utf-8',
+		dataType: dataType || 'json'
 	});
 };
 
