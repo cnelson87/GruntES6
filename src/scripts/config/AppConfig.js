@@ -1,6 +1,7 @@
 /**
- * Application Config
+ * AppConfig
  * @author: Chris Nelson <cnelson87@gmail.com>
+ * @description: Defines application constants
  */
 
 if (!window.location.origin) {

@@ -5,7 +5,7 @@
 
 	VERSION: 0.1.3
 
-	USAGE: let myAccordion = new Accordion('Element', 'Options')
+	USAGE: let myAccordion = new MiniAccordion('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
