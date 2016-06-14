@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desaktop media queries
 
-	VERSION: 0.3.2
+	VERSION: 0.3.4
 
 	USAGE: let myCarousel = new ResponsiveCarousel('Element', 'Options')
 		@param {jQuery Object}
@@ -43,6 +43,7 @@ class ResponsiveCarousel {
 			numItemsToAnimateDesktop: 1,
 			enableSwipe: true,
 			loopEndToEnd: false,
+			staggerActiveItems: false,
 			selectorNavPrev: '.nav-prev',
 			selectorNavNext: '.nav-next',
 			selectorInnerTrack: '.carousel--inner-track',
@@ -52,7 +53,7 @@ class ResponsiveCarousel {
 			autoRotate: false,
 			autoRotateInterval: 8000,
 			maxAutoRotations: 5,
-			animDuration: 0.6,
+			animDuration: 0.4,
 			animEasing: 'Power4.easeInOut',
 			selectorFocusEls: 'a, button, input, select, textarea',
 			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl',
@@ -79,22 +80,18 @@ class ResponsiveCarousel {
 		this.isAnimating = false;
 
 		// check url hash to override currentIndex
-		this.focusOnInit = false;
+		this.setInitialFocus = false;
 		if (urlHash) {
 			for (let i=0, $panel; i<this._length; i++) {
 				if (this.$panels.eq(i).data('id') === urlHash) {
 					this.currentIndex = i;
-					this.focusOnInit = true;
+					this.setInitialFocus = true;
 					break;
 				}
 			}
 		}
 
 		this.initDOM();
-
-		this.setOptions();
-
-		this.setDOM();
 
 		this._addEventListeners();
 
@@ -108,11 +105,32 @@ class ResponsiveCarousel {
 **/
 
 	initDOM() {
+		let $activePanel = this.$panels.eq(this.currentIndex);
 
 		this.$el.attr({'role':'tablist', 'aria-live':'polite'});
 		this.$navPrev.attr({'role':'button', 'tabindex':'0'});
 		this.$navNext.attr({'role':'button', 'tabindex':'0'});
 		this.$panels.attr({'role':'tabpanel', 'aria-hidden':'true'});
+
+		this.setOptions();
+
+		this.setDOM();
+
+		// auto-rotate items
+		if (this.options.autoRotate) {
+			this.rotationInterval = this.options.autoRotateInterval;
+			this.autoRotationCounter = this._length * this.options.maxAutoRotations;
+			this.setAutoRotation = setInterval(function() {
+				this.autoRotation();
+			}.bind(this), this.rotationInterval);
+		}
+
+		// initial focus on content
+		this.$window.on('load', function() {
+			if (this.setInitialFocus) {
+				this.focusOnPanel($activePanel);
+			}
+		}.bind(this));
 
 	}
 
@@ -145,7 +163,6 @@ class ResponsiveCarousel {
 	}
 
 	setDOM() {
-		let $activePanel = this.$panels.eq(this.currentIndex);
 		let itemWidth = this.itemWidth + '%';
 		let trackWidth = this.trackWidth + '%';
 		let leftPos = (this.scrollAmt * this.currentIndex) + '%';
@@ -166,22 +183,6 @@ class ResponsiveCarousel {
 
 		this.deactivateItems();
 		this.activateItems();
-
-		// auto-rotate items
-		if (this.options.autoRotate) {
-			this.rotationInterval = this.options.autoRotateInterval;
-			this.autoRotationCounter = this._length * this.options.maxAutoRotations;
-			this.setAutoRotation = setInterval(function() {
-				this.autoRotation();
-			}.bind(this), this.rotationInterval);
-		}
-
-		// initial focus on content
-		this.$window.load(function() {
-			if (this.focusOnInit) {
-				this.focusOnPanel($activePanel);
-			}
-		}.bind(this));
 
 	}
 
@@ -206,23 +207,11 @@ class ResponsiveCarousel {
 	_addEventListeners() {
 		let self = this;
 
-		this.$window.on(AppEvents.BREAKPOINT_CHANGE, function(event, params) {
-			self.__onBreakpointChange(event, params);
-		}.bind(this));
+		this.$window.on(AppEvents.BREAKPOINT_CHANGE, this.__onBreakpointChange.bind(this));
 
-		this.$navPrev.on('click', function(event) {
-			event.preventDefault();
-			if (!this.$navPrev.hasClass(this.options.classNavDisabled) && !this.isAnimating) {
-				this.__clickNavPrev(event);
-			}
-		}.bind(this));
+		this.$navPrev.on('click', this.__clickNavPrev.bind(this));
 
-		this.$navNext.on('click', function(event) {
-			event.preventDefault();
-			if (!this.$navNext.hasClass(this.options.classNavDisabled) && !this.isAnimating) {
-				this.__clickNavNext(event);
-			}
-		}.bind(this));
+		this.$navNext.on('click', this.__clickNavNext.bind(this));
 
 		if (this.options.enableSwipe) {
 			this.$el.swipe({
@@ -231,14 +220,10 @@ class ResponsiveCarousel {
 				threshold: 50,
 				triggerOnTouchEnd: false, // triggers on threshold
 				swipeLeft: function(event) {
-					if (!self.$navNext.hasClass(self.options.classNavDisabled) && !self.isAnimating) {
-						self.__clickNavNext(event);
-					}
+					self.$navNext.click();
 				},
 				swipeRight: function(event) {
-					if (!self.$navPrev.hasClass(self.options.classNavDisabled) && !self.isAnimating) {
-						self.__clickNavPrev(event);
-					}
+					self.$navPrev.click();
 				},
 				allowPageScroll: 'vertical'
 			});
@@ -247,9 +232,9 @@ class ResponsiveCarousel {
 	}
 
 	_removeEventListeners() {
-		this.$window.off(AppEvents.BREAKPOINT_CHANGE, function(){});
-		this.$navPrev.off('click', function(){});
-		this.$navNext.off('click', function(){});
+		this.$window.off(AppEvents.BREAKPOINT_CHANGE, this.__onBreakpointChange.bind(this));
+		this.$navPrev.off('click', this.__clickNavPrev.bind(this));
+		this.$navNext.off('click', this.__clickNavNext.bind(this));
 		if (this.options.enableSwipe) {
 			this.$el.swipe('destroy');
 		}
@@ -286,6 +271,9 @@ class ResponsiveCarousel {
 	}
 
 	__clickNavPrev(event) {
+		event.preventDefault();
+
+		if (this.isAnimating || this.$navPrev.hasClass(this.options.classNavDisabled)) {return;}
 
 		if (this.options.autoRotate) {
 			clearInterval(this.setAutoRotation);
@@ -304,6 +292,9 @@ class ResponsiveCarousel {
 	}
 
 	__clickNavNext(event) {
+		event.preventDefault();
+
+		if (this.isAnimating || this.$navNext.hasClass(this.options.classNavDisabled)) {return;}
 
 		if (this.options.autoRotate) {
 			clearInterval(this.setAutoRotation);
@@ -334,7 +325,7 @@ class ResponsiveCarousel {
 		this.isAnimating = true;
 
 		this.deactivateItems();
-		// this.activateItems();
+
 		this.updateNav();
 
 		TweenMax.to(this.$innerTrack, this.options.animDuration, {
@@ -357,16 +348,18 @@ class ResponsiveCarousel {
 
 	updateNav() {
 
-		this.$navPrev.removeClass(this.options.classNavDisabled).attr({'tabindex':'0'});
-		this.$navNext.removeClass(this.options.classNavDisabled).attr({'tabindex':'0'});
-
 		if (!this.options.loopEndToEnd) {
+
+			this.$navPrev.removeClass(this.options.classNavDisabled).attr({'tabindex':'0'});
+			this.$navNext.removeClass(this.options.classNavDisabled).attr({'tabindex':'0'});
+
 			if (this.currentIndex <= 0) {
 				this.$navPrev.addClass(this.options.classNavDisabled).attr({'tabindex':'-1'});
 			}
 			if (this.currentIndex >= this.lastIndex) {
 				this.$navNext.addClass(this.options.classNavDisabled).attr({'tabindex':'-1'});
 			}
+
 		}
 
 	}
@@ -383,18 +376,21 @@ class ResponsiveCarousel {
 		let $activeItems = this.$panels.slice(first, last);
 		let delay = 100;
 
-		//activate all current items incrementally
-		$activeItems.each(function(index) {
-			let $item = $(this);
-			$item.delay(delay*index).queue(function() {
-				$item.find(self.options.selectorFocusEls).attr({'tabindex':'0'});
-				$item.addClass(self.options.classActiveItem).attr({'aria-hidden':'false'}).dequeue();
+		if (this.options.staggerActiveItems) {
+			//activate all current items incrementally
+			$activeItems.each(function(index) {
+				let $item = $(this);
+				$item.delay(delay*index).queue(function() {
+					$item.find(self.options.selectorFocusEls).attr({'tabindex':'0'});
+					$item.addClass(self.options.classActiveItem).attr({'aria-hidden':'false'}).dequeue();
+				});
 			});
-		});
 
-		//activate all current items at once
-		// $activeItems.addClass(this.options.classActiveItem).attr({'aria-hidden':'false'});
-		// $activeItems.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
+		} else {
+			//activate all current items at once
+			$activeItems.addClass(this.options.classActiveItem).attr({'aria-hidden':'false'});
+			$activeItems.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
+		}
 
 	}
 

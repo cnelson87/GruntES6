@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic Accordion widget
 
-	VERSION: 0.3.3
+	VERSION: 0.3.4
 
 	USAGE: let myAccordion = new Accordion('Element', 'Options')
 		@param {jQuery Object}
@@ -39,7 +39,8 @@ class Accordion {
 			initialIndex: 0,
 			selectorTabs: '.accordion--header a',
 			selectorPanels: '.accordion--panel',
-			activeClass: 'is-active',
+			classActive: 'is-active',
+			classDisabled: 'is-disabled',
 			equalizeHeight: false,
 			selfClosing: true,
 			animDuration: 0.4,
@@ -66,12 +67,12 @@ class Accordion {
 		this.selectedLabel = `<span class="offscreen selected-text"> - ${this.options.selectedText}</span>`;
 
 		// check url hash to override currentIndex
-		this.focusOnInit = false;
+		this.setInitialFocus = false;
 		if (urlHash) {
 			for (let i=0; i<this._length; i++) {
 				if (this.$panels.eq(i).data('id') === urlHash) {
 					this.currentIndex = i;
-					this.focusOnInit = true;
+					this.setInitialFocus = true;
 					break;
 				}
 			}
@@ -101,7 +102,7 @@ class Accordion {
 
 		// equalize items height
 		if (this.options.equalizeHeight) {
-			this.heightEqualizer = new HeightEqualizer( this.$el, {
+			this.heightEqualizer = new HeightEqualizer(this.$el, {
 				selectorItems: this.options.selectorPanels,
 				setParentHeight: false
 			});
@@ -123,19 +124,19 @@ class Accordion {
 		});
 
 		// initial focus on content
-		if (this.focusOnInit) {
-			$(window).load(function() {
+		this.$window.on('load', function() {
+			if (this.setInitialFocus) {
 				this.focusOnPanel($activePanel);
-			}.bind(this));
-		}
+			}
+		}.bind(this));
 
 	}
 
 	uninitDOM() {
 
 		this.$el.removeAttr('role aria-live');
-		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(this.options.activeClass);
-		this.$panels.removeAttr('role aria-hidden').removeClass(this.options.activeClass);
+		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(this.options.classActive);
+		this.$panels.removeAttr('role aria-hidden').removeClass(this.options.classActive);
 		this.$panels.find(this.options.selectorFocusEls).removeAttr('tabindex');
 		this.$tabs.find('.selected-text').remove();
 
@@ -171,8 +172,10 @@ class Accordion {
 	__clickTab(event) {
 		event.preventDefault();
 		let index = this.$tabs.index(event.currentTarget);
+		let $currentTab = this.$tabs.eq(index);
+		let $currentPanel = this.$panels.eq(index);
 
-		if (this.isAnimating) {return;}
+		if (this.isAnimating || $currentTab.hasClass(this.options.classDisabled)) {return;}
 
 		// if selfClosing then check various states of acordion
 		if (this.options.selfClosing) {
@@ -201,7 +204,7 @@ class Accordion {
 		} else {
 
 			if (this.currentIndex === index) {
-				this.focusOnPanel(this.$panels.eq(index));
+				this.focusOnPanel($currentPanel);
 			} else {
 				this.previousIndex = this.currentIndex;
 				this.currentIndex = index;
@@ -283,22 +286,22 @@ class Accordion {
 	}
 
 	deactivateTab($tab) {
-		$tab.removeClass(this.options.activeClass).attr({'aria-selected':'false'});
+		$tab.removeClass(this.options.classActive).attr({'aria-selected':'false'});
 		$tab.find('.selected-text').remove();
 	}
 
 	activateTab($tab) {
-		$tab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
+		$tab.addClass(this.options.classActive).attr({'aria-selected':'true'});
 		$tab.append(this.selectedLabel);
 	}
 
 	deactivatePanel($panel) {
-		$panel.removeClass(this.options.activeClass).attr({'aria-hidden':'true'});
+		$panel.removeClass(this.options.classActive).attr({'aria-hidden':'true'});
 		$panel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
 	}
 
 	activatePanel($panel) {
-		$panel.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
+		$panel.addClass(this.options.classActive).attr({'aria-hidden':'false'});
 		$panel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
 	}
 

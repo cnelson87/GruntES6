@@ -6,6 +6,7 @@
 import AppConfig from 'config/AppConfig';
 import AppEvents from 'config/AppEvents';
 import PubSub from 'utilities/PubSub';
+import getQueryStringParams from 'utilities/getQueryStringParams';
 import breakpointChangeEvent from 'utilities/breakpointChangeEvent';
 import resizeStartStopEvents from 'utilities/resizeStartStopEvents';
 import scrollStartStopEvents from 'utilities/scrollStartStopEvents';
@@ -24,7 +25,7 @@ import {SuperClass, SubClass} from 'widgets/SuperSubClass';
 const Application = {
 
 	initialize: function() {
-		console.log('Application:initialize');
+		// console.log('Application:initialize');
 
 		this.$window = $(window);
 		this.$document = $(document);
@@ -128,6 +129,7 @@ const Application = {
 			numVisibleItemsDesktop: 5,
 			numItemsToAnimateDesktop: 4,
 			loopEndToEnd: true,
+			staggerActiveItems: true,
 			autoRotate: false
 		});
 	},
@@ -201,25 +203,26 @@ const Application = {
 	},
 
 	onWindowResizeStart: function() {
-		console.log('onWindowResizeStart');
+		// console.log('onWindowResizeStart');
 	},
 
 	onWindowResizeStop: function() {
-		console.log('onWindowResizeStop');
+		// console.log('onWindowResizeStop');
 	},
 
 	onWindowScrollStart: function() {
-		console.log('onWindowScrollStart');
+		// console.log('onWindowScrollStart');
 	},
 
 	onWindowScrollStop: function() {
-		console.log('onWindowScrollStop');
+		// console.log('onWindowScrollStop');
 	},
 
 	onBreakpointChange: function(params) {
-		console.log('onBreakpointChange', params);
+		// console.log('onBreakpointChange', params);
 		// Store currentBreakpoint in a Backbone model
 		this.appState.set({currentBreakpoint: AppConfig.currentBreakpoint});
+		this.setTopOffset();
 	},
 
 	setTopOffset: function() {

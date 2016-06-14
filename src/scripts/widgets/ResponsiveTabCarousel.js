@@ -4,7 +4,7 @@
 	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desktop media queries
 	NOTE: The tabs only work if mobile/tablet/desktop views all display one 'panel' at a time.
 
-	VERSION: 0.2.7
+	VERSION: 0.2.8
 
 	USAGE: let myTabCarousel = new ResponsiveTabCarousel('Element', 'Options')
 		@param {jQuery Object}
@@ -57,27 +57,27 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 **/
 
 	initDOM() {
-		super.initDOM();
 		let $activeTab = this.$tabs.eq(this.currentIndex);
 		this.$tabs.attr({'role':'tab', 'tabindex':'0', 'aria-selected':'false'});
 		$activeTab.addClass(this.options.classActiveNav).attr({'aria-selected':'true'});
 		$activeTab.append(this.selectedLabel);
+		super.initDOM();
 	}
 
 	uninitDOM() {
-		super.uninitDOM();
 		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(this.options.classActiveNav);
 		this.$tabs.find('.selected-text').remove();
+		super.uninitDOM();
 	}
 
 	_addEventListeners() {
-		super._addEventListeners();
 		this.$tabs.on('click', this.__clickTab.bind(this));
+		super._addEventListeners();
 	}
 
 	_removeEventListeners() {
-		super._removeEventListeners();
 		this.$tabs.off('click', this.__clickTab.bind(this));
+		super._removeEventListeners();
 	}
 
 
@@ -88,8 +88,10 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 	__clickTab(event) {
 		event.preventDefault();
 		let index = this.$tabs.index(event.currentTarget);
+		let $currentTab = this.$tabs.eq(index);
+		let $currentPanel = this.$panels.eq(index);
 
-		if (this.isAnimating) {return;}
+		if (this.isAnimating || $currentTab.hasClass(this.options.classNavDisabled)) {return;}
 
 		if (this.options.autoRotate) {
 			clearInterval(this.setAutoRotation);
@@ -97,7 +99,7 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 		}
 
 		if (this.currentIndex === index) {
-			this.focusOnPanel(this.$panels.eq(index));
+			this.focusOnPanel($currentPanel);
 		} else {
 			this.currentIndex = index;
 			this.updateCarousel(event);

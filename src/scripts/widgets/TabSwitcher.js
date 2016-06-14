@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic TabSwitcher widget
 
-	VERSION: 0.3.3
+	VERSION: 0.3.4
 
 	USAGE: let myTabSwitcher = new TabSwitcher('Element', 'Options')
 		@param {jQuery Object}
@@ -38,7 +38,8 @@ class TabSwitcher {
 			initialIndex: 0,
 			selectorTabs: '.tabswitcher--tabnav a',
 			selectorPanels: '.tabswitcher--panel',
-			activeClass: 'is-active',
+			classActive: 'is-active',
+			classDisabled: 'is-disabled',
 			equalizeHeight: false,
 			autoRotate: false,
 			autoRotateInterval: 6000,
@@ -65,12 +66,12 @@ class TabSwitcher {
 		this.selectedLabel = `<span class="offscreen selected-text"> - ${this.options.selectedText}</span>`;
 
 		// check url hash to override currentIndex
-		this.focusOnInit = false;
+		this.setInitialFocus = false;
 		if (urlHash) {
 			for (let i=0; i<this._length; i++) {
 				if (this.$panels.eq(i).data('id') === urlHash) {
 					this.currentIndex = i;
-					this.focusOnInit = true;
+					this.setInitialFocus = true;
 					break;
 				}
 			}
@@ -100,7 +101,7 @@ class TabSwitcher {
 
 		// equalize items height
 		if (this.options.equalizeHeight) {
-			this.heightEqualizer = new HeightEqualizer( this.$el, {
+			this.heightEqualizer = new HeightEqualizer(this.$el, {
 				selectorItems: this.options.selectorPanels,
 				setParentHeight: false
 			});
@@ -120,19 +121,19 @@ class TabSwitcher {
 		}
 
 		// initial focus on content
-		if (this.focusOnInit) {
-			$(window).load(function() {
+		this.$window.on('load', function() {
+			if (this.setInitialFocus) {
 				this.focusOnPanel($activePanel);
-			}.bind(this));
-		}
+			}
+		}.bind(this));
 
 	}
 
 	uninitDOM() {
 
 		this.$el.removeAttr('role aria-live');
-		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(this.options.activeClass);
-		this.$panels.removeAttr('role aria-hidden').removeClass(this.options.activeClass);
+		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(this.options.classActive);
+		this.$panels.removeAttr('role aria-hidden').removeClass(this.options.classActive);
 		this.$panels.find(this.options.selectorFocusEls).removeAttr('tabindex');
 		this.$tabs.find('.selected-text').remove();
 
@@ -181,8 +182,10 @@ class TabSwitcher {
 	__clickTab(event) {
 		event.preventDefault();
 		let index = this.$tabs.index(event.currentTarget);
+		let $currentTab = this.$tabs.eq(index);
+		let $currentPanel = this.$panels.eq(index);
 
-		if (this.isAnimating) {return;}
+		if (this.isAnimating || $currentTab.hasClass(this.options.classDisabled)) {return;}
 
 		if (this.options.autoRotate) {
 			clearInterval(this.setAutoRotation);
@@ -190,7 +193,7 @@ class TabSwitcher {
 		}
 
 		if (this.currentIndex === index) {
-			this.focusOnPanel(this.$panels.eq(index));
+			this.focusOnPanel($currentPanel);
 		} else {
 			this.previousIndex = this.currentIndex;
 			this.currentIndex = index;
@@ -234,22 +237,22 @@ class TabSwitcher {
 	}
 
 	deactivateTab($tab) {
-		$tab.removeClass(this.options.activeClass).attr({'aria-selected':'false'});
+		$tab.removeClass(this.options.classActive).attr({'aria-selected':'false'});
 		$tab.find('.selected-text').remove();
 	}
 
 	activateTab($tab) {
-		$tab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
+		$tab.addClass(this.options.classActive).attr({'aria-selected':'true'});
 		$tab.append(this.selectedLabel);
 	}
 
 	deactivatePanel($panel) {
-		$panel.removeClass(this.options.activeClass).attr({'aria-hidden':'true'});
+		$panel.removeClass(this.options.classActive).attr({'aria-hidden':'true'});
 		$panel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
 	}
 
 	activatePanel($panel) {
-		$panel.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
+		$panel.addClass(this.options.classActive).attr({'aria-hidden':'false'});
 		$panel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
 	}
 

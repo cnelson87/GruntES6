@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A single Accordion item
 
-	VERSION: 0.1.2
+	VERSION: 0.1.3
 
 	USAGE: let myAccordion = new Accordion('Element', 'Options')
 		@param {jQuery Object}
@@ -37,7 +37,7 @@ class MiniAccordion {
 			initialOpen: false,
 			selectorTabs: '.accordion--header a',
 			selectorPanels: '.accordion--panel',
-			activeClass: 'is-active',
+			classActive: 'is-active',
 			animDuration: 0.4,
 			animEasing: 'Power4.easeOut',
 			selectorFocusEls: 'a, button, input, select, textarea',
@@ -57,10 +57,10 @@ class MiniAccordion {
 		this.selectedLabel = `<span class="offscreen selected-text"> - ${this.options.selectedText}</span>`;
 
 		// check url hash to override isActive
-		this.focusOnInit = false;
+		this.setInitialFocus = false;
 		if (urlHash && this.$panel.data('id') === urlHash) {
 			this.isActive = true;
-			this.focusOnInit = true;
+			this.setInitialFocus = true;
 		}
 
 		this.initDOM();
@@ -94,19 +94,19 @@ class MiniAccordion {
 		});
 
 		// initial focus on content
-		if (this.focusOnInit) {
-			$(window).load(function() {
+		this.$window.on('load', function() {
+			if (this.setInitialFocus) {
 				this.focusOnPanel();
-			}.bind(this));
-		}
+			}
+		}.bind(this));
 
 	}
 
 	uninitDOM() {
 
 		this.$el.removeAttr('role aria-live');
-		this.$tab.removeAttr('role tabindex aria-selected').removeClass(this.options.activeClass);
-		this.$panel.removeAttr('role aria-hidden').removeClass(this.options.activeClass);
+		this.$tab.removeAttr('role tabindex aria-selected').removeClass(this.options.classActive);
+		this.$panel.removeAttr('role aria-hidden').removeClass(this.options.classActive);
 		this.$panel.find(this.options.selectorFocusEls).removeAttr('tabindex');
 		this.$tab.find('.selected-text').remove();
 
@@ -206,35 +206,35 @@ class MiniAccordion {
 	}
 
 	deactivateTab() {
-		this.$tab.removeClass(this.options.activeClass).attr({'aria-selected':'false'});
+		this.$tab.removeClass(this.options.classActive).attr({'aria-selected':'false'});
 		this.$tab.find('.selected-text').remove();
 	}
 
 	activateTab() {
-		this.$tab.addClass(this.options.activeClass).attr({'aria-selected':'true'});
+		this.$tab.addClass(this.options.classActive).attr({'aria-selected':'true'});
 		this.$tab.append(this.selectedLabel);
 	}
 
 	deactivatePanel() {
-		this.$panel.removeClass(this.options.activeClass).attr({'aria-hidden':'true'});
+		this.$panel.removeClass(this.options.classActive).attr({'aria-hidden':'true'});
 		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
 	}
 
 	activatePanel() {
-		this.$panel.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
+		this.$panel.addClass(this.options.classActive).attr({'aria-hidden':'false'});
 		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
 	}
 
 	focusOnPanel() {
 		let topOffset = AppConfig.topOffset;
-		let elTop = this.$el.offset().top;
-		let elHeight = this.$el.outerHeight();
+		let pnlTop = this.$el.offset().top;
+		let pnlHeight = this.$el.outerHeight();
 		let winTop = this.$window.scrollTop() + topOffset;
 		let winHeight = this.$window.height() - topOffset;
-		let scrollTop = elTop - topOffset;
+		let scrollTop = pnlTop - topOffset;
 		let $focusContentEl = this.$panel.find(this.options.selectorContentEls).first();
 
-		if (elTop < winTop || elTop + elHeight > winTop + winHeight) {
+		if (pnlTop < winTop || pnlTop + pnlHeight > winTop + winHeight) {
 			this.$htmlBody.animate({scrollTop: scrollTop}, 200, function() {
 				$focusContentEl.attr({'tabindex':'-1'}).focus();
 			});
