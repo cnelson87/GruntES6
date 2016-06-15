@@ -10,6 +10,7 @@ module.exports = function (grunt) {
 		'ajax-content/ajax-content-1',
 		'ajax-content/ajax-content-2',
 		'index',
+		'flexbox',
 		'grids',
 		'carousel',
 		'tabcarousel',
@@ -31,29 +32,21 @@ module.exports = function (grunt) {
 
 	return {
 
+		options: {
+			basePath: '<%= sourceHTML %>',
+			partials: [
+				'<%= sourceHTML %>/_layouts/**/*.html',
+				'<%= sourceHTML %>/_partials/**/*.html'
+			],
+			modules: ['<%= sourceHTML %>/_helpers/**/*.js'],
+			context: '<%= sourceHTML %>/_context/data.json'
+		},
+
 		dev: {
-			options: {
-				basePath: '<%= sourceHTML %>',
-				partials: [
-					'<%= sourceHTML %>/_layouts/**/*.html',
-					'<%= sourceHTML %>/_partials/**/*.html'
-				],
-				modules: ['<%= sourceHTML %>/_helpers/**/*.js'],
-				context: '<%= sourceHTML %>/_context/data.json'
-			},
 			files: devFiles
 		},
 
 		dist: {
-			options: {
-				basePath: '<%= sourceHTML %>',
-				partials: [
-					'<%= sourceHTML %>/_layouts/**/*.html',
-					'<%= sourceHTML %>/_partials/**/*.html'
-				],
-				modules: ['<%= sourceHTML %>/_helpers/**/*.js'],
-				context: '<%= sourceHTML %>/_context/data.json'
-			},
 			files: distFiles
 		}
 

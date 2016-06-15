@@ -40,11 +40,14 @@ body {
 
 	.header-content {
 		width: $mobile-container-width;
-		height: $header-height;
+		height: $mobile-header-height;
 		background: $gray-xlight-alt;
 		margin: 0 auto;
 		padding: 20px $mobile-gutter-width;
 		position: relative;
+		@media (min-width: $tablet-breakpoint-min) {
+			height: $header-height;
+		}
 	}
 
 	nav {
@@ -66,11 +69,14 @@ body {
 
 	.footer-content {
 		width: $mobile-container-width;
-		height: $footer-height;
+		height: $mobile-footer-height;
 		background: $gray-xlight-alt;
 		margin: 0 auto;
 		padding: 20px $mobile-gutter-width;
 		position: relative;
+		@media (min-width: $tablet-breakpoint-min) {
+			height: $footer-height;
+		}
 	}
 
 	nav {
@@ -85,20 +91,26 @@ body {
 	width: 100%;
 	min-width: $min-width;
 	min-height: 100vh;
-	padding: $header-height 0 $footer-height 0;
+	padding: $mobile-header-height 0 $mobile-footer-height 0;
 	background: $gray-xlight-alt;
 	position: relative;
 	z-index: 1;
+	@media (min-width: $tablet-breakpoint-min) {
+		padding: $header-height 0 $footer-height 0;
+	}
 
 	.main-inner {
 		@include clearfix;
 		width: $mobile-container-width;
-		min-height: calc(100vh - #{$header-height + $footer-height});
+		min-height: calc(100vh - #{$mobile-header-height + $mobile-footer-height});
 		background: $white;
 		margin: 0 auto;
 		padding: 0 $mobile-gutter-width;
 		position: relative;
 		overflow: auto;
+		@media (min-width: $tablet-breakpoint-min) {
+			min-height: calc(100vh - #{$header-height + $footer-height});
+		}
 
 		#content,
 		#subcol {

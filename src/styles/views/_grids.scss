@@ -5,13 +5,8 @@
 
 #gridspage {
 
-	// Example grid styles, delete or move
-	.row, .grid-row {
-		margin-top: 1.5em;
-		margin-bottom: 1.5em;
-	}
 	.row > div,
-	.grid-row .grid-cell {
+	.grid .grid-cell {
 		&:nth-child(3n+1) {
 			background-color: rgba($gray-light, 0.6);
 		}

@@ -11,6 +11,14 @@
 		"intro" : "This is the Homepage intro content area. This content is stored in a 'context/data.json' file and compiled server-side via the grunt-handlebars-layouts plugin."
 	},
 
+	"flexbox": {
+		"title" : "Flexbox",
+		"description" : "Description for the Flexbox page",
+		"keywords" : "flexbox flexbox flexbox",
+		"h1" : "Flexbox H1",
+		"intro" : "This is the Flexbox page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
+	},
+
 	"grids": {
 		"title" : "Grids",
 		"description" : "Description for the Grids page",
