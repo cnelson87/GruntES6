@@ -2,10 +2,10 @@
  * initialize
  */
 
-import HandlebarsHelpers from 'config/HandlebarsHelpers';
+import handlebarsHelpers from 'config/handlebarsHelpers';
 import Application from './Application.js';
 
 $(function() {
-	new HandlebarsHelpers();
+	handlebarsHelpers();
 	Application.initialize();
 });
