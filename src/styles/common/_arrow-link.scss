@@ -1,0 +1,23 @@
+//
+// Arrow Link
+// -----------------------------------------------------
+
+
+a.arrow-link {
+	text-decoration: none;
+	&::after {
+		content: '\00a0\00a0>';
+		display: inline-block;
+		height: calc(1.2em - 2px);
+		overflow: hidden;
+		line-height: 1.2em;
+		text-decoration: none;
+	}
+	&:hover::after, &:focus::after {
+		text-decoration: none;
+	}
+	&.small-arrow-link {
+		font-size: 14px;
+		text-transform: uppercase;
+	}
+}

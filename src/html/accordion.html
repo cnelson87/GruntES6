@@ -1,4 +1,4 @@
-﻿{{#extend "two-column"}}
+﻿{{#extend "default"}}
 
 	{{#replace "title"}}{{accordion.title}} - {{title}}{{/replace}}
 	{{#replace "description"}}{{accordion.description}}{{/replace}}
@@ -8,160 +8,178 @@
 
 	{{#replace "content"}}
 
-		<h1>{{accordion.h1}}</h1>
+		<section class="content">
+			<div class="content-container">
 
-		<div class="intro">
-			<p>{{accordion.intro}}</p>
-		</div>
+				<h1>{{accordion.h1}}</h1>
 
-		<h2>Accordion w/ default options</h2>
+				<div class="intro">
+					<p>{{accordion.intro}}</p>
+				</div>
 
-		<div id="accordion-default" class="accordion">
-
-			<div class="accordion--header">
-				<a href="#panel-1-1">Tab One</a>
 			</div>
-			<article data-id="panel-1-1" class="accordion--panel">
-				<div class="accordion--panel-content">
+		</section>
 
-					<h2>Panel One</h2>
+		<section class="content">
+			<div class="content-container">
 
-					<p>
-						Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-					</p>
+				<h2>Accordion w/ default options</h2>
 
-					<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-					</p>
+				<div id="accordion-default" class="accordion">
+
+					<div class="accordion--header">
+						<a href="#panel-1-1">Tab One</a>
+					</div>
+					<article data-id="panel-1-1" class="accordion--panel">
+						<div class="accordion--panel-content">
+
+							<h2>Panel One</h2>
+
+							<p>
+								Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+
+						</div>
+					</article>
+
+					<div class="accordion--header">
+						<a href="#panel-1-2">Tab Two</a>
+					</div>
+					<article data-id="panel-1-2" class="accordion--panel">
+						<div class="accordion--panel-content">
+
+							<h2>Panel Two</h2>
+
+							<p>
+								Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+
+						</div>
+					</article>
+
+					<div class="accordion--header">
+						<a href="#panel-1-3">Tab Three</a>
+					</div>
+					<article data-id="panel-1-3" class="accordion--panel">
+						<div class="accordion--panel-content">
+
+							<h2>Panel Three</h2>
+
+							<p>
+								Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
+							</p>
+
+						</div>
+					</article>
+
+					<div class="accordion--header">
+						<a href="#panel-1-4">Tab Four</a>
+					</div>
+					<article data-id="panel-1-4" class="accordion--panel">
+						<div class="accordion--panel-content">
+
+							<h2>Panel Four</h2>
+
+							<p>
+								Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+
+						</div>
+					</article>
 
 				</div>
-			</article>
 
-			<div class="accordion--header">
-				<a href="#panel-1-2">Tab Two</a>
 			</div>
-			<article data-id="panel-1-2" class="accordion--panel">
-				<div class="accordion--panel-content">
+		</section>
 
-					<h2>Panel Two</h2>
+		<section class="content">
+			<div class="content-container">
 
-					<p>
-						Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-					</p>
+				<h2>Accordion w/ custom options</h2>
+				<p>{initialIndex: null, equalizeHeight: true}</p>
+
+				<div id="accordion-custom" class="accordion">
+
+					<div class="accordion--header">
+						<a href="#panel-2-1">Tab One</a>
+					</div>
+					<article data-id="panel-2-1" class="accordion--panel">
+						<div class="accordion--panel-content">
+
+							<h2>Panel One</h2>
+
+							<p>
+								Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+
+						</div>
+					</article>
+
+					<div class="accordion--header">
+						<a href="#panel-2-2">Tab Two</a>
+					</div>
+					<article data-id="panel-2-2" class="accordion--panel">
+						<div class="accordion--panel-content">
+
+							<h2>Panel Two</h2>
+
+							<p>
+								Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+
+						</div>
+					</article>
+
+					<div class="accordion--header">
+						<a href="#panel-2-3">Tab Three</a>
+					</div>
+					<article data-id="panel-2-3" class="accordion--panel">
+						<div class="accordion--panel-content">
+
+							<h2>Panel Three</h2>
+
+							<p>
+								Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
+							</p>
+
+						</div>
+					</article>
+
+					<div class="accordion--header">
+						<a href="#panel-2-4">Tab Four</a>
+					</div>
+					<article data-id="panel-2-4" class="accordion--panel">
+						<div class="accordion--panel-content">
+
+							<h2>Panel Four</h2>
+
+							<p>
+								Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+
+						</div>
+					</article>
 
 				</div>
-			</article>
 
-			<div class="accordion--header">
-				<a href="#panel-1-3">Tab Three</a>
 			</div>
-			<article data-id="panel-1-3" class="accordion--panel">
-				<div class="accordion--panel-content">
-
-					<h2>Panel Three</h2>
-
-					<p>
-						Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-					</p>
-
-					<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
-					</p>
-
-				</div>
-			</article>
-
-			<div class="accordion--header">
-				<a href="#panel-1-4">Tab Four</a>
-			</div>
-			<article data-id="panel-1-4" class="accordion--panel">
-				<div class="accordion--panel-content">
-
-					<h2>Panel Four</h2>
-
-					<p>
-						Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-					</p>
-
-				</div>
-			</article>
-
-		</div>
-
-		<h2>Accordion w/ custom options</h2>
-		<p>{initialIndex: null, equalizeHeight: true}</p>
-
-		<div id="accordion-custom" class="accordion">
-
-			<div class="accordion--header">
-				<a href="#panel-2-1">Tab One</a>
-			</div>
-			<article data-id="panel-2-1" class="accordion--panel">
-				<div class="accordion--panel-content">
-
-					<h2>Panel One</h2>
-
-					<p>
-						Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-					</p>
-
-					<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-					</p>
-
-				</div>
-			</article>
-
-			<div class="accordion--header">
-				<a href="#panel-2-2">Tab Two</a>
-			</div>
-			<article data-id="panel-2-2" class="accordion--panel">
-				<div class="accordion--panel-content">
-
-					<h2>Panel Two</h2>
-
-					<p>
-						Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-					</p>
-
-				</div>
-			</article>
-
-			<div class="accordion--header">
-				<a href="#panel-2-3">Tab Three</a>
-			</div>
-			<article data-id="panel-2-3" class="accordion--panel">
-				<div class="accordion--panel-content">
-
-					<h2>Panel Three</h2>
-
-					<p>
-						Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-					</p>
-
-					<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
-					</p>
-
-				</div>
-			</article>
-
-			<div class="accordion--header">
-				<a href="#panel-2-4">Tab Four</a>
-			</div>
-			<article data-id="panel-2-4" class="accordion--panel">
-				<div class="accordion--panel-content">
-
-					<h2>Panel Four</h2>
-
-					<p>
-						Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-					</p>
-
-				</div>
-			</article>
-
-		</div>
+		</section>
 
 	{{/replace}}
 

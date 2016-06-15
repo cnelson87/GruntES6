@@ -15,11 +15,13 @@ $gray-xlight: #dedede;
 $gray-xlight-alt: #cdcdcd;
 $red1: #900;
 $red2: #c00;
+$green1: #81b949;
+$green2: #6fa43a;
 // Color Usage
 $body-bg: $near-white;
 $text-color: $near-black;
-$link-color: $red1;
-$link-hover-color: $red2;
+$link-color: $green1;
+$link-hover-color: $green2;
 $border-color-dark: $gray-dark;
 $border-color-med: $gray-med;
 $border-color-light: $gray-light;
@@ -38,23 +40,22 @@ $image-path: '../images';
 $font-path: '../fonts';
 
 
-// Breakpoints
-$mobile-breakpoint-med:    400px;
-$mobile-breakpoint-wide:   600px;
-$mobile-breakpoint-max:    767px;
-$tablet-breakpoint-min:    768px;
-$tablet-breakpoint-max:    1024px;
-$desktop-breakpoint-min:   1025px;
-$desktop-breakpoint-lrg:   1280px;
-$desktop-breakpoint-xlrg:  1600px;
-$desktop-breakpoint-xxlrg: 1920px;
+// Media Queries
+$mobile-breakpoint-wide: 540px;
+$mobile-breakpoint-max: 767px;
+$tablet-breakpoint-min: 768px;
+$tablet-breakpoint-wide: 920px;
+$tablet-breakpoint-max: 1024px;
+$desktop-breakpoint-min: 1025px;
+$desktop-breakpoint-wide: 1360px;
+$desktop-breakpoint-xwide: 1920px;
 //background stretch
 $max-background-width-breakpoint: 2560px;
 
 
 // Container Sizes
 $min-width: 320px;
-$mobile-container-width: 100%;
+$max-fluid-width: 1200px;
 $mobile-container-max-width: 640px;
 $tablet-container-width: 740px;
 $desktop-container-width: 1000px;

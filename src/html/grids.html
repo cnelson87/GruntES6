@@ -1,4 +1,4 @@
-{{#extend "one-column"}}
+{{#extend "default"}}
 
 	{{#replace "title"}}{{grids.title}} - {{title}}{{/replace}}
 	{{#replace "description"}}{{grids.description}}{{/replace}}
@@ -8,135 +8,150 @@
 
 	{{#replace "content"}}
 
-		<h1>{{grids.h1}}</h1>
+		<section class="content">
+			<div class="content-container">
 
-		<div class="intro">
-			<p>{{grids.intro}}</p>
-		</div>
+				<h1>{{grids.h1}}</h1>
+				<div class="intro">
+					<p>{{grids.intro}}</p>
+				</div>
 
-		<h2>Column-class based grid system</h2>
+			</div>
+		</section>
 
-		<p>Each column has a class to define it's width at mobile, tablet, and desktop breakpoints.</p>
+		<section class="content">
+			<div class="content-container">
 
-		<div class="row">
-			<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
-				.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
-			</div>
-			<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
-				.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
-			</div>
-			<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
-				.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
-			</div>
-			<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
-				.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
-			</div>
-			<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
-				.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
-			</div>
-			<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
-				.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
-			</div>
-			<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
-				.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
-			</div>
-			<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
-				.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
-			</div>
-			<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
-				.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
-			</div>
-			<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
-				.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
-			</div>
-			<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
-				.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
-			</div>
-			<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
-				.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
-			</div>
-		</div>
+				<h2>Column-class based grid system</h2>
 
-		<div class="row">
-			<div class="col-mobi-1-1 col-tabt-1-1 col-desk-2-3">
-				.col-mobi-1-1<br />.col-tabt-1-1<br />.col-desk-2-3
-			</div>
-			<div class="col-mobi-1-1 col-tabt-1-1 col-desk-1-3">
-				.col-mobi-1-1<br />.col-tabt-1-1<br />.col-desk-1-3
-			</div>
-			<div class="col-mobi-1-1 col-tabt-1-1 col-desk-1-3">
-				.col-mobi-1-1<br />.col-tabt-1-1<br />.col-desk-1-3
-			</div>
-			<div class="col-mobi-1-1 col-tabt-1-1 col-desk-2-3">
-				.col-mobi-1-1<br />.col-tabt-1-1<br />.col-desk-2-3
-			</div>
-		</div>
+				<p>Each column has a class to define it's width at mobile, tablet, and desktop breakpoints.</p>
 
-		<div class="row">
-			<div class="col-mobi-1-2 col-tabt-1-2 col-desk-1-3">
-				.col-mobi-1-2<br />.col-tabt-1-2<br />.col-desk-1-3
-			</div>
-			<div class="col-mobi-1-2 col-tabt-1-2 col-desk-1-3">
-				.col-mobi-1-2<br />.col-tabt-1-2<br />.col-desk-1-3
-			</div>
-			<div class="col-mobi-1-2 col-tabt-1-2 col-desk-1-3">
-				.col-mobi-1-2<br />.col-tabt-1-2<br />.col-desk-1-3
-			</div>
-			<div class="col-mobi-1-2 col-tabt-1-2 col-desk-1-3">
-				.col-mobi-1-2<br />.col-tabt-1-2<br />.col-desk-1-3
-			</div>
-			<div class="col-mobi-1-2 col-tabt-1-2 col-desk-1-3">
-				.col-mobi-1-2<br />.col-tabt-1-2<br />.col-desk-1-3
-			</div>
-			<div class="col-mobi-1-2 col-tabt-1-2 col-desk-1-3">
-				.col-mobi-1-2<br />.col-tabt-1-2<br />.col-desk-1-3
-			</div>
-		</div>
+				<div class="row">
+					<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
+						.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
+					</div>
+					<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
+						.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
+					</div>
+					<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
+						.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
+					</div>
+					<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
+						.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
+					</div>
+					<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
+						.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
+					</div>
+					<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
+						.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
+					</div>
+					<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
+						.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
+					</div>
+					<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
+						.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
+					</div>
+					<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
+						.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
+					</div>
+					<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
+						.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
+					</div>
+					<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
+						.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
+					</div>
+					<div class="col-mobi-1-2 col-tabt-1-4 col-desk-1-6">
+						.col-mobi-1-2<br />.col-tabt-1-4<br />.col-desk-1-6
+					</div>
+				</div>
 
-		<br /><br />
+				<div class="row">
+					<div class="col-mobi-1-1 col-tabt-1-1 col-desk-2-3">
+						.col-mobi-1-1<br />.col-tabt-1-1<br />.col-desk-2-3
+					</div>
+					<div class="col-mobi-1-1 col-tabt-1-1 col-desk-1-3">
+						.col-mobi-1-1<br />.col-tabt-1-1<br />.col-desk-1-3
+					</div>
+					<div class="col-mobi-1-1 col-tabt-1-1 col-desk-1-3">
+						.col-mobi-1-1<br />.col-tabt-1-1<br />.col-desk-1-3
+					</div>
+					<div class="col-mobi-1-1 col-tabt-1-1 col-desk-2-3">
+						.col-mobi-1-1<br />.col-tabt-1-1<br />.col-desk-2-3
+					</div>
+				</div>
 
-		<h2>Row-class cascade based grid system</h2>
+				<div class="row">
+					<div class="col-mobi-1-2 col-tabt-1-2 col-desk-1-3">
+						.col-mobi-1-2<br />.col-tabt-1-2<br />.col-desk-1-3
+					</div>
+					<div class="col-mobi-1-2 col-tabt-1-2 col-desk-1-3">
+						.col-mobi-1-2<br />.col-tabt-1-2<br />.col-desk-1-3
+					</div>
+					<div class="col-mobi-1-2 col-tabt-1-2 col-desk-1-3">
+						.col-mobi-1-2<br />.col-tabt-1-2<br />.col-desk-1-3
+					</div>
+					<div class="col-mobi-1-2 col-tabt-1-2 col-desk-1-3">
+						.col-mobi-1-2<br />.col-tabt-1-2<br />.col-desk-1-3
+					</div>
+					<div class="col-mobi-1-2 col-tabt-1-2 col-desk-1-3">
+						.col-mobi-1-2<br />.col-tabt-1-2<br />.col-desk-1-3
+					</div>
+					<div class="col-mobi-1-2 col-tabt-1-2 col-desk-1-3">
+						.col-mobi-1-2<br />.col-tabt-1-2<br />.col-desk-1-3
+					</div>
+				</div>
 
-		<p>The grid row has a class to define the grid cell width at mobile, tablet, and desktop breakpoints.</p>
+			</div>
+		</section>
 
-		<div class="grid grid-mobi-1-2 grid-tabt-1-3 grid-desk-1-5">
-			<div class="grid-cell">
-				.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
+		<section class="content">
+			<div class="content-container">
+
+				<h2>Row-class cascade based grid system</h2>
+
+				<p>The grid row has a class to define the grid cell width at mobile, tablet, and desktop breakpoints.</p>
+
+				<div class="grid grid-mobi-1-2 grid-tabt-1-3 grid-desk-1-5">
+					<div class="grid-cell">
+						.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
+					</div>
+					<div class="grid-cell">
+						.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
+					</div>
+					<div class="grid-cell">
+						.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
+					</div>
+					<div class="grid-cell">
+						.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
+					</div>
+					<div class="grid-cell">
+						.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
+					</div>
+					<div class="grid-cell">
+						.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
+					</div>
+					<div class="grid-cell">
+						.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
+					</div>
+					<div class="grid-cell">
+						.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
+					</div>
+					<div class="grid-cell">
+						.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
+					</div>
+					<div class="grid-cell">
+						.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
+					</div>
+					<div class="grid-cell">
+						.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
+					</div>
+					<div class="grid-cell">
+						.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
+					</div>
+				</div>
+
 			</div>
-			<div class="grid-cell">
-				.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
-			</div>
-			<div class="grid-cell">
-				.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
-			</div>
-			<div class="grid-cell">
-				.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
-			</div>
-			<div class="grid-cell">
-				.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
-			</div>
-			<div class="grid-cell">
-				.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
-			</div>
-			<div class="grid-cell">
-				.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
-			</div>
-			<div class="grid-cell">
-				.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
-			</div>
-			<div class="grid-cell">
-				.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
-			</div>
-			<div class="grid-cell">
-				.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
-			</div>
-			<div class="grid-cell">
-				.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
-			</div>
-			<div class="grid-cell">
-				.grid-mobi-1-2<br />.grid-tabt-1-3<br />.grid-desk-1-5
-			</div>
-		</div>
+		</section>
 
 	{{/replace}}
 

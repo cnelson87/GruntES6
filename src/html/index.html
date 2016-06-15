@@ -6,13 +6,25 @@
 
 	{{#replace "content"}}
 
-		<h1>{{homepage.h1}}</h1>
+		<section class="content">
+			<div class="content-container">
 
-		<div class="intro">
-			<p>{{homepage.intro}}</p>
-		</div>
+				<h1>{{homepage.h1}}</h1>
 
-		<div id="homepage-app"></div>
+				<div class="intro">
+					<p>{{homepage.intro}}</p>
+				</div>
+
+			</div>
+		</section>
+
+		<section class="content">
+			<div class="content-container">
+
+				<div id="homepage-app"></div>
+
+			</div>
+		</section>
 
 	{{/replace}}
 

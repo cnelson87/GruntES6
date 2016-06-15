@@ -1,29 +1,35 @@
-{{#extend "two-column"}}
+{{#extend "default"}}
 
 	{{#replace "title"}}{{test.title}} - {{title}}{{/replace}}
 	{{#replace "description"}}{{test.description}}{{/replace}}
 	{{#replace "keywords"}}{{keywords}}, {{test.keywords}}{{/replace}}
 
 	{{#replace "head"}}
-	<style>
+	<!-- <style>
 
-	</style>
-	<script>
-		$(function() {
+	</style> -->
+	<!-- <script>
+		// $(function() {
 
-		});
-	</script>
+		// });
+	</script> -->
 	{{/replace}}
 
 	{{#replace "body-id"}}testpage{{/replace}}
 
 	{{#replace "content"}}
 
-		<h1>{{test.h1}}</h1>
+		<section class="content">
+			<div class="content-container">
 
-		<div class="intro">
-			<p>{{test.intro}}</p>
-		</div>
+				<h1>{{test.h1}}</h1>
+
+				<div class="intro">
+					<p>{{test.intro}}</p>
+				</div>
+
+			</div>
+		</section>
 
 	{{/replace}}
 

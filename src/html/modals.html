@@ -1,4 +1,4 @@
-{{#extend "two-column"}}
+{{#extend "default"}}
 
 	{{#replace "title"}}{{modals.title}} - {{title}}{{/replace}}
 	{{#replace "description"}}{{modals.description}}{{/replace}}
@@ -8,25 +8,43 @@
 
 	{{#replace "content"}}
 
-		<h1>{{modals.h1}}</h1>
+		<section class="content">
+			<div class="content-container">
 
-		<div class="intro">
-			<p>{{modals.intro}}</p>
-		</div>
+				<h1>{{modals.h1}}</h1>
 
-		<h2>ModalWindow base class</h2>
-		<p>
-			<a class="modal-trigger" href="#" data-targetID="modal-target-1">Open Modal Window w/ short content</a>
-			<br />
-			<a class="modal-trigger" href="#" data-targetID="modal-target-2">Open Modal Window w/ long content</a>
-		</p>
+				<div class="intro">
+					<p>{{modals.intro}}</p>
+				</div>
 
-		<h2>AjaxModal sub class</h2>
-		<p>
-			<a class="ajax-modal-trigger" href="ajax-content/ajax-content-1.html" data-ajaxUrl="ajax-content/ajax-content-1.html">Open Ajax Modal</a>
-			<br />
-			<a class="ajax-modal-trigger" href="ajax-content/ajax-content-2.html" data-ajaxUrl="ajax-content/ajax-content-2.html#target-element">Open Ajax Modal with target el#ID</a>
-		</p>
+			</div>
+		</section>
+
+		<section class="content">
+			<div class="content-container">
+
+				<h2>ModalWindow base class</h2>
+				<p>
+					<a class="modal-trigger" href="#" data-targetID="modal-target-1">Open Modal Window w/ short content</a>
+					<br />
+					<a class="modal-trigger" href="#" data-targetID="modal-target-2">Open Modal Window w/ long content</a>
+				</p>
+
+			</div>
+		</section>
+
+		<section class="content">
+			<div class="content-container">
+
+				<h2>AjaxModal sub class</h2>
+				<p>
+					<a class="ajax-modal-trigger" href="ajax-content/ajax-content-1.html" data-ajaxUrl="ajax-content/ajax-content-1.html">Open Ajax Modal</a>
+					<br />
+					<a class="ajax-modal-trigger" href="ajax-content/ajax-content-2.html" data-ajaxUrl="ajax-content/ajax-content-2.html#target-element">Open Ajax Modal with target el#ID</a>
+				</p>
+
+			</div>
+		</section>
 
 		<script type="text/template" id="modal-target-1">
 			<h2>Modal Window H2</h2>

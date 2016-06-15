@@ -7,27 +7,21 @@
 </head>
 <body id="{{#block "body-id"}}contentpage{{/block}}" class="{{#block "body-class"}}contentpage{{/block}}">
 
-<div id="wrapper">
+{{> header}}
 
-	{{> header}}
+	<main id="main" role="main">
 
-		<div id="main">
-			<div class="main-inner">
-
-				<div id="content">
-
-					{{#block "content"}}
-					<h1>Content H1</h1>
-					{{/block}}
-
-				</div>
-
+		{{#block "content"}}
+		<section class="content">
+			<div class="content-container">
+				<h1>Content H1</h1>
 			</div>
-		</div>
+		</section>
+		{{/block}}
 
-	{{> footer}}
+	</main>
 
-</div>
+{{> footer}}
 
 </body>
 </html>

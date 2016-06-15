@@ -1,4 +1,4 @@
-{{#extend "one-column"}}
+{{#extend "default"}}
 
 	{{#replace "title"}}{{flexbox.title}} - {{title}}{{/replace}}
 	{{#replace "description"}}{{flexbox.description}}{{/replace}}
@@ -8,75 +8,114 @@
 
 	{{#replace "content"}}
 
-		<h1>{{flexbox.h1}}</h1>
+		<section class="content">
+			<div class="content-container">
 
-		<div class="intro">
-			<p>{{flexbox.intro}}</p>
-		</div>
+				<h1>{{flexbox.h1}}</h1>
+				<div class="intro">
+					<p>{{flexbox.intro}}</p>
+				</div>
 
-		<h2>Basic flexbox layouts</h2>
+			</div>
+		</section>
 
-		<p>The flex-container has a class to define the flex-column width at mobile, tablet, and desktop breakpoints.</p>
+		<section class="content">
+			<div class="content-container">
 
-		<div class="flex-container flex-mobi-1-2 flex-tabt-1-3 flex-desk-1-4">
-			<div class="flex-column">
-				<h3>First Column</h3>
-				Lorem ipsum dolor sit amet, sodales sapien malesuada mattis, in placerat. Nonummy sit massa, ultricies vivamus in wisi quam amet eleifend. Cras diam ipsum blandit, est euismod integer dolor ante, voluptatem neque ullamcorper arcu sed, lacus pellentesque integer. Accumsan velit et. Elit posuere quam suspendisse ultrices.
-			</div>
-			<div class="flex-column">
-				<h3>Second Column</h3>
-				<p>A nullam ut tellus, pellentesque est lacus velit. Justo vel taciti feugiat. Bibendum id id neque ac eros congue, tempus penatibus, maecenas nec torquent fermentum.</p>
-			</div>
-			<div class="flex-column">
-				<h3>Third Column</h3>
-				Lorem ipsum dolor sit amet, sodales sapien malesuada mattis, in placerat. Nonummy sit massa, ultricies vivamus in wisi quam amet eleifend. Cras diam ipsum blandit, est euismod integer dolor ante, voluptatem neque ullamcorper arcu sed, lacus pellentesque integer. Accumsan velit et. Elit posuere quam suspendisse ultrices. Tellus vitae aenean urna odio egestas, turpis accumsan eget et gravida eu, in metus diam ipsum etiam urna.
-			</div>
-			<div class="flex-column">
-				<h3>Fourth Column</h3>
-				<p>A nullam ut tellus, pellentesque est lacus velit. Justo vel taciti feugiat. Bibendum id id neque ac eros congue, tempus penatibus, maecenas nec torquent fermentum. Tellus vitae aenean urna odio egestas, turpis accumsan eget et gravida eu, in metus diam ipsum etiam urna.</p>
-			</div>
-			<div class="flex-column">
-				<h3>Fifth Column</h3>
-				Lorem ipsum dolor sit amet, sodales sapien malesuada mattis, in placerat. Nonummy sit massa, ultricies vivamus in wisi quam amet eleifend. Cras diam ipsum blandit, est euismod integer dolor ante, voluptatem neque ullamcorper arcu sed, lacus pellentesque integer. Accumsan velit et. Elit posuere quam suspendisse ultrices.
-			</div>
-			<div class="flex-column">
-				<h3>Sixth Column</h3>
-				<p>A nullam ut tellus, pellentesque est lacus velit. Justo vel taciti feugiat. Bibendum id id neque ac eros congue, tempus penatibus, maecenas nec torquent fermentum. Tellus vitae aenean urna odio egestas, turpis accumsan eget et gravida eu, in metus diam ipsum etiam urna.</p>
-			</div>
-		</div>
+				<h2>Basic flexbox layouts</h2>
 
-		<br /><br />
+				<p>The flex-container has a class to define the flex-column width at mobile, tablet, and desktop breakpoints.</p>
 
-		<h2>Custom flexbox layouts</h2>
+				<div class="flex-container shaded flex-mobi-1-2 flex-tabt-1-3 flex-desk-1-3">
+					<div class="flex-column">
+						<div class="flex-inner">
+							<h3>First Column</h3>
+							Lorem ipsum dolor sit amet, sodales sapien malesuada mattis, in placerat. Nonummy sit massa, ultricies vivamus in wisi quam amet eleifend. Cras diam ipsum blandit, est euismod integer dolor ante, voluptatem neque ullamcorper arcu sed, lacus pellentesque integer. Accumsan velit et. Elit posuere quam suspendisse ultrices.
+						</div>
+					</div>
+					<div class="flex-column">
+						<div class="flex-inner">
+							<h3>Second Column</h3>
+							<p>A nullam ut tellus, pellentesque est lacus velit. Justo vel taciti feugiat. Bibendum id id neque ac eros congue, tempus penatibus, maecenas nec torquent fermentum.</p>
+						</div>
+					</div>
+					<div class="flex-column">
+						<div class="flex-inner">
+							<h3>Third Column</h3>
+							Lorem ipsum dolor sit amet, sodales sapien malesuada mattis, in placerat. Nonummy sit massa, ultricies vivamus in wisi quam amet eleifend. Cras diam ipsum blandit, est euismod integer dolor ante, voluptatem neque ullamcorper arcu sed, lacus pellentesque integer. Accumsan velit et. Elit posuere quam suspendisse ultrices. Tellus vitae aenean urna odio egestas, turpis accumsan eget et gravida eu, in metus diam ipsum etiam urna.
+						</div>
+					</div>
+					<div class="flex-column">
+						<div class="flex-inner">
+							<h3>Fourth Column</h3>
+							<p>A nullam ut tellus, pellentesque est lacus velit. Justo vel taciti feugiat. Bibendum id id neque ac eros congue, tempus penatibus, maecenas nec torquent fermentum. Tellus vitae aenean urna odio egestas, turpis accumsan eget et gravida eu, in metus diam ipsum etiam urna.</p>
+						</div>
+					</div>
+					<div class="flex-column">
+						<div class="flex-inner">
+							<h3>Fifth Column</h3>
+							Lorem ipsum dolor sit amet, sodales sapien malesuada mattis, in placerat. Nonummy sit massa, ultricies vivamus in wisi quam amet eleifend. Cras diam ipsum blandit, est euismod integer dolor ante, voluptatem neque ullamcorper arcu sed, lacus pellentesque integer. Accumsan velit et. Elit posuere quam suspendisse ultrices.
+						</div>
+					</div>
+					<div class="flex-column">
+						<div class="flex-inner">
+							<h3>Sixth Column</h3>
+							<p>A nullam ut tellus, pellentesque est lacus velit. Justo vel taciti feugiat. Bibendum id id neque ac eros congue, tempus penatibus, maecenas nec torquent fermentum. Tellus vitae aenean urna odio egestas, turpis accumsan eget et gravida eu, in metus diam ipsum etiam urna.</p>
+						</div>
+					</div>
+				</div>
 
-		<p>Add class "vertical-centered" to the container to make all columns vertical centered. Add class "align-top" to a column to override vertical centered and align top</p>
+			</div>
+		</section>
 
-		<div class="flex-container vertical-centered flex-mobi-1-2 flex-tabt-1-3 flex-desk-1-4">
-			<div class="flex-column align-top">
-				<h3>Short First Column (align-top)</h3>
-				<p>A nullam ut tellus, pellentesque est lacus velit. Justo vel taciti feugiat. Bibendum id id neque ac eros congue, tempus penatibus.</p>
+		<section class="content">
+			<div class="content-container">
+
+				<h2>Custom flexbox layouts</h2>
+
+				<p>Add class "vertical-centered" to the container to make all columns vertical centered. Add class "align-top" to a column to override vertical centered and align top</p>
+
+				<div class="flex-container shaded vertical-centered flex-mobi-1-2 flex-tabt-1-3 flex-desk-1-3">
+					<div class="flex-column align-top">
+						<div class="flex-inner">
+							<h3>Short First Column (align-top)</h3>
+							<p>A nullam ut tellus, pellentesque est lacus velit. Justo vel taciti feugiat. Bibendum id id neque ac eros congue, tempus penatibus.</p>
+						</div>
+					</div>
+					<div class="flex-column">
+						<div class="flex-inner">
+							<h3>Tall Second Column</h3>
+							Lorem ipsum dolor sit amet, sodales sapien malesuada mattis, in placerat. Nonummy sit massa, ultricies vivamus in wisi quam amet eleifend. Cras diam ipsum blandit, est euismod integer dolor ante, voluptatem neque ullamcorper arcu sed, lacus pellentesque integer. Accumsan velit et. Elit posuere quam suspendisse ultrices. Tellus vitae aenean urna odio egestas, turpis accumsan eget et gravida eu, in metus diam ipsum etiam urna.
+						</div>
+					</div>
+					<div class="flex-column">
+						<div class="flex-inner">
+							<h3>Short Third Column</h3>
+							<p>A nullam ut tellus, pellentesque est lacus velit. Justo vel taciti feugiat. Bibendum id id neque ac eros congue, tempus penatibus.</p>
+						</div>
+					</div>
+					<div class="flex-column">
+						<div class="flex-inner">
+							<h3>Medium Fourth Column</h3>
+							Lorem ipsum dolor sit amet, sodales sapien malesuada mattis, in placerat. Nonummy sit massa, ultricies vivamus in wisi quam amet eleifend. Cras diam ipsum blandit, est euismod integer dolor ante, voluptatem neque ullamcorper arcu sed, lacus pellentesque integer. Accumsan velit et.
+						</div>
+					</div>
+					<div class="flex-column">
+						<div class="flex-inner">
+							<h3>Tall Fifth Column</h3>
+							Lorem ipsum dolor sit amet, sodales sapien malesuada mattis, in placerat. Nonummy sit massa, ultricies vivamus in wisi quam amet eleifend. Cras diam ipsum blandit, est euismod integer dolor ante, voluptatem neque ullamcorper arcu sed, lacus pellentesque integer. Accumsan velit et. Elit posuere quam suspendisse ultrices. Tellus vitae aenean urna odio egestas, turpis accumsan eget et gravida eu, in metus diam ipsum etiam urna.
+						</div>
+					</div>
+					<div class="flex-column">
+						<div class="flex-inner">
+							<h3>Short Sixth Column</h3>
+							<p>A nullam ut tellus, pellentesque est lacus velit. Justo vel taciti feugiat. Bibendum id id neque ac eros congue, tempus penatibus.</p>
+						</div>
+					</div>
+				</div>
+
 			</div>
-			<div class="flex-column">
-				<h3>Tall Second Column</h3>
-				Lorem ipsum dolor sit amet, sodales sapien malesuada mattis, in placerat. Nonummy sit massa, ultricies vivamus in wisi quam amet eleifend. Cras diam ipsum blandit, est euismod integer dolor ante, voluptatem neque ullamcorper arcu sed, lacus pellentesque integer. Accumsan velit et. Elit posuere quam suspendisse ultrices. Tellus vitae aenean urna odio egestas, turpis accumsan eget et gravida eu, in metus diam ipsum etiam urna.
-			</div>
-			<div class="flex-column">
-				<h3>Short Third Column</h3>
-				<p>A nullam ut tellus, pellentesque est lacus velit. Justo vel taciti feugiat. Bibendum id id neque ac eros congue, tempus penatibus.</p>
-			</div>
-			<div class="flex-column">
-				<h3>Medium Fourth Column</h3>
-				Lorem ipsum dolor sit amet, sodales sapien malesuada mattis, in placerat. Nonummy sit massa, ultricies vivamus in wisi quam amet eleifend. Cras diam ipsum blandit, est euismod integer dolor ante, voluptatem neque ullamcorper arcu sed, lacus pellentesque integer. Accumsan velit et.
-			</div>
-			<div class="flex-column">
-				<h3>Tall Fifth Column</h3>
-				Lorem ipsum dolor sit amet, sodales sapien malesuada mattis, in placerat. Nonummy sit massa, ultricies vivamus in wisi quam amet eleifend. Cras diam ipsum blandit, est euismod integer dolor ante, voluptatem neque ullamcorper arcu sed, lacus pellentesque integer. Accumsan velit et. Elit posuere quam suspendisse ultrices. Tellus vitae aenean urna odio egestas, turpis accumsan eget et gravida eu, in metus diam ipsum etiam urna.
-			</div>
-			<div class="flex-column">
-				<h3>Short Sixth Column</h3>
-				<p>A nullam ut tellus, pellentesque est lacus velit. Justo vel taciti feugiat. Bibendum id id neque ac eros congue, tempus penatibus.</p>
-			</div>
-		</div>
+		</section>
 
 	{{/replace}}
 

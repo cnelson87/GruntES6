@@ -1,5 +1,5 @@
 //
-// Layout
+// Base Layout
 // -----------------------------------------------------
 
 
@@ -21,176 +21,75 @@ body {
 	}
 }
 
-#wrapper {
-	width: 100vw;
-	min-width: $min-width;
-	min-height: 100vh;
-	margin: 0 auto;
-	position: relative;
-}
-
-#header {
-	width: 100%;
-	min-width: $min-width;
-	background: $gray-xlight;
-	position: fixed;
-	left: 0;
-	top: 0;
-	z-index: 3;
-
-	.header-content {
-		width: $mobile-container-width;
-		height: $mobile-header-height;
-		background: $gray-xlight-alt;
-		margin: 0 auto;
-		padding: 20px $mobile-gutter-width;
-		position: relative;
-		@media (min-width: $tablet-breakpoint-min) {
-			height: $header-height;
-		}
-	}
-
-	nav {
-		ul {
-			margin: 0;
-		}
-	}
-
-}
-
-#footer {
-	width: 100%;
-	min-width: $min-width;
-	background: $gray-xlight;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	z-index: 2;
-
-	.footer-content {
-		width: $mobile-container-width;
-		height: $mobile-footer-height;
-		background: $gray-xlight-alt;
-		margin: 0 auto;
-		padding: 20px $mobile-gutter-width;
-		position: relative;
-		@media (min-width: $tablet-breakpoint-min) {
-			height: $footer-height;
-		}
-	}
-
-	nav {
-		ul {
-			margin: 0;
-		}
-	}
-
-}
-
 #main {
 	width: 100%;
 	min-width: $min-width;
-	min-height: 100vh;
-	padding: $mobile-header-height 0 $mobile-footer-height 0;
-	background: $gray-xlight-alt;
+	min-height: calc(100vh - #{$mobile-header-height + $mobile-footer-height});
+	overflow-x: hidden;
 	position: relative;
-	z-index: 1;
 	@media (min-width: $tablet-breakpoint-min) {
-		padding: $header-height 0 $footer-height 0;
+		min-height: calc(100vh - #{$header-height + $footer-height});
 	}
+}
 
-	.main-inner {
+#header,
+#footer,
+.content {
+	@include clearfix;
+	width: 100%;
+	background: $white;
+	position: relative;
+
+	.content-container {
 		@include clearfix;
-		width: $mobile-container-width;
-		min-height: calc(100vh - #{$mobile-header-height + $mobile-footer-height});
-		background: $white;
+		width: 100%;
 		margin: 0 auto;
-		padding: 0 $mobile-gutter-width;
+		padding: $mobile-vertical-spacing $mobile-gutter-width;
 		position: relative;
-		overflow: auto;
+		@media (max-width: $mobile-breakpoint-max) {
+			max-width: $mobile-container-max-width;
+		}
 		@media (min-width: $tablet-breakpoint-min) {
-			min-height: calc(100vh - #{$header-height + $footer-height});
+			width: $tablet-container-width;
+			padding: $mobile-vertical-spacing $tablet-gutter-width;
 		}
-
-		#content,
-		#subcol {
-			width: 100%;
-			min-height: 200px;
-			padding: 20px 0;
-			position: relative;
+		@media (min-width: $desktop-breakpoint-min) {
+			width: $desktop-container-width;
+			padding: $mobile-vertical-spacing $desktop-gutter-width;
 		}
-
+		@media (min-width: $desktop-breakpoint-wide) {
+			width: $desktop-wide-container-width;
+		}
 	}
 
 }
 
-
-// Mobile
-@media (max-width: $mobile-breakpoint-max) {
-	#header .header-content,
-	#footer .footer-content,
-	#main .main-inner {
-		max-width: $mobile-container-max-width;
-	}
+#header,
+#footer {
+	background-color: $gray-dark;
+	color: $white;
 }
 
-// Tablet
-@media (min-width: $tablet-breakpoint-min) and (max-width: $tablet-breakpoint-max) {
-	#header .header-content,
-	#footer .footer-content,
-	#main .main-inner {
-		width: $tablet-container-width;
-		padding: 20px $tablet-gutter-width;
+.content {
+	border-top: 2px solid $gray-dark;
+	border-bottom: 2px solid $gray-dark;
+	margin: $mobile-vertical-spacing 0;
+	@media (min-width: $tablet-breakpoint-min) {
+		margin: $tablet-vertical-spacing 0;
 	}
-}
+	@media (min-width: $desktop-breakpoint-min) {
+		margin: $desktop-vertical-spacing 0;
+	}
 
-// Desktop
-@media (min-width: $desktop-breakpoint-min) {
-	#header .header-content,
-	#footer .footer-content,
-	#main .main-inner {
-		width: $desktop-container-width;
-		padding: 20px $desktop-gutter-width;
-	}
-	#main .main-inner {
-		#content,
-		#subcol {
-			padding: 40px 0;
+	.content-container {
+		@media (min-width: $tablet-breakpoint-min) {
+			padding-top: $tablet-vertical-spacing;
+			padding-bottom: $tablet-vertical-spacing;
+		}
+		@media (min-width: $desktop-breakpoint-min) {
+			padding-top: $desktop-vertical-spacing;
+			padding-bottom: $desktop-vertical-spacing;
 		}
 	}
-	#main .main-inner.twocols {
-		#content {
-			float: left;
-			width: 690px;
-			min-height: 400px;
-		}
-		#subcol {
-			// float: right;
-			width: 220px;
-			min-height: 400px;
-			background: $near-white;
-			padding: 40px 10px;
-			position: absolute;
-			top: 20px;
-			bottom: 20px;
-			right: $desktop-gutter-width;
-		}
-	}
-}
 
-// Desktop Wide
-@media (min-width: $desktop-breakpoint-lrg) {
-	#header .header-content,
-	#footer .footer-content,
-	#main .main-inner {
-		width: $desktop-wide-container-width;
-	}
-	#main .main-inner.twocols {
-		#content {
-			width: 830px;
-		}
-		#subcol {
-			width: 280px;
-		}
-	}
 }

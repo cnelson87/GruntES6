@@ -32,19 +32,23 @@ module.exports = function (grunt) {
 		},
 
 		dev: {
-			src: '<%= sourceScripts %>/initialize.js',
-			dest: '<%= localScripts %>/<%= assetName %>.js',
 			options: {
 				debug: true
-			}
+			},
+			files: [{
+				src: '<%= sourceScripts %>/initialize.js',
+				dest: '<%= localScripts %>/<%= assetName %>.js'
+			}]
 		},
 
 		dist: {
-			src: '<%= sourceScripts %>/initialize.js',
-			dest: '<%= publicScripts %>/<%= assetName %>.js',
 			options: {
 				debug: false
-			}
+			},
+			files: [{
+				src: '<%= sourceScripts %>/initialize.js',
+				dest: '<%= publicScripts %>/<%= assetName %>.js'
+			}]
 		}
 
 	};
