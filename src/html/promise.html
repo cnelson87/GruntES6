@@ -1,0 +1,27 @@
+{{#extend "default"}}
+
+	{{#replace "title"}}{{promise.title}} - {{title}}{{/replace}}
+	{{#replace "description"}}{{promise.description}}{{/replace}}
+	{{#replace "keywords"}}{{keywords}}, {{promise.keywords}}{{/replace}}
+
+	{{#replace "body-id"}}promisepage{{/replace}}
+
+	{{#replace "content"}}
+
+		<section class="content">
+			<div class="content-container">
+
+				<h1>{{promise.h1}}</h1>
+
+				<div class="intro">
+					<p>{{promise.intro}}</p>
+				</div>
+
+				<div id="promise-app"></div>
+
+			</div>
+		</section>
+
+	{{/replace}}
+
+{{/extend}}

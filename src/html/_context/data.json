@@ -27,6 +27,14 @@
 		"intro" : "This is the Grids page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
 	},
 
+	"promise": {
+		"title" : "Promise",
+		"description" : "Description for the Promise page",
+		"keywords" : "promise promise promise",
+		"h1" : "Promise H1",
+		"intro" : "This is the Promise page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
+	},
+
 	"carousel": {
 		"title" : "Carousel",
 		"description" : "Description for the Carousel page",

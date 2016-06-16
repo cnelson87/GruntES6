@@ -1,6 +1,5 @@
 /**
  * AppConfig
- * @author: Chris Nelson <cnelson87@gmail.com>
  * @description: Defines application constants
  */
 
@@ -24,6 +23,9 @@ const AppConfig = {
 	topOffset : 0,
 
 	urls: {
+		fibonacci: '/_api/promises/fibonacci.json',
+		primes: '/_api/promises/primes.json',
+		sevens: '/_api/promises/sevens.json',
 		homepageContent: '/_api/homepage/content.json'
 	},
 

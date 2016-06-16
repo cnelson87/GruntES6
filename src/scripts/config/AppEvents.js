@@ -1,6 +1,5 @@
 /**
  * AppEvents
- * @author: Chris Nelson <cnelson87@gmail.com>
  * @description: Defines global application events
  */
 

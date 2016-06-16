@@ -11,7 +11,8 @@ import breakpointChangeEvent from 'utilities/breakpointChangeEvent';
 import resizeStartStopEvents from 'utilities/resizeStartStopEvents';
 import scrollStartStopEvents from 'utilities/scrollStartStopEvents';
 import AppState from 'models/AppState';
-import HomepageView from 'views/Homepage/HomepageView';
+import HomepageView from 'views/HomepageView';
+import PromisePage from 'views/PromisePage';
 
 import ResponsiveCarousel from 'widgets/ResponsiveCarousel';
 import ResponsiveTabCarousel from 'widgets/ResponsiveTabCarousel';
@@ -66,6 +67,9 @@ const Application = {
 			case 'homepage':
 				this.initHomePage();
 				break;
+			case 'promisepage':
+				this.initPromisePage();
+				break;
 			case 'carouselpage':
 				this.initCarouselPage();
 				break;
@@ -98,6 +102,10 @@ const Application = {
 			controller: this,
 			el: $('#homepage-app')
 		});
+	},
+
+	initPromisePage: function() {
+		PromisePage.initialize();
 	},
 
 	initCarouselPage: function() {
