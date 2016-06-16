@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Subclass of ModalWindow retrieves & injects Ajax content
 
-	VERSION: 0.2.2
+	VERSION: 0.2.3
 
 	USAGE: let myAjaxModal = new AjaxModal('Elements', 'Options')
 		@param {jQuery Object}
@@ -12,22 +12,18 @@
 	AUTHOR: Chris Nelson <cnelson87@gmail.com>
 
 	DEPENDENCIES:
-		- jquery 2.1x+
+		- jquery 2.2x+
 		- ModalWindow.js
 		- LoaderSpinner.js
+		- ajaxGet.js
 
 */
 
 import ModalWindow from 'widgets/ModalWindow';
 import LoaderSpinner from 'widgets/LoaderSpinner';
+import ajaxGet from 'utilities/ajaxGet';
 
 class AjaxModal extends ModalWindow {
-
-	// unnecessary to declare a constructor method,
-	// subclass will inherit constructor from super.
-	// constructor($triggers, objOptions) {
-	// 	super($triggers, objOptions);
-	// }
 
 	initialize($triggers, objOptions) {
 
@@ -66,7 +62,7 @@ class AjaxModal extends ModalWindow {
 
 		this.ajaxLoader.addLoader();
 
-		$.when(this.ajaxGET(ajaxUrl, 'html'))
+		$.when(ajaxGet(ajaxUrl, 'html'))
 			.done(function(response) {
 				//console.log(response);
 
@@ -96,15 +92,6 @@ class AjaxModal extends ModalWindow {
 				self.$content.html(self.options.ajaxErrorMsg);
 			});
 
-	}
-
-	// returns an Ajax GET request using deferred, url is required, dataType is optional
-	ajaxGET(url, dataType) {
-		return $.ajax({
-			type: 'GET',
-			url: url,
-			dataType: dataType || 'json'
-		});
 	}
 
 }

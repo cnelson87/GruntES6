@@ -9,7 +9,7 @@ const AppState = Backbone.Model.extend({
 	},
 
 	initialize: function(options) {
-		console.log('AppState:initialize');
+		// console.log('AppState:initialize');
 	}
 
 });

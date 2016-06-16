@@ -4,31 +4,49 @@
 
 import AppConfig from 'config/AppConfig';
 import AppEvents from 'config/AppEvents';
-import DataListing from 'templates/DataListing.hbs';
+import ajaxGet from 'utilities/ajaxGet';
+import PromiseDataListing from 'templates/PromiseDataListing.hbs';
 
 const PromisePage = {
 
 	initialize: function() {
-		console.log('PromisePage:initialize');
 		this.$el = $('#promise-app');
-		this.template = DataListing;
+		this.template = PromiseDataListing;
 		this.fetch();
 	},
 
 	fetch: function() {
-		console.log('PromisePage:fetch');
-		let response = [1,2,3];
-		this.process(response);
+		let fibonacci = ajaxGet(AppConfig.urls.fibonacci);
+		let primes = ajaxGet(AppConfig.urls.primes);
+		let sevens = ajaxGet(AppConfig.urls.sevens);
+
+		$.when([fibonacci, primes, sevens])
+			.then(function(response) {
+				this.process(response);
+			}.bind(this))
+			.fail(function(response) {
+				// console.log('fail', response);
+			}.bind(this));
+
 	},
 
 	process: function(response) {
-		console.log('PromisePage:fetch');
-		let data = response;
+		// console.log(response);
+		let arrs = [];
+		let arr;
+		let sorted;
+		let data;
+		for (let i=0, len=response.length; i<len; i++) {
+			arrs[i] = response[i]['responseJSON'];
+		}
+		arr = [].concat.apply([], arrs);
+		sorted = arr.slice().sort(function(a,b) {return a - b;});
+		data = [...new Set(sorted)];
 		this.render(data);
 	},
 
 	render: function(data) {
-		console.log('PromisePage:render');
+		// console.log(data);
 		let html = this.template(data);
 		this.$el.html(html);
 	}

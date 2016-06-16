@@ -6,7 +6,7 @@
  * @return: json, html, text
  */
 
-const ajaxGet = function(url, dataType, crossDomain) {
+const ajaxGet = function(url, dataType) {
 	if (!url) return;
 	return $.ajax({
 		type: 'GET',

@@ -49,9 +49,9 @@ const Application = {
 		this.queryParams = getQueryStringParams();
 		if (!!this.queryParams || !!this.hashParams) {
 			this.queryParams = $.extend(this.queryParams, this.hashParams);
+			console.log(this.hashParams);
+			console.log(this.queryParams);
 		}
-		console.log(this.hashParams);
-		console.log(this.queryParams);
 
 		// Initialize custom events
 		breakpointChangeEvent();
