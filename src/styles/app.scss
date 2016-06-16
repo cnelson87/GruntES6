@@ -13,8 +13,9 @@
 @import 'utils/flexbox';
 
 // global styles
-@import 'chrome/base';
+@import 'chrome/reset';
 @import 'chrome/bp-indicator';
+@import 'chrome/typography';
 @import 'chrome/classes';
 @import 'chrome/forms';
 @import 'chrome/layout';
