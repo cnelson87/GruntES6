@@ -4,10 +4,10 @@
 
 
 @mixin row {
+	@include clearfix;
 	display: block;
 	margin: 0 -#{$mobile-gutter-half-width};
 	position: relative;
-	@include clearfix;
 	// Tablet+
 	@media (min-width: $tablet-breakpoint-min) {
 		margin: 0 -#{$tablet-gutter-half-width};
