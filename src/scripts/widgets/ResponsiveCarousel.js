@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desaktop media queries
 
-	VERSION: 0.3.4
+	VERSION: 0.3.5
 
 	USAGE: let myCarousel = new ResponsiveCarousel('Element', 'Options')
 		@param {jQuery Object}
@@ -402,9 +402,10 @@ class ResponsiveCarousel {
 		let winHeight = this.$window.height() - topOffset;
 		let scrollTop = pnlTop - topOffset;
 		let $focusContentEl = $panel.find(this.options.selectorContentEls).first();
+		let scrollSpeed = 200;
 
 		if (pnlTop < winTop || pnlTop + pnlHeight > winTop + winHeight) {
-			this.$htmlBody.animate({scrollTop: scrollTop}, 200, function() {
+			this.$htmlBody.animate({scrollTop: scrollTop}, scrollSpeed, function() {
 				$focusContentEl.attr({'tabindex':'-1'}).focus();
 			});
 		} else {

@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic TabSwitcher widget
 
-	VERSION: 0.3.4
+	VERSION: 0.3.5
 
 	USAGE: let myTabSwitcher = new TabSwitcher('Element', 'Options')
 		@param {jQuery Object}
@@ -146,11 +146,13 @@ class TabSwitcher {
 	_addEventListeners() {
 		this.$window.on('resize', this.__onWindowResize.bind(this));
 		this.$tabs.on('click', this.__clickTab.bind(this));
+		this.$tabs.on('keydown', this.__keydownTab.bind(this));
 	}
 
 	_removeEventListeners() {
 		this.$window.off('resize', this.__onWindowResize.bind(this));
 		this.$tabs.off('click', this.__clickTab.bind(this));
+		this.$tabs.off('keydown', this.__keydownTab.bind(this));
 	}
 
 	autoRotation() {
@@ -198,6 +200,34 @@ class TabSwitcher {
 			this.previousIndex = this.currentIndex;
 			this.currentIndex = index;
 			this.switchPanels(event);
+		}
+
+	}
+
+	__keydownTab(event) {
+		let keyCode = event.which;
+		let index = this.$tabs.index(event.currentTarget);
+
+		// left/up arrow; go to previous tab
+		if (keyCode === 37 || keyCode === 38) {
+			event.preventDefault();
+			if (index === 0) {index = this._length;}
+			index--;
+			this.$tabs.eq(index).focus();
+		}
+
+		// right/down arrow; go to next tab
+		if (keyCode === 39 || keyCode === 40) {
+			event.preventDefault();
+			index++;
+			if (index === this._length) {index = 0;}
+			this.$tabs.eq(index).focus();
+		}
+
+		// spacebar; activate tab click
+		if (keyCode === 32) {
+			event.preventDefault();
+			this.$tabs.eq(index).click();
 		}
 
 	}
@@ -265,9 +295,10 @@ class TabSwitcher {
 		let winHeight = this.$window.height() - topOffset;
 		let scrollTop = pnlTop - topOffset;
 		let $focusContentEl = $panel.find(this.options.selectorContentEls).first();
+		let scrollSpeed = 200;
 
 		if (pnlTop < winTop || pnlTop + pnlHeight > winTop + winHeight) {
-			this.$htmlBody.animate({scrollTop: scrollTop}, 200, function() {
+			this.$htmlBody.animate({scrollTop: scrollTop}, scrollSpeed, function() {
 				$focusContentEl.attr({'tabindex':'-1'}).focus();
 			});
 		} else {

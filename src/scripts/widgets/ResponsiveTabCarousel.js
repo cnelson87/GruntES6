@@ -4,7 +4,7 @@
 	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desktop media queries
 	NOTE: The tabs only work if mobile/tablet/desktop views all display one 'panel' at a time.
 
-	VERSION: 0.2.8
+	VERSION: 0.2.9
 
 	USAGE: let myTabCarousel = new ResponsiveTabCarousel('Element', 'Options')
 		@param {jQuery Object}
@@ -72,11 +72,13 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 
 	_addEventListeners() {
 		this.$tabs.on('click', this.__clickTab.bind(this));
+		this.$tabs.on('keydown', this.__keydownTab.bind(this));
 		super._addEventListeners();
 	}
 
 	_removeEventListeners() {
 		this.$tabs.off('click', this.__clickTab.bind(this));
+		this.$tabs.off('keydown', this.__keydownTab.bind(this));
 		super._removeEventListeners();
 	}
 
@@ -103,6 +105,34 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 		} else {
 			this.currentIndex = index;
 			this.updateCarousel(event);
+		}
+
+	}
+
+	__keydownTab(event) {
+		let keyCode = event.which;
+		let index = this.$tabs.index(event.currentTarget);
+
+		// left/up arrow; go to previous tab
+		if (keyCode === 37 || keyCode === 38) {
+			event.preventDefault();
+			if (index === 0) {index = this._length;}
+			index--;
+			this.$tabs.eq(index).focus();
+		}
+
+		// right/down arrow; go to next tab
+		if (keyCode === 39 || keyCode === 40) {
+			event.preventDefault();
+			index++;
+			if (index === this._length) {index = 0;}
+			this.$tabs.eq(index).focus();
+		}
+
+		// spacebar; activate tab click
+		if (keyCode === 32) {
+			event.preventDefault();
+			this.$tabs.eq(index).click();
 		}
 
 	}

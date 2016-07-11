@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A single Accordion item
 
-	VERSION: 0.1.3
+	VERSION: 0.1.4
 
 	USAGE: let myAccordion = new MiniAccordion('Element', 'Options')
 		@param {jQuery Object}
@@ -119,10 +119,12 @@ class MiniAccordion {
 
 	_addEventListeners() {
 		this.$tab.on('click', this.__clickTab.bind(this));
+		this.$tab.on('keydown', this.__keydownTab.bind(this));
 	}
 
 	_removeEventListeners() {
 		this.$tab.off('click', this.__clickTab.bind(this));
+		this.$tab.off('keydown', this.__keydownTab.bind(this));
 	}
 
 
@@ -139,6 +141,17 @@ class MiniAccordion {
 			this.animateClosed();
 		} else {
 			this.animateOpen();
+		}
+
+	}
+
+	__keydownTab(event) {
+		let keyCode = event.which;
+
+		// spacebar; activate tab click
+		if (keyCode === 32) {
+			event.preventDefault();
+			this.$tab.click();
 		}
 
 	}
@@ -233,9 +246,10 @@ class MiniAccordion {
 		let winHeight = this.$window.height() - topOffset;
 		let scrollTop = pnlTop - topOffset;
 		let $focusContentEl = this.$panel.find(this.options.selectorContentEls).first();
+		let scrollSpeed = 200;
 
 		if (pnlTop < winTop || pnlTop + pnlHeight > winTop + winHeight) {
-			this.$htmlBody.animate({scrollTop: scrollTop}, 200, function() {
+			this.$htmlBody.animate({scrollTop: scrollTop}, scrollSpeed, function() {
 				$focusContentEl.attr({'tabindex':'-1'}).focus();
 			});
 		} else {
