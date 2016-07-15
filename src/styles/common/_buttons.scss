@@ -28,21 +28,3 @@ button.button {
 	}
 
 }
-
-a.closeX,
-a.btn-closeX,
-a.lnk-closeX {
-	@include text-hide;
-	display: inline-block;
-	width: 30px;
-	height: 30px;
-	background: rgba($gray-dark, 0) url($image-path + '/action-icons.png') no-repeat 0 0;
-	background-origin: border-box;
-	border-radius: 4px;
-
-	&:focus, &:hover {
-		background-color: $gray-dark;
-		background-position: 0 -90px;
-	}
-
-}
