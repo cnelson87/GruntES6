@@ -29,11 +29,14 @@
 }
 
 @mixin offscreen {
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	position: fixed;
+	display: block;
 	width: 1px;
+	height: 1px;
+	text-indent: 200%;
+	white-space: nowrap;
+	overflow: hidden;
+	position: absolute;
+	left: -9999px;
 }
 
 @mixin text-hide {
