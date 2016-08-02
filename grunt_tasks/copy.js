@@ -8,59 +8,51 @@ module.exports = function (grunt) {
 	return {
 
 		data: {
-			files: [
-				{
-					cwd: '<%= sourceData %>',
-					src: '**/*.json',
-					dest: '<%= localData %>',
-					expand: true
-				}
-			]
+			// JSON Data
+			files: [{
+				cwd: '<%= sourceData %>',
+				src: '**/*.json',
+				dest: '<%= localData %>',
+				expand: true
+			}]
 		},
 
 		assets: {
-			files: [
-				{
-					cwd: '<%= sourceAssets %>',
-					src: '**/*.*',
-					dest: '<%= localAssets %>',
-					expand: true
-				}
-			]
+			// images, fonts, videos...
+			files: [{
+				cwd: '<%= sourceAssets %>',
+				src: '**/*.*',
+				dest: '<%= localAssets %>',
+				expand: true
+			}]
 		},
 
 		dev: {
-			files: [
-				{
-					cwd: '<%= sourceData %>',
-					src: '**/*.json',
-					dest: '<%= localData %>',
-					expand: true
-				},
-				{
-					cwd: '<%= sourceAssets %>',
-					src: '**/*.*',
-					dest: '<%= localAssets %>',
-					expand: true
-				}
-			]
+			files: [{
+				cwd: '<%= sourceData %>',
+				src: '**/*.json',
+				dest: '<%= localData %>',
+				expand: true
+			},{
+				cwd: '<%= sourceAssets %>',
+				src: '**/*.*',
+				dest: '<%= localAssets %>',
+				expand: true
+			}]
 		},
 
 		dist: {
-			files: [
-				{
-					cwd: '<%= sourceData %>',
-					src: '**/*.json',
-					dest: '<%= publicData %>',
-					expand: true
-				},
-				{
-					cwd: '<%= sourceAssets %>',
-					src: '**/*.*',
-					dest: '<%= publicAssets %>',
-					expand: true
-				}
-			]
+			files: [{
+				cwd: '<%= sourceData %>',
+				src: '**/*.json',
+				dest: '<%= publicData %>',
+				expand: true
+			},{
+				cwd: '<%= sourceAssets %>',
+				src: '**/*.*',
+				dest: '<%= publicAssets %>',
+				expand: true
+			}]
 		}
 
 	};
