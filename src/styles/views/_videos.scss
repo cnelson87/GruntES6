@@ -1,0 +1,26 @@
+//
+// Videos Page View
+// -----------------------------------------------------
+
+
+#videospage {
+
+	.responsive-iframe {
+		margin-bottom: $mobile-gutter-width;
+	}
+
+	// Tablet+
+	@media (min-width: $tablet-breakpoint-min) {
+		.responsive-iframe {
+			margin-bottom: $tablet-gutter-width;
+		}
+	}
+
+	// Desktop+
+	@media (min-width: $desktop-breakpoint-min) {
+		.responsive-iframe {
+			margin-bottom: $desktop-gutter-width;
+		}
+	}
+
+}

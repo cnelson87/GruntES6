@@ -13,6 +13,7 @@ module.exports = function (grunt) {
 		'flexbox',
 		'grids',
 		'promise',
+		'videos',
 		'carousel',
 		'tabcarousel',
 		'miniaccordion',

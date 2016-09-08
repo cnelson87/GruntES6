@@ -35,6 +35,14 @@
 		"intro" : "This is the Promise page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
 	},
 
+	"videos": {
+		"title" : "Videos",
+		"description" : "Description for the Videos page",
+		"keywords" : "videos videos videos",
+		"h1" : "Videos H1",
+		"intro" : "This is the Videos page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
+	},
+
 	"carousel": {
 		"title" : "Carousel",
 		"description" : "Description for the Carousel page",

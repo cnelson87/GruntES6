@@ -10,6 +10,7 @@ import getQueryStringParams from 'utilities/getQueryStringParams';
 import breakpointChangeEvent from 'utilities/breakpointChangeEvent';
 import resizeStartStopEvents from 'utilities/resizeStartStopEvents';
 import scrollStartStopEvents from 'utilities/scrollStartStopEvents';
+import youtubeVideoControl from 'utilities/youtubeVideoControl';
 import AppState from 'models/AppState';
 import HomepageView from 'views/HomepageView';
 import PromisePage from 'views/PromisePage';
@@ -70,6 +71,9 @@ const Application = {
 			case 'promisepage':
 				this.initPromisePage();
 				break;
+			case 'videospage':
+				this.initVideosPage();
+				break;
 			case 'carouselpage':
 				this.initCarouselPage();
 				break;
@@ -106,6 +110,10 @@ const Application = {
 
 	initPromisePage: function() {
 		PromisePage.initialize();
+	},
+
+	initVideosPage: function() {
+		youtubeVideoControl();
 	},
 
 	initCarouselPage: function() {

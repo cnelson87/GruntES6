@@ -1,0 +1,72 @@
+{{#extend "default"}}
+
+	{{#replace "title"}}{{videos.title}} - {{title}}{{/replace}}
+	{{#replace "description"}}{{videos.description}}{{/replace}}
+	{{#replace "keywords"}}{{keywords}}, {{videos.keywords}}{{/replace}}
+
+	{{#replace "body-id"}}videospage{{/replace}}
+
+	{{#replace "content"}}
+
+		<section class="content">
+			<div class="content-container">
+
+				<h1>{{videos.h1}}</h1>
+
+				<div class="intro">
+					<p>{{videos.intro}}</p>
+				</div>
+
+				<div class="responsive-iframe">
+					<iframe id="video0" class="video-player" type="text/html" width="640" height="360" frameborder="0" allowfullscreen
+						src="//www.youtube.com/embed/N4ScwYcBA7E?enablejsapi=1&rel=0"></iframe>
+				</div>
+
+				<div class="grid grid-mobi-1-1 grid-tabt-1-2 grid-desk-1-2">
+					<div class="grid-cell">
+						<div class="responsive-iframe">
+							<iframe id="video1" class="video-player" type="text/html" width="640" height="360" frameborder="0" allowfullscreen
+								src="//www.youtube.com/embed/tPW2zGLPWzE?enablejsapi=1&rel=0"></iframe>
+						</div>
+					</div>
+					<div class="grid-cell">
+						<div class="responsive-iframe">
+							<iframe id="video2" class="video-player" type="text/html" width="640" height="360" frameborder="0" allowfullscreen
+								src="//www.youtube.com/embed/lKTE4Mb5XFM?enablejsapi=1&rel=0"></iframe>
+						</div>
+					</div>
+					<div class="grid-cell">
+						<div class="responsive-iframe">
+							<iframe id="video3" class="video-player" type="text/html" width="640" height="360" frameborder="0" allowfullscreen
+								src="//www.youtube.com/embed/hx_W1NzDfdc?enablejsapi=1&rel=0"></iframe>
+						</div>
+					</div>
+					<div class="grid-cell">
+						<div class="responsive-iframe">
+							<iframe id="video4" class="video-player" type="text/html" width="640" height="360" frameborder="0" allowfullscreen
+								src="//www.youtube.com/embed/8UTyusMA2Pk?enablejsapi=1&rel=0"></iframe>
+						</div>
+					</div>
+					<div class="grid-cell">
+						<div class="responsive-iframe">
+							<iframe id="video5" class="video-player" type="text/html" width="640" height="360" frameborder="0" allowfullscreen
+								src="//www.youtube.com/embed/9kPxorIvtLE?enablejsapi=1&rel=0"></iframe>
+						</div>
+					</div>
+					<div class="grid-cell">
+						<div class="responsive-iframe">
+							<iframe id="video6" class="video-player" type="text/html" width="640" height="360" frameborder="0" allowfullscreen
+								src="//www.youtube.com/embed/LvKSf3oxGgc?enablejsapi=1&rel=0"></iframe>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+		<!-- YouTube API -->
+		<script src="//www.youtube.com/iframe_api"></script>
+
+	{{/replace}}
+
+{{/extend}}

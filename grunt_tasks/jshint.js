@@ -35,6 +35,7 @@ module.exports = function (grunt) {
 				'jQuery': true,
 				'$': true,
 				'_': true,
+				'YT': true,
 				'Backbone': true,
 				'ScrollMagic': true,
 				'TweenMax': true,
@@ -56,8 +57,7 @@ module.exports = function (grunt) {
 		},
 
 		files: [
-			'<%= sourceScripts %>/**/*.js',
-			'!<%= sourceScripts %>/shims/classList.js'
+			'<%= sourceScripts %>/**/*.js'
 		]
 
 	};
