@@ -117,17 +117,11 @@ const Application = {
 	},
 
 	initCarouselPage: function() {
-		new ResponsiveCarousel( $('#carousel-m1-t1-d1'), {
-			numVisibleItemsMobile: 1,
-			numItemsToAnimateMobile: 1,
-			numVisibleItemsTablet: 1,
-			numItemsToAnimateTablet: 1,
-			numVisibleItemsDesktop: 1,
-			numItemsToAnimateDesktop: 1,
+		new ResponsiveCarousel($('#carousel-m1-t1-d1'), {
 			loopEndToEnd: false,
 			autoRotate: true
 		});
-		new ResponsiveCarousel( $('#carousel-m1-t2-d3'), {
+		new ResponsiveCarousel($('#carousel-m1-t2-d3'), {
 			numVisibleItemsMobile: 1,
 			numItemsToAnimateMobile: 1,
 			numVisibleItemsTablet: 2,
@@ -137,7 +131,7 @@ const Application = {
 			loopEndToEnd: true,
 			autoRotate: false
 		});
-		new ResponsiveCarousel( $('#carousel-m1-t3-d5'), {
+		new ResponsiveCarousel($('#carousel-m1-t3-d5'), {
 			numVisibleItemsMobile: 1,
 			numItemsToAnimateMobile: 1,
 			numVisibleItemsTablet: 3,
@@ -151,13 +145,7 @@ const Application = {
 	},
 
 	initTabCarouselPage: function() {
-		new ResponsiveTabCarousel($('#carousel-m1-t1-d1'), {
-			numVisibleItemsMobile: 1,
-			numItemsToAnimateMobile: 1,
-			numVisibleItemsTablet: 1,
-			numItemsToAnimateTablet: 1,
-			numVisibleItemsDesktop: 1,
-			numItemsToAnimateDesktop: 1,
+		new ResponsiveTabCarousel($('#tabcarousel-m1-t1-d1'), {
 			loopEndToEnd: false,
 			autoRotate: true
 		});
@@ -173,7 +161,7 @@ const Application = {
 	},
 
 	initAccordionPage: function() {
-		new Accordion($('#accordion-default'), {});
+		new Accordion($('#accordion-default'));
 		new Accordion($('#accordion-custom'), {
 			initialIndex: -1,
 			equalizeHeight: true
@@ -181,7 +169,7 @@ const Application = {
 	},
 
 	initTabswitcherPage: function() {
-		new TabSwitcher($('#tabswitcher-default'), {});
+		new TabSwitcher($('#tabswitcher-default'));
 		new TabSwitcher($('#tabswitcher-custom'), {
 			equalizeHeight: true,
 			autoRotate: true

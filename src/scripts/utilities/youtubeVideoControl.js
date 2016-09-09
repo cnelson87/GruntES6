@@ -7,10 +7,10 @@
 const youtubeVideoControl = function() {
 
 	let elVideoPlayers = document.getElementsByClassName('video-player');
+	if (!elVideoPlayers.length) {return;}
+
 	let ytVideoPlayers = {};
 	let currentVideoPlayer = null;
-
-	if (!elVideoPlayers.length) {return;}
 
 	let onStateChange = function(state) {
 		let id = state.target.a.id;
@@ -32,11 +32,11 @@ const youtubeVideoControl = function() {
 	};
 
 	window.onYouTubeIframeAPIReady = function() {
-		let id = null;
+		// let id = null;
 		// console.log('onYouTubeIframeAPIReady');
 
 		for (let elVideo of elVideoPlayers) {
-			id = elVideo.id;
+			let id = elVideo.id;
 			ytVideoPlayers[id] = new YT.Player(id);
 			ytVideoPlayers[id].addEventListener('onStateChange', function(state) {
 				onStateChange(state);

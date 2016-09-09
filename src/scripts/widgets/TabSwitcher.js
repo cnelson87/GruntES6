@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic TabSwitcher widget
 
-	VERSION: 0.3.5
+	VERSION: 0.3.6
 
 	USAGE: let myTabSwitcher = new TabSwitcher('Element', 'Options')
 		@param {jQuery Object}
@@ -23,18 +23,18 @@ import HeightEqualizer from 'widgets/HeightEqualizer';
 
 class TabSwitcher {
 
-	constructor($el, objOptions) {
+	constructor($el, options = {}) {
 		this.$window = $(window);
 		this.$htmlBody = $('html, body');
-		this.initialize($el, objOptions);
+		this.initialize($el, options);
 	}
 
-	initialize($el, objOptions) {
+	initialize($el, options) {
 		let urlHash = window.location.hash.replace('#','') || false;
 
 		// defaults
 		this.$el = $el;
-		this.options = $.extend({
+		this.options = Object.assign({
 			initialIndex: 0,
 			selectorTabs: '.tabswitcher--tabnav a',
 			selectorPanels: '.tabswitcher--panel',
@@ -50,7 +50,7 @@ class TabSwitcher {
 			selectedText: 'currently selected',
 			enableTracking: false,
 			customEventName: 'TabSwitcher'
-		}, objOptions || {});
+		}, options);
 
 		// element references
 		this.$tabs = this.$el.find(this.options.selectorTabs);
@@ -115,17 +115,17 @@ class TabSwitcher {
 		if (this.options.autoRotate) {
 			this.rotationInterval = this.options.autoRotateInterval;
 			this.autoRotationCounter = this._length * this.options.maxAutoRotations;
-			this.setAutoRotation = setInterval(function() {
+			this.setAutoRotation = setInterval(() => {
 				this.autoRotation();
-			}.bind(this), this.rotationInterval);
+			}, this.rotationInterval);
 		}
 
 		// initial focus on content
-		this.$window.on('load', function() {
+		this.$window.on('load', () => {
 			if (this.setInitialFocus) {
 				this.focusOnPanel($activePanel);
 			}
-		}.bind(this));
+		});
 
 	}
 
@@ -253,12 +253,12 @@ class TabSwitcher {
 
 		this.activatePanel($activePanel);
 
-		setTimeout(function() {
+		setTimeout(() => {
 			this.isAnimating = false;
 			if (!!event) {
 				this.focusOnPanel($activePanel);
 			}
-		}.bind(this), this.options.animDuration);
+		}, this.options.animDuration);
 
 		$.event.trigger(`${this.options.customEventName}:panelOpened`, {activeEl: $activePanel});
 

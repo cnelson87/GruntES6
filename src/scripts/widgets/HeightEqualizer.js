@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Sets equal height on a collection of DOM ELs
 
-	VERSION: 0.2.2
+	VERSION: 0.2.3
 
 	USAGE: let myHeightEqualizer = new HeightEqualizer('Element', 'Options')
 		@param {jQuery Object}
@@ -18,16 +18,17 @@
 
 class HeightEqualizer {
 
-	constructor($el, objOptions) {
-		this.initialize($el, objOptions);
+	constructor($el, options = {}) {
+		this.initialize($el, options);
 	}
 
-	initialize($el, objOptions) {
+	initialize($el, options) {
+
 		this.$el = $el;
-		this.options = $.extend({
+		this.options = Object.assign({
 			selectorItems: '> div',
 			setParentHeight: false
-		}, objOptions || {});
+		}, options);
 
 		// element references
 		this.$items = this.$el.find(this.options.selectorItems);

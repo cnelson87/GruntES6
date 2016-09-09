@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Base class to create modal windows
 
-	VERSION: 0.2.7
+	VERSION: 0.2.8
 
 	USAGE: let myModalWindow = new ModalWindow('Elements', 'Options')
 		@param {jQuery Object}
@@ -16,23 +16,20 @@
 
 */
 
-import AppConfig from 'config/AppConfig';
-import AppEvents from 'config/AppEvents';
-
 class ModalWindow {
 
-	constructor($triggers, objOptions) {
+	constructor($triggers, options = {}) {
 		this.$window = $(window);
 		this.$document = $(document);
 		this.$body = $('body');
-		this.initialize($triggers, objOptions);
+		this.initialize($triggers, options);
 	}
 
-	initialize($triggers, objOptions) {
+	initialize($triggers, options) {
 
 		// defaults
 		this.$triggers = $triggers;
-		this.options = $.extend({
+		this.options = Object.assign({
 			//selectorTriggers: 'a.modal-trigger',
 			modalID: 'modalwindow',
 			modalClass: 'modalwindow',
@@ -46,7 +43,7 @@ class ModalWindow {
 			animDuration: 400,
 			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl',
 			customEventName: 'ModalWindow'
-		}, objOptions || {});
+		}, options);
 
 		// element references
 		this.$activeTrigger = null;
@@ -116,45 +113,45 @@ class ModalWindow {
 
 	_addEventListeners() {
 
-		this.$triggers.on('click', function(event) {
+		this.$triggers.on('click', (event) => {
 			event.preventDefault();
 			if (!this.isModalActivated) {
 				this.$activeTrigger = $(event.currentTarget);
 				this.openModal();
 			}
-		}.bind(this));
+		});
 
-		this.$closeBtn.on('click', function(event) {
+		this.$closeBtn.on('click', (event) => {
 			event.preventDefault();
 			if (this.isModalActivated) {
 				this.closeModal();
 			}
-		}.bind(this));
+		});
 
-		this.$content.on('click', this.options.contentCloseTrigger, function(event) {
+		this.$content.on('click', this.options.contentCloseTrigger, (event) => {
 			event.preventDefault();
 			if (this.isModalActivated) {
 				this.closeModal();
 			}
-		}.bind(this));
+		});
 
-		this.$overlay.on('click', function(event) {
+		this.$overlay.on('click', (event) => {
 			if (this.isModalActivated) {
 				this.closeModal();
 			}
-		}.bind(this));
+		});
 
-		this.$document.on('focusin', function(event) {
+		this.$document.on('focusin', (event) => {
 			if (this.isModalActivated && !this.$modal[0].contains(event.target)) {
 				this.setContentFocus();
 			}
-		}.bind(this));
+		});
 
-		this.$document.on('keydown', function(event) {
+		this.$document.on('keydown', (event) => {
 			if (this.isModalActivated && event.keyCode === 27) {
 				this.closeModal();
 			}
-		}.bind(this));
+		});
 
 	}
 
@@ -187,17 +184,17 @@ class ModalWindow {
 		this.$overlay.show();
 		this.$modal.show();
 
-		setTimeout(function() {
+		setTimeout(() => {
 
 			this.$overlay.addClass(this.options.activeClass);
 			this.$modal.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
 
-			setTimeout(function() {
+			setTimeout(() => {
 				this.setContentFocus();
 				$.event.trigger(`${this.options.customEventName}:modalOpened`, [this.$modal]);
-			}.bind(this), this.options.animDuration);
+			}, this.options.animDuration);
 
-		}.bind(this), 10);
+		}, 10);
 
 	}
 
@@ -209,7 +206,7 @@ class ModalWindow {
 
 		this.$window.scrollTop(this.windowScrollTop);
 
-		setTimeout(function() {
+		setTimeout(() => {
 
 			this.isModalActivated = false;
 			this.$overlay.hide();
@@ -218,7 +215,7 @@ class ModalWindow {
 			this.$activeTrigger.focus();
 			$.event.trigger(`${this.options.customEventName}:modalClosed`, [this.$modal]);
 
-		}.bind(this), this.options.animDuration);
+		}, this.options.animDuration);
 
 	}
 

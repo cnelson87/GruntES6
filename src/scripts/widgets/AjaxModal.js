@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Subclass of ModalWindow retrieves & injects Ajax content
 
-	VERSION: 0.2.3
+	VERSION: 0.2.8
 
 	USAGE: let myAjaxModal = new AjaxModal('Elements', 'Options')
 		@param {jQuery Object}
@@ -25,17 +25,17 @@ import ajaxGet from 'utilities/ajaxGet';
 
 class AjaxModal extends ModalWindow {
 
-	initialize($triggers, objOptions) {
+	initialize($triggers, options) {
 
-		let options = $.extend({
+		let subOptions = Object.assign({
 			ajaxErrorMsg: '<div class="errormessage"><p>Sorry. Ajax request failed.</p></div>',
 			customEventName: 'AjaxModal'
-		}, objOptions || {});
+		}, options);
 
 		// setup & properties
 		this.ajaxLoader = null;
 
-		super.initialize($triggers, options);
+		super.initialize($triggers, subOptions);
 
 	}
 
@@ -62,34 +62,34 @@ class AjaxModal extends ModalWindow {
 
 		this.ajaxLoader.addLoader();
 
-		$.when(ajaxGet(ajaxUrl, 'html'))
-			.done(function(response) {
-				//console.log(response);
+		Promise.resolve(ajaxGet(ajaxUrl, 'html'))
+			.then((response) => {
+				// console.log(response);
 
 				if (targetID) {
 					targetEl = $(response).find('#' + targetID);
 					if (targetEl.length) {
-						self.contentHTML = $(response).find('#' + targetID).html();
+						this.contentHTML = $(response).find('#' + targetID).html();
 					} else {
-						self.contentHTML = $(response).html();
+						this.contentHTML = $(response).html();
 					}
 					
 				} else {
-					self.contentHTML = response;
+					this.contentHTML = response;
 				}
 
 				// add delay to showcase loader-spinner
-				setTimeout(function() {
-					self.ajaxLoader.removeLoader();
-					self.setContent();
+				setTimeout(() => {
+					this.ajaxLoader.removeLoader();
+					this.setContent();
 				}, 400);
 
 			})
-			.fail(function(response) {
-				//console.log(response);
-				self.contentHTML = null;
-				self.ajaxLoader.removeLoader();
-				self.$content.html(self.options.ajaxErrorMsg);
+			.catch((response) => {
+				// console.log(response);
+				this.contentHTML = null;
+				this.ajaxLoader.removeLoader();
+				this.$content.html(this.options.ajaxErrorMsg);
 			});
 
 	}

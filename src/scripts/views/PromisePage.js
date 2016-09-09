@@ -16,19 +16,19 @@ const PromisePage = {
 	},
 
 	fetch: function() {
-		let fibonacci = ajaxGet(AppConfig.urls.fibonacci);
-		let primes = ajaxGet(AppConfig.urls.primes);
-		let sevens = ajaxGet(AppConfig.urls.sevens);
+		let xhrs = [
+			ajaxGet(AppConfig.urls.fibonacci),
+			ajaxGet(AppConfig.urls.primes),
+			ajaxGet(AppConfig.urls.sevens)
+		];
 
-		Promise.all([fibonacci, primes, sevens])
-			.then(function(response) {
+		Promise.all(xhrs)
+			.then((response) => {
 				this.process(response);
-			}.bind(this));
-
-		// $.when([fibonacci, primes, sevens])
-		// 	.then(function(response) {
-		// 		this.process(response);
-		// 	}.bind(this));
+			})
+			.catch((response) => {
+				console.log('error');
+			});
 
 	},
 
@@ -38,18 +38,17 @@ const PromisePage = {
 		let arr;
 		let sorted;
 		let data;
-		//use with Promise.all
+
 		for (let i=0, len=response.length; i<len; i++) {
 			arrs[i] = response[i];
 		}
-		//use with jQuery $.when
-		// for (let i=0, len=response.length; i<len; i++) {
-		// 	arrs[i] = response[i]['responseJSON'];
-		// }
+
 		arr = [].concat.apply([], arrs);
 		sorted = arr.slice().sort(function(a,b) {return a - b;});
 		data = [...new Set(sorted)];
+
 		this.render(data);
+
 	},
 
 	render: function(data) {

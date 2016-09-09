@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic Accordion widget
 
-	VERSION: 0.3.5
+	VERSION: 0.3.6
 
 	USAGE: let myAccordion = new Accordion('Element', 'Options')
 		@param {jQuery Object}
@@ -24,18 +24,18 @@ import HeightEqualizer from 'widgets/HeightEqualizer';
 
 class Accordion {
 
-	constructor($el, objOptions) {
+	constructor($el, options = {}) {
 		this.$window = $(window);
 		this.$htmlBody = $('html, body');
-		this.initialize($el, objOptions);
+		this.initialize($el, options);
 	}
 
-	initialize($el, objOptions) {
+	initialize($el, options) {
 		let urlHash = window.location.hash.replace('#','') || false;
 
 		// defaults
 		this.$el = $el;
-		this.options = $.extend({
+		this.options = Object.assign({
 			initialIndex: 0,
 			selectorTabs: '.accordion--header a',
 			selectorPanels: '.accordion--panel',
@@ -50,7 +50,7 @@ class Accordion {
 			selectedText: 'currently selected',
 			enableTracking: false,
 			customEventName: 'Accordion'
-		}, objOptions || {});
+		}, options);
 
 		// element references
 		this.$tabs = this.$el.find(this.options.selectorTabs);
@@ -124,11 +124,11 @@ class Accordion {
 		});
 
 		// initial focus on content
-		this.$window.on('load', function() {
+		this.$window.on('load', () => {
 			if (this.setInitialFocus) {
 				this.focusOnPanel($activePanel);
 			}
-		}.bind(this));
+		});
 
 	}
 
