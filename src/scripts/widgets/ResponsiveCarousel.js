@@ -82,7 +82,7 @@ class ResponsiveCarousel {
 		// check url hash to override currentIndex
 		this.setInitialFocus = false;
 		if (urlHash) {
-			for (let i=0, $panel; i<this._length; i++) {
+			for (let i=0; i<this._length; i++) {
 				if (this.$panels.eq(i).data('id') === urlHash) {
 					this.currentIndex = i;
 					this.setInitialFocus = true;
