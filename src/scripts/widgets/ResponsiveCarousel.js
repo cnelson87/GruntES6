@@ -179,7 +179,7 @@ class ResponsiveCarousel {
 		TweenMax.set(this.$innerTrack, {
 			width: trackWidth,
 			left: leftPos
-		}); 
+		});
 
 		this.deactivateItems();
 		this.activateItems();
