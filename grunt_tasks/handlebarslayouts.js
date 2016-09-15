@@ -19,6 +19,7 @@ module.exports = function (grunt) {
 		'miniaccordion',
 		'accordion',
 		'tabswitcher',
+		'horizordion',
 		'modals',
 		'test'
 	];

@@ -62,7 +62,7 @@
 	"miniaccordion": {
 		"title" : "MiniAccordion",
 		"description" : "Description for the MiniAccordion page",
-		"keywords" : "mini accordion widget",
+		"keywords" : "mini-accordion widget",
 		"h1" : "MiniAccordion H1",
 		"intro" : "This is the MiniAccordion page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
 	},
@@ -81,6 +81,14 @@
 		"keywords" : "tabswitcher widget",
 		"h1" : "TabSwitcher H1",
 		"intro" : "This is the TabSwitcher page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
+	},
+
+	"horizordion": {
+		"title" : "Horizordion",
+		"description" : "Description for the Horizordion page",
+		"keywords" : "horizordion widget",
+		"h1" : "Horizordion H1",
+		"intro" : "This is the Horizordion page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
 	},
 
 	"modals": {
