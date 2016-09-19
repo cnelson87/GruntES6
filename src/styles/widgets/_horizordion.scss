@@ -1,0 +1,95 @@
+//
+// Horizordion
+// -----------------------------------------------------
+// Assumes 4 items
+
+.horizordion {
+	height: 720px; //TEMP
+	margin-bottom: 1.5em;
+	position: relative;
+
+	// Tablet+Desktop+
+	@media (min-width: $tablet-breakpoint-min) {
+		display: flex;
+		// flex-flow: row nowrap;
+		align-items: stretch;
+	}
+
+	> .horizordion--panel {
+		display: block;
+		height: 100%;
+		overflow: hidden;
+		position: relative;
+
+		// Tablet+Desktop+
+		@media (min-width: $tablet-breakpoint-min) {
+			flex: 1;
+			// flex-grow: 1;
+			// flex-shrink: 1;
+			transition: flex-grow 0.4s;
+
+			&.is-active {
+				flex-grow: 7;
+			}
+
+		}
+
+		&:nth-child(1) {
+			background-color: rgba(red, 0.2);
+		}
+		&:nth-child(2) {
+			background-color: rgba(yellow, 0.2);
+		}
+		&:nth-child(3) {
+			background-color: rgba(blue, 0.2);
+		}
+		&:nth-child(4) {
+			background-color: rgba(green, 0.2);
+		}
+
+		> .horizordion--tab {
+			@include hidden;
+
+			// Tablet+Desktop+
+			@media (min-width: $tablet-breakpoint-min) {
+				@include visible();
+				position: absolute;
+				right: 5px;
+				top: 5px;
+
+				> a {
+					@include text-hide;
+					display: block;
+					width: 30px;
+					height: 30px;
+					background: rgba($gray-dark, 0) url($image-path + '/action-icons.png') no-repeat 0 -30px;
+					background-origin: border-box;
+					border: 2px solid $near-black;
+					border-radius: 50%;
+
+				}
+
+			}
+
+		}
+
+		> .horizordion--content {
+			@include clearfix;
+			opacity: 0;
+			padding: 40px 20px 20px;
+			position: relative;
+			// transition: opacity 0.4s;
+		}
+
+		&.is-active {
+
+			> .horizordion--content {
+				opacity: 1.0;
+				transition: opacity 0.4s;
+			}
+
+		}
+
+	}
+
+}

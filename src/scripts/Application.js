@@ -20,6 +20,7 @@ import ResponsiveTabCarousel from 'widgets/ResponsiveTabCarousel';
 import MiniAccordion from 'widgets/MiniAccordion';
 import Accordion from 'widgets/Accordion';
 import TabSwitcher from 'widgets/TabSwitcher';
+import Horizordion from 'widgets/Horizordion';
 import ModalWindow from 'widgets/ModalWindow';
 import AjaxModal from 'widgets/AjaxModal';
 import {SuperClass, SubClass} from 'widgets/SuperSubClass';
@@ -88,6 +89,9 @@ const Application = {
 				break;
 			case 'tabswitcherpage':
 				this.initTabswitcherPage();
+				break;
+			case 'horizordionpage':
+				this.initHorizordionPage();
 				break;
 			case 'modalspage':
 				this.initModalsPage();
@@ -173,6 +177,13 @@ const Application = {
 		new TabSwitcher($('#tabswitcher-custom'), {
 			equalizeHeight: true,
 			autoRotate: true
+		});
+	},
+
+	initHorizordionPage: function() {
+		new Horizordion($('#horizordion-default'));
+		new Horizordion($('#horizordion-custom'), {
+			initialIndex: -1
 		});
 	},
 
