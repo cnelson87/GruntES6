@@ -1,6 +1,6 @@
 {
 	"name": "GruntES6",
-	"version": "0.6.5",
+	"version": "0.6.6",
 	"title": "Grunt ES6",
 	"description": "A Grunt ES6 sandbox.",
 	"namespace": "gruntes6",
