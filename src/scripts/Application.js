@@ -29,6 +29,9 @@ const Application = {
 
 	initialize: function() {
 		// console.log('Application:initialize');
+		let urlHash = location.hash.substring(1) || null;
+		let hashParams = urlHash ? getQueryStringParams(urlHash) : null;
+		let queryParams = getQueryStringParams();
 
 		this.$window = $(window);
 		this.$document = $(document);
@@ -39,6 +42,8 @@ const Application = {
 
 		this.bodyID = this.$body.attr('id');
 
+		this.params = null;
+
 		if (AppConfig.isIE9) {this.$html.addClass('ie9');}
 		if (AppConfig.isIE10) {this.$html.addClass('ie10');}
 		if (AppConfig.isIE11) {this.$html.addClass('ie11');}
@@ -47,12 +52,11 @@ const Application = {
 
 		this.appState = new AppState();
 
-		this.hashParams = getQueryStringParams(location.hash.substring(1));
-		this.queryParams = getQueryStringParams();
-		if (!!this.queryParams || !!this.hashParams) {
-			this.queryParams = $.extend(this.queryParams, this.hashParams);
-			console.log(this.hashParams);
-			console.log(this.queryParams);
+		if (!!queryParams || !!hashParams) {
+			this.params = Object.assign({}, queryParams, hashParams);
+			// console.log(hashParams);
+			// console.log(queryParams);
+			// console.log(this.params);
 		}
 
 		// Initialize custom events

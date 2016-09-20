@@ -29,7 +29,7 @@ class ResponsiveCarousel {
 	}
 
 	initialize($el, options) {
-		let urlHash = window.location.hash.replace('#','') || false;
+		let urlHash = location.hash.substring(1) || false;
 
 		// defaults
 		this.$el = $el;

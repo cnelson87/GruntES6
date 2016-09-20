@@ -5,7 +5,7 @@
 import handlebarsHelpers from 'config/handlebarsHelpers';
 import Application from './Application.js';
 
-$(function() {
+document.addEventListener("DOMContentLoaded", function(event) {
 	handlebarsHelpers();
 	Application.initialize();
 });
