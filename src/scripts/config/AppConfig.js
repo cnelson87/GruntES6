@@ -26,6 +26,7 @@ const AppConfig = {
 		fibonacci: '/_api/promises/fibonacci.json',
 		primes: '/_api/promises/primes.json',
 		sevens: '/_api/promises/sevens.json',
+		videosPlaylist: '/_api/videos/playlist.json',
 		homepageContent: '/_api/homepage/content.json'
 	},
 

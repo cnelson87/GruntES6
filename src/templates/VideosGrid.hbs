@@ -1,0 +1,13 @@
+<h2>Videos Grid</h2>
+<div class="grid grid-mobi-1-1 grid-tabt-1-2 grid-desk-1-2">
+{{#each .}}
+	<div class="grid-cell">
+		<h3>{{title}}</h3>
+		<div class="responsive-iframe">
+			<iframe id="video--{{videoId}}" class="video-player" type="text/html" width="640" height="360" frameborder="0" allowfullscreen
+				src="//www.youtube.com/embed/{{videoId}}?enablejsapi=1&rel=0"></iframe>
+		</div>
+		<p>{{description}}</p>
+	</div>
+{{/each}}
+</div>

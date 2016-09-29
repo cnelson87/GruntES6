@@ -3,7 +3,6 @@
  */
 
 import AppConfig from 'config/AppConfig';
-import AppEvents from 'config/AppEvents';
 import ajaxGet from 'utilities/ajaxGet';
 import PromiseDataListing from 'templates/PromiseDataListing.hbs';
 
