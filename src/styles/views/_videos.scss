@@ -6,21 +6,47 @@
 #videospage {
 
 	.responsive-iframe {
-		margin-bottom: $mobile-gutter-width;
+		margin-bottom: 10px;
+	}
+
+	.primary-video {
+		margin-bottom: $mobile-vertical-spacing;
 	}
 
 	// Tablet+
 	@media (min-width: $tablet-breakpoint-min) {
-		.responsive-iframe {
-			margin-bottom: $tablet-gutter-width;
+		.primary-video {
+			margin-bottom: $tablet-vertical-spacing;
 		}
 	}
 
 	// Desktop+
 	@media (min-width: $desktop-breakpoint-min) {
-		.responsive-iframe {
-			margin-bottom: $desktop-gutter-width;
+		.primary-video {
+			margin-bottom: $desktop-vertical-spacing;
 		}
+	}
+
+	.videos-grid {
+
+		// Tablet+
+		@media (min-width: $tablet-breakpoint-min) {
+
+			h3 {
+				min-height: 2.0em;
+			}
+
+			p {
+				height: 6.0em;
+				overflow: hidden;
+			}
+
+			.grid-cell:nth-child(odd) {
+				clear: both;
+			}
+
+		}
+
 	}
 
 }

@@ -26,9 +26,16 @@ const AppConfig = {
 		fibonacci: '/_api/promises/fibonacci.json',
 		primes: '/_api/promises/primes.json',
 		sevens: '/_api/promises/sevens.json',
-		videosPlaylist: '/_api/videos/playlist.json',
+		videosPlaylistLIVE: 'https://www.googleapis.com/youtube/v3/playlistItems',
+		videosPlaylistDEV: '/_api/videos/playlist.json',
 		homepageContent: '/_api/homepage/content.json'
 	},
+
+	// Starbucks Members playlist
+	youtubePlaylistId: 'PLLt7Vrrx9E2BDUdeDsVfeR4Qx0FDLTo7v',
+
+	// my 'chrisn.wearepop@gmail.com' key
+	youtubeApiKey: 'AIzaSyDpNKX16BmckoJ14akwMxk0mHuJWgvNuBI',
 
 	isMobileView: null,
 	isTabletView: null,

@@ -5,6 +5,10 @@
  */
 
 const youtubeVideoControl = function() {
+	let tag = document.createElement('script');
+	tag.src = "//www.youtube.com/iframe_api";
+	let firstScriptTag = document.getElementsByTagName('script')[0];
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 	let elVideoPlayers = document.getElementsByClassName('video-player');
 	if (!elVideoPlayers.length) {return;}
@@ -32,7 +36,6 @@ const youtubeVideoControl = function() {
 	};
 
 	window.onYouTubeIframeAPIReady = function() {
-		// let id = null;
 		// console.log('onYouTubeIframeAPIReady');
 
 		for (let elVideo of elVideoPlayers) {
