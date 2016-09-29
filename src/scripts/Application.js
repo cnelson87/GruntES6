@@ -10,10 +10,10 @@ import getQueryStringParams from 'utilities/getQueryStringParams';
 import breakpointChangeEvent from 'utilities/breakpointChangeEvent';
 import resizeStartStopEvents from 'utilities/resizeStartStopEvents';
 import scrollStartStopEvents from 'utilities/scrollStartStopEvents';
-import youtubeVideoControl from 'utilities/youtubeVideoControl';
 import AppState from 'models/AppState';
 import HomepageView from 'views/HomepageView';
 import PromisePage from 'views/PromisePage';
+import VideosPage from 'views/VideosPage';
 
 import ResponsiveCarousel from 'widgets/ResponsiveCarousel';
 import ResponsiveTabCarousel from 'widgets/ResponsiveTabCarousel';
@@ -121,7 +121,7 @@ const Application = {
 	},
 
 	initVideosPage: function() {
-		youtubeVideoControl();
+		VideosPage.initialize();
 	},
 
 	initCarouselPage: function() {
