@@ -2,6 +2,8 @@
  * initialize
  */
 
+import 'babel-polyfill';
+
 import handlebarsHelpers from 'config/handlebarsHelpers';
 import Application from './Application.js';
 

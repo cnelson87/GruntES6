@@ -30,6 +30,7 @@
 		"babelify": "7.3.0",
 		"babel-preset-latest": "6.16.0",
 		"babel-plugin-transform-object-assign": "6.8.0",
+		"babel-polyfill": "6.16.0",
 		"browserify": "13.1.0",
 		"handlebars": "4.0.5",
 		"grunt-browserify": "5.0.0",
