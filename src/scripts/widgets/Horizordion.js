@@ -39,6 +39,7 @@ class Horizordion {
 			selectorContent: '.horizordion--content',
 			classActive: 'is-active',
 			classDisabled: 'is-disabled',
+			classInitialized: 'is-initialized',
 			animDuration: 400,
 			selectorFocusEls: 'a, button, input, select, textarea',
 			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl',
@@ -97,6 +98,8 @@ class Horizordion {
 
 		this.activatePanel($activePanel);
 
+		this.$el.addClass(this.options.classInitialized);
+
 		// initial focus on content
 		this.$window.on('load', () => {
 			if (this.setInitialFocus) {
@@ -107,13 +110,11 @@ class Horizordion {
 	}
 
 	uninitDOM() {
-
-		this.$el.removeAttr('role aria-live');
+		this.$el.removeAttr('role aria-live').removeClass(this.options.classInitialized);
 		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(this.options.classActive);
 		this.$panels.removeAttr('role aria-hidden').removeClass(this.options.classActive);
 		this.$panels.find(this.options.selectorContent).find(this.options.selectorFocusEls).removeAttr('tabindex');
 		this.$tabs.find('.selected-text').remove();
-
 	}
 
 	_addEventListeners() {

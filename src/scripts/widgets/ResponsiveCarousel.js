@@ -50,6 +50,7 @@ class ResponsiveCarousel {
 			selectorPanels: '.carousel--panel',
 			classActiveItem: 'is-active',
 			classNavDisabled: 'is-disabled',
+			classInitialized: 'is-initialized',
 			autoRotate: false,
 			autoRotateInterval: 8000,
 			maxAutoRotations: 5,
@@ -118,12 +119,13 @@ class ResponsiveCarousel {
 
 		// auto-rotate items
 		if (this.options.autoRotate) {
-			this.rotationInterval = this.options.autoRotateInterval;
 			this.autoRotationCounter = this._length * this.options.maxAutoRotations;
 			this.setAutoRotation = setInterval(() => {
 				this.autoRotation();
-			}, this.rotationInterval);
+			}, this.options.autoRotateInterval);
 		}
+
+		this.$el.addClass(this.options.classInitialized);
 
 		// initial focus on content
 		this.$window.on('load', () => {
@@ -187,21 +189,17 @@ class ResponsiveCarousel {
 	}
 
 	uninitDOM() {
-
-		this.$el.removeAttr('role aria-live');
+		this.$el.removeAttr('role aria-live').removeClass(this.options.classInitialized);
 		this.$navPrev.removeAttr('role tabindex');
 		this.$navNext.removeAttr('role tabindex');
 		this.$panels.removeAttr('role aria-hidden').removeClass(this.options.classActiveItem);
 		this.$panels.find(this.options.selectorFocusEls).removeAttr('tabindex');
-
 		TweenMax.set(this.$innerTrack, {
 			left: ''
 		});
-
 		if (this.options.autoRotate) {
 			clearInterval(this.setAutoRotation);
 		}
-
 	}
 
 	_addEventListeners() {

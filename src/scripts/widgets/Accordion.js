@@ -41,6 +41,7 @@ class Accordion {
 			selectorPanels: '.accordion--panel',
 			classActive: 'is-active',
 			classDisabled: 'is-disabled',
+			classInitialized: 'is-initialized',
 			equalizeHeight: false,
 			selfClosing: true,
 			animDuration: 0.4,
@@ -123,6 +124,8 @@ class Accordion {
 			height: this.maxHeight
 		});
 
+		this.$el.addClass(this.options.classInitialized);
+
 		// initial focus on content
 		this.$window.on('load', () => {
 			if (this.setInitialFocus) {
@@ -133,18 +136,15 @@ class Accordion {
 	}
 
 	uninitDOM() {
-
-		this.$el.removeAttr('role aria-live');
+		this.$el.removeAttr('role aria-live').removeClass(this.options.classInitialized);
 		this.$tabs.removeAttr('role tabindex aria-selected').removeClass(this.options.classActive);
 		this.$panels.removeAttr('role aria-hidden').removeClass(this.options.classActive);
 		this.$panels.find(this.options.selectorFocusEls).removeAttr('tabindex');
 		this.$tabs.find('.selected-text').remove();
-
 		TweenMax.set(this.$panels, {
 			display: '',
 			height: ''
 		});
-
 	}
 
 	_addEventListeners() {
