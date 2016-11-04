@@ -1,7 +1,7 @@
 /*
 	TITLE: InfiniteCarousel
 
-	DESCRIPTION: An infinite looping carousel widget
+	DESCRIPTION: An infinitely looping carousel widget
 
 	VERSION: 0.2.0
 
@@ -38,12 +38,12 @@ class InfiniteCarousel {
 			numItemsToAnimate: 1,
 			selectorNavPrev: '.nav-prev',
 			selectorNavNext: '.nav-next',
-			selectorOuterMask: '.outer-mask',
-			selectorInnerTrack: '.inner-track',
-			selectorPanels: '.carousel-item',
-			classActiveItem: 'active',
-			classNavDisabled: 'disabled',
-			classInitialized: 'initialized',
+			selectorOuterMask: '.carousel--outer-mask',
+			selectorInnerTrack: '.carousel--inner-track',
+			selectorPanels: '.carousel--panel',
+			classActiveItem: 'is-active',
+			classNavDisabled: 'is-disabled',
+			classInitialized: 'is-initialized',
 			enableSwipe: true,
 			autoRotate: false,
 			autoRotateInterval: 8000,

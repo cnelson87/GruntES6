@@ -27,6 +27,14 @@
 		"intro" : "This is the Grids page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
 	},
 
+	"mask": {
+		"title" : "Mask",
+		"description" : "Description for the Mask page",
+		"keywords" : "mask mask mask",
+		"h1" : "Mask H1",
+		"intro" : "This is the Mask page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
+	},
+
 	"promise": {
 		"title" : "Promise",
 		"description" : "Description for the Promise page",
@@ -57,6 +65,14 @@
 		"keywords" : "tab carousel widget",
 		"h1" : "TabCarousel H1",
 		"intro" : "This is the TabCarousel page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
+	},
+
+	"infinitecarousel": {
+		"title" : "InfiniteCarousel",
+		"description" : "Description for the InfiniteCarousel page",
+		"keywords" : "infinite carousel widget",
+		"h1" : "InfiniteCarousel H1",
+		"intro" : "This is the InfiniteCarousel page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
 	},
 
 	"miniaccordion": {

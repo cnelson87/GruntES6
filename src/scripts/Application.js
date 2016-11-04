@@ -17,6 +17,7 @@ import VideosPage from 'views/VideosPage';
 
 import ResponsiveCarousel from 'widgets/ResponsiveCarousel';
 import ResponsiveTabCarousel from 'widgets/ResponsiveTabCarousel';
+import InfiniteCarousel from 'widgets/InfiniteCarousel';
 import MiniAccordion from 'widgets/MiniAccordion';
 import Accordion from 'widgets/Accordion';
 import TabSwitcher from 'widgets/TabSwitcher';
@@ -84,6 +85,9 @@ const Application = {
 				break;
 			case 'tabcarouselpage':
 				this.initTabCarouselPage();
+				break;
+			case 'infinitecarouselpage':
+				this.initInfiniteCarouselPage();
 				break;
 			case 'miniaccordionpage':
 				this.initMiniAccordionPage();
@@ -157,6 +161,10 @@ const Application = {
 			loopEndToEnd: false,
 			autoRotate: true
 		});
+	},
+
+	initInfiniteCarouselPage: function() {
+		new InfiniteCarousel($('#infinite-carousel'), {});
 	},
 
 	initMiniAccordionPage: function() {

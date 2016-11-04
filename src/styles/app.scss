@@ -29,10 +29,12 @@
 
 // components used for a specific purpose
 @import 'components/mediablock';
+@import 'components/image-card';
 
 // JS widgets
 @import 'widgets/loader-spinner';
 @import 'widgets/responsive-carousel';
+@import 'widgets/infinite-carousel';
 @import 'widgets/accordion';
 @import 'widgets/tabswitcher';
 @import 'widgets/modalwindow';
