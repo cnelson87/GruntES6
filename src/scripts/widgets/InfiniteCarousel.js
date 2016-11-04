@@ -3,7 +3,7 @@
 
 	DESCRIPTION: An infinitely looping carousel widget
 
-	VERSION: 0.2.0
+	VERSION: 0.2.2
 
 	USAGE: let myCarousel = new InfiniteCarousel('Element', 'Options')
 		@param {jQuery Object}
@@ -44,6 +44,7 @@ class InfiniteCarousel {
 			classActiveItem: 'is-active',
 			classNavDisabled: 'is-disabled',
 			classInitialized: 'is-initialized',
+			adjOuterTrack: 80,
 			enableSwipe: true,
 			autoRotate: false,
 			autoRotateInterval: 8000,
@@ -267,7 +268,12 @@ class InfiniteCarousel {
 
 		TweenMax.to(this.$innerTrack, this.options.animDuration, {
 			x: (this.scrollAmt * this.currentIndex) + '%',
+			// delay: 1.0,
 			ease: this.options.animEasing,
+			// onStart: function() {
+			// 	self.deactivatePanels();
+			// 	self.activatePanels();
+			// },
 			onComplete: function() {
 				self.isAnimating = false;
 				if (!!event) {
@@ -283,14 +289,14 @@ class InfiniteCarousel {
 	}
 
 	adjustPosition() {
-		let adjX = 80;
+		let adjX = this.options.adjOuterTrack;
 
 		if (this.currentIndex < this._length) {
 			this.previousIndex += this._length;
 			this.currentIndex += this._length;
-			if (this.currentBreakpoint === 'desktop') {
-				TweenMax.fromTo(this.$outerMask, this.options.animationDuration, {
-					x: adjX * -1
+			if (this.currentBreakpoint !== 'mobile') {
+				TweenMax.fromTo(this.$outerMask, this.options.animDuration, {
+					x: -adjX
 				},{
 					x: 0
 				});
@@ -303,8 +309,8 @@ class InfiniteCarousel {
 		if (this.currentIndex > (this._length * 2) - 1) {
 			this.previousIndex -= this._length;
 			this.currentIndex -= this._length;
-			if (this.currentBreakpoint === 'desktop') {
-				TweenMax.fromTo(this.$outerMask, this.options.animationDuration, {
+			if (this.currentBreakpoint !== 'mobile') {
+				TweenMax.fromTo(this.$outerMask, this.options.animDuration, {
 					x: adjX
 				},{
 					x: 0

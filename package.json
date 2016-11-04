@@ -1,6 +1,6 @@
 {
 	"name": "GruntES6",
-	"version": "0.6.6",
+	"version": "0.6.8",
 	"title": "Grunt ES6",
 	"description": "A Grunt ES6 sandbox.",
 	"namespace": "gruntes6",
@@ -11,7 +11,7 @@
 	"devDependencies": {
 		"grunt": "^1.0.1",
 		"grunt-autoprefixer": "^3.0.4",
-		"grunt-bower": "^0.21.2",
+		"grunt-bower": "^0.21.3",
 		"grunt-bowercopy": "^1.2.4",
 		"grunt-contrib-clean": "^1.0.0",
 		"grunt-contrib-concat": "^1.0.1",
@@ -31,7 +31,7 @@
 		"babel-preset-latest": "6.16.0",
 		"babel-plugin-transform-object-assign": "6.8.0",
 		"babel-polyfill": "6.16.0",
-		"browserify": "13.1.0",
+		"browserify": "13.1.1",
 		"handlebars": "4.0.5",
 		"grunt-browserify": "5.0.0",
 		"browserify-handlebars": "1.0.0",
