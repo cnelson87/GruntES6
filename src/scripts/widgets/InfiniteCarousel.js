@@ -372,6 +372,7 @@ class InfiniteCarousel {
 		this.$el = null;
 		this.$navPrev = null;
 		this.$navNext = null;
+		this.$outerMask = null;
 		this.$innerTrack = null;
 		this.$panels = null;
 		$.event.trigger(`${this.options.customEventName}:unInitialized`);
