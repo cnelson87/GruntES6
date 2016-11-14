@@ -32,7 +32,7 @@
 		"babel-plugin-transform-object-assign": "6.8.0",
 		"babel-polyfill": "6.16.0",
 		"browserify": "13.1.1",
-		"handlebars": "4.0.5",
+		"handlebars": "4.0.6",
 		"grunt-browserify": "5.0.0",
 		"browserify-handlebars": "1.0.0",
 		"pathmodify": "0.5.0",
