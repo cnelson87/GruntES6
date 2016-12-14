@@ -2,7 +2,6 @@
 var Handlebars = require('handlebars/runtime')['default'];
 
 const HandlebarsHelpers = function() {
-/* jshint ignore:start */
 
 	/**
 	 * Compare a value
@@ -48,7 +47,6 @@ const HandlebarsHelpers = function() {
 
 	});
 
-/* jshint ignore:end */
 };
 
 export default HandlebarsHelpers;

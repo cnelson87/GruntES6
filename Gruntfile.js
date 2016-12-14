@@ -74,7 +74,7 @@ module.exports = function(grunt) {
 	});
 
 	/**
-	 * Register Custom tasks
+	 * Compile a dist build for deployment
 	 */
 	grunt.registerTask('build', 'generate a build', function(target) {
 		var target = (target === 'dev') ? 'dev' : 'dist';
@@ -106,7 +106,7 @@ module.exports = function(grunt) {
 	});
 
 	/**
-	 * Create a dev build and start a static server from the 'local' directory
+	 * Compile a dev build and start a static server from the 'local' directory
 	 */
 	grunt.registerTask('run', ['build:dev', 'connect', 'watch']);
 

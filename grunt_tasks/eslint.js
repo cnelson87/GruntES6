@@ -11,7 +11,7 @@ module.exports = function (grunt) {
 			configFile: './.eslintrc.json'
 		},
 
-		target: '<%= sourceScripts %>/**/*.js'
+		target: ['<%= sourceScripts %>/**/*.js']
 
 	};
 
