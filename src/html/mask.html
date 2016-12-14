@@ -1,0 +1,36 @@
+{{#extend "default"}}
+
+	{{#replace "title"}}{{mask.title}} - {{title}}{{/replace}}
+	{{#replace "description"}}{{mask.description}}{{/replace}}
+	{{#replace "keywords"}}{{keywords}}, {{mask.keywords}}{{/replace}}
+
+	{{#replace "body-id"}}maskpage{{/replace}}
+
+	{{#replace "content"}}
+
+		<section class="content">
+			<div class="content-container">
+
+				<h1>{{mask.h1}}</h1>
+				<div class="intro">
+					<p>{{mask.intro}}</p>
+				</div>
+
+			</div>
+		</section>
+
+		<section class="content hero bottom-angle test-hero-1">
+			<div class="content-container">
+
+			</div>
+		</section>
+
+		<section class="content hero top-cutout test-hero-2">
+			<div class="content-container">
+
+			</div>
+		</section>
+
+	{{/replace}}
+
+{{/extend}}

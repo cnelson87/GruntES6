@@ -1,6 +1,6 @@
 /**
  * autoprefixer
- * Add vendor-prefixed CSS properties
+ * Parse CSS and add vendor-prefixed CSS properties.
  */
 
 module.exports = function (grunt) {

@@ -69,7 +69,9 @@ class InfiniteCarousel {
 		this.currentIndex = this.options.initialIndex + this._length;
 		this.previousIndex = null;
 		this.numItemsToAnimate = this.options.numItemsToAnimate;
+		/* eslint-disable no-magic-numbers */
 		this.scrollAmt = -100 * this.numItemsToAnimate;
+		/* eslint-enable no-magic-numbers */
 		this.setAutoRotation = null;
 		this.isAnimating = false;
 		this.currentBreakpoint = AppConfig.currentBreakpoint;
@@ -306,7 +308,7 @@ class InfiniteCarousel {
 			});
 		}
 
-		if (this.currentIndex > (this._length * 2) - 1) {
+		if (this.currentIndex > (this._length + this._length) - 1) {
 			this.previousIndex -= this._length;
 			this.currentIndex -= this._length;
 			if (this.currentBreakpoint !== 'mobile') {

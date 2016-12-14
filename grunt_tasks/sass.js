@@ -1,6 +1,6 @@
 /**
  * sass
- * Compile Sass to CSS
+ * Compile Sass to CSS.
  */
 
 module.exports = function (grunt) {

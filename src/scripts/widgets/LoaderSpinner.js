@@ -25,7 +25,7 @@ class LoaderSpinner {
 	initialize($el, options) {
 
 		this.$el = $el;
-		this.options = $.extend({
+		this.options = Object.assign({
 			overlayTemplate: '<div class="loader-spinner-overlay"></div>'
 		}, options);
 
@@ -35,11 +35,12 @@ class LoaderSpinner {
 	}
 
 	addLoader() {
+		let delay = 10;
 		this.$el.append(this.$elOverlay);
 		setTimeout(() => {
 			//spinner gif gets 'stuck' and needs a click
 			this.$elOverlay.click();
-		}, 10);
+		}, delay);
 	}
 
 	removeLoader() {

@@ -4,12 +4,12 @@
  * @description: Broadcasts pseudo 'scrollStart' and 'scrollStop' events
  */
 
-import AppConfig from 'config/AppConfig';
 import AppEvents from 'config/AppEvents';
 import PubSub from 'utilities/PubSub';
 
 const scrollStartStopEvents = function() {
 	let timer;
+	let timeoutTime = 100;
 	$(window).on('scroll', function(event) {
 		if (timer) {
 			clearTimeout(timer);
@@ -21,7 +21,7 @@ const scrollStartStopEvents = function() {
 			timer = null;
 			$.event.trigger(AppEvents.WINDOW_SCROLL_START);
 			PubSub.trigger(AppEvents.WINDOW_SCROLL_STOP);
-		}, 100);
+		}, timeoutTime);
 	});
 };
 

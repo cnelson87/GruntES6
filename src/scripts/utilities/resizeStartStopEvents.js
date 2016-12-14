@@ -4,12 +4,12 @@
  * @description: Broadcasts pseudo 'resizeStart' and 'resizeStop' events
  */
 
-import AppConfig from 'config/AppConfig';
 import AppEvents from 'config/AppEvents';
 import PubSub from 'utilities/PubSub';
 
 const resizeStartStopEvents = function() {
 	let timer;
+	let timeoutTime = 100;
 	$(window).on('resize', function(event) {
 		if (timer) {
 			clearTimeout(timer);
@@ -21,7 +21,7 @@ const resizeStartStopEvents = function() {
 			timer = null;
 			$.event.trigger(AppEvents.WINDOW_RESIZE_STOP);
 			PubSub.trigger(AppEvents.WINDOW_RESIZE_STOP);
-		}, 100);
+		}, timeoutTime);
 	});
 };
 

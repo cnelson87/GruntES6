@@ -1,4 +1,4 @@
-
+/* eslint-disable */
 var Handlebars = require('handlebars/runtime')['default'];
 
 const HandlebarsHelpers = function() {
@@ -52,3 +52,4 @@ const HandlebarsHelpers = function() {
 };
 
 export default HandlebarsHelpers;
+/* eslint-enable */

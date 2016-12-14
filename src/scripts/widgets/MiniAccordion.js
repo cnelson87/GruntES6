@@ -147,9 +147,10 @@ class MiniAccordion {
 
 	__keydownTab(event) {
 		let keyCode = event.which;
+		const spaceKey = 32;
 
 		// spacebar; activate tab click
-		if (keyCode === 32) {
+		if (keyCode === spaceKey) {
 			event.preventDefault();
 			this.$tab.click();
 		}

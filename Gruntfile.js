@@ -83,12 +83,16 @@ module.exports = function(grunt) {
 			// Vendor libs are checked-in to src, so no need 
 			// to run bower task when building.
 			// 'bower',
+			// 'bowercopy',
+			// 'clean:temp',
 			'clean:' + target,
+			'lintspaces',
 			'handlebarslayouts:' + target,
 			'copy:' + target,
+			'scsslint:' + target,
 			'sass:' + target,
 			'autoprefixer:' + target,
-			'jshint',
+			'eslint',
 			'concat:' + target + 'libs',
 			'browserify:' + target
 		];

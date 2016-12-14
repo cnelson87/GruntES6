@@ -7,7 +7,7 @@
  */
 
 const ajaxGet = function(url, dataType, data) {
-	if (!url) return;
+	if (!url) {return;}
 	return $.ajax({
 		type: 'GET',
 		url: url,

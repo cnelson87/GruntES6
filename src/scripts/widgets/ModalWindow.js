@@ -112,6 +112,7 @@ class ModalWindow {
 	}
 
 	_addEventListeners() {
+		const escKey = 27;
 
 		this.$triggers.on('click', (event) => {
 			event.preventDefault();
@@ -148,7 +149,7 @@ class ModalWindow {
 		});
 
 		this.$document.on('keydown', (event) => {
-			if (this.isModalActivated && event.keyCode === 27) {
+			if (this.isModalActivated && event.keyCode === escKey) {
 				this.closeModal();
 			}
 		});
@@ -173,6 +174,7 @@ class ModalWindow {
 	}
 
 	openModal() {
+		let delay = 10;
 
 		this.isModalActivated = true;
 
@@ -194,13 +196,13 @@ class ModalWindow {
 				$.event.trigger(`${this.options.customEventName}:modalOpened`, [this.$modal]);
 			}, this.options.animDuration);
 
-		}, 10);
+		}, delay);
 
 	}
 
 	closeModal() {
 
-		this.$body.removeClass(this.options.activeBodyClass).css({position: '', top: ''});
+		this.$body.removeClass(this.options.activeBodyClass).css({top: ''});
 		this.$overlay.removeClass(this.options.activeClass);
 		this.$modal.removeClass(this.options.activeClass).attr({'aria-hidden':'true'});
 

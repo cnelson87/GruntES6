@@ -24,7 +24,8 @@ import TabSwitcher from 'widgets/TabSwitcher';
 import Horizordion from 'widgets/Horizordion';
 import ModalWindow from 'widgets/ModalWindow';
 import AjaxModal from 'widgets/AjaxModal';
-import {SuperClass, SubClass} from 'widgets/SuperSubClass';
+// import {SuperClass, SubClass} from 'widgets/SuperSubClass';
+import {SubClass} from 'widgets/SuperSubClass';
 
 const Application = {
 

@@ -8,6 +8,7 @@
 	JS will re-calculate widths based on actual length of items.
 ******************************************************************/
 
+// scss-lint:disable NestingDepth
 .responsive-carousel {
 	width: calc(100% - 80px);
 	height: auto;
@@ -106,3 +107,4 @@
 	}
 
 }
+// scss-lint:enable NestingDepth

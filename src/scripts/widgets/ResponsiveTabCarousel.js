@@ -110,9 +110,14 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 	__keydownTab(event) {
 		let keyCode = event.which;
 		let index = this.$tabs.index(event.currentTarget);
+		const spaceKey = 32;
+		const leftKey = 37;
+		const upKey = 38;
+		const rightKey = 39;
+		const downKey = 40;
 
 		// left/up arrow; go to previous tab
-		if (keyCode === 37 || keyCode === 38) {
+		if (keyCode === leftKey || keyCode === upKey) {
 			event.preventDefault();
 			if (index === 0) {index = this._length;}
 			index--;
@@ -120,7 +125,7 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 		}
 
 		// right/down arrow; go to next tab
-		if (keyCode === 39 || keyCode === 40) {
+		if (keyCode === rightKey || keyCode === downKey) {
 			event.preventDefault();
 			index++;
 			if (index === this._length) {index = 0;}
@@ -128,7 +133,7 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 		}
 
 		// spacebar; activate tab click
-		if (keyCode === 32) {
+		if (keyCode === spaceKey) {
 			event.preventDefault();
 			this.$tabs.eq(index).click();
 		}

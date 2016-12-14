@@ -86,8 +86,9 @@ class Horizordion {
 **/
 
 	initDOM() {
-		let $activeTab = this.$tabs.eq(this.currentIndex === -1 ? 9999 : this.currentIndex);
-		let $activePanel = this.$panels.eq(this.currentIndex === -1 ? 9999 : this.currentIndex);
+		let highIndex = 9999;
+		let $activeTab = this.$tabs.eq(this.currentIndex === -1 ? highIndex : this.currentIndex);
+		let $activePanel = this.$panels.eq(this.currentIndex === -1 ? highIndex : this.currentIndex);
 
 		this.$el.attr({'role':'tablist', 'aria-live':'polite'});
 		this.$tabs.attr({'role':'tab', 'tabindex':'0', 'aria-selected':'false'});
@@ -142,7 +143,7 @@ class Horizordion {
 		event.preventDefault();
 		let index = this.$tabs.index(event.currentTarget);
 		let $currentTab = this.$tabs.eq(index);
-		let $currentPanel = this.$panels.eq(index);
+		// let $currentPanel = this.$panels.eq(index);
 
 		if (this.isAnimating || $currentTab.hasClass(this.options.classDisabled)) {return;}
 
@@ -171,9 +172,14 @@ class Horizordion {
 	__keydownTab(event) {
 		let keyCode = event.which;
 		let index = this.$tabs.index(event.currentTarget);
+		const spaceKey = 32;
+		const leftKey = 37;
+		const upKey = 38;
+		const rightKey = 39;
+		const downKey = 40;
 
 		// left/up arrow; go to previous tab
-		if (keyCode === 37 || keyCode === 38) {
+		if (keyCode === leftKey || keyCode === upKey) {
 			event.preventDefault();
 			if (index === 0) {index = this._length;}
 			index--;
@@ -181,7 +187,7 @@ class Horizordion {
 		}
 
 		// right/down arrow; go to next tab
-		if (keyCode === 39 || keyCode === 40) {
+		if (keyCode === rightKey || keyCode === downKey) {
 			event.preventDefault();
 			index++;
 			if (index === this._length) {index = 0;}
@@ -189,7 +195,7 @@ class Horizordion {
 		}
 
 		// spacebar; activate tab click
-		if (keyCode === 32) {
+		if (keyCode === spaceKey) {
 			event.preventDefault();
 			this.$tabs.eq(index).click();
 		}

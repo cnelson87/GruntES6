@@ -1,6 +1,6 @@
 /**
  * handlebarslayouts
- * Handlebars task to render Handlebars templates to HTML
+ * Handlebars task to render Handlebars templates to HTML.
  */
 
 module.exports = function (grunt) {

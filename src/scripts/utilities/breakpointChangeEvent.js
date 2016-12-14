@@ -31,8 +31,8 @@ const breakpointChangeEvent = function() {
 			$.event.trigger(AppEvents.BREAKPOINT_CHANGE, {breakpoint: AppConfig.currentBreakpoint});
 			PubSub.trigger(AppEvents.BREAKPOINT_CHANGE, {
 				breakpoint: AppConfig.currentBreakpoint,
-				mobile: AppConfig.isMobileView, 
-				tablet: AppConfig.isTabletView, 
+				mobile: AppConfig.isMobileView,
+				tablet: AppConfig.isTabletView,
 				desktop: AppConfig.isDesktopView
 			});
 		}

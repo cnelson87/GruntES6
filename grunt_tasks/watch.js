@@ -19,11 +19,11 @@ module.exports = function (grunt) {
 
 		html: {
 			files: ['<%= sourceHTML %>/**/*.html', '!<%= sourceHTML %>/_layouts/**/*.html', '!<%= sourceHTML %>/_partials/**/*.html'],
-			tasks: ['newer:handlebarslayouts:dev']
+			tasks: ['newer:lintspaces', 'newer:handlebarslayouts:dev']
 		},
 		htmlIncludes: {
 			files: ['<%= sourceHTML %>/_layouts/**/*.html', '<%= sourceHTML %>/_partials/**/*.html'],
-			tasks: ['handlebarslayouts:dev']
+			tasks: ['newer:lintspaces', 'handlebarslayouts:dev']
 		},
 		htmlContext: {
 			files: ['<%= sourceHTML %>/_context/*.json'],
@@ -32,12 +32,12 @@ module.exports = function (grunt) {
 
 		styles: {
 			files: ['<%= sourceStyles %>/**/*.scss'],
-			tasks: ['sass:dev', 'autoprefixer:dev']
+			tasks: ['newer:scsslint:dev', 'sass:dev', 'autoprefixer:dev']
 		},
 
 		scripts: {
 			files: ['<%= sourceScripts %>/**/*.js'],
-			tasks: ['newer:jshint', 'browserify:dev']
+			tasks: ['newer:eslint', 'browserify:dev']
 		},
 
 		templates: {

@@ -24,11 +24,12 @@ const BaseView = Backbone.View.extend({
 		console.log('BaseView:render');
 		let viewModel = this.model.attributes;
 		let html = this.template(viewModel);
+		let delay = 400;
 		// Add delay to demonstrate loader
 		setTimeout(function() {
 			this.loader.removeLoader();
 			this.$el.html(html);
-		}.bind(this), 400);
+		}.bind(this), delay);
 	}
 
 });

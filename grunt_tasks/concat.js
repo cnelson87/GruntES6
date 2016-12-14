@@ -13,6 +13,7 @@ module.exports = function (grunt) {
 		'<%= sourceVendor %>/picturefill.min.js',
 		'<%= sourceVendor %>/greensock/TweenMax.min.js',
 		'<%= sourceVendor %>/greensock/ScrollToPlugin.min.js',
+		'<%= sourceVendor %>/greensock/Draggable.min.js',
 		'<%= sourceVendor %>/scrollmagic/ScrollMagic.min.js',
 		'<%= sourceVendor %>/scrollmagic/jquery.ScrollMagic.min.js',
 		'<%= sourceVendor %>/scrollmagic/animation.gsap.min.js',

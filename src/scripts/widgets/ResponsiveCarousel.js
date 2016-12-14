@@ -138,6 +138,7 @@ class ResponsiveCarousel {
 
 	setOptions() {
 		// console.log(AppConfig.currentBreakpoint);
+		const percent = 100;
 
 		switch(AppConfig.currentBreakpoint) {
 			case 'mobile':
@@ -158,9 +159,9 @@ class ResponsiveCarousel {
 
 		this.lastIndex = this._length - this.numVisibleItems;
 		if (this.currentIndex > this.lastIndex) {this.currentIndex = this.lastIndex;}
-		this.itemWidth = 100 / this._length;
-		this.scrollAmt = (100 / this.numVisibleItems) * -1;
-		this.trackWidth = (1 / this.numVisibleItems) * (this._length * 100);
+		this.itemWidth = percent / this._length;
+		this.scrollAmt = (percent / this.numVisibleItems) * -1;
+		this.trackWidth = (1 / this.numVisibleItems) * (this._length * percent);
 
 	}
 

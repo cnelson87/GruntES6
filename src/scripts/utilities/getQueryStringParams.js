@@ -11,17 +11,17 @@ const getQueryStringParams = function(str) {
 	let qs = str || decodeURIComponent(location.search.substring(1)); //decode and remove leading '?'
 	let pairs = qs.split('&'); //['foo=bar','abc=123','bool=true','quxzot']
 	let result = {};
-	if (!qs) return;
+	if (!qs) {return;}
 	pairs.forEach(function(pair) {
 		pair = pair.split('=');
 		let key = pair[0];
 		let val = pair[1] || null;
 		if (val !== null) {
 			//convert numbers first
-			if (!isNaN(val)) val = parseInt(val, 10);
+			if (!isNaN(val)) {val = parseInt(val, 10);}
 			//then convert booleans
-			if (val === 'true') val = true;
-			if (val === 'false') val = false;
+			if (val === 'true') {val = true;}
+			if (val === 'false') {val = false;}
 		}
 		result[key] = val;
 	});

@@ -7,7 +7,7 @@
  */
 
 const ajaxPost = function(url, data, contentType, dataType) {
-	if (!url || !data) return;
+	if (!url || !data) {return;}
 	return $.ajax({
 		type: 'POST',
 		url: url,

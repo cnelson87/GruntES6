@@ -34,6 +34,7 @@
 
 		}
 
+		// scss-lint:disable ColorKeyword, ColorVariable
 		&:nth-child(1) {
 			background-color: rgba(red, 0.2);
 		}
@@ -46,6 +47,7 @@
 		&:nth-child(4) {
 			background-color: rgba(green, 0.2);
 		}
+		// scss-lint:enable ColorKeyword, ColorVariable
 
 		> .horizordion--tab {
 			@include hidden;

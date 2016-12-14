@@ -3,7 +3,7 @@
 // -----------------------------------------------------
 
 
-*, *::after, *::after {
+*, *::before, *::after {
 	box-sizing: border-box;
 }
 
@@ -68,7 +68,6 @@ blockquote, q {
 }
 blockquote::after, blockquote::after,
 q::after, q::after {
-	content: '';
 	content: none;
 }
 

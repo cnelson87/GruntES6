@@ -55,42 +55,40 @@ class AjaxModal extends ModalWindow {
 **/
 
 	getContent() {
-		let self = this;
 		let ajaxUrl = this.$activeTrigger.data('ajaxurl') || this.$activeTrigger.attr('href');
 		let targetID = ajaxUrl.split('#')[1] || false;
 		let targetEl;
+		let delay = 400;
 
 		this.ajaxLoader.addLoader();
 
-		Promise.resolve(ajaxGet(ajaxUrl, 'html'))
-			.then((response) => {
-				// console.log(response);
+		Promise.resolve(ajaxGet(ajaxUrl, 'html')).then((response) => {
+			// console.log(response);
 
-				if (targetID) {
-					targetEl = $(response).find('#' + targetID);
-					if (targetEl.length) {
-						this.contentHTML = $(response).find('#' + targetID).html();
-					} else {
-						this.contentHTML = $(response).html();
-					}
-					
+			if (targetID) {
+				targetEl = $(response).find('#' + targetID);
+				if (targetEl.length) {
+					this.contentHTML = $(response).find('#' + targetID).html();
 				} else {
-					this.contentHTML = response;
+					this.contentHTML = $(response).html();
 				}
 
-				// add delay to showcase loader-spinner
-				setTimeout(() => {
-					this.ajaxLoader.removeLoader();
-					this.setContent();
-				}, 400);
+			} else {
+				this.contentHTML = response;
+			}
 
-			})
-			.catch((response) => {
-				// console.log(response);
-				this.contentHTML = null;
+			// add delay to showcase loader-spinner
+			setTimeout(() => {
 				this.ajaxLoader.removeLoader();
-				this.$content.html(this.options.ajaxErrorMsg);
-			});
+				this.setContent();
+			}, delay);
+
+		}).catch((response) => {
+			// console.log(response);
+			this.contentHTML = null;
+			this.ajaxLoader.removeLoader();
+			this.$content.html(this.options.ajaxErrorMsg);
+		});
 
 	}
 
