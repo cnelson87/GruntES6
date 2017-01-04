@@ -91,7 +91,7 @@ module.exports = function(grunt) {
 			'copy:' + target,
 			'scsslint:' + target,
 			'sass:' + target,
-			'autoprefixer:' + target,
+			'postcss:' + target,
 			'eslint',
 			'concat:' + target + 'libs',
 			'browserify:' + target

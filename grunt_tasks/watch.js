@@ -32,7 +32,7 @@ module.exports = function (grunt) {
 
 		styles: {
 			files: ['<%= sourceStyles %>/**/*.scss'],
-			tasks: ['newer:scsslint:dev', 'sass:dev', 'autoprefixer:dev']
+			tasks: ['newer:scsslint:dev', 'sass:dev', 'postcss:dev']
 		},
 
 		scripts: {

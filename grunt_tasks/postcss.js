@@ -1,15 +1,20 @@
 /**
- * autoprefixer
- * Parse CSS and add vendor-prefixed CSS properties.
+ * postcss
+ * Apply several post-processors to your CSS using PostCSS.
  */
 
 module.exports = function (grunt) {
+
+	// list all plugins
+	var plugins = [
+		require('autoprefixer')({browsers: ['last 5 versions', 'ie 9']})
+	];
 
 	return {
 
 		dev: {
 			options: {
-				browsers: ['last 5 versions', 'ie 9'],
+				processors: plugins,
 				map: true
 			},
 			files: [{
@@ -20,7 +25,7 @@ module.exports = function (grunt) {
 
 		dist: {
 			options: {
-				browsers: ['last 5 versions', 'ie 9'],
+				processors: plugins,
 				map: false
 			},
 			files: [{
