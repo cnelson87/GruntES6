@@ -5,7 +5,7 @@
 		"modernizr": "~2.8.3",
 		"jquery": "~3.1.1",
 		"jquery-touchswipe": "~1.6.18",
-		"greensock": "~1.19.0",
+		"greensock": "~1.19.1",
 		"picturefill": "~3.0.2",
 		"ScrollMagic": "~2.0.5",
 		"underscore": "~1.8.3",
