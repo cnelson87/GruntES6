@@ -19,7 +19,7 @@ const scrollStartStopEvents = function() {
 		}
 		timer = setTimeout(function() {
 			timer = null;
-			$.event.trigger(AppEvents.WINDOW_SCROLL_START);
+			$.event.trigger(AppEvents.WINDOW_SCROLL_STOP);
 			PubSub.trigger(AppEvents.WINDOW_SCROLL_STOP);
 		}, timeoutTime);
 	});
