@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Base class to create modal windows
 
-	VERSION: 0.2.8
+	VERSION: 0.2.9
 
 	USAGE: let myModalWindow = new ModalWindow('Elements', 'Options')
 		@param {jQuery Object}
@@ -35,6 +35,7 @@ class ModalWindow {
 			modalClass: 'modalwindow',
 			extraClasses: '',
 			overlayID: 'modaloverlay',
+			overlayClass: 'modaloverlay',
 			closeBtnClass: 'closeX',
 			closeBtnText: 'close modal dialog',
 			activeClass: 'is-active',
@@ -73,7 +74,7 @@ class ModalWindow {
 		//create overlay
 		this.$overlay = $('#' + this.options.overlayID);
 		if (!this.$overlay.length) {
-			this.$overlay = $('<div id="' + this.options.overlayID + '"></div>').appendTo(this.$body);
+			this.$overlay = $(`<div id="${this.options.overlayID}" class="${this.options.overlayClass}"></div>`).appendTo(this.$body);
 		}
 
 		//create modal

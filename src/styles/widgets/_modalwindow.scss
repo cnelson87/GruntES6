@@ -8,27 +8,27 @@ body.modal-active {
 	position: fixed;
 }
 
-#modaloverlay {
+.modaloverlay {
 	display: none;
 	visibility: hidden;
 	opacity: 0;
 	width: 100vw;
 	height: 100vh;
-	background: rgba($black, 0.7);
+	background: rgba($black, 0.8);
 	position: fixed;
 	left: 0;
 	right: 0;
 	top: 0;
 	bottom: 0;
-	z-index: 10;
-	transition: opacity 0.2s, visibility 0.2s;
+	z-index: $overlay-zindex;
+	transition: opacity 0.3s, visibility 0.3s;
 	transition-delay: 0.1s;
 
 	&.is-active {
 		// display: block; //set in script
 		visibility: visible;
 		opacity: 1;
-		transition: opacity 0.2s, visibility 0.2s;
+		transition: opacity 0.3s, visibility 0.3s;
 		transition-delay: 0;
 	}
 
@@ -42,15 +42,15 @@ body.modal-active {
 	padding: 40px 0 20px;
 	overflow: hidden;
 	position: fixed;
-	z-index: 11;
-	transition: opacity 0.2s, visibility 0.2s;
+	z-index: $modal-zindex;
+	transition: opacity 0.3s, visibility 0.3s;
 	transition-delay: 0;
 
 	&.is-active {
 		// display: block; //set in script
 		visibility: visible;
 		opacity: 1;
-		transition: opacity 0.2s, visibility 0.2s;
+		transition: opacity 0.3s, visibility 0.3s;
 		transition-delay: 0.1s;
 	}
 
@@ -66,6 +66,7 @@ body.modal-active {
 		padding: 0 20px;
 		overflow: auto;
 		position: relative;
+		-webkit-overflow-scrolling: touch;
 	}
 
 }
@@ -77,16 +78,17 @@ body.modal-active {
 	/* iOS fix: fill the blank/white area behind the bottom bar */
 	#modaloverlay {
 		height: calc(100vh + 100px);
+		// height: 100%;
 		bottom: auto;
 	}
 
 	.modalwindow {
-		width: calc(100vw - 20px);
-		height: calc(100vh - 20px);
-		left: 10px;
-		right: 10px;
-		top: 10px;
-		bottom: 10px;
+		width: calc(100% - $mobile-gutter-double-width);
+		height: calc(100% - $mobile-gutter-double-width);
+		left: $mobile-gutter-width;
+		right: $mobile-gutter-width;
+		top: $mobile-gutter-width;
+		bottom: auto;
 
 		.modalwindow--content {
 			width: 100%;
@@ -99,40 +101,13 @@ body.modal-active {
 }
 
 
-// Tablet
-@media (min-width: $tablet-breakpoint-min) and (max-width: $tablet-breakpoint-max) {
+// Tablet+
+@media (min-width: $tablet-breakpoint-min) {
 
 	.modalwindow {
-		width: 480px;
+		width: 640px;
 		min-height: 240px;
-		max-height: calc(100vh - 80px);
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-
-		&.modal-small {
-			width: 320px;
-		}
-		&.modal-wide {
-			width: 600px;
-		}
-
-		.modalwindow--content {
-			max-height: calc(100vh - 140px);
-		}
-
-	}
-
-}
-
-
-// Desktop
-@media (min-width: $desktop-breakpoint-min) {
-
-	.modalwindow {
-		width: 600px;
-		min-height: 240px;
-		max-height: calc(100vh - 80px);
+		max-height: calc(100vh - #{$tablet-vertical-double-spacing});
 		left: 50%;
 		top: 50%;
 		transform: translate(-50%, -50%);
@@ -141,11 +116,37 @@ body.modal-active {
 			width: 480px;
 		}
 		&.modal-wide {
-			width: 800px;
+			width: 720px;
 		}
 
 		.modalwindow--content {
-			max-height: calc(100vh - 140px);
+			max-height: calc(100vh - #{$tablet-vertical-double-spacing + 60});
+			padding: 0 $tablet-gutter-width;
+		}
+
+	}
+
+}
+
+
+// Desktop+
+@media (min-width: $desktop-breakpoint-min) {
+
+	.modalwindow {
+		width: 720px;
+		min-height: 280px;
+		max-height: calc(100vh - #{$desktop-vertical-double-spacing});
+
+		&.modal-small {
+			width: 640px;
+		}
+		&.modal-wide {
+			width: 840px;
+		}
+
+		.modalwindow--content {
+			max-height: calc(100vh - #{$desktop-vertical-double-spacing + 60});
+			padding: 0 $desktop-gutter-width;
 		}
 
 	}
