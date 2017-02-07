@@ -7,6 +7,8 @@
 
 	.row > div,
 	.grid .grid-cell {
+		padding-top: 0.5em;
+		padding-bottom: 0.5em;
 		&:nth-child(3n+1) {
 			background-color: rgba($gray-light, 0.6);
 		}

@@ -51,6 +51,11 @@
 }
 
 
+// Width Percentage
+@mixin width-percentage($num, $den) {
+	width: percentage($num / $den);
+}
+
 // Animations
 @mixin animation($name, $duration: 1s, $timing: linear, $iteration: infinite, $direction: normal, $fillMode: none) {
 	animation-name: #{$name};
@@ -61,7 +66,7 @@
 	animation-fill-mode: #{$fillMode};
 }
 
-// Gradients
+// Background Gradients
 @mixin background-linear-gradient($from, $to) {
 	background-color: $from;
 	@if $to != $from {

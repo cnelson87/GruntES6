@@ -9,8 +9,8 @@
 @import 'utils/variables';
 @import 'utils/mixins';
 @import 'utils/animations';
-@import 'utils/grid';
 @import 'utils/flexbox';
+@import 'utils/grid';
 
 // global styles
 @import 'chrome/reset';
@@ -28,6 +28,7 @@
 @import 'common/responsive-iframe';
 
 // components used for a specific purpose
+// @import 'components/hero';
 @import 'components/mediablock';
 @import 'components/image-card';
 
@@ -37,9 +38,11 @@
 @import 'widgets/infinite-carousel';
 @import 'widgets/accordion';
 @import 'widgets/tabswitcher';
+// @import 'widgets/horizordion';
 @import 'widgets/modalwindow';
 
 // unique views
-@import 'views/home';
-@import 'views/grids';
-@import 'views/videos';
+@import 'views/homepage';
+@import 'views/flexboxpage';
+@import 'views/gridspage';
+@import 'views/videospage';
