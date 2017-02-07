@@ -76,9 +76,8 @@ body.modal-active {
 @media (max-width: $mobile-breakpoint-max) {
 
 	/* iOS fix: fill the blank/white area behind the bottom bar */
-	#modaloverlay {
+	.modaloverlay {
 		height: calc(100vh + 100px);
-		// height: 100%;
 		bottom: auto;
 	}
 
