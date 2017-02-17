@@ -1,6 +1,6 @@
 /**
  * sass
- * Compile Sass to CSS.
+ * Compile Sass to CSS using node-sass
  */
 
 module.exports = function (grunt) {
@@ -9,10 +9,10 @@ module.exports = function (grunt) {
 
 		dev: {
 			options: {
-				sourcemap: 'auto',
-				style: 'expanded',
-				debug: true,
-				trace: true
+				sourceComments: true,
+				sourceMap: true,
+				sourceMapContents: true,
+				outputStyle: 'expanded'
 			},
 			files: [{
 				src: '<%= sourceStyles %>/app.scss',
@@ -22,10 +22,10 @@ module.exports = function (grunt) {
 
 		dist: {
 			options: {
-				sourcemap: 'none',
-				style: 'expanded',
-				debug: false,
-				trace: false
+				sourceComments: false,
+				sourceMap: false,
+				sourceMapContents: false,
+				outputStyle: 'compressed'
 			},
 			files: [{
 				src: '<%= sourceStyles %>/app.scss',

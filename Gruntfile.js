@@ -89,7 +89,7 @@ module.exports = function(grunt) {
 			'lintspaces',
 			'handlebarslayouts:' + target,
 			'copy:' + target,
-			'scsslint:' + target,
+			'sasslint:' + target,
 			'sass:' + target,
 			'postcss:' + target,
 			'eslint',

@@ -1,6 +1,6 @@
 /**
- * scss-lint
- * Validate .scss files with scss-lint.
+ * sasslint
+ * Lint your sass using Node Sass Lint
  */
 
 module.exports = function (grunt) {
@@ -9,7 +9,7 @@ module.exports = function (grunt) {
 
 		dev: {
 			options: {
-				config: '.scss-lint.yml',
+				config: '.sass-lint.yml',
 				failOnWarning: true,
 				force: false,
 				reporterOutput: null
@@ -21,7 +21,7 @@ module.exports = function (grunt) {
 
 		dist: {
 			options: {
-				config: '.scss-lint.yml',
+				config: '.sass-lint.yml',
 				force: true,
 				reporterOutput: null
 			},

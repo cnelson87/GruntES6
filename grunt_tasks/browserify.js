@@ -22,8 +22,7 @@ module.exports = function (grunt) {
 
 		options: {
 			transform: ['browserify-handlebars', ['babelify', {
-				presets: ['latest'],
-				plugins: ['transform-object-assign']
+				presets: ['latest']
 			}]],
 			configure: function(b) {
 				b.plugin(pathmodify, {mods: paths});

@@ -11,13 +11,13 @@ html, body {
 
 body {
 	@include clearfix;
-	background: $body-bg url($image-path + '/bg-main-mobi.jpg') no-repeat fixed center top;
+	background: $body-bg url($image-path+'/bg-main-mobi.jpg') no-repeat fixed center top;
 	background-size: cover;
 	@media (min-width: $tablet-breakpoint-min) {
-		background-image: url($image-path + '/bg-main-tabt.jpg');
+		background-image: url($image-path+'/bg-main-tabt.jpg');
 	}
 	@media (min-width: $desktop-breakpoint-min) {
-		background-image: url($image-path + '/bg-main-desk.jpg');
+		background-image: url($image-path+'/bg-main-desk.jpg');
 	}
 }
 

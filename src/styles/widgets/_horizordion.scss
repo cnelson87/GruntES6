@@ -34,7 +34,8 @@
 
 		}
 
-		// scss-lint:disable ColorKeyword, ColorVariable
+		// Test Colors
+		// sass-lint:disable no-color-literals
 		&:nth-child(1) {
 			background-color: rgba(red, 0.2);
 		}
@@ -47,7 +48,7 @@
 		&:nth-child(4) {
 			background-color: rgba(green, 0.2);
 		}
-		// scss-lint:enable ColorKeyword, ColorVariable
+		// sass-lint:enable no-color-literals
 
 		> .horizordion--tab {
 			@include hidden;
@@ -64,7 +65,7 @@
 					display: block;
 					width: 30px;
 					height: 30px;
-					background: rgba($gray-dark, 0) url($image-path + '/action-icons.png') no-repeat 0 -30px;
+					background: rgba($gray-dark, 0) url($image-path+'/action-icons.png') no-repeat 0 -30px;
 					background-origin: border-box;
 					border: 2px solid $near-black;
 					border-radius: 50%;
