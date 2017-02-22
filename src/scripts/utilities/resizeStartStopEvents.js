@@ -10,7 +10,7 @@ import PubSub from 'utilities/PubSub';
 const resizeStartStopEvents = function() {
 	let timer;
 	let timeoutTime = 100;
-	$(window).on('resize', function(event) {
+	window.addEventListener('resize', function(event) {
 		if (timer) {
 			clearTimeout(timer);
 		} else {

@@ -10,7 +10,7 @@ import PubSub from 'utilities/PubSub';
 const scrollStartStopEvents = function() {
 	let timer;
 	let timeoutTime = 100;
-	$(window).on('scroll', function(event) {
+	window.addEventListener('scroll', function(event) {
 		if (timer) {
 			clearTimeout(timer);
 		} else {

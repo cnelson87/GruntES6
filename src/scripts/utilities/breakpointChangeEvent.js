@@ -17,13 +17,13 @@ const breakpointChangeEvent = function() {
 
 	let updateAppConfig = function() {
 		AppConfig.currentBreakpoint = AppConfig.breakpoints[zIndex];
-		AppConfig.isMobileView = AppConfig.currentBreakpoint === 'mobile' ? true : false;
-		AppConfig.isTabletView = AppConfig.currentBreakpoint === 'tablet' ? true : false;
-		AppConfig.isDesktopView = AppConfig.currentBreakpoint === 'desktop' ? true : false;
+		AppConfig.isMobileView = AppConfig.currentBreakpoint === 'mobile';
+		AppConfig.isTabletView = AppConfig.currentBreakpoint === 'tablet';
+		AppConfig.isDesktopView = AppConfig.currentBreakpoint === 'desktop';
 	};
 	updateAppConfig();
 
-	$(window).on('resize', function(event) {
+	window.addEventListener('resize', function(event) {
 		let newZI = $elIndicator.css('z-index');
 		if (newZI !== zIndex) {
 			zIndex = newZI;
