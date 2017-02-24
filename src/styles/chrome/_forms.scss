@@ -8,8 +8,6 @@
 //
 
 fieldset {
-	display: block;
-	width: auto;
 	margin-bottom: 1.5em;
 }
 
@@ -28,9 +26,9 @@ label, span.label {
 		font-size: 0.9em;
 		font-weight: normal;
 	}
-}
-label.disabled {
-	color: $gray-light;
+	&.disabled {
+		color: $gray-light;
+	}
 }
 
 output {
@@ -68,19 +66,19 @@ textarea:invalid {
 }
 
 ::-webkit-input-placeholder {
-	color: $gray-med;
+	color: $black;
 	opacity: 1;
 }
 ::-moz-placeholder {
-	color: $gray-med;
+	color: $black;
 	opacity: 1;
 }
 :-ms-input-placeholder {
-	color: $gray-med;
+	color: $black;
 	opacity: 1;
 }
 ::placeholder {
-	color: $gray-med;
+	color: $black;
 	opacity: 1;
 }
 :focus::-webkit-input-placeholder {

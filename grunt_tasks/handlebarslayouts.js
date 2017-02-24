@@ -10,6 +10,7 @@ module.exports = function (grunt) {
 		'ajax-content/ajax-content-1',
 		'ajax-content/ajax-content-2',
 		'index',
+		'forms',
 		'flexbox',
 		'grids',
 		// 'mask',
