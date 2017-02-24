@@ -51,9 +51,9 @@
 }
 
 
-// Width Percentage
-@mixin width-percentage($num, $den) {
-	width: percentage($num / $den);
+// Width Fraction to Percentage
+@mixin width-percentage($numer, $denom) {
+	width: percentage($numer / $denom);
 }
 
 // Animations

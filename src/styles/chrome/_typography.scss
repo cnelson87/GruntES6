@@ -24,7 +24,7 @@ body {
 a {
 	color: $link-color;
 	text-decoration: none;
-	transition: color 0.2s, background-color 0.2s;
+	transition: color $transition-speed, background-color $transition-speed;
 }
 a:active, a:focus, a:hover {
 	color: $link-hover-color;
