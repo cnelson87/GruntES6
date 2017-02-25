@@ -15,6 +15,7 @@ import HomepageView from 'views/HomepageView';
 import PromisePage from 'views/PromisePage';
 import VideosPage from 'views/VideosPage';
 
+import DualDatepicker from 'widgets/DualDatepicker';
 import ResponsiveCarousel from 'widgets/ResponsiveCarousel';
 import ResponsiveTabCarousel from 'widgets/ResponsiveTabCarousel';
 import InfiniteCarousel from 'widgets/InfiniteCarousel';
@@ -75,6 +76,9 @@ const Application = {
 			case 'homepage':
 				this.initHomePage();
 				break;
+			case 'formspage':
+				this.initFormsPage();
+				break;
 			case 'promisepage':
 				this.initPromisePage();
 				break;
@@ -119,6 +123,10 @@ const Application = {
 			controller: this,
 			el: $('#homepage-app')
 		});
+	},
+
+	initFormsPage: function() {
+		new DualDatepicker($('#dual-datepicker'));
 	},
 
 	initPromisePage: function() {
