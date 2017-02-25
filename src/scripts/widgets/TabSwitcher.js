@@ -12,7 +12,7 @@
 	AUTHOR: Chris Nelson <cnelson87@gmail.com>
 
 	DEPENDENCIES:
-		- jquery 2.2x+
+		- jquery 3.1.1+
 		- HeightEqualizer.js
 
 */

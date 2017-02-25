@@ -22,7 +22,8 @@ module.exports = function (grunt) {
 
 				//use 'bowercopy' task for copying specific files for the following components:
 				ignorePackages: [
-					'font-awesome'
+					'font-awesome',
+					'jquery-ui'
 				],
 
 				packageSpecific: {

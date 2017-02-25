@@ -12,6 +12,12 @@ module.exports = function (grunt) {
 				'<%= sourceFonts %>/': 'font-awesome/fonts/*.*',
 				'<%= sourceStyles %>/vendor/font-awesome.scss': 'font-awesome/css/font-awesome.css'
 			}
+		},
+
+		'jquery-ui': {
+			files: {
+				'<%= sourceStyles %>/vendor/jquery-ui.scss': 'jquery-ui/jquery-ui.css'
+			}
 		}
 
 	};
