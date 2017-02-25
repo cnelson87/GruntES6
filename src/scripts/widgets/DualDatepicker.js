@@ -53,13 +53,25 @@ class DualDatepicker {
 	}
 
 	initDatepickers() {
-		const self = this;
+		// const $thisEl = this.$el;
 		const $startDatepicker = this.$startDatepicker;
 		const $endDatepicker = this.$endDatepicker;
 		const bindEndDate = this.options.bindEndDateToStartDate;
 		const bindStartDate = this.options.bindStartDateToEndDate;
 		const minimumDays = this.options.minimumDateDiff;
 		const numberOfMonths = this.options.numberOfMonths;
+
+		// let beforeShow = function(textbox, instance) {
+		// 	console.log(textbox, instance);
+		// 	let $datepicker = $('#ui-datepicker-div');
+		// 	$datepicker.css({
+		// 		position: 'absolute',
+		// 		top: '-20px',
+		// 		left: '5px'
+		// 	});
+		// 	$thisEl.append($datepicker);
+		// 	$datepicker.hide();
+		// };
 
 		let beforeShowDay = function(date) {
 			let start = $startDatepicker.datepicker('getDate');
@@ -76,7 +88,8 @@ class DualDatepicker {
 			maxDate: '+1y',
 			defaultDate: '0',
 			numberOfMonths: numberOfMonths,
-			showCurrentAtPos: 0,
+			// showCurrentAtPos: 0,
+			// beforeShow: beforeShow,
 			beforeShowDay: beforeShowDay,
 			onSelect: function(date) {
 				if (bindEndDate) {
@@ -90,7 +103,8 @@ class DualDatepicker {
 			maxDate: '+1y',
 			defaultDate: '+1d',
 			numberOfMonths: numberOfMonths,
-			showCurrentAtPos: 0,
+			// showCurrentAtPos: 0,
+			// beforeShow: beforeShow,
 			beforeShowDay: beforeShowDay,
 			onSelect: function(date) {
 				if (bindStartDate) {
@@ -108,10 +122,10 @@ class DualDatepicker {
 		// 2. Remove "done" form control on iOS.
 		// Note: may affect accessibility, may need to revisit
 		$startDatepicker.on('focus', function() {
-			self.$startDatepicker.blur();
+			$startDatepicker.blur();
 		});
 		$endDatepicker.on('focus', function() {
-			self.$endDatepicker.blur();
+			$endDatepicker.blur();
 		});
 
 	}
