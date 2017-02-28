@@ -32,6 +32,13 @@ body.modal-active {
 		transition-delay: 0;
 	}
 
+	// Mobile
+	@media (max-width: $mobile-breakpoint-max) {
+		/* iOS fix: fill the blank/white area behind the bottom bar */
+		height: calc(100vh + 100px);
+		bottom: auto;
+	}
+
 }
 
 .modalwindow {
@@ -77,15 +84,9 @@ body.modal-active {
 // Mobile
 @media (max-width: $mobile-breakpoint-max) {
 
-	/* iOS fix: fill the blank/white area behind the bottom bar */
-	.modaloverlay {
-		height: calc(100vh + 100px);
-		bottom: auto;
-	}
-
 	.modalwindow {
-		width: calc(100% - $mobile-gutter-double-width);
-		height: calc(100% - $mobile-gutter-double-width);
+		width: calc(100% - #{$mobile-gutter-double-width});
+		height: calc(100% - #{$mobile-gutter-double-width});
 		left: $mobile-gutter-width;
 		right: $mobile-gutter-width;
 		top: $mobile-gutter-width;
