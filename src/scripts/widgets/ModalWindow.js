@@ -155,6 +155,18 @@ class ModalWindow {
 			}
 		});
 
+		this.$document.on('scroll', (event) => {
+			if (this.isModalActivated) {
+				this.$window.scrollTop(this.windowScrollTop);
+			}
+		});
+
+		this.$window.on('orientationchange', (event) => {
+			if (this.isModalActivated) {
+				this.$window.scrollTop(this.windowScrollTop);
+			}
+		});
+
 	}
 
 
@@ -183,7 +195,7 @@ class ModalWindow {
 
 		this.getContent();
 
-		this.$body.addClass(this.options.activeBodyClass).css({top: this.windowScrollTop * -1});
+		this.$body.addClass(this.options.activeBodyClass);
 		this.$overlay.show();
 		this.$modal.show();
 
@@ -203,7 +215,7 @@ class ModalWindow {
 
 	closeModal() {
 
-		this.$body.removeClass(this.options.activeBodyClass).css({top: ''});
+		this.$body.removeClass(this.options.activeBodyClass);
 		this.$overlay.removeClass(this.options.activeClass);
 		this.$modal.removeClass(this.options.activeClass).attr({'aria-hidden':'true'});
 

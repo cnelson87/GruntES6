@@ -26,7 +26,7 @@
 			flex: 1;
 			// flex-grow: 1;
 			// flex-shrink: 1;
-			transition: flex-grow 0.4s;
+			transition: flex-grow $animation-speed;
 
 			&.is-active {
 				flex-grow: 7;
@@ -81,14 +81,14 @@
 			opacity: 0;
 			padding: 40px 20px 20px;
 			position: relative;
-			// transition: opacity 0.4s;
+			// transition: opacity $animation-speed;
 		}
 
 		&.is-active {
 
 			> .horizordion--content {
 				opacity: 1.0;
-				transition: opacity 0.4s;
+				transition: opacity $animation-speed;
 			}
 
 		}

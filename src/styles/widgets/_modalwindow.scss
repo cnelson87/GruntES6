@@ -3,10 +3,9 @@
 // -----------------------------------------------------
 
 
-body.modal-active {
-	overflow: hidden;
-	position: fixed;
-}
+// body.modal-active {
+
+// }
 
 .modaloverlay {
 	display: none;
@@ -21,22 +20,15 @@ body.modal-active {
 	top: 0;
 	bottom: 0;
 	z-index: $overlay-zindex;
-	transition: opacity 0.3s, visibility 0.3s;
+	transition: opacity $animation-speed, visibility $animation-speed;
 	transition-delay: 0.1s;
 
 	&.is-active {
 		// display: block; //set in script
 		visibility: visible;
 		opacity: 1;
-		transition: opacity 0.3s, visibility 0.3s;
-		transition-delay: 0;
-	}
-
-	// Mobile
-	@media (max-width: $mobile-breakpoint-max) {
-		/* iOS fix: fill the blank/white area behind the bottom bar */
-		height: calc(100vh + 100px);
-		bottom: auto;
+		transition: opacity $animation-speed, visibility $animation-speed;
+		transition-delay: 0s;
 	}
 
 }
@@ -50,14 +42,15 @@ body.modal-active {
 	overflow: hidden;
 	position: fixed;
 	z-index: $modal-zindex;
-	transition: opacity 0.3s, visibility 0.3s;
-	transition-delay: 0;
+	transform: translate3d(0,0,0);
+	transition: opacity $animation-speed, visibility $animation-speed;
+	transition-delay: 0s;
 
 	&.is-active {
 		// display: block; //set in script
 		visibility: visible;
 		opacity: 1;
-		transition: opacity 0.3s, visibility 0.3s;
+		transition: opacity $animation-speed, visibility $animation-speed;
 		transition-delay: 0.1s;
 	}
 
@@ -90,7 +83,7 @@ body.modal-active {
 		left: $mobile-gutter-width;
 		right: $mobile-gutter-width;
 		top: $mobile-gutter-width;
-		bottom: auto;
+		bottom: $mobile-gutter-width;
 
 		.modalwindow--content {
 			width: 100%;

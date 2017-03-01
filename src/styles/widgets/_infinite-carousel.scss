@@ -36,7 +36,6 @@
 	}
 
 	.carousel--inner-track {
-		// @include clearfix;
 		display: flex;
 		flex-wrap: nowrap;
 		width: 100%;
@@ -44,7 +43,6 @@
 	}
 
 	.carousel--panel {
-		// @include clearfix;
 		flex-shrink: 0;
 		width: 100%;
 		// opacity: 0.5;
@@ -77,10 +75,6 @@
 			max-width: 400px;
 			left: -120px;
 		}
-
-		// .carousel--inner-track {
-
-		// }
 
 		.carousel--panel {
 			transition: transform 0.6s, width 0.6s;
