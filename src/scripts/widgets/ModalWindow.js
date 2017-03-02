@@ -201,6 +201,7 @@ class ModalWindow {
 
 		setTimeout(() => {
 
+			this.$content.scrollTop(0);
 			this.$overlay.addClass(this.options.activeClass);
 			this.$modal.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
 
