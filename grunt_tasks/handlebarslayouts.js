@@ -9,6 +9,7 @@ module.exports = function (grunt) {
 	var pages = [
 		'ajax-content/ajax-content-1',
 		'ajax-content/ajax-content-2',
+		'ajax-content/ajax-modal-form',
 		'index',
 		'forms',
 		'flexbox',

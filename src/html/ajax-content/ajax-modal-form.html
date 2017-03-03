@@ -1,0 +1,70 @@
+
+	<form id="ModalForm" method="POST" action="#">
+
+		<fieldset>
+			<h2>Vertical Form Fields</h2>
+			<ol class="vertical-fields">
+				<li>
+					<label for="Text2A">Text</label>
+					<input type="text" id="Text2A" name="Text2A" data-label="Text" placeholder="Text" />
+				</li>
+				<li>
+					<label for="Text2B" class="offscreen">Text B</label>
+					<input type="text" id="Text2B" name="Text2B" data-label="Text B" placeholder="Text" />
+				</li>
+				<li>
+					<label for="Password2">Password</label>
+					<input type="password" id="Password2" name="Password2" data-label="Password" placeholder="Password" />
+				</li>
+				<li>
+					<label for="Email2">Email</label>
+					<input type="email" id="Email2" name="Email2" data-label="Email" placeholder="Email" />
+					<div class="form-message">
+						This is a form message<br />
+						A multiline message.
+					</div>
+				</li>
+				<li>
+					<label for="Url2">URL</label>
+					<input type="url" id="Url2" name="Url2" data-label="URL" placeholder="URL" />
+				</li>
+				<li>
+					<label for="Tel2">Telephone</label>
+					<input type="tel" id="Tel2" name="Tel2" maxlength="10" data-label="Telephone" placeholder="Tel" />
+				</li>
+				<li>
+					<label for="Select2">Select</label>
+					<select id="Select2" name="Select2" data-label="Select" class="input-med">
+						<option value="">Select</option>
+						<option value="A">A</option>
+						<option value="B">B</option>
+						<option value="C">C</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
+					<span class="form-note">form note</span>
+				</li>
+				<li>
+					<label for="Number2">Number</label>
+					<input type="number" id="Number2" name="Number2" min="1" max="999" data-label="Number" placeholder="Number" />
+				</li>
+				<li>
+					<label for="Range2">Range</label>
+					<input type="range" id="Range2" name="Range2" data-label="Range" />
+					<span class="form-note">from x to z</span>
+				</li>
+				<li>
+					<label for="Comments2">Comments</label>
+					<textarea id="Comments2" name="Comments2" maxlength="100" data-label="Comments" placeholder="Textarea" class="textarea-med"></textarea>
+				</li>
+			</ol>
+		</fieldset>
+
+		<fieldset class="form-btns">
+			<input type="submit" id="Submit2" name="Submit2" value="Submit" />
+			&nbsp;
+			<em>(default: align left)</em>
+		</fieldset>
+
+	</form>
