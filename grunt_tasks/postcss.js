@@ -3,11 +3,13 @@
  * Apply several post-processors to your CSS using PostCSS.
  */
 
+var autoprefixer = require('autoprefixer');
+
 module.exports = function (grunt) {
 
 	// list all plugins
 	var plugins = [
-		require('autoprefixer')({browsers: ['last 5 versions', 'ie 9']})
+		autoprefixer({browsers: ['last 5 versions', 'ie 9']})
 	];
 
 	return {
