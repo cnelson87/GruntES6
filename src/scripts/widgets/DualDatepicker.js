@@ -12,7 +12,7 @@
 	AUTHOR: Chris Nelson <cnelson87@gmail.com>
 
 	DEPENDENCIES:
-		- jquery 3.1.1+
+		- jquery 3.x
 		- jquery-ui 1.12.1
 
 */
