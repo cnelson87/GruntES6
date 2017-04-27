@@ -115,6 +115,7 @@ input[type='email'],
 input[type='number'],
 input[type='tel'],
 input[type='url'],
+input[type='search'],
 select,
 textarea {
 	appearance: none;
@@ -155,6 +156,7 @@ input[type='email']:focus,
 input[type='number']:focus,
 input[type='tel']:focus,
 input[type='url']:focus,
+input[type='search']:focus,
 select:focus,
 textarea:focus {
 	border-color: $border-color-dark;
@@ -167,12 +169,14 @@ input[type='email'][disabled],
 input[type='number'][disabled],
 input[type='tel'][disabled],
 input[type='url'][disabled],
+input[type='search'][disabled],
 input[type='text'].disabled,
 input[type='password'].disabled,
 input[type='email'].disabled,
 input[type='number'].disabled,
 input[type='tel'].disabled,
 input[type='url'].disabled,
+input[type='search'].disabled,
 select[disabled], select.disabled,
 textarea[disabled], textarea.disabled {
 	color: $gray-light;
@@ -185,6 +189,7 @@ input[type='email'].invalid,
 input[type='number'].invalid,
 input[type='tel'].invalid,
 input[type='url'].invalid,
+input[type='search'].invalid,
 select.invalid,
 textarea.invalid {
 	border-color: $error-color;
