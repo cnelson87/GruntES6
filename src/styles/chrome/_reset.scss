@@ -29,7 +29,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
-article, aside, details, figcaption, figure,
+main, article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, summary {
 	display: block;
 }
@@ -69,6 +69,12 @@ blockquote, q {
 blockquote::after, blockquote::after,
 q::after, q::after {
 	content: none;
+}
+
+fieldset {
+	display: block;
+	//Safari fix for too-wide content
+	min-width: auto;
 }
 
 table {
