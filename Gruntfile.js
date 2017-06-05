@@ -80,7 +80,7 @@ module.exports = function(grunt) {
 		var target = (target === 'dev') ? 'dev' : 'dist';
 		var tasks = [
 			// Manually run bower task only when updating libs.
-			// Vendor libs are checked-in to src, so no need 
+			// Vendor libs are checked-in to src, so no need
 			// to run bower task when building.
 			// 'bower',
 			// 'bowercopy',

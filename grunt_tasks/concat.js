@@ -19,6 +19,7 @@ module.exports = function (grunt) {
 		'<%= sourceVendor %>/scrollmagic/jquery.ScrollMagic.min.js',
 		'<%= sourceVendor %>/scrollmagic/animation.gsap.min.js',
 		'<%= sourceVendor %>/scrollmagic/debug.addIndicators.min.js',
+		'<%= sourceVendor %>/moment.min.js',
 		'<%= sourceVendor %>/underscore.min.js',
 		'<%= sourceVendor %>/backbone.min.js',
 		'<%= sourceVendor %>/backbone-super.min.js'
