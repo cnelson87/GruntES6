@@ -28,7 +28,7 @@
 		"grunt-postcss": "^0.8.0",
 		"grunt-sass": "^2.0.0",
 		"grunt-sass-lint": "^0.2.2",
-
+		"node-sass": "^4.5.3",
 		"babelify": "7.3.0",
 		"babel-preset-latest": "6.24.1",
 		"babel-polyfill": "6.23.0",
@@ -37,7 +37,6 @@
 		"grunt-browserify": "5.0.0",
 		"browserify-handlebars": "1.0.0",
 		"pathmodify": "0.5.0",
-
 		"load-grunt-config": "^0.19.2",
 		"load-grunt-tasks": "^3.5.2"
 	},
