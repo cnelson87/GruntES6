@@ -14,7 +14,7 @@ module.exports = function (grunt) {
 		'forms',
 		'flexbox',
 		'grids',
-		// 'mask',
+		'hero',
 		'promise',
 		'videos',
 		'carousel',

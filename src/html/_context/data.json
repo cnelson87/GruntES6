@@ -35,12 +35,12 @@
 		"intro" : "This is the Grids page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
 	},
 
-	"mask": {
-		"title" : "Mask",
-		"description" : "Description for the Mask page",
-		"keywords" : "mask mask mask",
-		"h1" : "Mask H1",
-		"intro" : "This is the Mask page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
+	"hero": {
+		"title" : "Hero",
+		"description" : "Description for the Hero page",
+		"keywords" : "hero hero hero",
+		"h1" : "Hero H1",
+		"intro" : "This is the Hero page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
 	},
 
 	"promise": {

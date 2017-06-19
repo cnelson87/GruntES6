@@ -25,7 +25,7 @@ legend {
 label, span.label {
 	display: inline-block;
 	color: $gray-dark;
-	font-size: 1.0em;
+	font-size: 16px;//1.0em;
 	font-weight: bold;
 	line-height: 1.2;
 	padding-top: 2px; // matches input padding-top for vertical alignment
@@ -41,7 +41,7 @@ label, span.label {
 output {
 	display: inline-block;
 	color: $gray-dark;
-	font-size: 1.0em;
+	font-size: 16px;//1.0em;
 	font-weight: bold;
 	line-height: 1.2;
 	padding-top: 2px; // matches input padding-top for vertical alignment
@@ -50,7 +50,7 @@ output {
 input, select, textarea, button {
 	color: $gray-dark;
 	font-family: $main-font;
-	font-size: 1.0em;
+	font-size: 16px;//1.0em;
 	line-height: 1.2;
 	vertical-align: top;
 	background: $transparent;
@@ -120,7 +120,7 @@ select,
 textarea {
 	appearance: none;
 	width: $base-input-width;
-	height: 24px;
+	height: calc(1.2em + 6px); // 1.2 line-height + 6px padding & border
 	border: 1px solid $border-color-light;
 	border-radius: 3px;
 	padding: 2px;
@@ -303,7 +303,7 @@ button {
 	appearance: none;
 	cursor: pointer;
 	min-width: 120px;
-	font-size: 1.0em;
+	font-size: 16px;//1.0em;
 	font-weight: bold;
 	line-height: 1.2;
 	text-align: center;

@@ -1,0 +1,43 @@
+{{#extend "default"}}
+
+	{{#replace "title"}}{{hero.title}} - {{title}}{{/replace}}
+	{{#replace "description"}}{{hero.description}}{{/replace}}
+	{{#replace "keywords"}}{{keywords}}, {{hero.keywords}}{{/replace}}
+
+	{{#replace "body-id"}}heropage{{/replace}}
+
+	{{#replace "content"}}
+
+		<section class="content">
+			<div class="content-container">
+
+				<h1>{{hero.h1}}</h1>
+
+				<div class="intro">
+					<p>{{hero.intro}}</p>
+				</div>
+
+			</div>
+		</section>
+
+		<section class="content hero bottom-angle test-hero-1">
+			<div class="content-container">
+
+				<h2>Hero Section (16x9) w/bottom-angle</h2>
+				<p>The bottom-angle hero section content uses flexbox for vertical centering.</p>
+
+			</div>
+		</section>
+
+		<section class="content hero top-cutout test-hero-2">
+			<div class="content-container">
+
+				<h2>Hero Section (16x9) w/top-cutout</h2>
+				<p>The top-cutout hero section content uses flexbox for vertical centering.</p>
+
+			</div>
+		</section>
+
+	{{/replace}}
+
+{{/extend}}

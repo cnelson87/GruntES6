@@ -26,13 +26,16 @@ body {
 	width: 100%;
 	min-width: $min-width;
 	min-height: calc(100vh - #{$mobile-header-height + $mobile-footer-height});
+	padding: $mobile-vertical-spacing 0;
 	overflow-x: hidden;
 	position: relative;
 	@media (min-width: $tablet-breakpoint-min) {
 		min-height: calc(100vh - #{$tablet-header-height + $tablet-footer-height});
+		padding: $tablet-vertical-spacing 0;
 	}
 	@media (min-width: $desktop-breakpoint-min) {
 		min-height: calc(100vh - #{$desktop-header-height + $desktop-footer-height});
+		padding: $desktop-vertical-spacing 0;
 	}
 }
 
@@ -77,13 +80,6 @@ body {
 .content {
 	border-top: 2px solid $gray-dark;
 	border-bottom: 2px solid $gray-dark;
-	margin: $mobile-vertical-spacing 0;
-	@media (min-width: $tablet-breakpoint-min) {
-		margin: $tablet-vertical-spacing 0;
-	}
-	@media (min-width: $desktop-breakpoint-min) {
-		margin: $desktop-vertical-spacing 0;
-	}
 
 	.content-container {
 		@media (min-width: $tablet-breakpoint-min) {
@@ -96,4 +92,14 @@ body {
 		}
 	}
 
+}
+
+.content + .content {
+	margin-top: $mobile-vertical-spacing;
+	@media (min-width: $tablet-breakpoint-min) {
+		margin-top: $tablet-vertical-spacing;
+	}
+	@media (min-width: $desktop-breakpoint-min) {
+		margin-top: $desktop-vertical-spacing;
+	}
 }
