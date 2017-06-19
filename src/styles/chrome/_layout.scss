@@ -29,7 +29,10 @@ body {
 	overflow-x: hidden;
 	position: relative;
 	@media (min-width: $tablet-breakpoint-min) {
-		min-height: calc(100vh - #{$header-height + $footer-height});
+		min-height: calc(100vh - #{$tablet-header-height + $tablet-footer-height});
+	}
+	@media (min-width: $desktop-breakpoint-min) {
+		min-height: calc(100vh - #{$desktop-header-height + $desktop-footer-height});
 	}
 }
 
