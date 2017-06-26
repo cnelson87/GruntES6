@@ -30,22 +30,15 @@ const PromisePage = {
 	},
 
 	process: function(response) {
-		// console.log(response);
-		let arrs = [];
-		let arr;
-		let sorted;
-		let data;
-
-		for (let i=0, len=response.length; i<len; i++) {
-			arrs[i] = response[i];
-		}
-
-		arr = [].concat.apply([], arrs);
-		sorted = arr.slice().sort(function(a,b) {return a - b;});
-		data = [...new Set(sorted)];
+		console.log(response);
+		//combine response data into single array
+		let list = [].concat(...response);
+		//sort array numerically
+		let sorted = list.slice().sort(function(a,b) {return a - b;});
+		//convert to Set to remove duplicates
+		let data = [...new Set(sorted)];
 
 		this.render(data);
-
 	},
 
 	render: function(data) {
