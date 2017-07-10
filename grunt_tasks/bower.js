@@ -43,6 +43,13 @@ module.exports = function (grunt) {
 							'scrollmagic/minified/plugins/animation.gsap.min.js',
 							'scrollmagic/minified/plugins/debug.addIndicators.min.js'
 						]
+					},
+					'jquery-validation': {
+						dest: '<%= sourceVendor %>/validation',
+						files: [
+							'jquery-validation/dist/jquery.validate.min.js',
+							'jquery-validation/dist/additional-methods.min.js'
+						]
 					}
 				}
 

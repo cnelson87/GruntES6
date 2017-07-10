@@ -41,7 +41,7 @@ module.exports = function (grunt) {
 		},
 
 		templates: {
-			files: ['<%= sourceTemplates %>/**/*.hbs'],
+			files: ['<%= sourceTemplates %>/**/*.hbs', '<%= sourceScripts %>/**/*.hbs'],
 			tasks: ['browserify:dev']
 		},
 
