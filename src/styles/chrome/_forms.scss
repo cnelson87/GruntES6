@@ -28,7 +28,8 @@ label, span.label {
 	font-size: 16px;//1.0em;
 	font-weight: bold;
 	line-height: 1.2;
-	padding-top: 2px; // matches input padding-top for vertical alignment
+	vertical-align: top;
+	padding-top: 4px; // matches input padding-top for vertical alignment
 	span.sm {
 		font-size: 0.9em;
 		font-weight: normal;
@@ -466,7 +467,7 @@ textarea + input, textarea + select, textarea + textarea, textarea + output {
 .vertical-fields > li > label,
 .vertical-fields > li > span.label {
 	display: block;
-	margin: 0 0 2px;
+	margin: 0 0 4px;
 }
 
 // inline labels/inputs
