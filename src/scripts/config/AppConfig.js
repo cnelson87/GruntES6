@@ -18,6 +18,15 @@ const AppConfig = {
 	hasFormValidation: typeof document.createElement('input').checkValidity === 'function',
 	hasTouch: Boolean('ontouchstart' in window || navigator.maxTouchPoints || navigator.msMaxTouchPoints),
 
+	keys: {
+		enter: 13,
+		space: 32,
+		left: 37,
+		up: 38,
+		right: 39,
+		down: 40
+	},
+
 	urls: {
 		fibonacci: '/_api/promises/fibonacci.json',
 		primes: '/_api/promises/primes.json',

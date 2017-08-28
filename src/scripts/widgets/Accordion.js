@@ -222,22 +222,18 @@ class Accordion {
 	__keydownTab(event) {
 		let keyCode = event.which;
 		let index = this.$tabs.index(event.currentTarget);
-		const spaceKey = 32;
-		const leftKey = 37;
-		const upKey = 38;
-		const rightKey = 39;
-		const downKey = 40;
+		let { keys } = AppConfig;
 
-		// left/up arrow; go to previous tab
-		if (keyCode === leftKey || keyCode === upKey) {
+		// left/up arrow; emulate tabbing to previous tab
+		if (keyCode === keys.left || keyCode === keys.up) {
 			event.preventDefault();
 			if (index === 0) {index = this._length;}
 			index--;
 			this.$tabs.eq(index).focus();
 		}
 
-		// right/down arrow; go to next tab
-		if (keyCode === rightKey || keyCode === downKey) {
+		// right/down arrow; emulate tabbing to next tab
+		if (keyCode === keys.right || keyCode === keys.down) {
 			event.preventDefault();
 			index++;
 			if (index === this._length) {index = 0;}
@@ -245,7 +241,7 @@ class Accordion {
 		}
 
 		// spacebar; activate tab click
-		if (keyCode === spaceKey) {
+		if (keyCode === keys.space) {
 			event.preventDefault();
 			this.$tabs.eq(index).click();
 		}

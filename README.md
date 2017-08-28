@@ -28,6 +28,12 @@ To install third party JS libs with Bower:
 
 ## Grunt Tasks
 
-- `grunt bower` : Command to copy JS libs into vendor folder.
-- `grunt build` : Compile, concat, and minify the CSS and JS, and copy assets. Outputs to production 'public' folder.
-- `grunt run`   : Runs build:dev, connect, and watch tasks. Outputs to development 'local' folder.
+- `grunt bower`   : Command to copy JS libs into vendor folder.
+- `grunt build`   : Compile, concat, and minify the CSS and JS, and copy assets. Outputs to production 'public' folder.
+- `grunt run`     : Runs build:dev, connect, and watch tasks. Outputs to development 'local' folder.
+
+
+## NPM scripts
+
+- `npm run build` : npm script alias for `grunt build`
+- `npm start`     : npm script alias for `grunt run`
