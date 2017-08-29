@@ -129,6 +129,20 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 			this.$tabs.eq(index).focus();
 		}
 
+		// home key; emulate jump-tabbing to first tab
+		if (keyCode === keys.home) {
+			event.preventDefault();
+			index = 0;
+			this.$tabs.eq(index).focus();
+		}
+
+		// end key; emulate jump-tabbing to last tab
+		if (keyCode === keys.end) {
+			event.preventDefault();
+			index = this._length - 1;
+			this.$tabs.eq(index).focus();
+		}
+
 		// spacebar; activate tab click
 		if (keyCode === keys.space) {
 			event.preventDefault();
