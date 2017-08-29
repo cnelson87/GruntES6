@@ -42,7 +42,7 @@ class ModalWindow {
 			activeBodyClass: 'modal-active',
 			contentCloseTrigger: '.close-modal',
 			animDuration: 400,
-			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl',
+			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl, table',
 			customEventName: 'ModalWindow'
 		}, options);
 

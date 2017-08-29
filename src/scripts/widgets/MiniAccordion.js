@@ -41,7 +41,7 @@ class MiniAccordion {
 			animDuration: 0.4,
 			animEasing: 'Power4.easeOut',
 			selectorFocusEls: 'a, button, input, select, textarea',
-			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl',
+			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl, table',
 			selectedText: 'currently selected',
 			enableTracking: false,
 			customEventName: 'MiniAccordion'

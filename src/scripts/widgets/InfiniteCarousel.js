@@ -52,7 +52,7 @@ class InfiniteCarousel {
 			animDuration: 0.6,
 			animEasing: 'Power4.easeInOut',
 			selectorFocusEls: 'a, button, input, select, textarea',
-			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl',
+			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl, table',
 			enableTracking: false,
 			customEventName: 'InfiniteCarousel'
 		}, options);
