@@ -16,6 +16,8 @@
 
 */
 
+import AppConfig from 'config/AppConfig';
+
 class ModalWindow {
 
 	constructor($triggers, options = {}) {
@@ -113,7 +115,7 @@ class ModalWindow {
 	}
 
 	_addEventListeners() {
-		const escKey = 27;
+		let { keys } = AppConfig;
 
 		this.$triggers.on('click', (event) => {
 			event.preventDefault();
@@ -150,7 +152,7 @@ class ModalWindow {
 		});
 
 		this.$document.on('keydown', (event) => {
-			if (this.isModalActivated && event.keyCode === escKey) {
+			if (this.isModalActivated && event.keyCode === keys.escape) {
 				this.closeModal();
 			}
 		});
