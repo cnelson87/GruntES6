@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A horizontal Accordion
 
-	VERSION: 0.1.2
+	VERSION: 0.1.3
 
 	USAGE: let myHorizordion = new Horizordion('Element', 'Options')
 		@param {jQuery Object}
@@ -18,12 +18,12 @@
 
 import AppConfig from 'config/AppConfig';
 import AppEvents from 'config/AppEvents';
+import focusOnContentEl from 'utilities/focusOnContentEl';
 
 class Horizordion {
 
 	constructor($el, options = {}) {
 		this.$window = $(window);
-		this.$htmlBody = $('html, body');
 		this.initialize($el, options);
 	}
 
@@ -42,7 +42,6 @@ class Horizordion {
 			classInitialized: 'is-initialized',
 			animDuration: AppConfig.timing.standard,
 			selectorFocusEls: AppConfig.focusableElements,
-			selectorContentEls: AppConfig.contentElements,
 			selectedText: 'currently selected',
 			enableTracking: false,
 			customEventName: 'Horizordion'
@@ -273,23 +272,8 @@ class Horizordion {
 
 	focusOnPanel($panel) {
 		let index = this.$panels.index($panel);
-		let topOffset = AppConfig.topOffset + this.$tabs.eq(index).outerHeight();
-		let pnlTop = $panel.offset().top;
-		let pnlHeight = $panel.outerHeight();
-		let winTop = this.$window.scrollTop() + topOffset;
-		let winHeight = this.$window.height() - topOffset;
-		let scrollTop = pnlTop - topOffset;
-		let $focusContentEl = $panel.find(this.options.selectorContent).find(this.options.selectorContentEls).first();
-		let scrollSpeed = 200;
-
-		if (pnlTop < winTop || pnlTop + pnlHeight > winTop + winHeight) {
-			this.$htmlBody.animate({scrollTop: scrollTop}, scrollSpeed, function() {
-				$focusContentEl.attr({'tabindex':'-1'}).focus();
-			});
-		} else {
-			$focusContentEl.attr({'tabindex':'-1'}).focus();
-		}
-
+		let extraTopOffset = this.$tabs.eq(index).outerHeight();
+		focusOnContentEl($panel, extraTopOffset);
 	}
 
 	fireTracking() {

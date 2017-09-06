@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Universal Ajax loader & spinner overlay
 
-	VERSION: 0.2.3
+	VERSION: 0.2.4
 
 	USAGE: let myLoaderSpinner = new LoaderSpinner('Element', 'Options')
 		@param {jQuery Object}
@@ -45,6 +45,12 @@ class LoaderSpinner {
 
 	removeLoader() {
 		this.$elOverlay.remove();
+	}
+
+	unInitialize() {
+		this.$elOverlay.remove();
+		this.$elOverlay = null;
+		this.$el = null;
 	}
 
 }

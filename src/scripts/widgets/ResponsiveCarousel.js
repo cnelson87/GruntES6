@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desaktop media queries
 
-	VERSION: 0.3.7
+	VERSION: 0.3.8
 
 	USAGE: let myCarousel = new ResponsiveCarousel('Element', 'Options')
 		@param {jQuery Object}
@@ -19,12 +19,12 @@
 
 import AppConfig from 'config/AppConfig';
 import AppEvents from 'config/AppEvents';
+import focusOnContentEl from 'utilities/focusOnContentEl';
 
 class ResponsiveCarousel {
 
 	constructor($el, options = {}) {
 		this.$window = $(window);
-		this.$htmlBody = $('html, body');
 		this.initialize($el, options);
 	}
 
@@ -57,7 +57,6 @@ class ResponsiveCarousel {
 			animDuration: (AppConfig.timing.standard / 1000),
 			animEasing: 'Power4.easeInOut',
 			selectorFocusEls: AppConfig.focusableElements,
-			selectorContentEls: AppConfig.contentElements,
 			enableTracking: false,
 			customEventName: 'ResponsiveCarousel'
 		}, options);
@@ -342,7 +341,6 @@ class ResponsiveCarousel {
 		$.event.trigger(`${this.options.customEventName}:carouselUpdated`, {activeEl: $activePanel});
 
 		this.fireTracking();
-
 	}
 
 	updateNav() {
@@ -394,23 +392,7 @@ class ResponsiveCarousel {
 	}
 
 	focusOnPanel($panel) {
-		let topOffset = AppConfig.topOffset;
-		let pnlTop = $panel.offset().top;
-		let pnlHeight = $panel.outerHeight();
-		let winTop = this.$window.scrollTop() + topOffset;
-		let winHeight = this.$window.height() - topOffset;
-		let scrollTop = pnlTop - topOffset;
-		let $focusContentEl = $panel.find(this.options.selectorContentEls).first();
-		let scrollSpeed = 200;
-
-		if (pnlTop < winTop || pnlTop + pnlHeight > winTop + winHeight) {
-			this.$htmlBody.animate({scrollTop: scrollTop}, scrollSpeed, function() {
-				$focusContentEl.attr({'tabindex':'-1'}).focus();
-			});
-		} else {
-			$focusContentEl.attr({'tabindex':'-1'}).focus();
-		}
-
+		focusOnContentEl($panel);
 	}
 
 	fireTracking() {

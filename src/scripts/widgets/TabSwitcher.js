@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic TabSwitcher widget
 
-	VERSION: 0.3.7
+	VERSION: 0.3.8
 
 	USAGE: let myTabSwitcher = new TabSwitcher('Element', 'Options')
 		@param {jQuery Object}
@@ -19,13 +19,13 @@
 
 import AppConfig from 'config/AppConfig';
 import AppEvents from 'config/AppEvents';
+import focusOnContentEl from 'utilities/focusOnContentEl';
 import HeightEqualizer from 'widgets/HeightEqualizer';
 
 class TabSwitcher {
 
 	constructor($el, options = {}) {
 		this.$window = $(window);
-		this.$htmlBody = $('html, body');
 		this.initialize($el, options);
 	}
 
@@ -47,7 +47,6 @@ class TabSwitcher {
 			maxAutoRotations: 5,
 			animDuration: AppConfig.timing.standard,
 			selectorFocusEls: AppConfig.focusableElements,
-			selectorContentEls: AppConfig.contentElements,
 			selectedText: 'currently selected',
 			enableTracking: false,
 			customEventName: 'TabSwitcher'
@@ -100,6 +99,10 @@ class TabSwitcher {
 		this.$panels.attr({'role':'tabpanel', 'aria-hidden':'true'});
 		this.$panels.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
 
+		this.activateTab($activeTab);
+
+		this.activatePanel($activePanel);
+
 		// equalize items height
 		if (this.options.equalizeHeight) {
 			this.heightEqualizer = new HeightEqualizer(this.$el, {
@@ -107,10 +110,6 @@ class TabSwitcher {
 				setParentHeight: false
 			});
 		}
-
-		this.activateTab($activeTab);
-
-		this.activatePanel($activePanel);
 
 		// auto-rotate items
 		if (this.options.autoRotate) {
@@ -137,19 +136,22 @@ class TabSwitcher {
 		this.$panels.removeAttr('role aria-hidden').removeClass(this.options.classActive);
 		this.$panels.find(this.options.selectorFocusEls).removeAttr('tabindex');
 		this.$tabs.find('.selected-text').remove();
+		if (this.options.equalizeHeight) {
+			this.heightEqualizer.unInitialize();
+		}
 		if (this.options.autoRotate) {
 			clearInterval(this.setAutoRotation);
 		}
 	}
 
 	_addEventListeners() {
-		this.$window.on('resize', this.__onWindowResize.bind(this));
+		// this.$window.on('resize', this.__onWindowResize.bind(this));
 		this.$tabs.on('click', this.__clickTab.bind(this));
 		this.$tabs.on('keydown', this.__keydownTab.bind(this));
 	}
 
 	_removeEventListeners() {
-		this.$window.off('resize', this.__onWindowResize.bind(this));
+		// this.$window.off('resize', this.__onWindowResize.bind(this));
 		this.$tabs.off('click', this.__clickTab.bind(this));
 		this.$tabs.off('keydown', this.__keydownTab.bind(this));
 	}
@@ -174,11 +176,9 @@ class TabSwitcher {
 *	Event Handlers
 **/
 
-	__onWindowResize(event) {
-		if (this.options.equalizeHeight) {
-			this.heightEqualizer.resetHeight();
-		}
-	}
+	// __onWindowResize(event) {
+	//
+	// }
 
 	__clickTab(event) {
 		event.preventDefault();
@@ -277,7 +277,6 @@ class TabSwitcher {
 		$.event.trigger(`${this.options.customEventName}:panelOpened`, {activeEl: $activePanel});
 
 		this.fireTracking();
-
 	}
 
 	deactivateTab($tab) {
@@ -302,23 +301,8 @@ class TabSwitcher {
 
 	focusOnPanel($panel) {
 		let index = this.$panels.index($panel);
-		let topOffset = AppConfig.topOffset + this.$tabs.eq(index).outerHeight();
-		let pnlTop = $panel.offset().top;
-		let pnlHeight = $panel.outerHeight();
-		let winTop = this.$window.scrollTop() + topOffset;
-		let winHeight = this.$window.height() - topOffset;
-		let scrollTop = pnlTop - topOffset;
-		let $focusContentEl = $panel.find(this.options.selectorContentEls).first();
-		let scrollSpeed = 200;
-
-		if (pnlTop < winTop || pnlTop + pnlHeight > winTop + winHeight) {
-			this.$htmlBody.animate({scrollTop: scrollTop}, scrollSpeed, function() {
-				$focusContentEl.attr({'tabindex':'-1'}).focus();
-			});
-		} else {
-			$focusContentEl.attr({'tabindex':'-1'}).focus();
-		}
-
+		let extraTopOffset = this.$tabs.eq(index).outerHeight();
+		focusOnContentEl($panel, extraTopOffset);
 	}
 
 	fireTracking() {

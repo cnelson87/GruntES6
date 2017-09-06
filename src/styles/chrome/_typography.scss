@@ -117,3 +117,10 @@ hr {
 	border-top: 2px solid $gray-light;
 	margin: 1.5em 0;
 }
+
+// uncomment for testing
+// h1, h2, h3, h4, h5, h6, p, ul, ol, dl, table {
+// 	&:focus {
+// 		background-color: $error-color;
+// 	}
+// }

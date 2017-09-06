@@ -3,7 +3,7 @@
 
 	DESCRIPTION: An infinitely looping carousel widget
 
-	VERSION: 0.2.3
+	VERSION: 0.2.4
 
 	USAGE: let myCarousel = new InfiniteCarousel('Element', 'Options')
 		@param {jQuery Object}
@@ -19,12 +19,12 @@
 
 import AppConfig from 'config/AppConfig';
 import AppEvents from 'config/AppEvents';
+import focusOnContentEl from 'utilities/focusOnContentEl';
 
 class InfiniteCarousel {
 
 	constructor($el, options = {}) {
 		this.$window = $(window);
-		this.$htmlBody = $('html, body');
 		this.initialize($el, options);
 	}
 
@@ -52,7 +52,6 @@ class InfiniteCarousel {
 			animDuration: (AppConfig.timing.standard / 1000),
 			animEasing: 'Power4.easeInOut',
 			selectorFocusEls: AppConfig.focusableElements,
-			selectorContentEls: AppConfig.contentElements,
 			enableTracking: false,
 			customEventName: 'InfiniteCarousel'
 		}, options);
@@ -287,7 +286,6 @@ class InfiniteCarousel {
 		$.event.trigger(`${this.options.customEventName}:carouselUpdated`, {activeEl: $activePanel});
 
 		this.fireTracking();
-
 	}
 
 	adjustPosition() {
@@ -343,23 +341,7 @@ class InfiniteCarousel {
 	}
 
 	focusOnPanel($panel) {
-		let topOffset = AppConfig.topOffset;
-		let pnlTop = $panel.offset().top;
-		let pnlHeight = $panel.outerHeight();
-		let winTop = this.$window.scrollTop() + topOffset;
-		let winHeight = this.$window.height() - topOffset;
-		let scrollTop = pnlTop - topOffset;
-		let $focusContentEl = $panel.find(this.options.selectorContentEls).first();
-		let scrollSpeed = 200;
-
-		if (pnlTop < winTop || pnlTop + pnlHeight > winTop + winHeight) {
-			this.$htmlBody.animate({scrollTop: scrollTop}, scrollSpeed, function() {
-				$focusContentEl.attr({'tabindex':'-1'}).focus();
-			});
-		} else {
-			$focusContentEl.attr({'tabindex':'-1'}).focus();
-		}
-
+		focusOnContentEl($panel);
 	}
 
 	fireTracking() {

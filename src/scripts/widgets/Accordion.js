@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic Accordion widget
 
-	VERSION: 0.3.7
+	VERSION: 0.3.8
 
 	USAGE: let myAccordion = new Accordion('Element', 'Options')
 		@param {jQuery Object}
@@ -20,13 +20,13 @@
 
 import AppConfig from 'config/AppConfig';
 import AppEvents from 'config/AppEvents';
+import focusOnContentEl from 'utilities/focusOnContentEl';
 import HeightEqualizer from 'widgets/HeightEqualizer';
 
 class Accordion {
 
 	constructor($el, options = {}) {
 		this.$window = $(window);
-		this.$htmlBody = $('html, body');
 		this.initialize($el, options);
 	}
 
@@ -47,7 +47,6 @@ class Accordion {
 			animDuration: (AppConfig.timing.standard / 1000),
 			animEasing: 'Power4.easeOut',
 			selectorFocusEls: AppConfig.focusableElements,
-			selectorContentEls: AppConfig.contentElements,
 			selectedText: 'currently selected',
 			enableTracking: false,
 			customEventName: 'Accordion'
@@ -102,6 +101,10 @@ class Accordion {
 		this.$panels.attr({'role':'tabpanel', 'aria-hidden':'true'});
 		this.$panels.find(this.options.selectorFocusEls).attr({'tabindex':'-1'});
 
+		this.activateTab($activeTab);
+
+		this.activatePanel($activePanel);
+
 		// equalize items height
 		if (this.options.equalizeHeight) {
 			this.heightEqualizer = new HeightEqualizer(this.$el, {
@@ -110,10 +113,6 @@ class Accordion {
 			});
 			this.maxHeight = this.heightEqualizer.maxHeight;
 		}
-
-		this.activateTab($activeTab);
-
-		this.activatePanel($activePanel);
 
 		TweenMax.set(this.$panels, {
 			display: 'none',
@@ -146,6 +145,9 @@ class Accordion {
 			display: '',
 			height: ''
 		});
+		if (this.options.equalizeHeight) {
+			this.heightEqualizer.unInitialize();
+		}
 	}
 
 	_addEventListeners() {
@@ -167,7 +169,6 @@ class Accordion {
 
 	__onWindowResize(event) {
 		if (this.options.equalizeHeight) {
-			this.heightEqualizer.resetHeight();
 			this.maxHeight = this.heightEqualizer.maxHeight;
 		}
 	}
@@ -328,7 +329,6 @@ class Accordion {
 		$.event.trigger(`${this.options.customEventName}:panelOpened`, {activeEl: $activePanel});
 
 		this.fireTracking();
-
 	}
 
 	deactivateTab($tab) {
@@ -353,23 +353,8 @@ class Accordion {
 
 	focusOnPanel($panel) {
 		let index = this.$panels.index($panel);
-		let topOffset = AppConfig.topOffset + this.$tabs.eq(index).outerHeight();
-		let pnlTop = $panel.offset().top;
-		let pnlHeight = $panel.outerHeight();
-		let winTop = this.$window.scrollTop() + topOffset;
-		let winHeight = this.$window.height() - topOffset;
-		let scrollTop = pnlTop - topOffset;
-		let $focusContentEl = $panel.find(this.options.selectorContentEls).first();
-		let scrollSpeed = 200;
-
-		if (pnlTop < winTop || pnlTop + pnlHeight > winTop + winHeight) {
-			this.$htmlBody.animate({scrollTop: scrollTop}, scrollSpeed, function() {
-				$focusContentEl.attr({'tabindex':'-1'}).focus();
-			});
-		} else {
-			$focusContentEl.attr({'tabindex':'-1'}).focus();
-		}
-
+		let extraTopOffset = this.$tabs.eq(index).outerHeight();
+		focusOnContentEl($panel, extraTopOffset);
 	}
 
 	fireTracking() {

@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Base class to create modal windows
 
-	VERSION: 0.2.9
+	VERSION: 0.2.10
 
 	USAGE: let myModalWindow = new ModalWindow('Elements', 'Options')
 		@param {jQuery Object}
@@ -238,7 +238,8 @@ class ModalWindow {
 	}
 
 	setContentFocus() {
-		this.$content.find(this.options.selectorContentEls).first().attr({'tabindex':'-1'}).focus();
+		let $focusEl = this.$content.find(this.options.selectorContentEls).first();
+		$focusEl.attr({'tabindex':'-1'}).focus();
 	}
 
 }

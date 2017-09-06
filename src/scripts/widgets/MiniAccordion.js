@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A single Accordion item
 
-	VERSION: 0.3.7
+	VERSION: 0.3.8
 
 	USAGE: let myAccordion = new MiniAccordion('Element', 'Options')
 		@param {jQuery Object}
@@ -19,12 +19,12 @@
 
 import AppConfig from 'config/AppConfig';
 import AppEvents from 'config/AppEvents';
+import focusOnContentEl from 'utilities/focusOnContentEl';
 
 class MiniAccordion {
 
 	constructor($el, options = {}) {
 		this.$window = $(window);
-		this.$htmlBody = $('html, body');
 		this.initialize($el, options);
 	}
 
@@ -41,7 +41,6 @@ class MiniAccordion {
 			animDuration: (AppConfig.timing.standard / 1000),
 			animEasing: 'Power4.easeOut',
 			selectorFocusEls: AppConfig.focusableElements,
-			selectorContentEls: AppConfig.contentElements,
 			selectedText: 'currently selected',
 			enableTracking: false,
 			customEventName: 'MiniAccordion'
@@ -96,7 +95,7 @@ class MiniAccordion {
 		// initial focus on content
 		this.$window.on('load', () => {
 			if (this.setInitialFocus) {
-				this.focusOnPanel();
+				this.focusOnPanel(this.$panel);
 			}
 		});
 
@@ -206,7 +205,7 @@ class MiniAccordion {
 			ease: this.options.animEasing,
 			onComplete: function() {
 				self.isAnimating = false;
-				self.focusOnPanel();
+				self.focusOnPanel(self.$panel);
 				TweenMax.set(self.$panel, {
 					height: 'auto'
 				});
@@ -216,7 +215,6 @@ class MiniAccordion {
 		$.event.trigger(`${this.options.customEventName}:panelOpened`, [this.$el]);
 
 		this.fireTracking();
-
 	}
 
 	deactivateTab() {
@@ -239,24 +237,9 @@ class MiniAccordion {
 		this.$panel.find(this.options.selectorFocusEls).attr({'tabindex':'0'});
 	}
 
-	focusOnPanel() {
-		let topOffset = AppConfig.topOffset;
-		let pnlTop = this.$el.offset().top;
-		let pnlHeight = this.$el.outerHeight();
-		let winTop = this.$window.scrollTop() + topOffset;
-		let winHeight = this.$window.height() - topOffset;
-		let scrollTop = pnlTop - topOffset;
-		let $focusContentEl = this.$panel.find(this.options.selectorContentEls).first();
-		let scrollSpeed = 200;
-
-		if (pnlTop < winTop || pnlTop + pnlHeight > winTop + winHeight) {
-			this.$htmlBody.animate({scrollTop: scrollTop}, scrollSpeed, function() {
-				$focusContentEl.attr({'tabindex':'-1'}).focus();
-			});
-		} else {
-			$focusContentEl.attr({'tabindex':'-1'}).focus();
-		}
-
+	focusOnPanel($panel) {
+		let extraTopOffset = this.$tab.outerHeight();
+		focusOnContentEl($panel, extraTopOffset);
 	}
 
 	fireTracking() {
