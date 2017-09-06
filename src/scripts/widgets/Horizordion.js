@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A horizontal Accordion
 
-	VERSION: 0.1.0
+	VERSION: 0.1.2
 
 	USAGE: let myHorizordion = new Horizordion('Element', 'Options')
 		@param {jQuery Object}
@@ -40,9 +40,9 @@ class Horizordion {
 			classActive: 'is-active',
 			classDisabled: 'is-disabled',
 			classInitialized: 'is-initialized',
-			animDuration: 400,
-			selectorFocusEls: 'a, button, input, select, textarea',
-			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl, table',
+			animDuration: AppConfig.timing.standard,
+			selectorFocusEls: AppConfig.focusableElements,
+			selectorContentEls: AppConfig.contentElements,
 			selectedText: 'currently selected',
 			enableTracking: false,
 			customEventName: 'Horizordion'

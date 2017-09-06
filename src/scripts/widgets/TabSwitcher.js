@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic TabSwitcher widget
 
-	VERSION: 0.3.6
+	VERSION: 0.3.7
 
 	USAGE: let myTabSwitcher = new TabSwitcher('Element', 'Options')
 		@param {jQuery Object}
@@ -43,11 +43,11 @@ class TabSwitcher {
 			classInitialized: 'is-initialized',
 			equalizeHeight: false,
 			autoRotate: false,
-			autoRotateInterval: 6000,
+			autoRotateInterval: AppConfig.timing.interval,
 			maxAutoRotations: 5,
-			animDuration: 400,
-			selectorFocusEls: 'a, button, input, select, textarea',
-			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl, table',
+			animDuration: AppConfig.timing.standard,
+			selectorFocusEls: AppConfig.focusableElements,
+			selectorContentEls: AppConfig.contentElements,
 			selectedText: 'currently selected',
 			enableTracking: false,
 			customEventName: 'TabSwitcher'

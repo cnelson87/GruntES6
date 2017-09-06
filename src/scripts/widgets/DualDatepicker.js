@@ -30,10 +30,10 @@ class DualDatepicker {
 		this.options = Object.assign({
 			selectorStartDatepicker: '.start-date',
 			selectorEndDatepicker: '.end-date',
-			bindEndDateToStartDate: true,	//end date can't be before start date
-			bindStartDateToEndDate: false,	//start date can't be after end date
-			minimumDateDiff: 1,				//min num of days between start and end dates
-			numberOfMonths: 2,				//num months to show
+			bindEndDateToStartDate: true,			//end date can't be before start date
+			bindStartDateToEndDate: false,		//start date can't be after end date
+			minimumDateDiff: 1,						//min num of days between start and end dates
+			numberOfMonths: 2,						//num months to show
 			customEventName: 'DualDatepicker'
 		}, options);
 

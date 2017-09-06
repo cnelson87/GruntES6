@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desaktop media queries
 
-	VERSION: 0.3.6
+	VERSION: 0.3.7
 
 	USAGE: let myCarousel = new ResponsiveCarousel('Element', 'Options')
 		@param {jQuery Object}
@@ -52,12 +52,12 @@ class ResponsiveCarousel {
 			classNavDisabled: 'is-disabled',
 			classInitialized: 'is-initialized',
 			autoRotate: false,
-			autoRotateInterval: 8000,
+			autoRotateInterval: AppConfig.timing.interval,
 			maxAutoRotations: 5,
-			animDuration: 0.4,
+			animDuration: (AppConfig.timing.standard / 1000),
 			animEasing: 'Power4.easeInOut',
-			selectorFocusEls: 'a, button, input, select, textarea',
-			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl, table',
+			selectorFocusEls: AppConfig.focusableElements,
+			selectorContentEls: AppConfig.contentElements,
 			enableTracking: false,
 			customEventName: 'ResponsiveCarousel'
 		}, options);

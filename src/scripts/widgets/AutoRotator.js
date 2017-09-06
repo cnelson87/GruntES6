@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Auto show / hide a list of elements
 
-	VERSION: 0.1.1
+	VERSION: 0.1.2
 
 	USAGE: let myAutoRotator = new AutoRotator('Element', 'Options')
 		@param {jQuery Object}
@@ -16,6 +16,8 @@
 		- greensock
 
 */
+
+import AppConfig from 'config/AppConfig';
 
 class AutoRotator {
 
@@ -30,8 +32,8 @@ class AutoRotator {
 		this.options = Object.assign({
 			initialIndex: 0,
 			selectorItems: 'article',
-			autoRotateInterval: 6000,
-			animDuration: 0.2,
+			autoRotateInterval: AppConfig.timing.interval,
+			animDuration: (AppConfig.timing.fast / 1000),
 			animEasing: 'Power4.easeOut',
 			customEventName: 'AutoRotator'
 		}, options);

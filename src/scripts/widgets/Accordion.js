@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic Accordion widget
 
-	VERSION: 0.3.6
+	VERSION: 0.3.7
 
 	USAGE: let myAccordion = new Accordion('Element', 'Options')
 		@param {jQuery Object}
@@ -44,10 +44,10 @@ class Accordion {
 			classInitialized: 'is-initialized',
 			equalizeHeight: false,
 			selfClosing: true,
-			animDuration: 0.4,
+			animDuration: (AppConfig.timing.standard / 1000),
 			animEasing: 'Power4.easeOut',
-			selectorFocusEls: 'a, button, input, select, textarea',
-			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl, table',
+			selectorFocusEls: AppConfig.focusableElements,
+			selectorContentEls: AppConfig.contentElements,
 			selectedText: 'currently selected',
 			enableTracking: false,
 			customEventName: 'Accordion'

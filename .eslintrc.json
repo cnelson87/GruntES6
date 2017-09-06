@@ -29,7 +29,7 @@
 		"no-implied-eval": 2,
 		"no-lone-blocks": 2,
 		"no-loop-func": 2,
-		"no-magic-numbers": ["error", { "ignore": [0,1,-1], "ignoreArrayIndexes": true }],
+		"no-magic-numbers": ["error", { "ignore": [0,1,-1,10,100,1000,9999], "ignoreArrayIndexes": true }],
 		"no-mixed-spaces-and-tabs": 1,
 		"no-multi-spaces": 2,
 		"no-multi-str": 2,

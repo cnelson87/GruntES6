@@ -3,7 +3,7 @@
 
 	DESCRIPTION: An infinitely looping carousel widget
 
-	VERSION: 0.2.2
+	VERSION: 0.2.3
 
 	USAGE: let myCarousel = new InfiniteCarousel('Element', 'Options')
 		@param {jQuery Object}
@@ -47,12 +47,12 @@ class InfiniteCarousel {
 			adjOuterTrack: 80,
 			enableSwipe: true,
 			autoRotate: false,
-			autoRotateInterval: 8000,
+			autoRotateInterval: AppConfig.timing.interval,
 			maxAutoRotations: 5,
-			animDuration: 0.6,
+			animDuration: (AppConfig.timing.standard / 1000),
 			animEasing: 'Power4.easeInOut',
-			selectorFocusEls: 'a, button, input, select, textarea',
-			selectorContentEls: 'h2, h3, h4, h5, h6, p, ul, ol, dl, table',
+			selectorFocusEls: AppConfig.focusableElements,
+			selectorContentEls: AppConfig.contentElements,
 			enableTracking: false,
 			customEventName: 'InfiniteCarousel'
 		}, options);
