@@ -51,13 +51,15 @@
 
 	.tabswitcher--panel {
 		@include clearfix;
-		opacity: 0;
-		overflow: hidden;
-		position: absolute;
-		left: 0;
-		top: 0;
-		z-index: 1;
-		transform: scale(0.95);
+
+		&:not(.is-active) {
+			opacity: 0;
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: -1;
+			transform: scale(0.95);
+		}
 
 		&.is-active {
 			opacity: 1.0;
