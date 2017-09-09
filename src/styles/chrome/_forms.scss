@@ -338,7 +338,7 @@ button.alt-btn, button.sm-alt-btn {
 input.sm-btn, input.sm-alt-btn,
 button.sm-btn, button.sm-alt-btn {
 	min-width: auto;
-	font-size: 11px;
+	font-size: 12px;
 	font-weight: normal;
 	padding: 1px 8px;
 }
@@ -367,16 +367,16 @@ button.sm-alt-btn:focus, button.sm-alt-btn:hover {
 .form-note {
 	display: inline-block;
 	color: $gray-med;
-	font-size: 11px;
-	line-height: 15px;
+	font-size: 12px;
+	line-height: 16px;
 	margin: 5px 0 0 5px;
 }
 // message below an input field
 .form-message {
 	display: block;
 	color: $gray-med;
-	font-size: 11px;
-	line-height: 15px;
+	font-size: 12px;
+	line-height: 16px;
 	margin-top: 5px;
 }
 
