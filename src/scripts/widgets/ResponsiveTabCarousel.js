@@ -4,7 +4,7 @@
 	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desktop media queries
 	NOTE: The tabs only work if mobile/tablet/desktop views all display one 'panel' at a time.
 
-	VERSION: 0.3.2
+	VERSION: 0.3.3
 
 	USAGE: let myTabCarousel = new ResponsiveTabCarousel('Element', 'Options')
 		@param {jQuery Object}

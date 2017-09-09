@@ -29,7 +29,7 @@ class MiniAccordion {
 	}
 
 	initialize($el, options) {
-		let urlHash = location.hash.substring(1) || false;
+		let urlHash = location.hash.substring(1) || null;
 
 		// defaults
 		this.$el = $el;
