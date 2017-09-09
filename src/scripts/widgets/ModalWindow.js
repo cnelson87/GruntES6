@@ -179,7 +179,7 @@ class ModalWindow {
 	// extend or override getContent in subclass to create custom modal
 	getContent() {
 		let targetID = this.$activeTrigger.data('targetid') || this.$activeTrigger.attr('href').replace('#','');
-		let targetEl = $('#' + targetID);
+		let targetEl = $(`#${targetID}`);
 		this.contentHTML = targetEl.html();
 		this.setContent();
 	}
