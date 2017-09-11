@@ -26,7 +26,6 @@ const PromisePage = {
 		}).catch((response) => {
 			console.log('error');
 		});
-
 	},
 
 	process: function(response) {

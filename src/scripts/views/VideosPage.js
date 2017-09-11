@@ -29,23 +29,20 @@ const VideosPage = {
 		}).catch((response) => {
 			console.log('error');
 		});
-
 	},
 
 	process: function(response) {
 		// console.log(response);
-		let data = [];
-
-		for (let i=0, len=response.items.length; i<len; i++) {
-			data[i] = {
-				videoId: response.items[i].contentDetails.videoId,
-				title: response.items[i].snippet.title,
-				description: response.items[i].snippet.description
+		// let kind = response.kind; //not needed
+		let data = response.items.map(function(item) {
+			return {
+				videoId: item.contentDetails.videoId,
+				title: item.snippet.title,
+				description: item.snippet.description
 			};
-		}
+		});
 
 		this.render(data);
-
 	},
 
 	render: function(data) {

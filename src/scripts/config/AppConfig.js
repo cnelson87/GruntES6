@@ -53,7 +53,7 @@ const AppConfig = {
 	},
 
 	// Starbucks Members playlist
-	youtubePlaylistId: 'PLLt7Vrrx9E2BDUdeDsVfeR4Qx0FDLTo7v',
+	youtubePlaylistId: 'PLLt7Vrrx9E2CZTd0A3Prj0CBGGE0dcdDe',
 
 	// my 'chrisn.wearepop@gmail.com' key
 	youtubeApiKey: 'AIzaSyDpNKX16BmckoJ14akwMxk0mHuJWgvNuBI',
