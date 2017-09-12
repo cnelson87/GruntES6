@@ -1,7 +1,7 @@
 /*
 	TITLE: ResponsiveTabCarousel
 
-	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desktop media queries
+	DESCRIPTION: Subclass of ResponsiveTabCarousel adds tab navigation
 	NOTE: The tabs only work if mobile/tablet/desktop views all display one 'panel' at a time.
 
 	VERSION: 0.3.3

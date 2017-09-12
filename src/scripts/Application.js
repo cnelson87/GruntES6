@@ -22,6 +22,7 @@ import InfiniteCarousel from 'widgets/InfiniteCarousel';
 import MiniAccordion from 'widgets/MiniAccordion';
 import Accordion from 'widgets/Accordion';
 import TabSwitcher from 'widgets/TabSwitcher';
+import SelectTabSwitcher from 'widgets/SelectTabSwitcher';
 import Horizordion from 'widgets/Horizordion';
 import ModalWindow from 'widgets/ModalWindow';
 import AjaxModal from 'widgets/AjaxModal';
@@ -199,6 +200,7 @@ const Application = {
 			equalizeHeight: true,
 			autoRotate: true
 		});
+		new SelectTabSwitcher($('#select-tabswitcher'));
 	},
 
 	initHorizordionPage: function() {
