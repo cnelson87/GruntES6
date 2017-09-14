@@ -1,11 +1,11 @@
 /*
 	TITLE: DualDatepicker
 
-	DESCRIPTION: jQiery-UI DualDatepicker widget
+	DESCRIPTION: jQuery-UI DualDatepicker widget
 
 	VERSION: 0.1.0
 
-	USAGE: let dualDateoicker = new DualDatepicker('Element', 'Options')
+	USAGE: let myDualDatepicker = new DualDatepicker('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
