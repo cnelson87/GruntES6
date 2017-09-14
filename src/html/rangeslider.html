@@ -32,8 +32,8 @@
 			// ELEMENTS -- noUiSlider
 			var $dateSliderWidget = $('#date-slider-widget');
 			var $timeSliderWidget = $('#time-slider-widget');
-			var $dateSlider = $dateSliderWidget.find('.date-slider');
-			var $timeSlider = $timeSliderWidget.find('.time-slider');
+			var $dateSlider = $dateSliderWidget.find('.noUiSlider.date-slider');
+			var $timeSlider = $timeSliderWidget.find('.noUiSlider.time-slider');
 			var $dateOutputs = $dateSliderWidget.find('.date-slider-output'); //must be 2 (start/end)
 			var $dateFields = $dateSliderWidget.find('.date-slider-field'); //must be 2 (start/end)
 			var $timeOutputs = $timeSliderWidget.find('.time-slider-output'); //must be 2 (start/end)
@@ -143,7 +143,7 @@
 
 				<h2>noUiSlider</h2>
 
-				<div class="pad-box" id="date-slider-widget">
+				<div class="pad-box date-range-slider" id="date-slider-widget">
 					<h3>Start/End Date <span class="small">(in 1hr increments)</span></h3>
 					<p>
 						Start Date (on 'update' event): <span class="output date-slider-output"></span>
@@ -154,10 +154,10 @@
 						<br />
 						End Date (on 'change' event): <input type="text" readonly class="input-xlong date-slider-field" />
 					</p>
-					<div class="noUi-slider date-slider" data-start="Sep 20 2017 22:00:00" data-end="Sep 27 2017 6:00:00"></div>
+					<div class="noUiSlider date-slider" data-start="Sep 20 2017 22:00:00" data-end="Sep 27 2017 6:00:00"></div>
 				</div>
 
-				<div class="pad-box" id="time-slider-widget">
+				<div class="pad-box date-range-slider" id="time-slider-widget">
 					<h3>Start/End Time <span class="small">(in 15min increments)</span></h3>
 					<p>
 						Start Time (on 'update' event): <span class="output time-slider-output"></span>
@@ -168,7 +168,7 @@
 						<br />
 						End Time (on 'change' event): <input type="text" readonly class="input-xlong time-slider-field" />
 					</p>
-					<div class="noUi-slider time-slider" data-start="Sep 27 2017 6:00:00" data-end="Sep 27 2017 22:00:00"></div>
+					<div class="noUiSlider time-slider" data-start="Sep 27 2017 6:00:00" data-end="Sep 27 2017 22:00:00"></div>
 				</div>
 
 			</div>

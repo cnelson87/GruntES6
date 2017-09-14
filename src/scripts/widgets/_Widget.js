@@ -39,6 +39,9 @@ class Widget {
 		this.$foobars = this.$el.find(this.options.selectorFoobars);
 		this.$things = this.$el.find(this.options.selectorThings);
 
+		// setup & properties
+		this._length = this.$things.length;
+
 		this.initDOM();
 
 		this._addEventListeners();

@@ -59,6 +59,8 @@
 		"_": true,
 		"ga": true,
 		"YT": true,
+		"moment": true,
+		"noUiSlider": true,
 		"Backbone": true,
 		"Handlebars": true,
 		"HandlebarsHelpers": true,
