@@ -6,10 +6,61 @@
 
 	{{#replace "head"}}
 	<style>
-
+		.output {color:#81b949;}
+		.pad-box {
+			border: 1px solid #000;
+			padding: 1em;
+		}
 	</style>
 	<script>
+		function timestamp(str) {
+			return new Date(str).getTime();
+		}
 		$(function() {
+			// ELEMENTS
+			var $sliderRange = $('#slider-range');
+			var $amountOutput = $('#amount-output');
+			var dateSlider = document.getElementById('slider-date');
+			var dateValues = [
+				document.getElementById('event-start'),
+				document.getElementById('event-end')
+			];
+			// DATA
+			var start = 'Wed Sep 13 2017 22:30:00';
+			var end = 'Tue Sep 26 2017 6:00:00';
+
+			// jQuery-UI
+			$sliderRange.slider({
+				range: true,
+				min: 0,
+				max: 500,
+				values: [ 75, 300 ],
+				slide: function(event, ui) {
+					$amountOutput.val( '$' + ui.values[ 0 ] + ' - $' + ui.values[ 1 ] );
+				}
+			});
+			$amountOutput.val( '$' + $sliderRange.slider('values', 0) + ' - $' + $sliderRange.slider('values', 1) );
+
+			// noUiSlider
+			noUiSlider.create(dateSlider, {
+				// No decimals
+				// format: wNumb({
+				// 	decimals: 0
+				// }),
+				// Create two timestamps to define a range.
+				range: {
+						min: timestamp(start),
+						max: timestamp(end)
+				},
+				// Steps of one week
+				// step: 7 * 24 * 60 * 60 * 1000,
+				// Two more timestamps indicate the handle starting positions.
+				start: [ timestamp(start), timestamp(end) ]
+			});
+			dateSlider.noUiSlider.on('update', function( values, handle ) {
+				// dateValues[handle].innerHTML = formatDate(new Date(+values[handle]));
+				dateValues[handle].innerHTML = new Date(+values[handle]);
+			});
 
 		});
 	</script>
@@ -26,6 +77,34 @@
 
 				<div class="intro">
 					<p>{{rangeslider.intro}}</p>
+				</div>
+
+			</div>
+		</section>
+
+		<section class="content">
+			<div class="content-container">
+
+				<h2>jQuery-UI slider</h2>
+
+				<div class="pad-box">
+					<p>
+						Price Range: <output id="amount-output" class="output"></output>
+					</p>
+					<div id="slider-range"></div>
+				</div>
+
+				<br /><br />
+
+				<h2>noUiSlider</h2>
+
+				<div class="pad-box">
+					<p>
+						Start Date: <span id="event-start" class="output"></span>
+						<br />
+						End Date: <span id="event-end" class="output"></span>
+					</p>
+					<div id="slider-date" style="padding:0 16px;"></div>
 				</div>
 
 			</div>
