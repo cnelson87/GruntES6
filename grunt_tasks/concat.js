@@ -12,6 +12,7 @@ module.exports = function (grunt) {
 		'<%= sourceVendor %>/jquery-ui.custom.min.js',
 		'<%= sourceVendor %>/jquery.touchSwipe.min.js',
 		'<%= sourceVendor %>/picturefill.min.js',
+		'<%= sourceVendor %>/nouislider.min.js',
 		'<%= sourceVendor %>/greensock/TweenMax.min.js',
 		'<%= sourceVendor %>/greensock/ScrollToPlugin.min.js',
 		'<%= sourceVendor %>/greensock/Draggable.min.js',

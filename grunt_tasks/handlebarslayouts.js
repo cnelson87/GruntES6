@@ -25,6 +25,7 @@ module.exports = function (grunt) {
 		'tabswitcher',
 		'horizordion',
 		'modals',
+		'rangeslider',
 		'test'
 	];
 

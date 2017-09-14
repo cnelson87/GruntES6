@@ -1,0 +1,36 @@
+{{#extend "default"}}
+
+	{{#replace "title"}}{{rangeslider.title}} - {{title}}{{/replace}}
+	{{#replace "description"}}{{rangeslider.description}}{{/replace}}
+	{{#replace "keywords"}}{{keywords}}, {{rangeslider.keywords}}{{/replace}}
+
+	{{#replace "head"}}
+	<!-- <style>
+
+	</style> -->
+	<!-- <script>
+		// $(function() {
+
+		// });
+	</script> -->
+	{{/replace}}
+
+	{{#replace "body-id"}}rangesliderpage{{/replace}}
+
+	{{#replace "content"}}
+
+		<section class="content">
+			<div class="content-container">
+
+				<h1>{{rangeslider.h1}}</h1>
+
+				<div class="intro">
+					<p>{{rangeslider.intro}}</p>
+				</div>
+
+			</div>
+		</section>
+
+	{{/replace}}
+
+{{/extend}}
