@@ -11,23 +11,50 @@
 			border: 1px solid #000;
 			padding: 1em;
 		}
+		.pad-box + .pad-box {
+			margin-top: 1em;
+		}
+		.noUi-slider {
+			padding: 0 16px;
+		}
 	</style>
 	<script>
-		function timestamp(str) {
-			return new Date(str).getTime();
+		var dateFormat = 'ddd MMM Do YYYY, h:mm:ss a';
+		// function timestamp(date) {
+		// 	return date.getTime();
+		// }
+		function formateDate(date) {
+			return moment(date).format(dateFormat);
 		}
 		$(function() {
-			// ELEMENTS
+
+			// ELEMENTS -- jQuery-UI
 			var $sliderRange = $('#slider-range');
 			var $amountOutput = $('#amount-output');
-			var dateSlider = document.getElementById('slider-date');
-			var dateValues = [
-				document.getElementById('event-start'),
-				document.getElementById('event-end')
-			];
-			// DATA
-			var start = 'Wed Sep 13 2017 22:30:00';
-			var end = 'Tue Sep 26 2017 6:00:00';
+
+			// ELEMENTS -- noUiSlider
+			var $dateSliderWidget = $('#date-slider-widget');
+			var $timeSliderWidget = $('#time-slider-widget');
+			var $dateSlider = $dateSliderWidget.find('.date-slider');
+			var $timeSlider = $timeSliderWidget.find('.time-slider');
+			var $dateOutputs = $dateSliderWidget.find('.date-slider-output'); //must be 2 (start/end)
+			var $dateFields = $dateSliderWidget.find('.date-slider-field'); //must be 2 (start/end)
+			var $timeOutputs = $timeSliderWidget.find('.time-slider-output'); //must be 2 (start/end)
+			var $timeFields = $timeSliderWidget.find('.time-slider-field'); //must be 2 (start/end)
+			var dateSlider = $dateSlider[0]; //get native element
+			var timeSlider = $timeSlider[0]; //get native element
+
+			// DATA -- noUiSlider
+			var startDate = new Date($dateSlider.data('start'));
+			var endDate = new Date($dateSlider.data('end'));
+			var timestampStartDate = startDate.getTime();
+			var timestampEndDate = endDate.getTime();
+			var startTime = new Date($timeSlider.data('start'));
+			var endTime = new Date($timeSlider.data('end'));
+			var timestampStartTime = startTime.getTime();
+			var timestampEndTime = endTime.getTime();
+			var dateStep = 60 * 60 * 1000; // 1 hr
+			var timeStep = 15 * 60 * 1000; // 15 min
 
 			// jQuery-UI
 			$sliderRange.slider({
@@ -41,25 +68,46 @@
 			});
 			$amountOutput.val( '$' + $sliderRange.slider('values', 0) + ' - $' + $sliderRange.slider('values', 1) );
 
-			// noUiSlider
+			// noUiSlider - date slider
 			noUiSlider.create(dateSlider, {
-				// No decimals
-				// format: wNumb({
-				// 	decimals: 0
-				// }),
-				// Create two timestamps to define a range.
 				range: {
-						min: timestamp(start),
-						max: timestamp(end)
+						min: timestampStartDate,
+						max: timestampEndDate
 				},
-				// Steps of one week
-				// step: 7 * 24 * 60 * 60 * 1000,
-				// Two more timestamps indicate the handle starting positions.
-				start: [ timestamp(start), timestamp(end) ]
+				step: dateStep,
+				start: [timestampStartDate, timestampEndDate]
 			});
-			dateSlider.noUiSlider.on('update', function( values, handle ) {
-				// dateValues[handle].innerHTML = formatDate(new Date(+values[handle]));
-				dateValues[handle].innerHTML = new Date(+values[handle]);
+			dateSlider.noUiSlider.on('update', function(values, index) {
+				$dateOutputs.eq(index).html(formateDate(new Date(+values[index])));
+			});
+			dateSlider.noUiSlider.on('change', function(values, index) {
+				$dateFields.eq(index).val(new Date(+values[index])).change();
+			});
+			$dateFields.eq(0).val(startDate);
+			$dateFields.eq(1).val(endDate);
+			$dateFields.on('change', function(event){
+				console.log('date change:', $(event.currentTarget).val());
+			});
+
+			// noUiSlider - time slider
+			noUiSlider.create(timeSlider, {
+				range: {
+						min: timestampStartTime,
+						max: timestampEndTime
+				},
+				step: timeStep,
+				start: [timestampStartTime, timestampEndTime]
+			});
+			timeSlider.noUiSlider.on('update', function(values, index) {
+				$timeOutputs.eq(index).html(formateDate(new Date(+values[index])));
+			});
+			timeSlider.noUiSlider.on('change', function(values, index) {
+				$timeFields.eq(index).val(new Date(+values[index])).change();
+			});
+			$timeFields.eq(0).val(startTime);
+			$timeFields.eq(1).val(endTime);
+			$timeFields.on('change', function(event){
+				console.log('time change:', $(event.currentTarget).val());
 			});
 
 		});
@@ -98,13 +146,32 @@
 
 				<h2>noUiSlider</h2>
 
-				<div class="pad-box">
+				<div class="pad-box" id="date-slider-widget">
+					<h3>Start/End Date <span class="small">(in 1hr increments)</span></h3>
 					<p>
-						Start Date: <span id="event-start" class="output"></span>
+						Start Date (on 'update' event): <span class="output date-slider-output"></span>
 						<br />
-						End Date: <span id="event-end" class="output"></span>
+						End Date (on 'update' event): <span class="output date-slider-output"></span>
+						<br />
+						Start Date (on 'change' event): <input type="text" readonly class="input-xlong date-slider-field" />
+						<br />
+						End Date (on 'change' event): <input type="text" readonly class="input-xlong date-slider-field" />
 					</p>
-					<div id="slider-date" style="padding:0 16px;"></div>
+					<div class="noUi-slider date-slider" data-start="Sep 20 2017 22:00:00" data-end="Sep 27 2017 6:00:00"></div>
+				</div>
+
+				<div class="pad-box" id="time-slider-widget">
+					<h3>Start/End Time <span class="small">(in 15min increments)</span></h3>
+					<p>
+						Start Time (on 'update' event): <span class="output time-slider-output"></span>
+						<br />
+						End Time (on 'update' event): <span class="output time-slider-output"></span>
+						<br />
+						Start Time (on 'change' event): <input type="text" readonly class="input-xlong time-slider-field" />
+						<br />
+						End Time (on 'change' event): <input type="text" readonly class="input-xlong time-slider-field" />
+					</p>
+					<div class="noUi-slider time-slider" data-start="Sep 27 2017 6:00:00" data-end="Sep 27 2017 22:00:00"></div>
 				</div>
 
 			</div>
