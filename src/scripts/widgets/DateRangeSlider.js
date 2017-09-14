@@ -68,9 +68,9 @@ class DateRangeSlider {
 	initSlider() {
 		const slider = this.$slider[0]; // native slider element
 
-		function formateDate(date) {
+		let formateDate = (date) => {
 			return moment(date).format(this.dateFormat);
-		}
+		};
 
 		noUiSlider.create(slider, {
 			range: {
@@ -82,10 +82,10 @@ class DateRangeSlider {
 		});
 		slider.noUiSlider.on('update', function(values, index) {
 			this.$outputs.eq(index).html(formateDate(new Date(+values[index])));
-		});
+		}.bind(this));
 		slider.noUiSlider.on('change', function(values, index) {
 			this.$fields.eq(index).val(new Date(+values[index])).change();
-		});
+		}.bind(this));
 		this.$fields.eq(0).val(this.startDate);
 		this.$fields.eq(1).val(this.endDate);
 		this.$fields.on('change', function(event){
