@@ -74,8 +74,8 @@ class DateRangeSlider {
 
 		noUiSlider.create(slider, {
 			range: {
-					min: this.timestampStartDate,
-					max: this.timestampEndDate
+				min: this.timestampStartDate,
+				max: this.timestampEndDate
 			},
 			step: this.sliderSteps,
 			start: [this.timestampStartDate, this.timestampEndDate]
