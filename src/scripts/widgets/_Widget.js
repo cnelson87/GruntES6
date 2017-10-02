@@ -32,7 +32,7 @@ class Widget {
 			classActive: 'is-active',
 			classDisabled: 'is-disabled',
 			classInitialized: 'is-initialized',
-			customEventName: 'Widget'
+			customEventPrefix: 'Widget'
 		}, options);
 
 		// element references
@@ -46,7 +46,7 @@ class Widget {
 
 		this._addEventListeners();
 
-		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
+		$.event.trigger(`${this.options.customEventPrefix}:isInitialized`, [this.$el]);
 
 	}
 
@@ -76,7 +76,7 @@ class Widget {
 		this.$el = null;
 		this.$foobars = null;
 		this.$things = null;
-		$.event.trigger(`${this.options.customEventName}:unInitialized`);
+		$.event.trigger(`${this.options.customEventPrefix}:unInitialized`);
 	}
 
 }

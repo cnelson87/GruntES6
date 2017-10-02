@@ -34,7 +34,7 @@ class DualDatepicker {
 			bindStartDateToEndDate: false,		//start date can't be after end date
 			minimumDateDiff: 1,						//min num of days between start and end dates
 			numberOfMonths: 2,						//num months to show
-			customEventName: 'DualDatepicker'
+			customEventPrefix: 'DualDatepicker'
 		}, options);
 
 		// element references
@@ -48,7 +48,7 @@ class DualDatepicker {
 
 		this.initDatepickers();
 
-		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
+		$.event.trigger(`${this.options.customEventPrefix}:isInitialized`, [this.$el]);
 
 	}
 

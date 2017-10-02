@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic Accordion widget
 
-	VERSION: 0.3.8
+	VERSION: 0.3.9
 
 	USAGE: let myAccordion = new Accordion('Element', 'Options')
 		@param {jQuery Object}
@@ -49,7 +49,7 @@ class Accordion {
 			selectorFocusEls: AppConfig.focusableElements,
 			selectedText: 'currently selected',
 			enableTracking: false,
-			customEventName: 'Accordion'
+			customEventPrefix: 'Accordion'
 		}, options);
 
 		// element references
@@ -82,7 +82,7 @@ class Accordion {
 
 		this._addEventListeners();
 
-		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
+		$.event.trigger(`${this.options.customEventPrefix}:isInitialized`, [this.$el]);
 
 	}
 
@@ -279,9 +279,14 @@ class Accordion {
 
 		this.deactivatePanel($inactivePanel);
 
+		$.event.trigger(`${this.options.customEventPrefix}:panelPreClose`, {inactivePanel: $inactivePanel});
+
 		TweenMax.to($inactivePanel, this.options.animDuration, {
 			height: 0,
 			ease: this.options.animEasing,
+			onUpdate: function() {
+				$.event.trigger(`${self.options.customEventPrefix}:panelClosing`, {inactivePanel: $inactivePanel});
+			},
 			onComplete: function() {
 				self.isAnimating = false;
 				$inactiveTab.focus();
@@ -289,6 +294,7 @@ class Accordion {
 					display: 'none',
 					height: self.maxHeight
 				});
+				$.event.trigger(`${self.options.customEventPrefix}:panelClosed`, {inactivePanel: $inactivePanel});
 			}
 		});
 
@@ -313,20 +319,24 @@ class Accordion {
 			});
 		}
 
+		$.event.trigger(`${this.options.customEventPrefix}:panelPreOpen`, {activePanel: $activePanel});
+
 		TweenMax.to($activePanel, this.options.animDuration, {
 			display: 'block',
 			height: panelHeight,
 			ease: this.options.animEasing,
+			onUpdate: function() {
+				$.event.trigger(`${self.options.customEventPrefix}:panelOpening`, {activePanel: $activePanel});
+			},
 			onComplete: function() {
 				self.isAnimating = false;
 				self.focusOnPanel($activePanel);
 				TweenMax.set($activePanel, {
 					height: self.maxHeight
 				});
+				$.event.trigger(`${self.options.customEventPrefix}:panelOpened`, {activePanel: $activePanel});
 			}
 		});
-
-		$.event.trigger(`${this.options.customEventName}:panelOpened`, {activeEl: $activePanel});
 
 		this.fireTracking();
 	}
@@ -369,7 +379,7 @@ class Accordion {
 		this.$el = null;
 		this.$tabs = null;
 		this.$panels = null;
-		$.event.trigger(`${this.options.customEventName}:unInitialized`);
+		$.event.trigger(`${this.options.customEventPrefix}:unInitialized`);
 	}
 
 }

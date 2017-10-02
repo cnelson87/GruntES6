@@ -53,7 +53,7 @@ class InfiniteCarousel {
 			animEasing: 'Power4.easeInOut',
 			selectorFocusEls: AppConfig.focusableElements,
 			enableTracking: false,
-			customEventName: 'InfiniteCarousel'
+			customEventPrefix: 'InfiniteCarousel'
 		}, options);
 
 		// element references
@@ -91,7 +91,7 @@ class InfiniteCarousel {
 
 		this._addEventListeners();
 
-		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
+		$.event.trigger(`${this.options.customEventPrefix}:isInitialized`, [this.$el]);
 
 	}
 
@@ -283,7 +283,7 @@ class InfiniteCarousel {
 			}
 		});
 
-		$.event.trigger(`${this.options.customEventName}:carouselUpdated`, {activeEl: $activePanel});
+		$.event.trigger(`${this.options.customEventPrefix}:carouselUpdated`, {activeEl: $activePanel});
 
 		this.fireTracking();
 	}
@@ -359,7 +359,7 @@ class InfiniteCarousel {
 		this.$outerMask = null;
 		this.$innerTrack = null;
 		this.$panels = null;
-		$.event.trigger(`${this.options.customEventName}:unInitialized`);
+		$.event.trigger(`${this.options.customEventPrefix}:unInitialized`);
 	}
 
 }

@@ -29,7 +29,7 @@ class AjaxModal extends ModalWindow {
 
 		let subOptions = Object.assign({
 			ajaxErrorMsg: '<div class="errormessage"><p>Sorry. Ajax request failed.</p></div>',
-			customEventName: 'AjaxModal'
+			customEventPrefix: 'AjaxModal'
 		}, options);
 
 		// setup & properties

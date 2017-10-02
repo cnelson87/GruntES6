@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A carousel widget that responds to mobile, tablet, and desaktop media queries
 
-	VERSION: 0.3.8
+	VERSION: 0.3.9
 
 	USAGE: let myCarousel = new ResponsiveCarousel('Element', 'Options')
 		@param {jQuery Object}
@@ -58,7 +58,7 @@ class ResponsiveCarousel {
 			animEasing: 'Power4.easeInOut',
 			selectorFocusEls: AppConfig.focusableElements,
 			enableTracking: false,
-			customEventName: 'ResponsiveCarousel'
+			customEventPrefix: 'ResponsiveCarousel'
 		}, options);
 
 		// element references
@@ -95,7 +95,7 @@ class ResponsiveCarousel {
 
 		this._addEventListeners();
 
-		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
+		$.event.trigger(`${this.options.customEventPrefix}:isInitialized`, [this.$el]);
 
 	}
 
@@ -326,19 +326,23 @@ class ResponsiveCarousel {
 
 		this.updateNav();
 
+		$.event.trigger(`${this.options.customEventPrefix}:carouselPreUpdate`, {activePanel: $activePanel});
+
 		TweenMax.to(this.$innerTrack, this.options.animDuration, {
 			left: leftPos,
 			ease: this.options.animEasing,
+			onUpdate: function() {
+				$.event.trigger(`${self.options.customEventPrefix}:carouselOpening`, {activePanel: $activePanel});
+			},
 			onComplete: function() {
 				self.isAnimating = false;
 				self.activateItems();
 				if (!!event) {
 					self.focusOnPanel($activePanel);
 				}
+				$.event.trigger(`${self.options.customEventPrefix}:carouselUpdated`, {activePanel: $activePanel});
 			}
 		});
-
-		$.event.trigger(`${this.options.customEventName}:carouselUpdated`, {activeEl: $activePanel});
 
 		this.fireTracking();
 	}
@@ -409,7 +413,7 @@ class ResponsiveCarousel {
 		this.$navNext = null;
 		this.$innerTrack = null;
 		this.$panels = null;
-		$.event.trigger(`${this.options.customEventName}:unInitialized`);
+		$.event.trigger(`${this.options.customEventPrefix}:unInitialized`);
 	}
 
 }

@@ -28,7 +28,7 @@ class SelectTabSwitcher extends TabSwitcher {
 			initialIndex: 0,
 			selectorSelect: '.tabswitcher--tabnav select',
 			selectorTabs: null,
-			customEventName: 'SelectTabSwitcher'
+			customEventPrefix: 'SelectTabSwitcher'
 		}, options);
 
 		// element references

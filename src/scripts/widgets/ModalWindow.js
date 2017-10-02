@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Base class to create modal windows
 
-	VERSION: 0.2.10
+	VERSION: 0.2.11
 
 	USAGE: let myModalWindow = new ModalWindow('Elements', 'Options')
 		@param {jQuery Object}
@@ -45,7 +45,7 @@ class ModalWindow {
 			contentCloseTrigger: '.close-modal',
 			animDuration: AppConfig.timing.standard,
 			selectorContentEls: AppConfig.contentElements,
-			customEventName: 'ModalWindow'
+			customEventPrefix: 'ModalWindow'
 		}, options);
 
 		// element references
@@ -207,9 +207,11 @@ class ModalWindow {
 			this.$overlay.addClass(this.options.activeClass);
 			this.$modal.addClass(this.options.activeClass).attr({'aria-hidden':'false'});
 
+			$.event.trigger(`${this.options.customEventPrefix}:modalPreOpen`, [this.$modal]);
+
 			setTimeout(() => {
 				this.setContentFocus();
-				$.event.trigger(`${this.options.customEventName}:modalOpened`, [this.$modal]);
+				$.event.trigger(`${this.options.customEventPrefix}:modalOpened`, [this.$modal]);
 			}, this.options.animDuration);
 
 		}, delay);
@@ -224,6 +226,8 @@ class ModalWindow {
 
 		this.$window.scrollTop(this.windowScrollTop);
 
+		$.event.trigger(`${this.options.customEventPrefix}:modalPreClose`, [this.$modal]);
+
 		setTimeout(() => {
 
 			this.isModalActivated = false;
@@ -231,7 +235,7 @@ class ModalWindow {
 			this.$modal.hide();
 			this.$content.empty();
 			this.$activeTrigger.focus();
-			$.event.trigger(`${this.options.customEventName}:modalClosed`, [this.$modal]);
+			$.event.trigger(`${this.options.customEventPrefix}:modalClosed`, [this.$modal]);
 
 		}, this.options.animDuration);
 

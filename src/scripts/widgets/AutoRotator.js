@@ -35,7 +35,7 @@ class AutoRotator {
 			autoRotateInterval: AppConfig.timing.interval,
 			animDuration: (AppConfig.timing.fast / 1000),
 			animEasing: 'Power4.easeOut',
-			customEventName: 'AutoRotator'
+			customEventPrefix: 'AutoRotator'
 		}, options);
 
 		// element references
@@ -50,7 +50,7 @@ class AutoRotator {
 
 		this.setDOM();
 
-		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
+		$.event.trigger(`${this.options.customEventPrefix}:isInitialized`, [this.$el]);
 
 		this.setAutoRotation = setInterval(() => {
 			this.autoRotation();

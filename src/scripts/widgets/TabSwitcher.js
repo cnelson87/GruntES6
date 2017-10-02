@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Basic TabSwitcher widget
 
-	VERSION: 0.3.8
+	VERSION: 0.3.9
 
 	USAGE: let myTabSwitcher = new TabSwitcher('Element', 'Options')
 		@param {jQuery Object}
@@ -49,7 +49,7 @@ class TabSwitcher {
 			selectorFocusEls: AppConfig.focusableElements,
 			selectedText: 'currently selected',
 			enableTracking: false,
-			customEventName: 'TabSwitcher'
+			customEventPrefix: 'TabSwitcher'
 		}, options);
 
 		// element references
@@ -81,7 +81,7 @@ class TabSwitcher {
 
 		this._addEventListeners();
 
-		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
+		$.event.trigger(`${this.options.customEventPrefix}:isInitialized`, [this.$el]);
 
 	}
 
@@ -260,21 +260,22 @@ class TabSwitcher {
 		this.isAnimating = true;
 
 		this.deactivateTab($inactiveTab);
-
 		this.activateTab($activeTab);
 
 		this.deactivatePanel($inactivePanel);
-
 		this.activatePanel($activePanel);
+
+		$.event.trigger(`${this.options.customEventPrefix}:panelPreClose`, {inactivePanel: $inactivePanel});
+		$.event.trigger(`${this.options.customEventPrefix}:panelPreOpen`, {activePanel: $activePanel});
 
 		setTimeout(() => {
 			this.isAnimating = false;
 			if (!!event) {
 				this.focusOnPanel($activePanel);
 			}
+			$.event.trigger(`${this.options.customEventPrefix}:panelClosed`, {inactivePanel: $inactivePanel});
+			$.event.trigger(`${this.options.customEventPrefix}:panelOpened`, {activePanel: $activePanel});
 		}, this.options.animDuration);
-
-		$.event.trigger(`${this.options.customEventName}:panelOpened`, {activeEl: $activePanel});
 
 		this.fireTracking();
 	}
@@ -317,7 +318,7 @@ class TabSwitcher {
 		this.$el = null;
 		this.$tabs = null;
 		this.$panels = null;
-		$.event.trigger(`${this.options.customEventName}:unInitialized`);
+		$.event.trigger(`${this.options.customEventPrefix}:unInitialized`);
 	}
 
 }

@@ -38,7 +38,7 @@ class ResponsiveTabCarousel extends ResponsiveCarousel {
 			selectorTabs: '.carousel--tabnav a',
 			classActiveNav: 'is-active',
 			selectedText: 'currently selected',
-			customEventName: 'ResponsiveTabCarousel'
+			customEventPrefix: 'ResponsiveTabCarousel'
 		}, options);
 
 		// element references

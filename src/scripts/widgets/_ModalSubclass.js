@@ -24,7 +24,7 @@ class ModalSubclass extends ModalWindow {
 	initialize($triggers, options) {
 
 		let subclassOptions = Object.assign({
-			customEventName: 'ModalSubclass'
+			customEventPrefix: 'ModalSubclass'
 		}, options);
 
 		super.initialize($triggers, subclassOptions);

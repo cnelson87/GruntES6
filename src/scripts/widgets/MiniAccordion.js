@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A single Accordion item
 
-	VERSION: 0.3.8
+	VERSION: 0.3.9
 
 	USAGE: let myAccordion = new MiniAccordion('Element', 'Options')
 		@param {jQuery Object}
@@ -43,7 +43,7 @@ class MiniAccordion {
 			selectorFocusEls: AppConfig.focusableElements,
 			selectedText: 'currently selected',
 			enableTracking: false,
-			customEventName: 'MiniAccordion'
+			customEventPrefix: 'MiniAccordion'
 		}, options);
 
 		// element references
@@ -66,7 +66,7 @@ class MiniAccordion {
 
 		this._addEventListeners();
 
-		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
+		$.event.trigger(`${this.options.customEventPrefix}:isInitialized`, [this.$el]);
 
 	}
 
@@ -172,9 +172,14 @@ class MiniAccordion {
 
 		this.deactivatePanel();
 
+		$.event.trigger(`${this.options.customEventPrefix}:panelPreClose`, [this.$panel]);
+
 		TweenMax.to(this.$panel, this.options.animDuration, {
 			height: 0,
 			ease: this.options.animEasing,
+			onUpdate: function() {
+				$.event.trigger(`${self.options.customEventPrefix}:panelClosing`, [self.$panel]);
+			},
 			onComplete: function() {
 				self.isAnimating = false;
 				self.$tab.focus();
@@ -182,6 +187,7 @@ class MiniAccordion {
 					display: 'none',
 					height: 'auto'
 				});
+				$.event.trigger(`${self.options.customEventPrefix}:panelClosed`, [self.$panel]);
 			}
 		});
 
@@ -199,20 +205,24 @@ class MiniAccordion {
 
 		this.activatePanel();
 
+		$.event.trigger(`${this.options.customEventPrefix}:panelPreOpen`, [this.$panel]);
+
 		TweenMax.to(this.$panel, this.options.animDuration, {
 			display: 'block',
 			height: panelHeight,
 			ease: this.options.animEasing,
+			onUpdate: function() {
+				$.event.trigger(`${self.options.customEventPrefix}:panelOpening`, [self.$panel]);
+			},
 			onComplete: function() {
 				self.isAnimating = false;
 				self.focusOnPanel(self.$panel);
 				TweenMax.set(self.$panel, {
 					height: 'auto'
 				});
+				$.event.trigger(`${self.options.customEventPrefix}:panelOpened`, [self.$panel]);
 			}
 		});
-
-		$.event.trigger(`${this.options.customEventName}:panelOpened`, [this.$el]);
 
 		this.fireTracking();
 	}
@@ -253,7 +263,7 @@ class MiniAccordion {
 		this.$el = null;
 		this.$tab = null;
 		this.$panel = null;
-		$.event.trigger(`${this.options.customEventName}:unInitialized`);
+		$.event.trigger(`${this.options.customEventPrefix}:unInitialized`);
 	}
 
 }

@@ -44,7 +44,7 @@ class Horizordion {
 			selectorFocusEls: AppConfig.focusableElements,
 			selectedText: 'currently selected',
 			enableTracking: false,
-			customEventName: 'Horizordion'
+			customEventPrefix: 'Horizordion'
 		}, options);
 
 		// element references
@@ -75,7 +75,7 @@ class Horizordion {
 
 		this._addEventListeners();
 
-		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
+		$.event.trigger(`${this.options.customEventPrefix}:isInitialized`, [this.$el]);
 
 	}
 
@@ -288,7 +288,7 @@ class Horizordion {
 		this.$el = null;
 		this.$tabs = null;
 		this.$panels = null;
-		$.event.trigger(`${this.options.customEventName}:unInitialized`);
+		$.event.trigger(`${this.options.customEventPrefix}:unInitialized`);
 	}
 
 }

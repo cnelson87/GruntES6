@@ -41,7 +41,7 @@ class DateRangeSlider {
 			classInitialized: 'is-initialized',
 			dateFormat: 'ddd MMM Do YYYY, h:mm:ss a',
 			sliderSteps: steps.day,
-			customEventName: 'DateRangeSlider'
+			customEventPrefix: 'DateRangeSlider'
 		}, options);
 
 		// element references
@@ -61,7 +61,7 @@ class DateRangeSlider {
 
 		this.$el.addClass(this.options.classInitialized);
 
-		$.event.trigger(`${this.options.customEventName}:isInitialized`, [this.$el]);
+		$.event.trigger(`${this.options.customEventPrefix}:isInitialized`, [this.$el]);
 
 	}
 
