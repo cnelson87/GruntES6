@@ -42,8 +42,8 @@ class RangeSlider {
 		this.$fields = this.$el.find(this.options.selectorFields); //must be exactly 2 (start & end)
 
 		// setup & properties
-		this.steps = this.options.sliderSteps;
 		this.data = this.$slider.data();
+		this.steps = this.data.steps || this.options.sliderSteps;
 		this.min = this.data.min; //data-min is required
 		this.max = this.data.max; //data-max is required
 		this.start = this.data.start || this.min; //data-start is optional

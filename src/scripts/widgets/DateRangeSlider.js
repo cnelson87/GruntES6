@@ -1,7 +1,7 @@
 /*
 	TITLE: DateRangeSlider
 
-	DESCRIPTION: DateRangeSlider widget
+	DESCRIPTION: A range slider widget for selecting a date or time, useful for small ranges, use DualDatepicker for large ranges.
 
 	VERSION: 0.1.0
 
@@ -27,7 +27,10 @@ class DateRangeSlider {
 	initialize($el, options) {
 		const steps = {
 			day: 86400000, //(24 * 60 * 60 * 1000)
-			hour: 3600000 //(60 * 60 * 1000)
+			hour: 3600000, //(60 * 60 * 1000)
+			hHour: 1800000, //(30 * 60 * 1000)
+			qHour: 900000, //(15 * 60 * 1000)
+			minute: 60000 //(60 * 1000)
 		};
 
 		// defaults
@@ -48,8 +51,8 @@ class DateRangeSlider {
 		this.$fields = this.$el.find(this.options.selectorFields); //must be exactly 2 (start & end)
 
 		// setup & properties
-		this.steps = this.options.sliderSteps;
 		this.data = this.$slider.data();
+		this.steps = this.data.steps || this.options.sliderSteps;
 		this.min = new Date(this.data.min); //data-min is required
 		this.max = new Date(this.data.max); //data-max is required
 		this.start = this.data.start ? new Date(this.data.start) : this.min; //data-start is optional
