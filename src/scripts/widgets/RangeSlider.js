@@ -43,10 +43,11 @@ class RangeSlider {
 
 		// setup & properties
 		this.steps = this.options.sliderSteps;
-		this.min = this.$slider.data('min'); //data-min is required
-		this.max = this.$slider.data('max'); //data-max is required
-		this.start = this.$slider.data('start') || this.min; //data-start is optional
-		this.end = this.$slider.data('end') || this.min; //data-end is optional
+		this.data = this.$slider.data();
+		this.min = this.data.min; //data-min is required
+		this.max = this.data.max; //data-max is required
+		this.start = this.data.start || this.min; //data-start is optional
+		this.end = this.data.end || this.max; //data-end is optional
 
 		this.initSlider();
 

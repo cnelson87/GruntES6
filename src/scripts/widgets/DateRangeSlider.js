@@ -25,12 +25,10 @@ class DateRangeSlider {
 	}
 
 	initialize($el, options) {
-		/* eslint-disable no-magic-numbers */
 		const steps = {
-			day: (24 * 60 * 60 * 1000),
-			hour: (60 * 60 * 1000)
+			day: 86400000, //(24 * 60 * 60 * 1000)
+			hour: 3600000 //(60 * 60 * 1000)
 		};
-		/* eslint-enable no-magic-numbers */
 
 		// defaults
 		this.$el = $el;
@@ -39,8 +37,8 @@ class DateRangeSlider {
 			selectorOutputs: '.range-slider--output',
 			selectorFields: '.range-slider--field',
 			classInitialized: 'is-initialized',
-			dateFormat: 'ddd MMM Do YYYY, h:mm:ss a',
 			sliderSteps: steps.day,
+			dateFormat: 'ddd MMM Do YYYY, h:mm:ss a',
 			customEventPrefix: 'DateRangeSlider'
 		}, options);
 
@@ -50,12 +48,13 @@ class DateRangeSlider {
 		this.$fields = this.$el.find(this.options.selectorFields); //must be exactly 2 (start & end)
 
 		// setup & properties
+		this.steps = this.options.sliderSteps;
+		this.data = this.$slider.data();
+		this.min = new Date(this.data.min); //data-min is required
+		this.max = new Date(this.data.max); //data-max is required
+		this.start = this.data.start ? new Date(this.data.start) : this.min; //data-start is optional
+		this.end = this.data.end ? new Date(this.data.end) : this.max; //data-end is optional
 		this.dateFormat = this.options.dateFormat;
-		this.sliderSteps = this.options.sliderSteps;
-		this.startDate = new Date(this.$slider.data('min'));
-		this.endDate = new Date(this.$slider.data('max'));
-		this.timestampStartDate = this.startDate.getTime();
-		this.timestampEndDate = this.endDate.getTime();
 
 		this.initSlider();
 
@@ -75,11 +74,11 @@ class DateRangeSlider {
 		noUiSlider.create(slider, {
 			connect: [false, true, false],
 			range: {
-				min: this.timestampStartDate,
-				max: this.timestampEndDate
+				min: this.min.getTime(),
+				max: this.max.getTime()
 			},
-			step: this.sliderSteps,
-			start: [this.timestampStartDate, this.timestampEndDate]
+			step: this.steps,
+			start: [this.start.getTime(), this.end.getTime()]
 		});
 		slider.noUiSlider.on('update', function(values, index) {
 			this.$outputs.eq(index).html(formateDate(new Date(+values[index])));
@@ -87,11 +86,11 @@ class DateRangeSlider {
 		slider.noUiSlider.on('change', function(values, index) {
 			this.$fields.eq(index).val(new Date(+values[index])).change();
 		}.bind(this));
-		this.$fields.eq(0).val(this.startDate);
-		this.$fields.eq(1).val(this.endDate);
-		this.$fields.on('change', function(event){
-			console.log('date change:', $(event.currentTarget).val());
-		});
+		this.$fields.eq(0).val(this.start);
+		this.$fields.eq(1).val(this.end);
+		// this.$fields.on('change', function(event){
+		// 	console.log('date change:', $(event.currentTarget).val());
+		// });
 
 	}
 
