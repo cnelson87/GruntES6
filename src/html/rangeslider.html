@@ -67,7 +67,7 @@
 
 				<h2>noUiSlider</h2>
 
-				<div class="pad-box range-slider" id="date-slider-widget">
+				<div class="pad-box range-slider" id="range-slider">
 					<h3>Start/End Date <span class="small">(in 1hr increments)</span></h3>
 					<p>
 						Start Date (on 'update' event): <span class="range-slider--output output"></span>
@@ -81,7 +81,21 @@
 					<div class="noUiSlider date-slider" data-start="Sep 20 2017 22:00:00" data-end="Sep 27 2017 6:00:00"></div>
 				</div>
 
-				<div class="pad-box range-slider" id="time-slider-widget">
+				<div class="pad-box range-slider" id="date-range-slider">
+					<h3>Start/End Date <span class="small">(in 1hr increments)</span></h3>
+					<p>
+						Start Date (on 'update' event): <span class="range-slider--output output"></span>
+						<br />
+						End Date (on 'update' event): <span class="range-slider--output output"></span>
+						<br />
+						Start Date (on 'change' event): <input type="text" readonly class="input-xlong range-slider--field" />
+						<br />
+						End Date (on 'change' event): <input type="text" readonly class="input-xlong range-slider--field" />
+					</p>
+					<div class="noUiSlider date-slider" data-start="Sep 20 2017 22:00:00" data-end="Sep 27 2017 6:00:00"></div>
+				</div>
+
+				<div class="pad-box range-slider" id="time-range-slider">
 					<h3>Start/End Time <span class="small">(in 15min increments)</span></h3>
 					<p>
 						Start Time (on 'update' event): <span class="range-slider--output output"></span>

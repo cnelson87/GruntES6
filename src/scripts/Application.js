@@ -26,6 +26,7 @@ import SelectTabSwitcher from 'widgets/SelectTabSwitcher';
 import Horizordion from 'widgets/Horizordion';
 import ModalWindow from 'widgets/ModalWindow';
 import AjaxModal from 'widgets/AjaxModal';
+import RangeSlider from 'widgets/RangeSlider';
 import DateRangeSlider from 'widgets/DateRangeSlider';
 // import {SuperClass, SubClass} from 'widgets/SuperSubClass';
 import {SubClass} from 'widgets/SuperSubClass';
@@ -225,10 +226,15 @@ const Application = {
 
 	initRangeSliderPage: function() {
 		/* eslint-disable no-magic-numbers */
-		new DateRangeSlider($('#date-slider-widget'), {
+		new RangeSlider($('#range-slider'), {
+			sliderSteps: 1
+		});import RangeSlider from 'widgets/RangeSlider';
+		
+		new DateRangeSlider($('#date-range-slider'), {
 			sliderSteps: (60 * 60 * 1000) // 1 hr
-		});
-		new DateRangeSlider($('#time-slider-widget'), {
+		});import RangeSlider from 'widgets/RangeSlider';
+		
+		new DateRangeSlider($('#time-range-slider'), {
 			sliderSteps: (15 * 60 * 1000) // 15 min
 		});
 		/* eslint-enable no-magic-numbers */
