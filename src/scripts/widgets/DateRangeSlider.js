@@ -52,8 +52,8 @@ class DateRangeSlider {
 		// setup & properties
 		this.dateFormat = this.options.dateFormat;
 		this.sliderSteps = this.options.sliderSteps;
-		this.startDate = new Date(this.$slider.data('start'));
-		this.endDate = new Date(this.$slider.data('end'));
+		this.startDate = new Date(this.$slider.data('min'));
+		this.endDate = new Date(this.$slider.data('max'));
 		this.timestampStartDate = this.startDate.getTime();
 		this.timestampEndDate = this.endDate.getTime();
 
