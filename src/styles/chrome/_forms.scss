@@ -29,7 +29,7 @@ label, span.label {
 	font-weight: bold;
 	line-height: 1.2;
 	vertical-align: top;
-	padding-top: 4px; // matches input padding-top for vertical alignment
+	padding-top: 2px; // matches input padding-top for vertical alignment
 	span.sm {
 		font-size: 0.9em;
 		font-weight: normal;
@@ -42,16 +42,17 @@ label, span.label {
 output {
 	display: inline-block;
 	color: $gray-dark;
-	font-size: 16px;//1.0em;
+	font-size: 16px; //1.0em;
 	font-weight: bold;
 	line-height: 1.2;
 	padding-top: 2px; // matches input padding-top for vertical alignment
 }
 
 input, select, textarea, button {
+	display: inline-block;
 	color: $gray-dark;
 	font-family: $main-font;
-	font-size: 16px;//1.0em;
+	font-size: 16px; //1.0em;
 	line-height: 1.2;
 	vertical-align: top;
 	background: $transparent;
@@ -363,21 +364,22 @@ button.sm-alt-btn:focus, button.sm-alt-btn:hover {
 // Start misc
 //
 
-// note next to an input field
-.form-note {
-	display: inline-block;
-	color: $gray-med;
-	font-size: 12px;
-	line-height: 16px;
-	margin: 5px 0 0 5px;
-}
 // message below an input field
-.form-message {
+.form-message,
+.form-note {
 	display: block;
 	color: $gray-med;
 	font-size: 12px;
 	line-height: 16px;
-	margin-top: 5px;
+}
+@media (min-width: $tablet-breakpoint-min) {
+	// note next to an input field
+	.form-note {
+		display: inline-block;
+		margin-left: 5px;
+		padding-top: 5px;
+		vertical-align: top;
+	}
 }
 
 input + input, input + select, input + textarea, input + output,
