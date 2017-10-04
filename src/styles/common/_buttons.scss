@@ -21,7 +21,7 @@ button.button {
 	border: 1px solid $border-color-med;
 	border-radius: 4px;
 	padding: 4px 12px;
-	transition: color $transition-speed, background-color $transition-speed;
+	transition: color $transition-speed, background-color $transition-speed, border-color $transition-speed, opacity $transition-speed, transform $transition-speed;
 
 	&:hover, &:focus {
 		background: rgba($text-color, 0.15);

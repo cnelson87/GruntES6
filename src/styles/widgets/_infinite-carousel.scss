@@ -61,8 +61,8 @@
 // Tablet+
 @media (min-width: $tablet-breakpoint-min) {
 	.infinite-carousel {
-		min-height: 420px;
-		padding: 40px 0 10px;
+		min-height: 408px;
+		padding: 40px 0 4px;
 
 		.arrow-nav {
 			top: 120px;
@@ -86,5 +86,12 @@
 
 		}
 
+	}
+}
+
+// Desktop+
+@media (min-width: $desktop-breakpoint-min) {
+	.infinite-carousel {
+		min-height: 418px;
 	}
 }
