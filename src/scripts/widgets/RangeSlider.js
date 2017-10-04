@@ -1,11 +1,11 @@
 /*
-	TITLE: DateRangeSlider
+	TITLE: RangeSlider
 
-	DESCRIPTION: DateRangeSlider widget
+	DESCRIPTION: A range slider widget
 
 	VERSION: 0.1.0
 
-	USAGE: let myDateRangeSlider = new DateRangeSlider('Element', 'Options')
+	USAGE: let myRangeSlider = new RangeSlider('Element', 'Options')
 		@param {jQuery Object}
 		@param {Object}
 
@@ -13,12 +13,11 @@
 
 	DEPENDENCIES:
 		- jquery 3.x
-		- moment 2.18.1
 		- noUiSlider 10.1.0
 
 */
 
-class DateRangeSlider {
+class RangeSlider {
 
 	constructor($el, options = {}) {
 		this.initialize($el, options);
@@ -41,7 +40,7 @@ class DateRangeSlider {
 			classInitialized: 'is-initialized',
 			dateFormat: 'ddd MMM Do YYYY, h:mm:ss a',
 			sliderSteps: steps.day,
-			customEventPrefix: 'DateRangeSlider'
+			customEventPrefix: 'RangeSlider'
 		}, options);
 
 		// element references
@@ -97,4 +96,4 @@ class DateRangeSlider {
 
 }
 
-export default DateRangeSlider;
+export default RangeSlider;

@@ -111,8 +111,8 @@ const Application = {
 			case 'modalspage':
 				this.initModalsPage();
 				break;
-			case 'daterangesliderpage':
-				this.initDateRangeSliderPage();
+			case 'rangesliderpage':
+				this.initRangeSliderPage();
 				break;
 			case 'testpage':
 				this.initTestPage();
@@ -223,7 +223,7 @@ const Application = {
 		});
 	},
 
-	initDateRangeSliderPage: function() {
+	initRangeSliderPage: function() {
 		/* eslint-disable no-magic-numbers */
 		new DateRangeSlider($('#date-slider-widget'), {
 			sliderSteps: (60 * 60 * 1000) // 1 hr

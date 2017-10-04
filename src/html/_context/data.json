@@ -123,12 +123,12 @@
 		"intro" : "This is the Modals page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
 	},
 
-	"daterangeslider": {
-		"title" : "DateRangeSlider",
-		"description" : "Description for the DateRangeSlider page",
-		"keywords" : "daterangeslider",
-		"h1" : "DateRangeSlider H1",
-		"intro" : "This is the DateRangeSlider page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
+	"rangeslider": {
+		"title" : "RangeSlider",
+		"description" : "Description for the RangeSlider page",
+		"keywords" : "rangeslider",
+		"h1" : "RangeSlider H1",
+		"intro" : "This is the RangeSlider page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
 	},
 
 	"test": {

@@ -1,8 +1,8 @@
 {{#extend "default"}}
 
-	{{#replace "title"}}{{daterangeslider.title}} - {{title}}{{/replace}}
-	{{#replace "description"}}{{daterangeslider.description}}{{/replace}}
-	{{#replace "keywords"}}{{keywords}}, {{daterangeslider.keywords}}{{/replace}}
+	{{#replace "title"}}{{rangeslider.title}} - {{title}}{{/replace}}
+	{{#replace "description"}}{{rangeslider.description}}{{/replace}}
+	{{#replace "keywords"}}{{keywords}}, {{rangeslider.keywords}}{{/replace}}
 
 	{{#replace "head"}}
 	<style>
@@ -35,17 +35,17 @@
 	</script>
 	{{/replace}}
 
-	{{#replace "body-id"}}daterangesliderpage{{/replace}}
+	{{#replace "body-id"}}rangesliderpage{{/replace}}
 
 	{{#replace "content"}}
 
 		<section class="content">
 			<div class="content-container">
 
-				<h1>{{daterangeslider.h1}}</h1>
+				<h1>{{rangeslider.h1}}</h1>
 
 				<div class="intro">
-					<p>{{daterangeslider.intro}}</p>
+					<p>{{rangeslider.intro}}</p>
 				</div>
 
 			</div>
@@ -67,30 +67,30 @@
 
 				<h2>noUiSlider</h2>
 
-				<div class="pad-box date-range-slider" id="date-slider-widget">
+				<div class="pad-box range-slider" id="date-slider-widget">
 					<h3>Start/End Date <span class="small">(in 1hr increments)</span></h3>
 					<p>
-						Start Date (on 'update' event): <span class="date-range-slider--output output"></span>
+						Start Date (on 'update' event): <span class="range-slider--output output"></span>
 						<br />
-						End Date (on 'update' event): <span class="date-range-slider--output output"></span>
+						End Date (on 'update' event): <span class="range-slider--output output"></span>
 						<br />
-						Start Date (on 'change' event): <input type="text" readonly class="input-xlong date-range-slider--field" />
+						Start Date (on 'change' event): <input type="text" readonly class="input-xlong range-slider--field" />
 						<br />
-						End Date (on 'change' event): <input type="text" readonly class="input-xlong date-range-slider--field" />
+						End Date (on 'change' event): <input type="text" readonly class="input-xlong range-slider--field" />
 					</p>
 					<div class="noUiSlider date-slider" data-start="Sep 20 2017 22:00:00" data-end="Sep 27 2017 6:00:00"></div>
 				</div>
 
-				<div class="pad-box date-range-slider" id="time-slider-widget">
+				<div class="pad-box range-slider" id="time-slider-widget">
 					<h3>Start/End Time <span class="small">(in 15min increments)</span></h3>
 					<p>
-						Start Time (on 'update' event): <span class="date-range-slider--output output"></span>
+						Start Time (on 'update' event): <span class="range-slider--output output"></span>
 						<br />
-						End Time (on 'update' event): <span class="date-range-slider--output output"></span>
+						End Time (on 'update' event): <span class="range-slider--output output"></span>
 						<br />
-						Start Time (on 'change' event): <input type="text" readonly class="input-xlong date-range-slider--field" />
+						Start Time (on 'change' event): <input type="text" readonly class="input-xlong range-slider--field" />
 						<br />
-						End Time (on 'change' event): <input type="text" readonly class="input-xlong date-range-slider--field" />
+						End Time (on 'change' event): <input type="text" readonly class="input-xlong range-slider--field" />
 					</p>
 					<div class="noUiSlider time-slider" data-start="Sep 27 2017 6:00:00" data-end="Sep 27 2017 22:00:00"></div>
 				</div>
