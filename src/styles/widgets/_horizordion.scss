@@ -4,7 +4,7 @@
 // Assumes 4 items
 
 .horizordion {
-	height: 720px; //TEMP -- set as needed
+	height: 600px; //TEMP -- set as needed
 	margin: 1.5em 0;
 	position: relative;
 
@@ -56,20 +56,36 @@
 			// Tablet+Desktop+
 			@media (min-width: $tablet-breakpoint-min) {
 				@include visible();
+				width: 40px;
+				height: 100%;
 				position: absolute;
-				right: 5px;
-				top: 5px;
+				right: 0;
+				top: 0;
 
 				> a {
 					@include text-hide;
 					display: block;
-					width: 30px;
-					height: 30px;
-					background: rgba($gray-dark, 0) url($image-path+'/action-icons.png') no-repeat 0 -30px;
-					background-origin: border-box;
-					border: 2px solid $near-black;
-					border-radius: 50%;
+					background: rgba($black, 0.2);
+					width: 100%;
+					height: 100%;
 
+					&::after {
+						content: '';
+						display: block;
+						width: 30px;
+						height: 30px;
+						background: url($image-path+'/action-icons.png') no-repeat 0 -30px;
+						background-origin: border-box;
+						border: 2px solid $near-black;
+						border-radius: 50%;
+						position: absolute;
+						right: 5px;
+						top: 5px;
+					}
+
+					&:hover, &:focus, &.is-active {
+						background: rgba($black, 0.1);
+					}
 				}
 
 			}
@@ -82,15 +98,20 @@
 			padding: 40px 20px 20px;
 			position: relative;
 			// transition: opacity $animation-speed;
+
+			// Tablet+Desktop+
+			@media (min-width: $tablet-breakpoint-min) {
+				width: calc(100% - 40px); //minus tab width
+			}
+
 		}
 
 		&.is-active {
-
 			> .horizordion--content {
 				opacity: 1.0;
-				transition: opacity $animation-speed;
+				transition: opacity $transition-speed;
+				transition-delay: $animation-speed;
 			}
-
 		}
 
 	}

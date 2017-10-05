@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A horizontal Accordion
 
-	VERSION: 0.1.3
+	VERSION: 0.1.4
 
 	USAGE: let myHorizordion = new Horizordion('Element', 'Options')
 		@param {jQuery Object}
@@ -271,9 +271,7 @@ class Horizordion {
 	}
 
 	focusOnPanel($panel) {
-		let index = this.$panels.index($panel);
-		let extraTopOffset = this.$tabs.eq(index).outerHeight();
-		focusOnContentEl($panel, extraTopOffset);
+		focusOnContentEl($panel);
 	}
 
 	fireTracking() {
