@@ -133,7 +133,7 @@ class MiniAccordion {
 
 	__clickTab(event) {
 		event.preventDefault();
-
+		if ($(event.target).hasClass('ignore-click')) {return;}
 		if (this.isAnimating) {return;}
 
 		if (this.isActive) {

@@ -175,6 +175,7 @@ class Accordion {
 
 	__clickTab(event) {
 		event.preventDefault();
+		if ($(event.target).hasClass('ignore-click')) {return;}
 		let index = this.$tabs.index(event.currentTarget);
 		let $currentTab = this.$tabs.eq(index);
 		let $currentPanel = this.$panels.eq(index);
