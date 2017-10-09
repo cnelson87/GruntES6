@@ -216,24 +216,18 @@ const Application = {
 	},
 
 	initModalsPage: function() {
-		new ModalWindow($('a.modal-trigger'), {
-			extraClasses: 'modal-wide'
-		});
-		new AjaxModal($('a.ajax-modal-trigger'), {
-			// extraClasses: 'modal-wide'
-		});
+		new ModalWindow();
+		new AjaxModal();
 	},
 
 	initRangeSliderPage: function() {
 		/* eslint-disable no-magic-numbers */
 		new RangeSlider($('#range-slider'), {
 			sliderSteps: 1
-		});import RangeSlider from 'widgets/RangeSlider';
-		
+		});
 		new DateRangeSlider($('#date-range-slider'), {
 			sliderSteps: (60 * 60 * 1000) // 1 hr
-		});import RangeSlider from 'widgets/RangeSlider';
-		
+		});
 		new DateRangeSlider($('#time-range-slider'), {
 			sliderSteps: (15 * 60 * 1000) // 15 min
 		});

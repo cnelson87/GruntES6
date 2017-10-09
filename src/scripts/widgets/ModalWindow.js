@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Base class to create modal windows
 
-	VERSION: 0.2.11
+	VERSION: 0.3.0
 
 	USAGE: let myModalWindow = new ModalWindow('Elements', 'Options')
 		@param {jQuery Object}
@@ -17,36 +17,38 @@
 */
 
 import AppConfig from 'config/AppConfig';
+import modalTemplate from 'templates/ModalTemplate.hbs';
 
 class ModalWindow {
 
-	constructor($triggers, options = {}) {
+	constructor(options = {}) {
 		this.$window = $(window);
 		this.$document = $(document);
 		this.$body = $('body');
-		this.initialize($triggers, options);
+		this.initialize(options);
 	}
 
-	initialize($triggers, options) {
+	initialize(options) {
 
 		// defaults
-		this.$triggers = $triggers;
+		// this.$triggers = $triggers;
 		this.options = Object.assign({
-			//selectorTriggers: 'a.modal-trigger',
-			modalID: 'modalwindow',
-			modalClass: 'modalwindow',
-			extraClasses: '',
-			overlayID: 'modaloverlay',
-			overlayClass: 'modaloverlay',
-			closeBtnClass: 'closeX',
-			closeBtnText: 'close modal dialog',
+			selectorTriggers: 'a.modal-trigger[data-targetID]',
+			templateModal: modalTemplate(), //.hbs files return a function which returns html
+			templateOverlay: '<div class="modal-overlay"></div>',
+			selectorContent: '.modalwindow--content', //must match content element in template
+			selectorCloseBtn: '.closeX', //must match close button in template
+			selectorCloseLinks: '.close-modal', //close links within content
+			// closeBtnText: 'close modal dialog',
 			activeClass: 'is-active',
 			activeBodyClass: 'modal-active',
-			contentCloseTrigger: '.close-modal',
 			animDuration: AppConfig.timing.standard,
 			selectorContentEls: AppConfig.contentElements,
 			customEventPrefix: 'ModalWindow'
 		}, options);
+
+		console.log(this.options.selectorTriggers);
+		console.log($(this.options.selectorTriggers));
 
 		// element references
 		this.$activeTrigger = null;
@@ -73,51 +75,30 @@ class ModalWindow {
 
 	initDOM() {
 
-		//create overlay
-		this.$overlay = $('#' + this.options.overlayID);
-		if (!this.$overlay.length) {
-			this.$overlay = $(`<div id="${this.options.overlayID}" class="${this.options.overlayClass}"></div>`).appendTo(this.$body);
-		}
+		// create overlay from template
+		this.$overlay = $(this.options.templateOverlay);
 
-		//create modal
-		this.$modal = $('#' + this.options.modalID);
-		if (!this.$modal.length) {
-			this.$modal = $('<div></div>', {
-				'id': this.options.modalID,
-				'class': this.options.modalClass + ' ' + this.options.extraClasses,
-				'aria-hidden': 'true',
-				'aria-live': 'polite',
-				'role': 'dialog'
-			});
-		}
+		// create modal from template
+		this.$modal = $(this.options.templateModal);
+		this.$modal.attr({'aria-hidden':'true', 'aria-live':'polite', 'role':'dialog'});
 
-		//create modal content
-		this.$content = this.$modal.find('.' + this.options.modalClass + '--content');
-		if (!this.$content.length) {
-			this.$content = $('<div></div>', {
-				'class': this.options.modalClass + '--content',
-				'role': 'document'
-			}).appendTo(this.$modal);
-		}
+		// set modal content
+		this.$content = this.$modal.find(this.options.selectorContent);
+		this.$content.attr({'role':'document'});
 
-		//insert close button
-		this.$closeBtn = this.$modal.find('.' + this.options.closeBtnClass);
-		if (!this.$closeBtn.length) {
-			this.$closeBtn = $('<a></a>', {
-				'class': this.options.closeBtnClass,
-				'href': '#close'
-			}).html('<span>' + this.options.closeBtnText + '</span>').appendTo(this.$modal);
-		}
+		// set close button
+		this.$closeBtn = this.$modal.find(this.options.selectorCloseBtn);
 
-		//insert into DOM
-		this.$modal.insertAfter(this.$overlay);
+		// insert into DOM
+		this.$overlay.appendTo(this.$body).hide();
+		this.$modal.insertAfter(this.$overlay).hide();
 
 	}
 
 	_addEventListeners() {
 		let { keys } = AppConfig;
 
-		this.$triggers.on('click', (event) => {
+		this.$body.on('click', this.options.selectorTriggers, (event) => {
 			event.preventDefault();
 			if (!this.isModalActivated) {
 				this.$activeTrigger = $(event.currentTarget);
@@ -132,7 +113,7 @@ class ModalWindow {
 			}
 		});
 
-		this.$content.on('click', this.options.contentCloseTrigger, (event) => {
+		this.$content.on('click', this.options.selectorCloseLinks, (event) => {
 			event.preventDefault();
 			if (this.isModalActivated) {
 				this.closeModal();
@@ -178,7 +159,7 @@ class ModalWindow {
 
 	// extend or override getContent in subclass to create custom modal
 	getContent() {
-		let targetID = this.$activeTrigger.data('targetid') || this.$activeTrigger.attr('href').replace('#','');
+		let targetID = this.$activeTrigger.data('targetid');
 		let targetEl = $(`#${targetID}`);
 		this.contentHTML = targetEl.html();
 		this.setContent();

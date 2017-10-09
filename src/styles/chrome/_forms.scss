@@ -60,7 +60,6 @@ input, select, textarea, button {
 	border: 0;
 	margin: 0;
 	padding: 0;
-	outline: 0;
 }
 
 // Removed dotted line from input on Firefox
@@ -125,6 +124,7 @@ textarea {
 	height: calc(1.2em + 6px); // 1.2 line-height + 6px padding & border
 	border: 1px solid $border-color-light;
 	border-radius: $border-radius-sm;
+	outline: 0;
 	padding: 2px;
 }
 
@@ -302,59 +302,69 @@ input[type='submit'],
 input[type='reset'],
 input[type='button'],
 button {
-	@include base-transition();
 	appearance: none;
 	cursor: pointer;
-	font-size: 16px; //1.0em;
-	font-weight: bold;
-	line-height: 1.2;
-	text-align: center;
-	text-decoration: none;
-	text-transform: uppercase;
-	vertical-align: middle;
-	background: $gray-light;
-	border: 1px solid $border-color-dark;
-	border-radius: $border-radius-sm;
-	padding: 4px 12px;
-
-	&:focus, &:hover {
-		background: $gray-xlight;
-		outline: none;
-	}
 }
 
-input.btn, input.sm-btn,
-button.btn, button.sm-btn {
-	color: $white;
-	background: $link-color;
-}
-input.alt-btn, input.sm-alt-btn,
-button.alt-btn, button.sm-alt-btn {
-	color: $link-color;
-	background: $white;
-	border-color: $link-color;
-}
-input.sm-btn, input.sm-alt-btn,
-button.sm-btn, button.sm-alt-btn {
-	min-width: auto;
-	font-size: 12px;
-	font-weight: normal;
-	padding: 1px 8px;
-}
-input.btn:focus, input.btn:hover,
-input.sm-btn:focus, input.sm-btn:hover,
-button.btn:focus, button.btn:hover,
-button.sm-btn:focus, button.sm-btn:hover {
-	background: $link-hover-color;
-}
-input.alt-btn:focus, input.alt-btn:hover,
-input.sm-alt-btn:focus, input.sm-alt-btn:hover
-button.alt-btn:focus, button.alt-btn:hover,
-button.sm-alt-btn:focus, button.sm-alt-btn:hover {
-	color: $gray-dark;
-	background: $white;
-	border-color: $gray-dark;
-}
+// TODO: use .button class instead
+// input[type='submit'],
+// input[type='reset'],
+// input[type='button'],
+// button {
+// 	@include base-transition();
+// 	appearance: none;
+// 	cursor: pointer;
+// 	font-size: 16px; //1.0em;
+// 	font-weight: bold;
+// 	line-height: 1.2;
+// 	text-align: center;
+// 	text-decoration: none;
+// 	text-transform: uppercase;
+// 	vertical-align: middle;
+// 	background: $gray-light;
+// 	border: 1px solid $border-color-dark;
+// 	border-radius: $border-radius-sm;
+// 	padding: 4px 12px;
+//
+// 	&:focus, &:hover {
+// 		background: $gray-xlight;
+// 		outline: none;
+// 	}
+// }
+
+// TODO: move .btn styles to separate scss stylesheet
+// input.btn, input.sm-btn,
+// button.btn, button.sm-btn {
+// 	color: $white;
+// 	background: $link-color;
+// }
+// input.alt-btn, input.sm-alt-btn,
+// button.alt-btn, button.sm-alt-btn {
+// 	color: $link-color;
+// 	background: $white;
+// 	border-color: $link-color;
+// }
+// input.sm-btn, input.sm-alt-btn,
+// button.sm-btn, button.sm-alt-btn {
+// 	min-width: auto;
+// 	font-size: 12px;
+// 	font-weight: normal;
+// 	padding: 1px 8px;
+// }
+// input.btn:focus, input.btn:hover,
+// input.sm-btn:focus, input.sm-btn:hover,
+// button.btn:focus, button.btn:hover,
+// button.sm-btn:focus, button.sm-btn:hover {
+// 	background: $link-hover-color;
+// }
+// input.alt-btn:focus, input.alt-btn:hover,
+// input.sm-alt-btn:focus, input.sm-alt-btn:hover
+// button.alt-btn:focus, button.alt-btn:hover,
+// button.sm-alt-btn:focus, button.sm-alt-btn:hover {
+// 	color: $gray-dark;
+// 	background: $white;
+// 	border-color: $gray-dark;
+// }
 
 //
 // End buttons

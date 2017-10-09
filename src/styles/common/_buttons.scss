@@ -16,12 +16,13 @@
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
-	background: rgba($text-color, 0);
+	background: $gray-light;
 	border: 1px solid $border-color-dark;
 	border-radius: $border-radius-sm;
+	outline: 0;
 	padding: 4px 12px;
 
 	&:hover, &:focus {
-		background: rgba($text-color, 0.15);
+		background: $gray-xlight;
 	}
 }

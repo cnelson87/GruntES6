@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Subclass of ModalWindow retrieves & injects Ajax content
 
-	VERSION: 0.2.8
+	VERSION: 0.3.0
 
 	USAGE: let myAjaxModal = new AjaxModal('Elements', 'Options')
 		@param {jQuery Object}
@@ -25,9 +25,10 @@ import ajaxGet from 'utilities/ajaxGet';
 
 class AjaxModal extends ModalWindow {
 
-	initialize($triggers, options) {
+	initialize(options) {
 
-		let subOptions = Object.assign({
+		let subclassOptions = Object.assign({
+			selectorTriggers: 'a.modal-trigger[data-ajaxUrl]',
 			ajaxErrorMsg: '<div class="errormessage"><p>Sorry. Ajax request failed.</p></div>',
 			customEventPrefix: 'AjaxModal'
 		}, options);
@@ -35,7 +36,7 @@ class AjaxModal extends ModalWindow {
 		// setup & properties
 		this.ajaxLoader = null;
 
-		super.initialize($triggers, subOptions);
+		super.initialize(subclassOptions);
 
 	}
 
@@ -55,7 +56,7 @@ class AjaxModal extends ModalWindow {
 **/
 
 	getContent() {
-		let ajaxUrl = this.$activeTrigger.data('ajaxurl') || this.$activeTrigger.attr('href');
+		let ajaxUrl = this.$activeTrigger.data('ajaxurl');
 		let targetID = ajaxUrl.split('#')[1] || false;
 		let targetEl;
 		let delay = 400;

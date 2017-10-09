@@ -3,11 +3,14 @@
 // -----------------------------------------------------
 
 
+// do NOT use overflow:hidden; or position:fixed;
+// on body, it will cause more problems than it fixes,
+// especially on mobile.
 // body.modal-active {
 
 // }
 
-.modaloverlay {
+.modal-overlay {
 	display: none;
 	visibility: hidden;
 	opacity: 0;

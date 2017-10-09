@@ -21,13 +21,13 @@ import ModalWindow from 'widgets/ModalWindow';
 
 class ModalSubclass extends ModalWindow {
 
-	initialize($triggers, options) {
+	initialize(options) {
 
 		let subclassOptions = Object.assign({
 			customEventPrefix: 'ModalSubclass'
 		}, options);
 
-		super.initialize($triggers, subclassOptions);
+		super.initialize(subclassOptions);
 
 	}
 
