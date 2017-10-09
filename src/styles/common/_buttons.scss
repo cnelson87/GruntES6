@@ -2,29 +2,26 @@
 // Buttons
 // -----------------------------------------------------
 
-
-a.button,
-input.button,
-button.button {
+//use either <a>, <button>, or <input> tags
+.button {
+	@include base-transition();
 	display: inline-block;
 	cursor: pointer;
+	min-width: 120px;
 	color: $text-color;
 	font-family: $main-font;
-	font-size: 1.0em;
-	font-weight: 400;
-	letter-spacing: 0.1em;
-	line-height: 1.0;
+	font-size: 16px; //1.0em;
+	font-weight: bold;
+	line-height: 1.2;
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
 	background: rgba($text-color, 0);
-	border: 1px solid $border-color-med;
-	border-radius: 4px;
+	border: 1px solid $border-color-dark;
+	border-radius: $border-radius-sm;
 	padding: 4px 12px;
-	transition: color $transition-speed, background-color $transition-speed, border-color $transition-speed, opacity $transition-speed, transform $transition-speed;
 
 	&:hover, &:focus {
 		background: rgba($text-color, 0.15);
 	}
-
 }

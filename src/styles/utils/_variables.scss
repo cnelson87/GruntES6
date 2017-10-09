@@ -44,8 +44,8 @@ $font-path: '../fonts';
 
 
 // Animation
-$slow-anim-speed: 0.8s;
-$animation-speed: 0.4s;
+$slow-anim-speed:  0.8s;
+$animation-speed:  0.4s;
 $transition-speed: 0.2s;
 
 
@@ -56,12 +56,17 @@ $overlay-zindex: 90;
 $modal-zindex:  100;
 
 
+// Misc
+$border-radius-sm:  4px;
+$border-radius-lg: 10px;
+
+
 // Media Queries
 $mobile-breakpoint-wide: 540px;
-$mobile-breakpoint-max: 767px;
-$tablet-breakpoint-min: 768px;
+$mobile-breakpoint-max:  767px;
+$tablet-breakpoint-min:  768px;
 $tablet-breakpoint-wide: 920px;
-$tablet-breakpoint-max: 1024px;
+$tablet-breakpoint-max:  1024px;
 $desktop-breakpoint-min: 1025px;
 $desktop-breakpoint-wide: 1360px;
 $desktop-breakpoint-xwide: 1920px;

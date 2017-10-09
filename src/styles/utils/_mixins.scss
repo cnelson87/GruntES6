@@ -51,6 +51,11 @@
 }
 
 
+// Standard Action-Element Transition
+@mixin base-transition($duration: $transition-speed) {
+	transition: color $duration, background-color $duration, border-color $duration, opacity $duration, transform $duration;
+}
+
 // Width Fraction to Percentage
 @mixin width-percentage($numer, $denom) {
 	width: percentage($numer / $denom);

@@ -28,9 +28,9 @@ body {
 }
 
 a {
+	@include base-transition();
 	color: $link-color;
 	text-decoration: none;
-	transition: color $transition-speed, background-color $transition-speed, border-color $transition-speed, opacity $transition-speed, transform $transition-speed;
 }
 a:active, a:focus, a:hover {
 	color: $link-hover-color;

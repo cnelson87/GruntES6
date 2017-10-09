@@ -81,12 +81,12 @@
 // Styling;
 .noUi-target {
 	background: $white;
-	border-radius: 3px;
+	border-radius: $border-radius-sm;
 	border: 1px solid $gray-dark;
 }
 .noUi-connect {
 	background: $light-blue;
-	border-radius: 3px;
+	border-radius: $border-radius-sm;
 	transition: background-color $transition-speed;
 }
 
@@ -100,7 +100,7 @@
 .noUi-handle {
 	background: $gray-light;
 	border: 1px solid $gray-dark;
-	border-radius: 3px;
+	border-radius: $border-radius-sm;
 	cursor: default;
 }
 .noUi-active {
@@ -226,7 +226,7 @@
 	display: block;
 	position: absolute;
 	border: 1px solid $gray-light;
-	border-radius: 3px;
+	border-radius: $border-radius-sm;
 	background: $white;
 	color: $black;
 	padding: 5px;
