@@ -31,7 +31,6 @@ class ModalWindow {
 	initialize(options) {
 
 		// defaults
-		// this.$triggers = $triggers;
 		this.options = Object.assign({
 			selectorTriggers: 'a.modal-trigger[data-targetID]',
 			templateModal: modalTemplate(), //.hbs files return a function which returns html

@@ -18,6 +18,8 @@
 */
 
 import AjaxModal from 'widgets/AjaxModal';
+// import serializeFormFields from 'utilities/serializeFormFields';
+import ajaxPost from 'utilities/ajaxPost';
 
 class AjaxModalForm extends AjaxModal {
 
@@ -28,13 +30,40 @@ class AjaxModalForm extends AjaxModal {
 			customEventPrefix: 'AjaxModalForm'
 		}, options);
 
+		// element references
+		this.$form = null;
+
 		super.initialize(subclassOptions);
 
 	}
 
 	setContent() {
 		super.setContent();
-		// console.log('AjaxModalForm:setContent');
+		console.log('AjaxModalForm:setContent');
+		this.$form = this.$content.find('form');
+		this.$form.on('submit', this.onFormPost.bind(this));
+		console.log(this.$form.prop('tagName'));
+	}
+
+	onFormPost(event) {
+		event.preventDefault();
+		let postUrl = this.$form.attr('action');
+		// let data = serializeFormFields(this.$form);
+		let data = this.$form.serialize()
+		// console.log(data);
+
+		Promise.resolve(ajaxPost(postUrl, data)).then((response) => {
+			// console.log('success', response);
+		}).catch((response) => {
+			// console.log('error', response);
+		});
+
+	}
+
+	closeModal() {
+		this.$form.off('submit');
+		this.$form = null;
+		super.closeModal();
 	}
 
 }
