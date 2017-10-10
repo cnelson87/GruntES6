@@ -26,6 +26,7 @@ import SelectTabSwitcher from 'widgets/SelectTabSwitcher';
 import Horizordion from 'widgets/Horizordion';
 import ModalWindow from 'widgets/ModalWindow';
 import AjaxModal from 'widgets/AjaxModal';
+import AjaxModalForm from 'widgets/AjaxModalForm';
 import RangeSlider from 'widgets/RangeSlider';
 import DateRangeSlider from 'widgets/DateRangeSlider';
 // import {SuperClass, SubClass} from 'widgets/SuperSubClass';
@@ -218,6 +219,7 @@ const Application = {
 	initModalsPage: function() {
 		new ModalWindow();
 		new AjaxModal();
+		new AjaxModalForm();
 	},
 
 	initRangeSliderPage: function() {

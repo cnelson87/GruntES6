@@ -1,11 +1,11 @@
 /*
 	TITLE: AjaxModal
 
-	DESCRIPTION: Subclass of ModalWindow retrieves & injects Ajax content
+	DESCRIPTION: Subclass of ModalWindow GETs Ajax content
 
 	VERSION: 0.3.0
 
-	USAGE: let myAjaxModal = new AjaxModal('Elements', 'Options')
+	USAGE: let myAjaxModal = new AjaxModal('Options')
 		@param {jQuery Object}
 		@param {Object}
 
