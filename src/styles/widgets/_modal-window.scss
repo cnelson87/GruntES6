@@ -11,9 +11,8 @@
 // }
 
 .modal-overlay {
-	display: none;
-	visibility: hidden;
-	opacity: 0;
+	animation: fadeOutToNone $animation-speed;
+	animation-fill-mode: forwards;
 	width: 100vw;
 	height: 100vh;
 	background: rgba($black, 0.8);
@@ -23,49 +22,35 @@
 	top: 0;
 	bottom: 0;
 	z-index: $overlay-zindex;
-	transition: opacity $animation-speed, visibility $animation-speed;
-	transition-delay: 0.1s;
 
 	&.is-active {
-		// display: block; //set in script
-		visibility: visible;
-		opacity: 1;
-		transition: opacity $animation-speed, visibility $animation-speed;
-		transition-delay: 0s;
+		animation: fadeInFromNone $animation-speed;
+		animation-fill-mode: forwards;
 	}
-
 }
 
-.modalwindow {
-	display: none;
-	visibility: hidden;
-	opacity: 0;
+.modal {
+	animation: fadeOutToNone $animation-speed;
+	animation-fill-mode: forwards;
 	background: $white;
 	padding: 40px 0 20px;
 	overflow: hidden;
 	position: fixed;
 	z-index: $modal-zindex;
 	transform: translate3d(0,0,0);
-	transition: opacity $animation-speed, visibility $animation-speed;
-	transition-delay: 0s;
 
 	&.is-active {
-		// display: block; //set in script
-		visibility: visible;
-		opacity: 1;
-		transition: opacity $animation-speed, visibility $animation-speed;
-		transition-delay: 0.1s;
+		animation: fadeInFromNone $animation-speed;
+		animation-fill-mode: forwards;
 	}
 
-	.closeX,
-	.btn-closeX,
-	.lnk-closeX {
+	.closeX {
 		position: absolute;
 		right: 5px;
 		top: 5px;
 	}
 
-	.modalwindow--content {
+	.modal--content {
 		padding: 0 20px;
 		overflow: auto;
 		position: relative;
@@ -80,7 +65,7 @@
 // Mobile
 @media (max-width: $mobile-breakpoint-max) {
 
-	.modalwindow {
+	.modal {
 		width: calc(100% - #{$mobile-gutter-double-width});
 		height: calc(100% - #{$mobile-gutter-double-width});
 		left: $mobile-gutter-width;
@@ -88,12 +73,11 @@
 		top: $mobile-gutter-width;
 		bottom: $mobile-gutter-width;
 
-		.modalwindow--content {
+		.modal--content {
 			width: 100%;
 			height: 100%;
 			max-height: 100%;
 		}
-
 	}
 
 }
@@ -102,26 +86,32 @@
 // Tablet+
 @media (min-width: $tablet-breakpoint-min) {
 
-	.modalwindow {
+	.modal {
 		width: 640px;
 		min-height: 240px;
 		max-height: calc(100vh - #{$tablet-vertical-double-spacing});
-		left: 50%;
+		left: calc(50% - 320px);
+		right: calc(50% - 320px);
 		top: 50%;
-		transform: translate(-50%, -50%);
+		bottom: auto;
+		transform: translateY(-50%);
 
 		&.modal-small {
-			width: 480px;
-		}
-		&.modal-wide {
-			width: 720px;
+			width: 560px;
+			left: calc(50% - 280px);
+			right: calc(50% - 280px);
 		}
 
-		.modalwindow--content {
+		&.modal-wide {
+			width: 720px;
+			left: calc(50% - 360px);
+			right: calc(50% - 360px);
+		}
+
+		.modal--content {
 			max-height: calc(100vh - #{$tablet-vertical-double-spacing + 60});
 			padding: 0 $tablet-gutter-width;
 		}
-
 	}
 
 }
@@ -130,23 +120,29 @@
 // Desktop+
 @media (min-width: $desktop-breakpoint-min) {
 
-	.modalwindow {
+	.modal {
 		width: 720px;
 		min-height: 280px;
 		max-height: calc(100vh - #{$desktop-vertical-double-spacing});
+		left: calc(50% - 360px);
+		right: calc(50% - 360px);
 
 		&.modal-small {
 			width: 640px;
-		}
-		&.modal-wide {
-			width: 840px;
+			left: calc(50% - 320px);
+			right: calc(50% - 320px);
 		}
 
-		.modalwindow--content {
+		&.modal-wide {
+			width: 800px;
+			left: calc(50% - 400px);
+			right: calc(50% - 400px);
+		}
+
+		.modal--content {
 			max-height: calc(100vh - #{$desktop-vertical-double-spacing + 60});
 			padding: 0 $desktop-gutter-width;
 		}
-
 	}
 
 }

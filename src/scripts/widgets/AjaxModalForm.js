@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Subclass of AjaxModal also POSTs Ajax data
 
-	VERSION: 0.1.0
+	VERSION: 0.1.1
 
 	USAGE: let myAjaxModalForm = new AjaxModalForm('Options')
 		@param {jQuery Object}
@@ -14,12 +14,13 @@
 	DEPENDENCIES:
 		- jquery 3.x
 		- AjaxModal.js
+		- ajaxPost.js
 
 */
 
 import AjaxModal from 'widgets/AjaxModal';
-// import serializeFormFields from 'utilities/serializeFormFields';
 import ajaxPost from 'utilities/ajaxPost';
+// import serializeFormFields from 'utilities/serializeFormFields';
 
 class AjaxModalForm extends AjaxModal {
 
@@ -37,12 +38,10 @@ class AjaxModalForm extends AjaxModal {
 
 	}
 
-	setContent() {
-		super.setContent();
-		console.log('AjaxModalForm:setContent');
+	modalOpened() {
+		super.modalOpened();
 		this.$form = this.$content.find('form');
 		this.$form.on('submit', this.onFormPost.bind(this));
-		console.log(this.$form.prop('tagName'));
 	}
 
 	onFormPost(event) {
@@ -52,18 +51,22 @@ class AjaxModalForm extends AjaxModal {
 		let data = this.$form.serialize()
 		// console.log(data);
 
+		this.ajaxLoader.addLoader();
+
 		Promise.resolve(ajaxPost(postUrl, data)).then((response) => {
 			// console.log('success', response);
+			// this.ajaxLoader.removeLoader();
 		}).catch((response) => {
 			// console.log('error', response);
+			// this.ajaxLoader.removeLoader();
 		});
 
 	}
 
-	closeModal() {
+	modalClosed() {
 		this.$form.off('submit');
 		this.$form = null;
-		super.closeModal();
+		super.modalClosed();
 	}
 
 }

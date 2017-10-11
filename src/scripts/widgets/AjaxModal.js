@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Subclass of ModalWindow GETs Ajax content
 
-	VERSION: 0.3.0
+	VERSION: 0.3.1
 
 	USAGE: let myAjaxModal = new AjaxModal('Options')
 		@param {jQuery Object}
@@ -40,26 +40,16 @@ class AjaxModal extends ModalWindow {
 
 	}
 
-
-/**
-*	Private Methods
-**/
-
 	initDOM() {
 		super.initDOM();
 		this.ajaxLoader = new LoaderSpinner(this.$modal);
 	}
 
-
-/**
-*	Public Methods
-**/
-
 	getContent() {
+		let contentHTML = null;
 		let ajaxUrl = this.$activeTrigger.data('ajaxurl');
-		let targetID = ajaxUrl.split('#')[1] || false;
+		let targetID = ajaxUrl.split('#')[1] || null;
 		let targetEl;
-		let delay = 400;
 
 		this.ajaxLoader.addLoader();
 
@@ -69,24 +59,21 @@ class AjaxModal extends ModalWindow {
 			if (targetID) {
 				targetEl = $(response).find('#' + targetID);
 				if (targetEl.length) {
-					this.contentHTML = $(response).find('#' + targetID).html();
+					contentHTML = $(response).find('#' + targetID).html();
 				} else {
-					this.contentHTML = $(response).html();
+					contentHTML = $(response).html();
 				}
 
 			} else {
-				this.contentHTML = response;
+				contentHTML = response;
 			}
 
-			// add delay to showcase loader-spinner
-			setTimeout(() => {
-				this.ajaxLoader.removeLoader();
-				this.setContent();
-			}, delay);
+			this.ajaxLoader.removeLoader();
+			this.insertContent(contentHTML);
+			this.setContentFocus();
 
 		}).catch((response) => {
 			// console.log(response);
-			this.contentHTML = null;
 			this.ajaxLoader.removeLoader();
 			this.$content.html(this.options.ajaxErrorMsg);
 		});

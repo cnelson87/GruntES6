@@ -3,9 +3,7 @@
 // -----------------------------------------------------
 
 //use either <a href="#close"> or <button type="button"> tags
-.closeX,
-.btn-closeX,
-.lnk-closeX {
+.closeX {
 	@include text-hide;
 	display: inline-block;
 	width: 30px;

@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Base class to create modal windows
 
-	VERSION: 0.3.0
+	VERSION: 0.3.1
 
 	USAGE: let myModalWindow = new ModalWindow('Options')
 		@param {jQuery Object}
@@ -35,7 +35,7 @@ class ModalWindow {
 			selectorTriggers: 'a.modal-trigger[data-targetID]',
 			templateModal: modalTemplate(), //.hbs files return a function which returns html
 			templateOverlay: '<div class="modal-overlay"></div>',
-			selectorContent: '.modalwindow--content', //must match content element in template
+			selectorContent: '.modal--content', //must match content element in template
 			selectorCloseBtn: '.closeX', //must match close button in template
 			selectorCloseLinks: '.close-modal', //close links within content
 			activeClass: 'is-active',
@@ -54,7 +54,6 @@ class ModalWindow {
 
 		// setup & properties
 		this.isModalActivated = false;
-		this.contentHTML = null;
 		this.windowScrollTop = 0;
 
 		this.initDOM();
@@ -155,70 +154,67 @@ class ModalWindow {
 *	Public Methods
 **/
 
-	// extend or override getContent and setContent methods
-	// in subclass to create custom modal
-	getContent() {
-		let targetID = this.$activeTrigger.data('targetid');
-		let targetEl = $(`#${targetID}`);
-		this.contentHTML = targetEl.html();
-		this.setContent();
-	}
-
-	setContent() {
-		this.$content.html(this.contentHTML);
-	}
-
 	openModal() {
-		let delay = 10;
-
 		this.isModalActivated = true;
-
 		this.windowScrollTop = this.$window.scrollTop();
 
 		this.getContent();
 
 		this.$body.addClass(this.options.activeBodyClass);
-		this.$overlay.appendTo(this.$body).show();
-		this.$modal.insertBefore(this.$overlay).show();
+		this.$overlay.appendTo(this.$body).addClass(this.options.activeClass);
+		this.$modal.insertBefore(this.$overlay).addClass(this.options.activeClass);
+		// TODO: research why scrollTop was initially added - what issue does it fix?
+		// this.$content.scrollTop(0);
+
+		$.event.trigger(`${this.options.customEventPrefix}:modalPreOpen`, [this.$modal]);
 
 		setTimeout(() => {
+			this.modalOpened();
+		}, this.options.animDuration);
+	}
 
-			this.$content.scrollTop(0);
-			this.$overlay.addClass(this.options.activeClass);
-			this.$modal.addClass(this.options.activeClass);
+	// can extend or override getContent, insertContent, and modalOpened
+	// methods in subclass to create custom modal
 
-			$.event.trigger(`${this.options.customEventPrefix}:modalPreOpen`, [this.$modal]);
+	getContent() {
+		let targetID = this.$activeTrigger.data('targetid');
+		let targetEl = $(`#${targetID}`);
+		let contentHTML = targetEl.html();
+		this.insertContent(contentHTML);
+	}
 
-			setTimeout(() => {
-				this.setContentFocus();
-				$.event.trigger(`${this.options.customEventPrefix}:modalOpened`, [this.$modal]);
-			}, this.options.animDuration);
+	insertContent(contentHTML) {
+		this.$content.html(contentHTML);
+	}
 
-		}, delay);
-
+	modalOpened() {
+		this.setContentFocus();
+		$.event.trigger(`${this.options.customEventPrefix}:modalOpened`, [this.$modal]);
 	}
 
 	closeModal() {
-
 		this.$body.removeClass(this.options.activeBodyClass);
 		this.$overlay.removeClass(this.options.activeClass);
 		this.$modal.removeClass(this.options.activeClass);
-
 		this.$window.scrollTop(this.windowScrollTop);
 
 		$.event.trigger(`${this.options.customEventPrefix}:modalPreClose`, [this.$modal]);
 
 		setTimeout(() => {
-
-			this.isModalActivated = false;
-			this.$content.empty();
-			this.$modal.hide().detach();
-			this.$overlay.hide().detach();
-			this.$activeTrigger.focus();
-			$.event.trigger(`${this.options.customEventPrefix}:modalClosed`, [this.$modal]);
-
+			this.modalClosed();
 		}, this.options.animDuration);
+	}
 
+	// can extend or override modalClosed method
+	// in subclass to create custom modal
+
+	modalClosed() {
+		this.$content.empty();
+		this.$modal.detach();
+		this.$overlay.detach();
+		this.$activeTrigger.focus();
+		this.isModalActivated = false;
+		$.event.trigger(`${this.options.customEventPrefix}:modalClosed`, [this.$modal]);
 	}
 
 	setContentFocus() {

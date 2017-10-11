@@ -47,7 +47,7 @@ class ModalSubclass extends ModalWindow {
 **/
 
 	getContent() {
-		// customize getContent method
+		// override getContent method
 	}
 
 }
