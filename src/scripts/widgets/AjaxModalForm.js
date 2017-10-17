@@ -21,6 +21,7 @@
 import AjaxModal from 'widgets/AjaxModal';
 import ajaxPost from 'utilities/ajaxPost';
 // import serializeFormFields from 'utilities/serializeFormFields';
+import modalFullscreenTemplate from 'templates/ModalFullscreenTemplate.hbs';
 
 class AjaxModalForm extends AjaxModal {
 
@@ -28,6 +29,7 @@ class AjaxModalForm extends AjaxModal {
 
 		let subclassOptions = Object.assign({
 			selectorTriggers: 'a#modal-form-trigger[data-ajaxUrl]',
+			templateModal: modalFullscreenTemplate(),
 			customEventPrefix: 'AjaxModalForm'
 		}, options);
 

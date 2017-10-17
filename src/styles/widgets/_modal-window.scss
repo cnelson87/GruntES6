@@ -89,27 +89,25 @@
 	.modal {
 		width: 640px;
 		min-height: 240px;
-		max-height: calc(100vh - #{$tablet-vertical-double-spacing});
+		max-height: calc(100vh - #{$tablet-gutter-double-width});
 		left: calc(50% - 320px);
 		right: calc(50% - 320px);
 		top: 50%;
 		bottom: auto;
 		transform: translateY(-50%);
 
-		&.modal-small {
-			width: 560px;
-			left: calc(50% - 280px);
-			right: calc(50% - 280px);
-		}
-
-		&.modal-wide {
-			width: 720px;
-			left: calc(50% - 360px);
-			right: calc(50% - 360px);
+		&.modal-fullscreen {
+			width: calc(100% - #{$tablet-gutter-double-width});
+			height: calc(100vh - #{$tablet-gutter-double-width});
+			left: $tablet-gutter-width;
+			right: $tablet-gutter-width;
+			top: $tablet-gutter-width;
+			bottom: $tablet-gutter-width;
+			transform: translateY(0);
 		}
 
 		.modal--content {
-			max-height: calc(100vh - #{$tablet-vertical-double-spacing + 60});
+			max-height: calc(100vh - #{$tablet-gutter-double-width + 60});
 			padding: 0 $tablet-gutter-width;
 		}
 	}
@@ -123,24 +121,22 @@
 	.modal {
 		width: 720px;
 		min-height: 280px;
-		max-height: calc(100vh - #{$desktop-vertical-double-spacing});
+		max-height: calc(100vh - #{$desktop-gutter-double-width});
 		left: calc(50% - 360px);
 		right: calc(50% - 360px);
 
-		&.modal-small {
-			width: 640px;
-			left: calc(50% - 320px);
-			right: calc(50% - 320px);
-		}
-
-		&.modal-wide {
-			width: 800px;
-			left: calc(50% - 400px);
-			right: calc(50% - 400px);
+		&.modal-fullscreen {
+			width: calc(100% - #{$desktop-gutter-double-width});
+			height: calc(100vh - #{$desktop-gutter-double-width});
+			left: $desktop-gutter-width;
+			right: $desktop-gutter-width;
+			top: $desktop-gutter-width;
+			bottom: $desktop-gutter-width;
+			transform: translateY(0);
 		}
 
 		.modal--content {
-			max-height: calc(100vh - #{$desktop-vertical-double-spacing + 60});
+			max-height: calc(100vh - #{$desktop-gutter-double-width + 60});
 			padding: 0 $desktop-gutter-width;
 		}
 	}
