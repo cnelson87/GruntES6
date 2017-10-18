@@ -12,6 +12,7 @@ import resizeStartStopEvents from 'utilities/resizeStartStopEvents';
 import scrollStartStopEvents from 'utilities/scrollStartStopEvents';
 import AppState from 'models/AppState';
 import HomepageView from 'views/HomepageView';
+import FormsPage from 'views/FormsPage';
 import PromisePage from 'views/PromisePage';
 import VideosPage from 'views/VideosPage';
 
@@ -134,6 +135,7 @@ const Application = {
 
 	initFormsPage: function() {
 		new DualDatepicker($('#dual-datepicker'));
+		FormsPage.initialize();
 	},
 
 	initPromisePage: function() {
