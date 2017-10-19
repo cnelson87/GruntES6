@@ -185,6 +185,15 @@ textarea[disabled], textarea.disabled {
 	border-color: $border-color-xlight;
 }
 
+// input[type='text']:invalid,
+// input[type='password']:invalid,
+// input[type='email']:invalid,
+// input[type='number']:invalid,
+// input[type='tel']:invalid,
+// input[type='url']:invalid,
+// input[type='search']:invalid,
+// select:invalid,
+// textarea:invalid,
 input[type='text'].invalid,
 input[type='password'].invalid,
 input[type='email'].invalid,
