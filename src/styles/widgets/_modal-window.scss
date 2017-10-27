@@ -3,12 +3,9 @@
 // -----------------------------------------------------
 
 
-// do NOT use overflow:hidden; or position:fixed;
-// on body, it will cause more problems than it fixes,
-// especially on mobile.
-// body.modal-active {
-
-// }
+.modal-active {
+	overflow: hidden;
+}
 
 .modal-overlay {
 	animation: fadeOutToNone $animation-speed;

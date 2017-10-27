@@ -5,6 +5,8 @@
 
 html, body {
 	width: 100vw;
+	min-width: $min-width;
+	// min-height: 100vh;
 	max-width: 100vw;
 	overflow-x: hidden;
 	position: relative;
@@ -23,8 +25,6 @@ body {
 }
 
 #main {
-	width: 100%;
-	min-width: $min-width;
 	min-height: calc(100vh - #{$mobile-header-height + $mobile-footer-height});
 	padding: $mobile-vertical-spacing 0;
 	overflow-x: hidden;
@@ -43,13 +43,11 @@ body {
 #footer,
 .content {
 	@include clearfix;
-	width: 100%;
 	background: $white;
 	position: relative;
 
 	.content-container {
 		@include clearfix;
-		width: 100%;
 		margin: 0 auto;
 		padding: $mobile-vertical-spacing $mobile-gutter-width;
 		position: relative;

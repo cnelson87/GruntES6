@@ -24,6 +24,7 @@ class ModalWindow {
 	constructor(options = {}) {
 		this.$window = $(window);
 		this.$document = $(document);
+		this.$html = $('html');
 		this.$body = $('body');
 		this.initialize(options);
 	}
@@ -160,6 +161,7 @@ class ModalWindow {
 
 		this.getContent();
 
+		this.$html.addClass(this.options.activeBodyClass);
 		this.$body.addClass(this.options.activeBodyClass);
 		this.$overlay.appendTo(this.$body).addClass(this.options.activeClass);
 		this.$modal.insertBefore(this.$overlay).addClass(this.options.activeClass);
@@ -193,6 +195,7 @@ class ModalWindow {
 	}
 
 	closeModal() {
+		this.$html.removeClass(this.options.activeBodyClass);
 		this.$body.removeClass(this.options.activeBodyClass);
 		this.$overlay.removeClass(this.options.activeClass);
 		this.$modal.removeClass(this.options.activeClass);
