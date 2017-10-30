@@ -109,6 +109,16 @@ html.android {
 	.show-mobile-block {@include visible(block);}
 	.show-mobile-inline {@include visible(inline);}
 	.show-mobile-inline-block {@include visible(inline-block);}
+	//overriding display for mobile only, NOT hiding from tablet or desktop.
+	.mobile-only-block {
+		display: block;
+	}
+	.mobile-only-inline {
+		display: inline;
+	}
+	.mobile-only-inline-block {
+		display: inline-block;
+	}
 }
 // Tablet
 @media (min-width: $tablet-breakpoint-min) and (max-width: $tablet-breakpoint-max) {
