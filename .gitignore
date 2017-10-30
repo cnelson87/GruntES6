@@ -1,15 +1,19 @@
-# Numerous always-ignore extensions
+# Numerous always-ignore extensions #
 *.sass-cache
 
-# OS or Editor folders
+# OS or Editor folders #
 .DS_Store
 Thumbs.db
 
-# NPM packages folder.
+# NPM packages folder. #
 node_modules/
 
-# Bower packages folder.
+# Bower packages folder. #
 bower_components/
 
-# Build folders.
+# Build folders. #
 _builds/
+
+# Temporary hide A/V assets. #
+src/assets/audio/
+src/assets/video/
