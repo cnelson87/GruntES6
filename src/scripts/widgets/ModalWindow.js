@@ -217,6 +217,7 @@ class ModalWindow {
 		this.$overlay.detach();
 		this.$activeTrigger.focus();
 		this.isModalActivated = false;
+		this.windowScrollTop = 0;
 		$.event.trigger(`${this.options.customEventPrefix}:modalClosed`, [this.$modal]);
 	}
 

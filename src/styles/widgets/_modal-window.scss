@@ -113,7 +113,7 @@ $tablet-chrome-height: 102;
 		}
 
 		.modal--content {
-			max-height: calc(100vh - #{$tablet-gutter-double-width + $tablet-chrome-height + $tablet-modal-vertical-pad});
+			max-height: calc(100vh - #{$tablet-gutter-double-width + $tablet-modal-vertical-pad + $tablet-chrome-height});
 			padding: 0 $tablet-gutter-width;
 		}
 	}
