@@ -3,6 +3,14 @@
 // -----------------------------------------------------
 
 
+$mobile-modal-vertical-pad: 60;
+$tablet-modal-vertical-pad: 60;
+$desktop-modal-vertical-pad: 60;
+//iPad address & tab bars
+$tablet-chrome-height: 102;
+
+
+
 //html & body
 .modal-active {
 	overflow: hidden;
@@ -11,8 +19,8 @@
 .modal-overlay {
 	animation: fadeOutToNone $animation-speed;
 	animation-fill-mode: forwards;
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	height: 100%;
 	background: rgba($black, 0.8);
 	position: fixed;
 	left: 0;
@@ -87,7 +95,7 @@
 	.modal {
 		width: 640px;
 		min-height: 240px;
-		max-height: calc(100vh - #{$tablet-gutter-double-width});
+		max-height: calc(100% - #{$tablet-gutter-double-width});
 		left: calc(50% - 320px);
 		right: calc(50% - 320px);
 		top: 50%;
@@ -96,7 +104,7 @@
 
 		&.modal-fullscreen {
 			width: calc(100% - #{$tablet-gutter-double-width});
-			height: calc(100vh - #{$tablet-gutter-double-width});
+			height: calc(100% - #{$tablet-gutter-double-width});
 			left: $tablet-gutter-width;
 			right: $tablet-gutter-width;
 			top: $tablet-gutter-width;
@@ -105,7 +113,7 @@
 		}
 
 		.modal--content {
-			max-height: calc(100vh - #{$tablet-gutter-double-width + 60});
+			max-height: calc(100vh - #{$tablet-gutter-double-width + $tablet-chrome-height + $tablet-modal-vertical-pad});
 			padding: 0 $tablet-gutter-width;
 		}
 	}
@@ -134,7 +142,7 @@
 		}
 
 		.modal--content {
-			max-height: calc(100vh - #{$desktop-gutter-double-width + 60});
+			max-height: calc(100vh - #{$desktop-gutter-double-width + $desktop-modal-vertical-pad});
 			padding: 0 $desktop-gutter-width;
 		}
 	}
