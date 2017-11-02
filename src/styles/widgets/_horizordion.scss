@@ -83,8 +83,16 @@
 						top: 5px;
 					}
 
-					&:hover, &:focus, &.is-active {
+					&:hover, &:focus {
 						background: rgba($black, 0.1);
+					}
+
+					&.is-active {
+						background: rgba($black, 0.1);
+
+						&::after {
+							background-position: 0 0;
+						}
 					}
 				}
 
