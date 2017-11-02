@@ -26,7 +26,8 @@ module.exports = function (grunt) {
 		'horizordion',
 		'modals',
 		'rangeslider',
-		'test'
+		'test',
+		'_blank'
 	];
 
 	// populate files objects
