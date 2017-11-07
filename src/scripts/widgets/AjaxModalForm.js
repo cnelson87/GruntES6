@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Subclass of AjaxModal also POSTs Ajax data
 
-	VERSION: 0.1.1
+	VERSION: 0.1.2
 
 	USAGE: let myAjaxModalForm = new AjaxModalForm('Options')
 		@param {jQuery Object}
@@ -28,7 +28,7 @@ class AjaxModalForm extends AjaxModal {
 	initialize(options) {
 
 		let subclassOptions = Object.assign({
-			selectorTriggers: 'a#modal-form-trigger[data-ajaxUrl]',
+			selectorTriggers: 'a.modal-form-trigger[data-ajaxUrl]',
 			templateModal: modalFullscreenTemplate(),
 			customEventPrefix: 'AjaxModalForm'
 		}, options);

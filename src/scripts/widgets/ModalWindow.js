@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Base class to create modal windows
 
-	VERSION: 0.3.1
+	VERSION: 0.3.2
 
 	USAGE: let myModalWindow = new ModalWindow('Options')
 		@param {jQuery Object}
@@ -35,12 +35,14 @@ class ModalWindow {
 		this.options = Object.assign({
 			selectorTriggers: 'a.modal-trigger[data-targetID]',
 			templateModal: modalTemplate(), //.hbs files return a function which returns html
-			templateOverlay: '<div class="modal-overlay"></div>',
-			selectorContent: '.modal--content', //must match content element in template
-			selectorCloseBtn: '.closeX', //must match close button in template
-			selectorCloseLinks: '.close-modal', //close links within content
+			selectorOverlay: '.modal-overlay', //must match element in template
+			selectorModal: '.modal', //must match element in template
+			selectorContent: '.modal--content', //must match element in template
+			selectorCloseBtn: '.btn-closeX', //must match close button in template
+			selectorCloseLinks: '.close-modal', //close links within modal content
 			activeClass: 'is-active',
 			activeBodyClass: 'modal-active',
+			enableOverlayCloseClick: false,
 			animDuration: AppConfig.timing.standard,
 			selectorContentEls: AppConfig.contentElements,
 			customEventPrefix: 'ModalWindow'
@@ -48,6 +50,7 @@ class ModalWindow {
 
 		// element references
 		this.$activeTrigger = null;
+		this.$modalWindow = null;
 		this.$overlay = null;
 		this.$modal = null;
 		this.$content = null;
@@ -70,19 +73,15 @@ class ModalWindow {
 
 	initDOM() {
 
-		// create overlay from template
-		this.$overlay = $(this.options.templateOverlay);
-		this.$overlay.attr({'tabindex':'0'});
+		this.$modalWindow = $(this.options.templateModal);
 
-		// create modal from template
-		this.$modal = $(this.options.templateModal);
-		this.$modal.attr({'aria-live':'polite', 'role':'dialog'});
+		this.$overlay = this.$modalWindow.find(this.options.selectorOverlay);
 
-		// set modal content
+		this.$modal = this.$modalWindow.find(this.options.selectorModal);
+		this.$modal.attr({'aria-live':'polite'});
+
 		this.$content = this.$modal.find(this.options.selectorContent);
-		this.$content.attr({'role':'document'});
 
-		// set close button
 		this.$closeBtn = this.$modal.find(this.options.selectorCloseBtn);
 
 	}
@@ -113,7 +112,7 @@ class ModalWindow {
 		});
 
 		this.$overlay.on('click', (event) => {
-			if (this.isModalActivated) {
+			if (this.isModalActivated && this.options.enableOverlayCloseClick) {
 				this.closeModal();
 			}
 		});
@@ -124,14 +123,8 @@ class ModalWindow {
 			}
 		});
 
-		this.$overlay.on('focus', (event) => {
-			if (this.isModalActivated) {
-				this.setContentFocus();
-			}
-		});
-
 		this.$document.on('keydown', (event) => {
-			if (this.isModalActivated && event.keyCode === keys.escape) {
+			if (this.isModalActivated && event.which === keys.escape) {
 				this.closeModal();
 			}
 		});
@@ -163,10 +156,9 @@ class ModalWindow {
 
 		this.$html.addClass(this.options.activeBodyClass);
 		this.$body.addClass(this.options.activeBodyClass);
-		this.$overlay.appendTo(this.$body).addClass(this.options.activeClass);
-		this.$modal.insertBefore(this.$overlay).addClass(this.options.activeClass);
-		// TODO: research why scrollTop was initially added - what issue does it fix?
-		// this.$content.scrollTop(0);
+		this.$modalWindow.appendTo(this.$body);
+		this.$overlay.addClass(this.options.activeClass);
+		this.$modal.addClass(this.options.activeClass);
 
 		$.event.trigger(`${this.options.customEventPrefix}:modalPreOpen`, [this.$modal]);
 
@@ -208,14 +200,17 @@ class ModalWindow {
 		}, this.options.animDuration);
 	}
 
-	// can extend or override modalClosed method
-	// in subclass to create custom modal
+	// can extend modalClosed method in subclass
+	// to create custom modal
 
 	modalClosed() {
 		this.$content.empty();
-		this.$modal.detach();
-		this.$overlay.detach();
-		this.$activeTrigger.focus();
+		this.$modalWindow.detach();
+		if (this.$activeTrigger.length) {
+			this.$activeTrigger.focus();
+		} else {
+			this.$body.find(this.options.selectorContentEls).first().attr({'tabindex':'-1'}).focus();
+		}
 		this.isModalActivated = false;
 		this.windowScrollTop = 0;
 		$.event.trigger(`${this.options.customEventPrefix}:modalClosed`, [this.$modal]);

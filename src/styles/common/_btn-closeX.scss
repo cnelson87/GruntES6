@@ -1,14 +1,15 @@
 //
-// CloseX
+// Btn CloseX
 // -----------------------------------------------------
 
 //use either <a href="#close"> or <button type="button"> tags
-.closeX {
+.btn-closeX {
+	@include base-transition();
 	@include text-hide;
 	display: inline-block;
 	width: 30px;
 	height: 30px;
-	background: rgba($gray-dark, 0) url($image-path+'/action-icons.png') no-repeat 0 0;
+	background: $white url($image-path+'/action-icons.png') no-repeat 0 0;
 	background-origin: border-box;
 	border: 1px solid $border-color-light;
 	border-radius: $border-radius-sm;

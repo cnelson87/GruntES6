@@ -3,7 +3,7 @@
 
 	DESCRIPTION: Subclass of ModalWindow GETs Ajax content
 
-	VERSION: 0.3.1
+	VERSION: 0.3.2
 
 	USAGE: let myAjaxModal = new AjaxModal('Options')
 		@param {jQuery Object}

@@ -1,5 +1,5 @@
 //
-// Variables
+// Config Vars
 // -----------------------------------------------------
 
 
@@ -51,8 +51,7 @@ $transition-speed: 0.2s;
 
 // Z-Indexes
 $spinner-zindex: 10;
-$tooltip-zindex: 80;
-$overlay-zindex: 90;
+$tooltip-zindex: 90;
 $modal-zindex:  100;
 
 
@@ -108,3 +107,7 @@ $desktop-vertical-half-spacing: $desktop-vertical-spacing / 2;
 $mobile-vertical-double-spacing: $mobile-vertical-spacing * 2;
 $tablet-vertical-double-spacing: $tablet-vertical-spacing * 2;
 $desktop-vertical-double-spacing: $desktop-vertical-spacing * 2;
+
+
+// iPad address & tab bars
+$tablet-chrome-height: 102;

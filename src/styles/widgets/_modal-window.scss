@@ -3,31 +3,36 @@
 // -----------------------------------------------------
 
 
-$mobile-modal-vertical-pad: 60;
-$tablet-modal-vertical-pad: 60;
-$desktop-modal-vertical-pad: 60;
-//iPad address & tab bars
-$tablet-chrome-height: 102;
-
-
-
-//html & body
+// html & body class
 .modal-active {
 	overflow: hidden;
 }
 
+// containing element for modal
+.modal-window {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: $modal-zindex;
+}
+
+// background element
 .modal-overlay {
 	animation: fadeOutToNone $animation-speed;
 	animation-fill-mode: forwards;
 	width: 100%;
 	height: 100%;
 	background: rgba($black, 0.8);
-	position: fixed;
+	position: absolute;
 	left: 0;
 	right: 0;
 	top: 0;
 	bottom: 0;
-	z-index: $overlay-zindex;
 
 	&.is-active {
 		animation: fadeInFromNone $animation-speed;
@@ -38,113 +43,92 @@ $tablet-chrome-height: 102;
 .modal {
 	animation: fadeOutToNone $animation-speed;
 	animation-fill-mode: forwards;
-	background: $white;
-	padding: 40px 0 20px;
-	overflow: hidden;
-	position: fixed;
-	z-index: $modal-zindex;
-	transform: translate3d(0,0,0);
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	padding: $mobile-gutter-width;
+	position: relative;
 
 	&.is-active {
 		animation: fadeInFromNone $animation-speed;
 		animation-fill-mode: forwards;
 	}
 
-	.closeX {
+	// Tablet+
+	@media (min-width: $tablet-breakpoint-min) {
+		width: $tablet-container-width - $tablet-gutter-width;
+		padding: $tablet-gutter-width;
+	}
+
+	// Desktop+
+	@media (min-width: $desktop-breakpoint-min) {
+		width: $desktop-container-width - $desktop-gutter-width;
+		padding: $desktop-gutter-width;
+	}
+
+	&.fullscreen-modal {
+		width: 100%;
+		height: 100%;
+		padding: 0;
+	}
+}
+
+.modal--container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	background: $white;
+	position: relative;
+
+	// Tablet+
+	@media (min-width: $tablet-breakpoint-min) {
+		height: auto;
+		max-height: 100%;
+		min-height: 50%;
+		top: 50%;
+		transform: translateY(-50%);
+
+		.fullscreen-modal & {
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.btn-closeX {
 		position: absolute;
 		right: 5px;
 		top: 5px;
 	}
 
+	.modal--header,
+	.modal--footer {
+		flex-grow: 0;
+		flex-shrink: 0;
+		min-height: 40px; //set height to .btn-closeX + 10px
+		position: relative;
+	}
+
 	.modal--content {
-		padding: 0 20px;
-		overflow: auto;
+		flex-grow: 1;
+		padding: 20px $mobile-gutter-width;
+		overflow-y: auto;
 		position: relative;
 		// sass-lint:disable no-misspelled-properties
 		-webkit-overflow-scrolling: touch;
 		// sass-lint:enable no-misspelled-properties
+
+		// Tablet+
+		@media (min-width: $tablet-breakpoint-min) {
+			padding-left: $tablet-gutter-width;
+			padding-right: $tablet-gutter-width;
+		}
+
+		// Desktop+
+		@media (min-width: $desktop-breakpoint-min) {
+			padding-left: $desktop-gutter-width;
+			padding-right: $desktop-gutter-width;
+		}
+
 	}
-
-}
-
-
-// Mobile
-@media (max-width: $mobile-breakpoint-max) {
-
-	.modal {
-		width: calc(100% - #{$mobile-gutter-double-width});
-		height: calc(100% - #{$mobile-gutter-double-width});
-		left: $mobile-gutter-width;
-		right: $mobile-gutter-width;
-		top: $mobile-gutter-width;
-		bottom: $mobile-gutter-width;
-
-		.modal--content {
-			width: 100%;
-			height: 100%;
-			max-height: 100%;
-		}
-	}
-
-}
-
-
-// Tablet+
-@media (min-width: $tablet-breakpoint-min) {
-
-	.modal {
-		width: 640px;
-		min-height: 240px;
-		max-height: calc(100% - #{$tablet-gutter-double-width});
-		left: calc(50% - 320px);
-		right: calc(50% - 320px);
-		top: 50%;
-		bottom: auto;
-		transform: translateY(-50%);
-
-		&.modal-fullscreen {
-			width: calc(100% - #{$tablet-gutter-double-width});
-			height: calc(100% - #{$tablet-gutter-double-width});
-			left: $tablet-gutter-width;
-			right: $tablet-gutter-width;
-			top: $tablet-gutter-width;
-			bottom: $tablet-gutter-width;
-			transform: translateY(0);
-		}
-
-		.modal--content {
-			max-height: calc(100vh - #{$tablet-gutter-double-width + $tablet-modal-vertical-pad + $tablet-chrome-height});
-			padding: 0 $tablet-gutter-width;
-		}
-	}
-
-}
-
-
-// Desktop+
-@media (min-width: $desktop-breakpoint-min) {
-
-	.modal {
-		width: 720px;
-		min-height: 280px;
-		max-height: calc(100vh - #{$desktop-gutter-double-width});
-		left: calc(50% - 360px);
-		right: calc(50% - 360px);
-
-		&.modal-fullscreen {
-			width: calc(100% - #{$desktop-gutter-double-width});
-			height: calc(100vh - #{$desktop-gutter-double-width});
-			left: $desktop-gutter-width;
-			right: $desktop-gutter-width;
-			top: $desktop-gutter-width;
-			bottom: $desktop-gutter-width;
-			transform: translateY(0);
-		}
-
-		.modal--content {
-			max-height: calc(100vh - #{$desktop-gutter-double-width + $desktop-modal-vertical-pad});
-			padding: 0 $desktop-gutter-width;
-		}
-	}
-
 }
