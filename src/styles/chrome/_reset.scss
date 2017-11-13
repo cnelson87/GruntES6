@@ -40,8 +40,9 @@ audio, canvas, video {
 
 body {
 	line-height: 1;
-	//iOS font scaling
+	//prevent mobile font scaling
 	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
 }
 
 a {
