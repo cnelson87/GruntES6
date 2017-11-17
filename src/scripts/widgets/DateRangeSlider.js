@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A range slider widget for selecting a date or time, useful for small ranges, use DualDatepicker for large ranges.
 
-	VERSION: 0.1.0
+	VERSION: 0.1.1
 
 	USAGE: let myDateRangeSlider = new DateRangeSlider('Element', 'Options')
 		@param {jQuery Object}
@@ -17,6 +17,8 @@
 		- noUiSlider 10.1.0
 
 */
+
+import AppConfig from 'config/AppConfig';
 
 class DateRangeSlider {
 
@@ -69,6 +71,7 @@ class DateRangeSlider {
 
 	initSlider() {
 		const slider = this.$slider[0]; // native slider element
+		let { keys } = AppConfig;
 
 		let formateDate = (date) => {
 			return moment(date).format(this.dateFormat);
@@ -94,6 +97,30 @@ class DateRangeSlider {
 		// this.$fields.on('change', function(event){
 		// 	console.log('date change:', $(event.currentTarget).val());
 		// });
+
+		slider.querySelector('.noUi-handle.noUi-handle-lower').addEventListener('keydown', (event) => {
+			let value = Number(slider.noUiSlider.get()[0]);
+			switch (event.which) {
+				case keys.left: value -= this.steps;
+					break;
+				case keys.right: value += this.steps;
+					break;
+			}
+			slider.noUiSlider.set([value, null]);
+			this.$fields.eq(0).val(new Date(value)).change();
+		});
+
+		slider.querySelector('.noUi-handle.noUi-handle-upper').addEventListener('keydown', (event) => {
+			let value = Number(slider.noUiSlider.get()[1]);
+			switch (event.which) {
+				case keys.left: value -= this.steps;
+					break;
+				case keys.right: value += this.steps;
+					break;
+			}
+			slider.noUiSlider.set([null, value]);
+			this.$fields.eq(1).val(new Date(value)).change();
+		});
 
 	}
 

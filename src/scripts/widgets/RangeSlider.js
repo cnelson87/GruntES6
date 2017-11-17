@@ -3,7 +3,7 @@
 
 	DESCRIPTION: A range slider widget
 
-	VERSION: 0.1.0
+	VERSION: 0.1.1
 
 	USAGE: let myRangeSlider = new RangeSlider('Element', 'Options')
 		@param {jQuery Object}
@@ -16,6 +16,8 @@
 		- noUiSlider 10.1.0
 
 */
+
+import AppConfig from 'config/AppConfig';
 
 class RangeSlider {
 
@@ -59,6 +61,7 @@ class RangeSlider {
 
 	initSlider() {
 		const slider = this.$slider[0]; // native slider element
+		let { keys } = AppConfig;
 
 		noUiSlider.create(slider, {
 			connect: [false, true, false],
@@ -80,6 +83,30 @@ class RangeSlider {
 		// this.$fields.on('change', function(event){
 		// 	console.log('on change:', $(event.currentTarget).val());
 		// });
+
+		slider.querySelector('.noUi-handle.noUi-handle-lower').addEventListener('keydown', (event) => {
+			let value = Number(slider.noUiSlider.get()[0]);
+			switch (event.which) {
+				case keys.left: value -= this.steps;
+					break;
+				case keys.right: value += this.steps;
+					break;
+			}
+			slider.noUiSlider.set([value, null]);
+			this.$fields.eq(0).val(value).change();
+		});
+
+		slider.querySelector('.noUi-handle.noUi-handle-upper').addEventListener('keydown', (event) => {
+			let value = Number(slider.noUiSlider.get()[1]);
+			switch (event.which) {
+				case keys.left: value -= this.steps;
+					break;
+				case keys.right: value += this.steps;
+					break;
+			}
+			slider.noUiSlider.set([null, value]);
+			this.$fields.eq(1).val(value).change();
+		});
 
 	}
 
