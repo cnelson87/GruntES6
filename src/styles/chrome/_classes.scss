@@ -3,7 +3,7 @@
 // -----------------------------------------------------
 
 
-//** Helper utilities **//
+// Helper utilities
 
 .align-center, .centered {
 	text-align: center;
@@ -70,7 +70,7 @@
 }
 
 
-//** Responsive utilities **//
+// Responsive utilities
 
 .show-ios-block,
 .show-ios-inline,
@@ -136,7 +136,7 @@ html.android {
 }
 
 
-//** Misc **//
+// Misc styles
 
 script[type='text/template'] {
 	@include hidden;
