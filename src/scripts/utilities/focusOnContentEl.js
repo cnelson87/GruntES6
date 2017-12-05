@@ -7,7 +7,7 @@
 
 import AppConfig from 'config/AppConfig';
 
-const focusOnContentEl = function($el, extraTopOffset = 0) {
+const focusOnContentEl = function($el, extraTopOffset = 0, scrollSpeed = AppConfig.timing.fast) {
 	const $window = $(window);
 	const $htmlBody = $('html, body');
 	let topOffset = AppConfig.topOffset + extraTopOffset;
@@ -17,7 +17,6 @@ const focusOnContentEl = function($el, extraTopOffset = 0) {
 	let winHeight = $window.height() - topOffset;
 	let scrollTop = pnlTop - topOffset;
 	let $focusEl = $el.find(AppConfig.contentElements).first();
-	let scrollSpeed = AppConfig.timing.fast;
 
 	if (pnlTop < winTop || pnlTop + pnlHeight > winTop + winHeight) {
 		$htmlBody.animate({scrollTop: scrollTop}, scrollSpeed, function() {
