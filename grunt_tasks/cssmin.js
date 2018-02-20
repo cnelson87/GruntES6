@@ -9,8 +9,10 @@ module.exports = function (grunt) {
 
 		dist: {
 			files: [{
-				src: '<%= publicStyles %>/<%= assetName %>.css',
-				dest: '<%= publicStyles %>/<%= assetName %>.css'
+				expand: true,
+				cwd: '<%= publicStyles %>',
+				src: ['*.css'],
+				dest: '<%= publicStyles %>'
 			}]
 		}
 

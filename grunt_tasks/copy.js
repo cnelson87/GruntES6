@@ -10,48 +10,48 @@ module.exports = function (grunt) {
 		data: {
 			// JSON Data
 			files: [{
+				expand: true,
 				cwd: '<%= sourceData %>',
 				src: '**/*.json',
-				dest: '<%= localData %>',
-				expand: true
+				dest: '<%= localData %>'
 			}]
 		},
 
 		assets: {
 			// images, fonts, videos...
 			files: [{
+				expand: true,
 				cwd: '<%= sourceAssets %>',
 				src: '**/*.*',
-				dest: '<%= localAssets %>',
-				expand: true
+				dest: '<%= localAssets %>'
 			}]
 		},
 
 		dev: {
 			files: [{
+				expand: true,
 				cwd: '<%= sourceData %>',
 				src: '**/*.json',
-				dest: '<%= localData %>',
-				expand: true
+				dest: '<%= localData %>'
 			},{
+				expand: true,
 				cwd: '<%= sourceAssets %>',
 				src: '**/*.*',
-				dest: '<%= localAssets %>',
-				expand: true
+				dest: '<%= localAssets %>'
 			}]
 		},
 
 		dist: {
 			files: [{
+				expand: true,
 				cwd: '<%= sourceData %>',
 				src: '**/*.json',
-				dest: '<%= publicData %>',
-				expand: true
+				dest: '<%= publicData %>'
 			},{
+				expand: true,
 				cwd: '<%= sourceAssets %>',
 				src: '**/*.*',
-				dest: '<%= publicAssets %>',
-				expand: true
+				dest: '<%= publicAssets %>'
 			}]
 		}
 

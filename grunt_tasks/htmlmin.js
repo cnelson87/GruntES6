@@ -22,10 +22,10 @@ module.exports = function (grunt) {
 
 		dist: {
 			files: [{
+				expand: true,
 				cwd: '<%= publicPath %>',
 				src: '**/*.html',
-				dest: '<%= publicPath %>',
-				expand: true
+				dest: '<%= publicPath %>'
 			}]
 		}
 
