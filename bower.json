@@ -1,6 +1,6 @@
 {
 	"name": "grunt-es6",
-	"version": "0.8.5",
+	"version": "0.8.6",
 	"dependencies": {
 		"modernizr": "~2.8.3",
 		"jquery": "~3.2.1",
