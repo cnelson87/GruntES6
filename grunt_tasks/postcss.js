@@ -9,7 +9,7 @@ module.exports = function (grunt) {
 
 	// list all plugins
 	var plugins = [
-		autoprefixer({browsers: ['last 5 versions', 'ie 9']})
+		autoprefixer({browsers: ['last 5 versions', 'safari >= 10', 'ie >= 10']})
 	];
 
 	return {
