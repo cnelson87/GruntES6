@@ -19,7 +19,7 @@ const AppConfig = {
 	hasTouch: Boolean('ontouchstart' in window || navigator.maxTouchPoints || navigator.msMaxTouchPoints),
 
 	// standard HTML content elements
-	contentElements: 'h1, h2, h3, h4, h5, h6, p, ul, ol, dl, table',
+	contentElements: 'h1, h2, h3, h4, h5, h6, p, ul, ol, dl, table, a, button',
 
 	// elements that are natively able to receive focus
 	focusableElements: 'a, button, input, select, textarea, iframe, audio, video',

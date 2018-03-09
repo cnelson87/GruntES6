@@ -2,7 +2,7 @@
  * focusOnContentEl
  * @author: Chris Nelson <cnelson87@gmail.com>
  * @description: Sets focus on content and optionally scrolls into view
- * @param: jQuery $el is required, extraOffset is optional
+ * @params: jQuery $element required, extraOffset & scrollSpeed optional
  */
 
 import AppConfig from 'config/AppConfig';
@@ -16,14 +16,21 @@ const focusOnContentEl = function($el, extraTopOffset = 0, scrollSpeed = AppConf
 	let winTop = $window.scrollTop() + topOffset;
 	let winHeight = $window.height() - topOffset;
 	let scrollTop = pnlTop - topOffset;
-	let $focusEl = $el.find(AppConfig.contentElements).first();
+	let tabindex = '-1';
+	let $focusEl = $el.find(AppConfig.contentElements).filter(':visible').first();
+	if (!$focusEl.length) {$focusEl = $el;}
+	if ($focusEl.attr('tabindex') === '0' ||
+		$focusEl.prop('tagName') === 'A' ||
+		$focusEl.prop('tagName') === 'BUTTON') {
+		tabindex = '0';
+	}
 
 	if (pnlTop < winTop || pnlTop + pnlHeight > winTop + winHeight) {
 		$htmlBody.animate({scrollTop: scrollTop}, scrollSpeed, function() {
-			$focusEl.attr({'tabindex':'-1'}).focus();
+			$focusEl.attr({'tabindex': tabindex}).focus();
 		});
 	} else {
-		$focusEl.attr({'tabindex':'-1'}).focus();
+		$focusEl.attr({'tabindex': tabindex}).focus();
 	}
 
 };

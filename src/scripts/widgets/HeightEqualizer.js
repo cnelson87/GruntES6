@@ -54,6 +54,7 @@ class HeightEqualizer {
 		this.resetHeight();
 	}
 
+
 	/**
 	*	Public Methods
 	**/
