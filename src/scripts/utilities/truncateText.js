@@ -9,7 +9,7 @@ const truncateText = function() {
 	let defaultLen = 200;
 	console.log($els);
 	$els.each((i, el) => {
-    let $el = $(el);
+		let $el = $(el);
 		let text = $el.text();
 		let len = $el.data('truncate') || defaultLen;
 		if (text.length > len) {
@@ -17,7 +17,7 @@ const truncateText = function() {
 			text += '&hellip;';
 		}
 		$el.html(text);
-  });
+	});
 
 };
 
