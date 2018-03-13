@@ -5,7 +5,7 @@
 
 #flexboxpage {
 
-	.flex-container {
+	.flex-grid {
 		&.shaded {
 			.flex-column:nth-child(odd) {
 				background-color: $gray-xlight;
