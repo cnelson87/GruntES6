@@ -5,7 +5,7 @@ A Grunt-based ES6 sandbox. Scripts are compiled using Browserify and transpiled 
 
 ## Install Base Dependencies
 
-- Install Node.js: [NodeJS Installer](http://nodejs.org/)
+- Install Node.js: [NodeJS Installer](https://nodejs.org/)
 - Install Bower (browser package manager): `npm install -g bower`
 - Install Grunt-CLI (command-line interface):  `npm install -g grunt-cli`
 
