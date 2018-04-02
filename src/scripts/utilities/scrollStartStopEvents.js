@@ -5,7 +5,6 @@
  */
 
 import AppEvents from 'config/AppEvents';
-import PubSub from 'utilities/PubSub';
 
 const scrollStartStopEvents = function() {
 	let timer;
@@ -15,12 +14,10 @@ const scrollStartStopEvents = function() {
 			clearTimeout(timer);
 		} else {
 			$.event.trigger(AppEvents.WINDOW_SCROLL_START);
-			PubSub.trigger(AppEvents.WINDOW_SCROLL_START);
 		}
 		timer = setTimeout(function() {
 			timer = null;
 			$.event.trigger(AppEvents.WINDOW_SCROLL_STOP);
-			PubSub.trigger(AppEvents.WINDOW_SCROLL_STOP);
 		}, timeoutTime);
 	});
 };

@@ -5,12 +5,10 @@
 
 import AppConfig from 'config/AppConfig';
 import AppEvents from 'config/AppEvents';
-import PubSub from 'utilities/PubSub';
 import getQueryStringParams from 'utilities/getQueryStringParams';
 import breakpointChangeEvent from 'utilities/breakpointChangeEvent';
 import resizeStartStopEvents from 'utilities/resizeStartStopEvents';
 import scrollStartStopEvents from 'utilities/scrollStartStopEvents';
-import AppState from 'models/AppState';
 import HomepageView from 'views/HomepageView';
 import FormsPage from 'views/FormsPage';
 import PromisePage from 'views/PromisePage';
@@ -57,8 +55,6 @@ const Application = {
 		if (AppConfig.isIE11) {this.$html.addClass('ie11');}
 		if (AppConfig.isAndroid) {this.$html.addClass('android');}
 		if (AppConfig.isIOS) {this.$html.addClass('ios');}
-
-		this.appState = new AppState();
 
 		if (!!queryParams || !!hashParams) {
 			this.params = Object.assign({}, queryParams, hashParams);
@@ -244,19 +240,21 @@ const Application = {
 	},
 
 	_addEventListeners: function() {
-		PubSub.on(AppEvents.WINDOW_RESIZE_START, this.onWindowResizeStart, this);
-		PubSub.on(AppEvents.WINDOW_RESIZE_STOP, this.onWindowResizeStop, this);
-		PubSub.on(AppEvents.WINDOW_SCROLL_START, this.onWindowScrollStart, this);
-		PubSub.on(AppEvents.WINDOW_SCROLL_STOP, this.onWindowScrollStop, this);
-		PubSub.on(AppEvents.BREAKPOINT_CHANGE, this.onBreakpointChange, this);
+		this.$window
+			.on(AppEvents.WINDOW_RESIZE_START, this.onWindowResizeStart.bind(this))
+			.on(AppEvents.WINDOW_RESIZE_STOP, this.onWindowResizeStop.bind(this))
+			.on(AppEvents.WINDOW_SCROLL_START, this.onWindowScrollStart.bind(this))
+			.on(AppEvents.WINDOW_SCROLL_STOP, this.onWindowScrollStop.bind(this))
+			.on(AppEvents.BREAKPOINT_CHANGE, this.onBreakpointChange.bind(this));
 	},
 
 	_removeEventListeners: function() {
-		PubSub.off(AppEvents.WINDOW_RESIZE_START, this.onWindowResizeStart, this);
-		PubSub.off(AppEvents.WINDOW_RESIZE_STOP, this.onWindowResizeStop, this);
-		PubSub.off(AppEvents.WINDOW_SCROLL_START, this.onWindowScrollStart, this);
-		PubSub.off(AppEvents.WINDOW_SCROLL_STOP, this.onWindowScrollStop, this);
-		PubSub.off(AppEvents.BREAKPOINT_CHANGE, this.onBreakpointChange, this);
+		this.$window
+			.off(AppEvents.WINDOW_RESIZE_START, this.onWindowResizeStart.bind(this))
+			.off(AppEvents.WINDOW_RESIZE_STOP, this.onWindowResizeStop.bind(this))
+			.off(AppEvents.WINDOW_SCROLL_START, this.onWindowScrollStart.bind(this))
+			.off(AppEvents.WINDOW_SCROLL_STOP, this.onWindowScrollStop.bind(this))
+			.off(AppEvents.BREAKPOINT_CHANGE, this.onBreakpointChange.bind(this));
 	},
 
 	onWindowResizeStart: function() {
@@ -277,8 +275,6 @@ const Application = {
 
 	onBreakpointChange: function(params) {
 		// console.log('onBreakpointChange', params);
-		// Store currentBreakpoint in a Backbone model
-		this.appState.set({currentBreakpoint: AppConfig.currentBreakpoint});
 		this.setTopOffset();
 	},
 

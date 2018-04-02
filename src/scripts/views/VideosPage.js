@@ -24,11 +24,13 @@ const VideosPage = {
 		};
 		let xhr = ajaxGet(AppConfig.urls.videosPlaylistLIVE, 'json', params);
 
-		Promise.resolve(xhr).then((response) => {
-			this.process(response);
-		}).catch((response) => {
-			console.log('error');
-		});
+		Promise.resolve(xhr)
+			.then((response) => {
+				this.process(response);
+			})
+			.catch((error) => {
+				// console.log(error);
+			});
 	},
 
 	process: function(response) {

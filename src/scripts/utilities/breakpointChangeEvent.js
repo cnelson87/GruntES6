@@ -6,7 +6,6 @@
 
 import AppConfig from 'config/AppConfig';
 import AppEvents from 'config/AppEvents';
-import PubSub from 'utilities/PubSub';
 
 const breakpointChangeEvent = function() {
 
@@ -29,12 +28,6 @@ const breakpointChangeEvent = function() {
 			zIndex = newZI;
 			updateAppConfig();
 			$.event.trigger(AppEvents.BREAKPOINT_CHANGE, {breakpoint: AppConfig.currentBreakpoint});
-			PubSub.trigger(AppEvents.BREAKPOINT_CHANGE, {
-				breakpoint: AppConfig.currentBreakpoint,
-				mobile: AppConfig.isMobileView,
-				tablet: AppConfig.isTabletView,
-				desktop: AppConfig.isDesktopView
-			});
 		}
 	});
 

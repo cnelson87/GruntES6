@@ -21,11 +21,13 @@ const PromisePage = {
 			ajaxGet(AppConfig.urls.sevens)
 		];
 
-		Promise.all(xhrs).then((response) => {
-			this.process(response);
-		}).catch((response) => {
-			console.log('error');
-		});
+		Promise.all(xhrs)
+			.then((response) => {
+				this.process(response);
+			})
+			.catch((error) => {
+				// console.log(error);
+			});
 	},
 
 	process: function(response) {

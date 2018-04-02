@@ -53,30 +53,31 @@ class AjaxModal extends ModalWindow {
 
 		this.ajaxLoader.addLoader();
 
-		Promise.resolve(ajaxGet(ajaxUrl, 'html')).then((response) => {
-			// console.log(response);
+		Promise.resolve(ajaxGet(ajaxUrl, 'html'))
+			.then((response) => {
+				// console.log(response);
+				if (targetID) {
+					targetEl = $(response).find('#' + targetID);
+					if (targetEl.length) {
+						contentHTML = $(response).find('#' + targetID).html();
+					} else {
+						contentHTML = $(response).html();
+					}
 
-			if (targetID) {
-				targetEl = $(response).find('#' + targetID);
-				if (targetEl.length) {
-					contentHTML = $(response).find('#' + targetID).html();
 				} else {
-					contentHTML = $(response).html();
+					contentHTML = response;
 				}
 
-			} else {
-				contentHTML = response;
-			}
+				this.ajaxLoader.removeLoader();
+				this.insertContent(contentHTML);
+				this.setContentFocus();
 
-			this.ajaxLoader.removeLoader();
-			this.insertContent(contentHTML);
-			this.setContentFocus();
-
-		}).catch((response) => {
-			// console.log(response);
-			this.ajaxLoader.removeLoader();
-			this.$content.html(this.options.ajaxErrorMsg);
-		});
+			})
+			.catch((error) => {
+				// console.log(error);
+				this.ajaxLoader.removeLoader();
+				this.$content.html(this.options.ajaxErrorMsg);
+			});
 
 	}
 
