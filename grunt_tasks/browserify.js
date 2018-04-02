@@ -21,12 +21,14 @@ module.exports = function (grunt) {
 	return {
 
 		options: {
-			transform: ['browserify-handlebars', ['babelify', {presets: ['env']}]],
+			transform: [
+				['hbsfy', {extensions: ['hbs']}],
+				['babelify', {presets: ['env']}]
+			],
 			configure: function(b) {
 				b.plugin(pathmodify, {mods: paths});
 			},
 			browserifyOptions: {
-				extensions: ['.hbs'],
 				fullPaths: false
 			}
 		},

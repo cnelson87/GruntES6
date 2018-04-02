@@ -1,6 +1,6 @@
 {
 	"name": "grunt-es6",
-	"version": "0.8.6",
+	"version": "0.8.7",
 	"dependencies": {
 		"modernizr": "~2.8.3",
 		"jquery": "~3.3.1",
@@ -8,7 +8,7 @@
 		"jquery-touchswipe": "~1.6.18",
 		"jquery-validation": "~1.17.0",
 		"greensock": "~1.20.4",
-		"moment": "~2.20.1",
+		"moment": "~2.22.0",
 		"noUiSlider": "~10.1.0",
 		"picturefill": "~3.0.3",
 		"ScrollMagic": "~2.0.5",

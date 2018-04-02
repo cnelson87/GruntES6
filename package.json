@@ -1,6 +1,6 @@
 {
 	"name": "grunt-es6",
-	"version": "0.8.6",
+	"version": "0.8.7",
 	"title": "Grunt ES6",
 	"description": "A Grunt ES6 sandbox.",
 	"namespace": "gruntes6",
@@ -41,8 +41,8 @@
 		"babelify": "^8.0.0",
 		"browserify": "^16.1.0",
 		"handlebars": "^4.0.11",
+		"hbsfy": "^2.8.1",
 		"grunt-browserify": "^5.2.0",
-		"browserify-handlebars": "^1.0.0",
 		"pathmodify": "^0.5.0",
 		"load-grunt-config": "^0.19.2",
 		"load-grunt-tasks": "^3.5.2"
