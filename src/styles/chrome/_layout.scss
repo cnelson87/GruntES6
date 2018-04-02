@@ -4,12 +4,10 @@
 
 
 html, body {
-	width: 100vw;
+	max-width: 100%;
 	min-width: $min-width;
-	// min-height: 100vh;
-	max-width: 100vw;
 	overflow-x: hidden;
-	position: relative;
+	width: 100%;
 }
 
 body {
@@ -24,62 +22,80 @@ body {
 	}
 }
 
-#main {
-	min-height: calc(100vh - #{$mobile-header-height + $mobile-footer-height});
-	padding: $mobile-vertical-spacing 0;
-	overflow-x: hidden;
+.page-container {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	min-width: $min-width;
 	position: relative;
+	width: 100%;
+}
+
+.site-main {
+	flex-grow: 1;
+	padding: $mobile-vertical-spacing 0;
 	@media (min-width: $tablet-breakpoint-min) {
-		min-height: calc(100vh - #{$tablet-header-height + $tablet-footer-height});
 		padding: $tablet-vertical-spacing 0;
 	}
 	@media (min-width: $desktop-breakpoint-min) {
-		min-height: calc(100vh - #{$desktop-header-height + $desktop-footer-height});
 		padding: $desktop-vertical-spacing 0;
 	}
 }
 
-#header,
-#footer,
+.site-header,
+.site-header,
+.site-footer,
 .content {
 	@include clearfix;
-	background: $white;
 	position: relative;
 
-	.content-container {
+	.content-container,
+	.content-container-fluid {
 		@include clearfix;
 		margin: 0 auto;
 		padding: $mobile-vertical-spacing $mobile-gutter-width;
 		position: relative;
+		@media (min-width: $tablet-breakpoint-min) {
+			padding: $mobile-vertical-spacing $tablet-gutter-width;
+		}
+		@media (min-width: $desktop-breakpoint-min) {
+			padding: $mobile-vertical-spacing $desktop-gutter-width;
+		}
+	}
+
+	.content-container {
 		@media (max-width: $mobile-breakpoint-max) {
 			max-width: $mobile-container-max-width;
 		}
 		@media (min-width: $tablet-breakpoint-min) {
 			width: $tablet-container-width;
-			padding: $mobile-vertical-spacing $tablet-gutter-width;
 		}
 		@media (min-width: $desktop-breakpoint-min) {
 			width: $desktop-container-width;
-			padding: $mobile-vertical-spacing $desktop-gutter-width;
 		}
 		@media (min-width: $desktop-breakpoint-wide) {
 			width: $desktop-wide-container-width;
 		}
 	}
 
+	.content-container-fluid {
+		max-width: $max-width;
+	}
 }
 
-#header,
-#footer {
+.site-header,
+.site-footer {
 	background-color: $gray-dark;
 	color: $white;
 }
 
 .content {
+	background-color: $white;
 	border-top: 2px solid $gray-dark;
 	border-bottom: 2px solid $gray-dark;
 
-	.content-container {
+	.content-container,
+	.content-container-fluid {
 		@media (min-width: $tablet-breakpoint-min) {
 			padding-top: $tablet-vertical-spacing;
 			padding-bottom: $tablet-vertical-spacing;

@@ -75,17 +75,11 @@ $max-background-width-breakpoint: 2560px;
 
 // Container Sizes
 $min-width: 320px;
-$max-fluid-width: 1280px;
+$max-width: 1280px;
 $mobile-container-max-width: 640px;
 $tablet-container-width: 740px;
 $desktop-container-width: 1000px;
-$desktop-wide-container-width: 1280px;
-$mobile-header-height: 136px;
-$mobile-footer-height: 136px;
-$tablet-header-height: 94px;
-$tablet-footer-height: 94px;
-$desktop-header-height: 100px;
-$desktop-footer-height: 100px;
+$desktop-wide-container-width: $max-width;
 
 
 // Grid System

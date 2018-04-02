@@ -5,21 +5,25 @@
 </head>
 <body id="homepage" class="homepage">
 
-{{> header}}
+	<div class="page-container">
 
-	<main id="main" role="main">
+	{{> header}}
 
-		{{#block "content"}}
-		<section class="content">
-			<div class="content-container">
-				<h1>Homepage H1</h1>
-			</div>
-		</section>
-		{{/block}}
+		<main class="site-main" id="main">
 
-	</main>
+			{{#block "content"}}
+			<section class="content">
+				<div class="content-container">
+					<h1>Homepage H1</h1>
+				</div>
+			</section>
+			{{/block}}
 
-{{> footer}}
+		</main>
+
+	{{> footer}}
+
+	</div>
 
 </body>
 </html>
