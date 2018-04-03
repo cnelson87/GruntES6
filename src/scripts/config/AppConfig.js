@@ -24,6 +24,7 @@ const AppConfig = {
 	// elements that are natively able to receive focus
 	focusableElements: 'a, button, input, select, textarea, iframe, audio, video',
 
+	// keyboard key codes
 	keys: {
 		enter: 13,
 		escape: 27,
@@ -36,6 +37,7 @@ const AppConfig = {
 		down: 40
 	},
 
+	// timing used throughout
 	timing: {
 		fast: 200,
 		standard: 400,
@@ -43,6 +45,7 @@ const AppConfig = {
 		interval: 8000
 	},
 
+	// ajax endpoints
 	urls: {
 		fibonacci: '/_api/promises/fibonacci.json',
 		primes: '/_api/promises/primes.json',
@@ -58,6 +61,7 @@ const AppConfig = {
 	// my 'chrisn.wearepop@gmail.com' key
 	youtubeApiKey: 'AIzaSyDpNKX16BmckoJ14akwMxk0mHuJWgvNuBI',
 
+	// responsive breakpoints
 	isMobileView: null,
 	isTabletView: null,
 	isDesktopView: null,
