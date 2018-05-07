@@ -3,7 +3,7 @@
 A Grunt-based ES6 sandbox. Scripts are compiled using Browserify and transpiled using Babelify. All scripts are written as ES6 modules. Instantiable modules are written as ES6 classes.
 
 
-## Install Base Dependencies
+## Base Dependencies
 
 - Install Node.js: [NodeJS Installer](https://nodejs.org/)
 - Install Bower (browser package manager): `npm install -g bower`
@@ -12,18 +12,21 @@ A Grunt-based ES6 sandbox. Scripts are compiled using Browserify and transpiled 
 
 ## NPM Modules
 
-- CD into the repo where `GruntFile.js` lives
+- CD into the repo where `package.json` lives
 - Install dependencies: `npm install`
 
-Please note: Depending upon your setup you may need `sudo` permissions to execute the above commands.
 
-
-## Bower Install
+## Bower Modules [obsolete]
 
 To install third party JS libs with Bower:
-
 - all: `bower install`
 - individually: `bower install [libname]`
+Note: Bower is no longer necessary as all JS libs are included in the project and commited to source control. It is still included for legacy reference but has been removed from the build tasks.
+
+
+## Workflow
+
+All development work should be done in the 'src' directory. Use the grunt commands below for running the project locally and processing for handoff to QA/Staging/Production.
 
 
 ## Grunt Tasks
