@@ -14,10 +14,10 @@ body {
 	@include clearfix;
 	background: $body-bg url($image-path+'/bg-main-mobi.jpg') no-repeat fixed center top;
 	background-size: cover;
-	@media (min-width: $tablet-breakpoint-min) {
+	@media (min-width: $breakpoint-tablet-min) {
 		background-image: url($image-path+'/bg-main-tabt.jpg');
 	}
-	@media (min-width: $desktop-breakpoint-min) {
+	@media (min-width: $breakpoint-desktop-min) {
 		background-image: url($image-path+'/bg-main-desk.jpg');
 	}
 }
@@ -31,89 +31,78 @@ body {
 	width: 100%;
 }
 
+.site-header,
+.site-footer,
+.site-main,
+.container,
+.container-fluid,
+.content {
+	@include clearfix;
+	position: relative;
+}
+
 .site-main {
 	flex-grow: 1;
 	padding: $mobile-vertical-spacing 0;
-	@media (min-width: $tablet-breakpoint-min) {
+	@media (min-width: $breakpoint-tablet-min) {
 		padding: $tablet-vertical-spacing 0;
 	}
-	@media (min-width: $desktop-breakpoint-min) {
+	@media (min-width: $breakpoint-desktop-min) {
 		padding: $desktop-vertical-spacing 0;
 	}
 }
 
-.site-header,
-.site-header,
-.site-footer,
-.content {
-	@include clearfix;
-	position: relative;
-
-	.content-container,
-	.content-container-fluid {
-		@include clearfix;
-		margin: 0 auto;
-		padding: $mobile-vertical-spacing $mobile-gutter-width;
-		position: relative;
-		@media (min-width: $tablet-breakpoint-min) {
-			padding: $mobile-vertical-spacing $tablet-gutter-width;
-		}
-		@media (min-width: $desktop-breakpoint-min) {
-			padding: $mobile-vertical-spacing $desktop-gutter-width;
-		}
+.content-container,
+.content-container-fluid {
+	margin: 0 auto;
+	padding: $mobile-vertical-spacing $mobile-gutter-width;
+	@media (min-width: $breakpoint-tablet-min) {
+		padding: $mobile-vertical-spacing $tablet-gutter-width;
 	}
-
-	.content-container {
-		@media (max-width: $mobile-breakpoint-max) {
-			max-width: $mobile-container-max-width;
-		}
-		@media (min-width: $tablet-breakpoint-min) {
-			width: $tablet-container-width;
-		}
-		@media (min-width: $desktop-breakpoint-min) {
-			width: $desktop-container-width;
-		}
-		@media (min-width: $desktop-breakpoint-wide) {
-			width: $desktop-wide-container-width;
-		}
+	@media (min-width: $breakpoint-desktop-min) {
+		padding: $mobile-vertical-spacing $desktop-gutter-width;
 	}
+}
 
-	.content-container-fluid {
-		max-width: $max-width;
+.content-container {
+	@media (max-width: $breakpoint-mobile-max) {
+		max-width: $mobile-container-max-width;
 	}
+	@media (min-width: $breakpoint-tablet-min) {
+		width: $tablet-container-width;
+	}
+	@media (min-width: $breakpoint-desktop-min) {
+		width: $desktop-container-width;
+	}
+	@media (min-width: $breakpoint-desktop-wide) {
+		width: $desktop-wide-container-width;
+	}
+}
+
+.content-container-fluid {
+	max-width: $max-width;
+	width: 100%;
 }
 
 .site-header,
 .site-footer {
-	background-color: $gray-dark;
-	color: $white;
+	background-color: $color-gray-dark;
+	color: $color-white;
 }
 
+// TEMP content style
 .content {
-	background-color: $white;
-	border-top: 2px solid $gray-dark;
-	border-bottom: 2px solid $gray-dark;
-
-	.content-container,
-	.content-container-fluid {
-		@media (min-width: $tablet-breakpoint-min) {
-			padding-top: $tablet-vertical-spacing;
-			padding-bottom: $tablet-vertical-spacing;
-		}
-		@media (min-width: $desktop-breakpoint-min) {
-			padding-top: $desktop-vertical-spacing;
-			padding-bottom: $desktop-vertical-spacing;
-		}
-	}
-
+	background-color: $color-white;
+	border-top: 2px solid $color-gray-dark;
+	border-bottom: 2px solid $color-gray-dark;
 }
 
 .content + .content {
 	margin-top: $mobile-vertical-spacing;
-	@media (min-width: $tablet-breakpoint-min) {
+	@media (min-width: $breakpoint-tablet-min) {
 		margin-top: $tablet-vertical-spacing;
 	}
-	@media (min-width: $desktop-breakpoint-min) {
+	@media (min-width: $breakpoint-desktop-min) {
 		margin-top: $desktop-vertical-spacing;
 	}
 }
