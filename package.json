@@ -1,6 +1,6 @@
 {
 	"name": "grunt-es6",
-	"version": "0.8.7",
+	"version": "0.8.8",
 	"title": "Grunt ES6",
 	"description": "A Grunt ES6 sandbox.",
 	"namespace": "gruntes6",
@@ -16,8 +16,8 @@
 		"babel-polyfill": "6.26.0"
 	},
 	"devDependencies": {
-		"grunt": "^1.0.2",
-		"autoprefixer": "^8.5.0",
+		"grunt": "^1.0.3",
+		"autoprefixer": "^8.6.1",
 		"babel-core": "^6.26.3",
 		"babel-preset-env": "^1.7.0",
 		"babelify": "^8.0.0",
