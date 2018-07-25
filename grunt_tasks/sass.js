@@ -3,12 +3,15 @@
  * Compile Sass to CSS using node-sass
  */
 
+var sass = require('node-sass');
+
 module.exports = function (grunt) {
 
 	return {
 
 		dev: {
 			options: {
+				implementation: sass,
 				sourceComments: true,
 				sourceMap: true,
 				sourceMapContents: true,
@@ -25,6 +28,7 @@ module.exports = function (grunt) {
 
 		dist: {
 			options: {
+				implementation: sass,
 				sourceComments: false,
 				sourceMap: false,
 				sourceMapContents: false,
