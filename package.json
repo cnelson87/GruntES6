@@ -17,7 +17,7 @@
 	},
 	"devDependencies": {
 		"grunt": "^1.0.3",
-		"autoprefixer": "^9.0.1",
+		"autoprefixer": "^9.1.1",
 		"babel-core": "^6.26.3",
 		"babel-preset-env": "^1.7.0",
 		"babelify": "^8.0.0",
@@ -31,7 +31,7 @@
 		"grunt-contrib-copy": "^1.0.0",
 		"grunt-contrib-cssmin": "^2.2.1",
 		"grunt-contrib-htmlmin": "^2.4.0",
-		"grunt-contrib-uglify": "^3.3.0",
+		"grunt-contrib-uglify": "^3.4.0",
 		"grunt-contrib-watch": "^1.1.0",
 		"grunt-eslint": "^21.0.0",
 		"grunt-handlebars-layouts": "^0.3.0",
@@ -42,7 +42,7 @@
 		"grunt-sass-lint": "^0.2.4",
 		"handlebars": "^4.0.11",
 		"hbsfy": "^2.8.1",
-		"node-sass": "^4.9.2",
+		"node-sass": "^4.9.3",
 		"pathmodify": "^0.5.0",
 		"load-grunt-config": "^0.19.2",
 		"load-grunt-tasks": "^3.5.2"
