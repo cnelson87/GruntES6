@@ -1,7 +1,7 @@
 /**
- * PubSub
- * @author: Chris Nelson <cnelson87@gmail.com>
- * @description: Global event bus for dispatch and delegation.
+ * @module PubSub
+ * @author Chris Nelson <cnelson87@gmail.com>
+ * @description Global event bus for dispatch and delegation.
  */
 
 const PubSub = {};

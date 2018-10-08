@@ -1,6 +1,6 @@
 {
 	"name": "grunt-es6",
-	"version": "0.8.10",
+	"version": "0.9.0",
 	"title": "Grunt ES6",
 	"description": "A Grunt ES6 sandbox.",
 	"namespace": "gruntes6",
@@ -21,9 +21,7 @@
 		"babel-core": "^6.26.3",
 		"babel-preset-env": "^1.7.0",
 		"babelify": "^8.0.0",
-		"browserify": "^16.2.2",
-		"grunt-bower": "^0.21.4",
-		"grunt-bowercopy": "^1.2.4",
+		"browserify": "^16.2.3",
 		"grunt-browserify": "^5.3.0",
 		"grunt-contrib-clean": "^2.0.0",
 		"grunt-contrib-concat": "^1.0.1",
