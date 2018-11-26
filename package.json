@@ -16,13 +16,13 @@
 		"babel-polyfill": "^6.26.0"
 	},
 	"devDependencies": {
+		"grunt": "^1.0.3",
 		"autoprefixer": "^9.3.1",
 		"babel-core": "^6.26.3",
 		"babel-preset-env": "^1.7.0",
 		"babelify": "^8.0.0",
 		"browserify": "^16.2.3",
-		"eslint": "^5.8.0",
-		"grunt": "^1.0.3",
+		"eslint": "^5.9.0",
 		"grunt-browserify": "^5.3.0",
 		"grunt-contrib-clean": "^2.0.0",
 		"grunt-contrib-concat": "^1.0.1",
@@ -44,8 +44,7 @@
 		"load-grunt-config": "^0.19.2",
 		"load-grunt-tasks": "^4.0.0",
 		"node-sass": "^4.10.0",
-		"pathmodify": "^0.5.0",
-		"remapify": "^2.2.0"
+		"pathmodify": "^0.5.0"
 	},
 	"repository": {
 		"type": "git",
