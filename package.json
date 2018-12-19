@@ -1,6 +1,6 @@
 {
 	"name": "grunt-es6",
-	"version": "0.9.1",
+	"version": "0.9.2",
 	"title": "Grunt ES6",
 	"description": "A Grunt ES6 sandbox.",
 	"namespace": "gruntes6",
@@ -17,12 +17,12 @@
 	},
 	"devDependencies": {
 		"grunt": "^1.0.3",
-		"autoprefixer": "^9.3.1",
+		"autoprefixer": "^9.4.3",
 		"babel-core": "^6.26.3",
 		"babel-preset-env": "^1.7.0",
 		"babelify": "^8.0.0",
 		"browserify": "^16.2.3",
-		"eslint": "^5.9.0",
+		"eslint": "^5.10.0",
 		"grunt-browserify": "^5.3.0",
 		"grunt-contrib-clean": "^2.0.0",
 		"grunt-contrib-concat": "^1.0.1",
@@ -41,9 +41,9 @@
 		"grunt-sass-lint": "^0.2.4",
 		"handlebars": "^4.0.12",
 		"hbsfy": "^2.8.1",
-		"load-grunt-config": "^0.19.2",
+		"load-grunt-config": "^1.0.1",
 		"load-grunt-tasks": "^4.0.0",
-		"node-sass": "^4.10.0",
+		"node-sass": "^4.11.0",
 		"pathmodify": "^0.5.0"
 	},
 	"repository": {

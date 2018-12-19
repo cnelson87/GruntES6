@@ -16,14 +16,6 @@ A Grunt-based ES6 sandbox. Scripts are compiled using Browserify and transpiled 
 - Install dependencies: `npm install`
 
 
-## Bower Modules [obsolete]
-
-To install third party JS libs with Bower:
-- all: `bower install`
-- individually: `bower install [libname]`
-Note: Bower is no longer necessary as all JS libs are included in the project and commited to source control. It is still included for legacy reference but has been removed from the build tasks.
-
-
 ## Workflow
 
 All development work should be done in the 'src' directory. Use the grunt commands below for running the project locally and processing for handoff to QA/Staging/Production.
@@ -31,7 +23,6 @@ All development work should be done in the 'src' directory. Use the grunt comman
 
 ## Grunt Tasks
 
-- `grunt bower`   : Command to copy JS libs into vendor folder.
 - `grunt build`   : Compile, concat, and minify the CSS and JS, and copy assets. Outputs to production 'public' folder.
 - `grunt run`     : Runs build:dev, connect, and watch tasks. Outputs to development 'local' folder.
 
