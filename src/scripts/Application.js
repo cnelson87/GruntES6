@@ -15,7 +15,6 @@ import FormsPage from 'views/FormsPage';
 import HeroPage from 'views/HeroPage';
 import PromisePage from 'views/PromisePage';
 import VideosPage from 'views/VideosPage';
-
 import DualDatepicker from 'widgets/DualDatepicker';
 import ResponsiveCarousel from 'widgets/ResponsiveCarousel';
 import ResponsiveTabCarousel from 'widgets/ResponsiveTabCarousel';
