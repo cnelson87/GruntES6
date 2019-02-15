@@ -3,7 +3,7 @@
  * Compile Sass to CSS using node-sass
  */
 
-var sass = require('node-sass');
+var nodeSass = require('node-sass');
 
 module.exports = function (grunt) {
 
@@ -11,7 +11,7 @@ module.exports = function (grunt) {
 
 		dev: {
 			options: {
-				implementation: sass,
+				implementation: nodeSass,
 				sourceComments: true,
 				sourceMap: true,
 				sourceMapContents: true,
@@ -28,7 +28,7 @@ module.exports = function (grunt) {
 
 		dist: {
 			options: {
-				implementation: sass,
+				implementation: nodeSass,
 				sourceComments: false,
 				sourceMap: false,
 				sourceMapContents: false,
@@ -37,8 +37,7 @@ module.exports = function (grunt) {
 			files: [{
 				src: '<%= sourceStyles %>/app.scss',
 				dest: '<%= publicStyles %>/<%= assetName %>.css'
-			},
-			{
+			},{
 				src: '<%= sourceStyles %>/print.scss',
 				dest: '<%= publicStyles %>/print.css'
 			}]

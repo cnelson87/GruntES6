@@ -1,30 +1,28 @@
 module.exports = function(grunt) {
 
-	'use strict';
-
 	var path = require('path');
 	var cwd = process.cwd();
 	var pkg = grunt.file.readJSON('package.json');
 
 	/**
-	 * GRUNT INIT
+	 * Grunt init
 	 */
 	require('load-grunt-config')(grunt, {
 
 		configPath: path.join(cwd,'grunt_tasks'),
-		init: true, //auto grunt.initConfig
+		init: true,
 
 		data: {
 			// Pkg data
-			pkg			: pkg,
-			assetName	: pkg.namespace,
-			portNum		: pkg.portNumber,
-			lrPortNum	: pkg.livereloadPortNum,
+			pkg       : pkg,
+			assetName : pkg.namespace,
+			portNum   : pkg.portNumber,
+			lrPortNum : pkg.livereloadPortNum,
 
 			// source file paths
 			sourcePath      : './src',
 			sourceAssets    : '<%= sourcePath %>/assets',
-			sourceData      : '<%= sourcePath %>/api',
+			sourceData      : '<%= sourcePath %>/data',
 			sourceHTML      : '<%= sourcePath %>/html',
 			sourceAudio     : '<%= sourceAssets %>/audio',
 			sourceVideo     : '<%= sourceAssets %>/video',
@@ -34,10 +32,11 @@ module.exports = function(grunt) {
 			sourceStyles    : '<%= sourcePath %>/styles',
 			sourceTemplates : '<%= sourcePath %>/templates',
 			sourceVendor    : '<%= sourcePath %>/vendor',
+			nodeModules     : './node_modules',
 
 			// local file paths
 			localPath       : './_builds/local',
-			localData       : '<%= localPath %>/_api',
+			localData       : '<%= localPath %>/_data',
 			localAssets     : '<%= localPath %>/_assets',
 			localAudio      : '<%= localAssets %>/audio',
 			localVideo      : '<%= localAssets %>/video',
@@ -48,7 +47,7 @@ module.exports = function(grunt) {
 
 			// public file paths
 			publicPath      : './_builds/public',
-			publicData      : '<%= publicPath %>/_api',
+			publicData      : '<%= publicPath %>/_data',
 			publicAssets    : '<%= publicPath %>/_assets',
 			publicAudio     : '<%= publicAssets %>/audio',
 			publicVideo     : '<%= publicAssets %>/video',
@@ -63,9 +62,9 @@ module.exports = function(grunt) {
 		},
 
 		loadGruntTasks: {
+			pattern: 'grunt-*',
 			config: require('./package.json'),
-			scope: 'devDependencies',
-			pattern: 'grunt-*'
+			scope: 'devDependencies'
 		}
 
 	});
@@ -85,7 +84,7 @@ module.exports = function(grunt) {
 			'sass:' + target,
 			'postcss:' + target,
 			'eslint',
-			'concat:' + target + 'libs',
+			'concat:' + target,
 			'browserify:' + target
 		];
 		// optimize for dist build only

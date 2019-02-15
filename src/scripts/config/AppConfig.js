@@ -47,12 +47,12 @@ const AppConfig = {
 
 	// ajax endpoints
 	urls: {
-		fibonacci: '/_api/promises/fibonacci.json',
-		primes: '/_api/promises/primes.json',
-		sevens: '/_api/promises/sevens.json',
+		fibonacci: '/_data/promises/fibonacci.json',
+		primes: '/_data/promises/primes.json',
+		sevens: '/_data/promises/sevens.json',
 		videosPlaylistLIVE: 'https://www.googleapis.com/youtube/v3/playlistItems',
-		videosPlaylistDEV: '/_api/videos/playlist.json',
-		homepageContent: '/_api/homepage/content.json'
+		videosPlaylistDEV: '/_data/videos/playlist.json',
+		homepageContent: '/_data/homepage/content.json'
 	},
 
 	// Starbucks Members playlist

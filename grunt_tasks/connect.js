@@ -6,7 +6,6 @@
 module.exports = function (grunt) {
 
 	return {
-
 		localhost: {
 			options: {
 				hostname: '*',
@@ -15,7 +14,6 @@ module.exports = function (grunt) {
 				livereload: '<%= lrPortNum %>'
 			}
 		}
-
 	};
 
 };
