@@ -23,126 +23,152 @@
 		<section class="content">
 			<div class="content-container">
 
-				<div class="row">
-					<div class="column col-sm-1-1 col-md-2-3 col-lg-2-3">
+				<form id="Form1" method="POST" action="/forms.html">
 
-						<form id="Form1" method="POST" action="/forms.html">
+					<h2>Vertical label &amp; form fields</h2>
 
-							<fieldset>
-								<h2>Horizontal Form Fields</h2>
-								<p><span class="required">*</span> required field</p>
-								<ol class="horizontal-fields">
-									<li class="datepicker-container" id="dual-datepicker">
-										<label for="StartDate">Date Picker</label>
-										<input type="text" id="StartDate" name="StartDate" class="datepicker start-date" placeholder="Start Date" />
-										<input type="text" id="EndDate" name="EndDate" class="datepicker end-date" placeholder="End Date" />
-									</li>
-									<li>
-										<label for="Text1A">Text <span class="required">*</span></label>
-										<input type="text" id="Text1A" name="Text1A" data-label="Text" placeholder="Text" required />
-									</li>
-									<li>
-										<label for="Text1B" class="text-hide">Text B</label>
-										<input type="text" id="Text1B" name="Text1B" data-label="Text B" placeholder="Text" />
-									</li>
-									<li>
-										<label for="Password1">Password</label>
-										<input type="password" id="Password1" name="Password1" data-label="Password" placeholder="Password" />
-									</li>
-									<li>
-										<label for="Email1">Email</label>
-										<input type="email" id="Email1" name="Email1" data-label="Email" placeholder="Email" />
-										<div class="form-message">
-											This is a form message<br />
-											A multiline message.
-										</div>
-									</li>
-									<li>
-										<label for="Url1">URL</label>
-										<input type="url" id="Url1" name="Url1" data-label="URL" placeholder="URL" />
-									</li>
-									<li>
-										<label for="Tel1">Telephone</label>
-										<input type="tel" id="Tel1" name="Tel1" maxlength="10" data-label="Telephone" placeholder="Tel" />
-									</li>
-									<li>
-										<label for="Select1">Select <span class="required">*</span></label>
-										<select id="Select1" name="Select1" data-label="Select" class="input-med" required>
-											<option value="">Select</option>
-											<option value="A">A</option>
-											<option value="B">B</option>
-											<option value="C">C</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-										</select>
-										<span class="form-note">form note</span>
-									</li>
-									<li>
-										<label for="Number1">Number</label>
-										<input type="number" id="Number1" name="Number1" min="1" max="999" pattern="\d*" data-label="Number" placeholder="Number" />
-									</li>
-									<li>
-										<label for="Range1">Range</label>
-										<input type="range" id="Range1" name="Range1" min="1" max="100" data-label="Range" />
-										<span class="form-note">from 1 to 100</span>
-									</li>
-									<li>
-										<label for="Comments1">Comments</label>
-										<textarea id="Comments1" name="Comments1" maxlength="100" data-label="Comments" placeholder="Textarea" class="textarea-med"></textarea>
-									</li>
-									<li>
-										<label for="Search1A">Search</label>
-										<input type="search" id="Search1A" name="Search1A" data-label="Search" />
-									</li>
-								</ol>
-								<h3>Horizontal Form Fields <span class="normal">(.label-align-left.label-width-short)</span></h3>
-								<ol class="horizontal-fields label-align-left label-width-short">
-									<li>
-										<label for="Text1A-alt1">Text</label>
-										<input type="text" id="Text1A-alt1" name="Text1A-alt1" data-label="Text" placeholder="Text" />
-									</li>
-									<li>
-										<label for="Text1B-alt1" class="text-hide">Text B</label>
-										<input type="text" id="Text1B-alt1" name="Text1B-alt1" data-label="Text B" placeholder="Text" />
-									</li>
-									<li>
-										<label for="Password1-alt1">Password</label>
-										<input type="password" id="Password1-alt1" name="Password1-alt1" data-label="Password" placeholder="Password" />
-									</li>
-									<li>
-										<label for="Email1-alt1">Email</label>
-										<input type="email" id="Email1-alt1" name="Email1-alt1" data-label="Email" placeholder="Email" />
-									</li>
-								</ol>
-								<h3>Horizontal Form Fields <span class="normal">(.label-width-auto)</span></h3>
-								<ol class="horizontal-fields label-width-auto">
-									<li>
-										<label for="Text1A-alt2">Text</label>
-										<input type="text" id="Text1A-alt2" name="Text1A-alt2" data-label="Text" placeholder="Text" />
-										<input type="text" id="Text1B-alt2" name="Text1B-alt2" data-label="Text B" placeholder="Text" />
-									</li>
-									<li>
-										<label for="Password1-alt2">Password</label>
-										<input type="password" id="Password1-alt2" name="Password1-alt2" data-label="Password" placeholder="Password" />
-									</li>
-									<li>
-										<label for="Email1-alt2">Email</label>
-										<input type="email" id="Email1-alt2" name="Email1-alt2" data-label="Email" placeholder="Email" />
-									</li>
-								</ol>
-							</fieldset>
+					<p>Labels and form fields are vertically stacked in mobile/tablet/desktop views by default.</p>
 
-							<fieldset class="form-btns align-right">
-								<em>(custom: align right)</em>
-								&nbsp;
-								<input type="submit" class="button" id="Submit1" name="Submit1" value="Submit" />
-							</fieldset>
+					<fieldset>
+						<p><span class="required">*</span> required field</p>
 
-						</form>
+						<div class="datepicker-container" id="dual-datepicker-1">
+							<div class="form-group">
+								<div class="label-column">
+									<label for="StartDate">Start Date</label>
+								</div>
+								<div class="input-column">
+									<input type="text" id="StartDate" name="StartDate" class="datepicker start-date" placeholder="Start Date" />
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="label-column">
+									<label for="EndDate">End Date</label>
+								</div>
+								<div class="input-column">
+									<input type="text" id="EndDate" name="EndDate" class="datepicker end-date" placeholder="End Date" />
+								</div>
+							</div>
+						</div>
 
+						<div class="form-group">
+							<div class="label-column">
+								<label for="Text1">Text <span class="required">*</span></label>
+							</div>
+							<div class="input-column">
+								<input type="text" id="Text1" name="Text1" data-label="Text" placeholder="Text" required />
+								<div class="help-block">This is a form help block message.</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="label-column">
+								<label for="Text1X">Text (disabled)</label>
+							</div>
+							<div class="input-column">
+								<input type="text" id="Text1X" name="Text1X" data-label="Text X" placeholder="Text X" disabled />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="label-column">
+								<label for="Password1">Password</label>
+							</div>
+							<div class="input-column">
+								<input type="password" id="Password1" name="Password1" data-label="Password" placeholder="Password" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="label-column">
+								<label for="Email1">Email</label>
+							</div>
+							<div class="input-column">
+								<input type="email" id="Email1" name="Email1" data-label="Email" placeholder="Email" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="label-column">
+								<label for="Url1">URL</label>
+							</div>
+							<div class="input-column">
+								<input type="url" id="Url1" name="Url1" data-label="URL" placeholder="URL" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="label-column">
+								<label for="Tel1">Telephone</label>
+							</div>
+							<div class="input-column">
+								<input type="tel" id="Tel1" name="Tel1" maxlength="10" data-label="Telephone" placeholder="Tel" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="label-column">
+								<label for="Select1">Select <span class="required">*</span></label>
+							</div>
+							<div class="input-column">
+								<select id="Select1" name="Select1" data-label="Select" required>
+									<option value="">Select</option>
+									<option value="A">A</option>
+									<option value="B">B</option>
+									<option value="C">C</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="label-column">
+								<label for="Number1">Number</label>
+							</div>
+							<div class="input-column">
+								<input type="number" id="Number1" name="Number1" min="1" max="999" pattern="\d*" data-label="Number" placeholder="Number" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="label-column">
+								<label for="Range1">Range</label>
+							</div>
+							<div class="input-column">
+								<input type="range" id="Range1" name="Range1" min="1" max="100" data-label="Range" />
+								<div class="help-block">from 1 to 100</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="label-column">
+								<label for="Textarea1">Textarea</label>
+							</div>
+							<div class="input-column">
+								<textarea id="Textarea1" name="Textarea1" maxlength="100" data-label="Textarea" placeholder="Textarea"></textarea>
+							</div>
+						</div>
+
+						<!-- <div class="form-group">
+							<div class="label-column">
+								<label for="Search1">Search</label>
+							</div>
+							<div class="input-column">
+								<input type="search" id="Search1" name="Search1" data-label="Search" />
+							</div>
+						</div> -->
+
+					</fieldset>
+
+					<div class="form-btns">
+						<input type="submit" class="button" id="Submit1" name="Submit1" value="Submit" />
+						&nbsp;
+						<em>(default: align left)</em>
 					</div>
-				</div>
+
+				</form>
 
 			</div>
 		</section>
@@ -150,82 +176,142 @@
 		<section class="content">
 			<div class="content-container">
 
-				<div class="row">
-					<div class="column col-sm-1-1 col-md-2-3 col-lg-2-3">
+				<form id="Form2" method="POST" action="/forms.html">
 
-						<form id="Form2" method="POST" action="/forms.html">
+					<h2>Horizontal label &amp; form fields</h2>
 
-							<fieldset>
-								<h2>Vertical Form Fields</h2>
-								<p><span class="required">*</span> required field</p>
-								<ol class="vertical-fields">
-									<li>
-										<label for="Text2A">Text <span class="required">*</span></label>
-										<input type="text" id="Text2A" name="Text2A" data-label="Text" placeholder="Text" required />
-									</li>
-									<li>
-										<label for="Text2B" class="offscreen">Text B</label>
-										<input type="text" id="Text2B" name="Text2B" data-label="Text B" placeholder="Text" />
-									</li>
-									<li>
-										<label for="Password2">Password</label>
-										<input type="password" id="Password2" name="Password2" data-label="Password" placeholder="Password" />
-									</li>
-									<li>
-										<label for="Email2">Email</label>
-										<input type="email" id="Email2" name="Email2" data-label="Email" placeholder="Email" />
-										<div class="form-message">
-											This is a form message<br />
-											A multiline message.
-										</div>
-									</li>
-									<li>
-										<label for="Url2">URL</label>
-										<input type="url" id="Url2" name="Url2" data-label="URL" placeholder="URL" />
-									</li>
-									<li>
-										<label for="Tel2">Telephone</label>
-										<input type="tel" id="Tel2" name="Tel2" maxlength="10" data-label="Telephone" placeholder="Tel" />
-									</li>
-									<li>
-										<label for="Select2">Select</label>
-										<select id="Select2" name="Select2" data-label="Select" class="input-med">
-											<option value="">Select</option>
-											<option value="A">A</option>
-											<option value="B">B</option>
-											<option value="C">C</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-										</select>
-										<span class="form-note">form note</span>
-									</li>
-									<li>
-										<label for="Number2">Number</label>
-										<input type="number" id="Number2" name="Number2" min="1" max="999" pattern="\d*" data-label="Number" placeholder="Number" />
-									</li>
-									<li>
-										<label for="Range2">Range</label>
-										<input type="range" id="Range2" name="Range2" min="1" max="100" data-label="Range" />
-										<span class="form-note">from 1 to 100</span>
-									</li>
-									<li>
-										<label for="Comments2">Comments</label>
-										<textarea id="Comments2" name="Comments2" maxlength="100" data-label="Comments" placeholder="Textarea" class="textarea-med"></textarea>
-									</li>
-								</ol>
-							</fieldset>
+					<p>Labels and form fields are vertically stacked in mobile and horizontal in tablet/desktop views.</p>
 
-							<fieldset class="form-btns">
-								<input type="submit" class="button" id="Submit2" name="Submit2" value="Submit" />
-								&nbsp;
-								<em>(default: align left)</em>
-							</fieldset>
+					<fieldset>
+						<p><span class="required">*</span> required field</p>
 
-						</form>
+						<div class="datepicker-container" id="dual-datepicker-2">
+							<div class="form-group horizontal-form-group">
+								<div class="label-column">
+									<label for="StartDate2">Start Date</label>
+								</div>
+								<div class="input-column">
+									<input type="text" id="StartDate2" name="StartDate2" class="datepicker start-date" placeholder="Start Date" />
+								</div>
+							</div>
+							<div class="form-group horizontal-form-group">
+								<div class="label-column">
+									<label for="EndDate2">End Date</label>
+								</div>
+								<div class="input-column">
+									<input type="text" id="EndDate2" name="EndDate2" class="datepicker end-date" placeholder="End Date" />
+								</div>
+							</div>
+						</div>
 
+						<div class="form-group horizontal-form-group">
+							<div class="label-column">
+								<label for="Text2">Text <span class="required">*</span></label>
+							</div>
+							<div class="input-column">
+								<input type="text" id="Text2" name="Text2" data-label="Text" placeholder="Text" required />
+								<div class="help-block">This is a form help block message.</div>
+							</div>
+						</div>
+
+						<div class="form-group horizontal-form-group">
+							<div class="label-column">
+								<label for="Text2X">Text (disabled)</label>
+							</div>
+							<div class="input-column">
+								<input type="text" id="Text2X" name="Text2X" data-label="Text X" placeholder="Text" disabled />
+							</div>
+						</div>
+
+						<div class="form-group horizontal-form-group">
+							<div class="label-column">
+								<label for="Password2">Password</label>
+							</div>
+							<div class="input-column">
+								<input type="password" id="Password2" name="Password2" data-label="Password" placeholder="Password" />
+							</div>
+						</div>
+
+						<div class="form-group horizontal-form-group">
+							<div class="label-column">
+								<label for="Email2">Email</label>
+							</div>
+							<div class="input-column">
+								<input type="email" id="Email2" name="Email2" data-label="Email" placeholder="Email" />
+							</div>
+						</div>
+
+						<div class="form-group horizontal-form-group">
+							<div class="label-column">
+								<label for="Url2">URL</label>
+							</div>
+							<div class="input-column">
+								<input type="url" id="Url2" name="Url2" data-label="URL" placeholder="URL" />
+							</div>
+						</div>
+
+						<div class="form-group horizontal-form-group">
+							<div class="label-column">
+								<label for="Tel2">Telephone</label>
+							</div>
+							<div class="input-column">
+								<input type="tel" id="Tel2" name="Tel2" maxlength="10" data-label="Telephone" placeholder="Tel" />
+							</div>
+						</div>
+
+						<div class="form-group horizontal-form-group">
+							<div class="label-column">
+								<label for="Select2">Select <span class="required">*</span></label>
+							</div>
+							<div class="input-column">
+								<select id="Select2" name="Select2" data-label="Select" required>
+									<option value="">Select</option>
+									<option value="A">A</option>
+									<option value="B">B</option>
+									<option value="C">C</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group horizontal-form-group">
+							<div class="label-column">
+								<label for="Number2">Number</label>
+							</div>
+							<div class="input-column">
+								<input type="number" id="Number2" name="Number2" min="1" max="999" pattern="\d*" data-label="Number" placeholder="Number" />
+							</div>
+						</div>
+
+						<div class="form-group horizontal-form-group">
+							<div class="label-column">
+								<label for="Range2">Range</label>
+							</div>
+							<div class="input-column">
+								<input type="range" id="Range2" name="Range2" min="1" max="100" data-label="Range" />
+								<div class="help-block">from 1 to 100</div>
+							</div>
+						</div>
+
+						<div class="form-group horizontal-form-group">
+							<div class="label-column">
+								<label for="Textarea2">Textarea</label>
+							</div>
+							<div class="input-column">
+								<textarea id="Textarea2" name="Textarea2" maxlength="100" data-label="Textarea" placeholder="Textarea"></textarea>
+							</div>
+						</div>
+					</fieldset>
+
+					<div class="form-btns align-right">
+						<em>(custom: align right)</em>
+						&nbsp;
+						<input type="submit" class="button" id="Submit2" name="Submit2" value="Submit" />
 					</div>
-				</div>
+
+				</form>
 
 			</div>
 		</section>
@@ -233,86 +319,100 @@
 		<section class="content">
 			<div class="content-container">
 
-				<div class="row">
-					<div class="column col-sm-1-1 col-md-2-3 col-lg-2-3">
+				<form id="Form3" method="POST" action="/forms.html">
 
-						<form id="Form3" method="POST" action="/forms.html">
+					<h2>Inline Form Fields</h2>
 
-							<fieldset>
-								<h2>Inline Form Fields</h2>
-								<p><span class="required">*</span> required field</p>
-								<ol class="inline-fields">
-									<li>
-										<label for="Text3A">Text <span class="required">*</span></label>
-										<input type="text" id="Text3A" name="Text3A" data-label="Text" placeholder="Text" required />
-										<!--
-										<label for="Text3B" class="offscreen">Text B</label>
-										<label for="Text3B"><span class="offscreen">Text B</span></label>
-										-->
-										<input type="text" id="Text3B" name="Text3B" data-label="Text B" placeholder="Text" />
-									</li>
-									<li>
-										<label for="Password3">Password</label>
-										<input type="password" id="Password3" name="Password3" data-label="Password" placeholder="Password" />
-									</li>
-									<li>
-										<label for="Email3">Email</label>
-										<input type="email" id="Email3" name="Email3" data-label="Email" placeholder="Email" />
-									</li>
-									<li>
-										<label for="Url3">URL</label>
-										<input type="url" id="Url3" name="Url3" data-label="URL" placeholder="URL" />
-									</li>
-									<li>
-										<label for="Tel3">Telephone</label>
-										<input type="tel" id="Tel3" name="Tel3" maxlength="10" data-label="Telephone" placeholder="Tel" />
-									</li>
-									<li>
-										<label for="Select3">Select</label>
-										<select id="Select3" name="Select3" data-label="Select">
-											<option value="">Select</option>
-											<option value="A">A</option>
-											<option value="B">B</option>
-											<option value="C">C</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-										</select>
-									</li>
-									<li>
-										<label for="Number3">Number</label>
-										<input type="number" id="Number3" name="Number3" min="1" max="999" pattern="\d*" data-label="Number" placeholder="Number" />
-									</li>
-									<li>
-										<label for="Range3">Range</label>
-										<input type="range" id="Range3" name="Range3" min="1" max="100" data-label="Range" />
-									</li>
-									<li class="full-width">
-										<label for="Comments3">Comments</label>
-										<textarea id="Comments3" name="Comments3" maxlength="100" data-label="Comments" placeholder="Textarea" class="textarea-lrg"></textarea>
-									</li>
-									<li class="full-width">
-										<label for="SizeA">Sizes</label>
-										<input type="text" id="SizeA" name="SizeA" class="input-xshort" placeholder="xshort" />
-										<input type="text" id="SizeB" name="SizeB" class="input-short" placeholder="short" />
-										<input type="text" id="SizeC" name="SizeC" class="input-xlong" placeholder="xlong" />
-									</li>
-									<li class="full-width">
-										<label for="SizeD">More Sizes</label>
-										<input type="text" id="SizeD" name="SizeD" class="input-med" placeholder="med" />
-										<input type="text" id="SizeE" name="SizeE" class="input-long" placeholder="long" />
-									</li>
-								</ol>
-							</fieldset>
+					<fieldset>
+						<p><span class="required">*</span> required field</p>
 
-							<fieldset class="form-btns">
-								<input type="submit" class="button" id="Submit3" name="Submit3" value="Submit" />
-							</fieldset>
+						<div class="form-group inline-form-group">
+							<div class="label-column">
+								<label for="Text3">Text <span class="required">*</span></label>
+							</div>
+							<div class="input-column">
+								<input type="text" id="Text3" name="Text3" data-label="Text" placeholder="Text" required />
+							</div>
+						</div>
 
-						</form>
+						<div class="form-group inline-form-group">
+							<div class="label-column">
+								<label for="Password3">Password</label>
+							</div>
+							<div class="input-column">
+								<input type="password" id="Password3" name="Password3" data-label="Password" placeholder="Password" />
+							</div>
+						</div>
 
+						<div class="form-group inline-form-group">
+							<div class="label-column">
+								<label for="Email3">Email</label>
+							</div>
+							<div class="input-column">
+								<input type="email" id="Email3" name="Email3" data-label="Email" placeholder="Email" />
+							</div>
+						</div>
+
+						<div class="form-group inline-form-group">
+							<div class="label-column">
+								<label for="Url3">URL</label>
+							</div>
+							<div class="input-column">
+								<input type="url" id="Url3" name="Url3" data-label="URL" placeholder="URL" />
+							</div>
+						</div>
+
+						<div class="form-group inline-form-group">
+							<div class="label-column">
+								<label for="Tel3">Telephone</label>
+							</div>
+							<div class="input-column">
+								<input type="tel" id="Tel3" name="Tel3" maxlength="10" data-label="Telephone" placeholder="Tel" />
+							</div>
+						</div>
+
+						<div class="form-group inline-form-group">
+							<div class="label-column">
+								<label for="Select3">Select</label>
+							</div>
+							<div class="input-column">
+								<select id="Select3" name="Select3" data-label="Select">
+									<option value="">Select</option>
+									<option value="A">A</option>
+									<option value="B">B</option>
+									<option value="C">C</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group inline-form-group">
+							<div class="label-column">
+								<label for="Number3">Number</label>
+							</div>
+							<div class="input-column">
+								<input type="number" id="Number3" name="Number3" min="1" max="999" pattern="\d*" data-label="Number" placeholder="Number" />
+							</div>
+						</div>
+
+						<div class="form-group inline-form-group">
+							<div class="label-column">
+								<label for="Range3">Range</label>
+							</div>
+							<div class="input-column">
+								<input type="range" id="Range3" name="Range3" min="1" max="100" data-label="Range" />
+							</div>
+						</div>
+
+					</fieldset>
+
+					<div class="form-btns">
+						<input type="submit" class="button" id="Submit3" name="Submit3" value="Submit" />
 					</div>
-				</div>
+
+				</form>
 
 			</div>
 		</section>
@@ -320,237 +420,79 @@
 		<section class="content">
 			<div class="content-container">
 
-				<div class="row">
-					<div class="column col-sm-1-1 col-md-2-3 col-lg-2-3">
+				<form id="Form4" method="POST" action="/forms.html">
 
-						<form id="Form4" method="POST" action="/forms.html">
+					<h2>Checkboxes &amp; Radios</h2>
 
-							<h2>Checkboxes &amp; Radios</h2>
-							<fieldset>
-								<h3>Inline Checkboxes</h3>
-								<ol class="inline-fields cb-rb-fields">
-									<li>
-										<input type="checkbox" id="checkbox1a" name="checkbox1a" />
-										<label for="checkbox1a">Lorem Ispum 1A</label>
-									</li>
-									<li>
-										<input type="checkbox" id="checkbox1b" name="checkbox1b" />
-										<label for="checkbox1b">Dolor Sit Amet 1B</label>
-									</li>
-									<li>
-										<input type="checkbox" id="checkbox1c" name="checkbox1c" />
-										<label for="checkbox1c">CB 1C</label>
-									</li>
-									<li>
-										<input type="checkbox" id="checkbox1d" name="checkbox1d" disabled="disabled" />
-										<label for="checkbox1d">CB 1D</label>
-									</li>
-									<li>
-										<input type="checkbox" id="checkbox1e" name="checkbox1e" />
-										<label for="checkbox1e">CB 1E</label>
-									</li>
-								</ol>
-							</fieldset>
+					<fieldset>
+						<h3>Inline Checkboxes</h3>
 
-							<fieldset>
-								<h3>Inline Radios</h3>
-								<ol class="inline-fields cb-rb-fields">
-									<li>
-										<input type="radio" id="radio2a" name="radiogroup2" />
-										<label for="radio2a">RB 2A</label>
-									</li>
-									<li>
-										<input type="radio" id="radio2b" name="radiogroup2" disabled="disabled" />
-										<label for="radio2b">RB 2B</label>
-									</li>
-									<li>
-										<input type="radio" id="radio2c" name="radiogroup2" />
-										<label for="radio2c">RB 2C</label>
-									</li>
-								</ol>
-							</fieldset>
+								<input type="checkbox" id="checkbox1a" name="checkbox1a" />
+								<label for="checkbox1a">Lorem Ispum 1A</label>
 
-							<fieldset>
-								<h3>Vertical Checkboxes</h3>
-								<ol class="vertical-fields cb-rb-fields">
-									<li>
-										<input type="checkbox" id="checkbox2a" name="checkbox2a" />
-										<label for="checkbox2a">Lorem Ispum 2A</label>
-									</li>
-									<li>
-										<input type="checkbox" id="checkbox2b" name="checkbox2b" />
-										<label for="checkbox2b">Dolor Sit Amet 2B - an example of an exceptionally long label that wraps to multiple lines on smaller screens</label>
-									</li>
-									<li>
-										<input type="checkbox" id="checkbox2c" name="checkbox2c" />
-										<label for="checkbox2c">CB 2C</label>
-									</li>
-									<li>
-										<input type="checkbox" id="checkbox2d" name="checkbox2d" disabled="disabled" />
-										<label for="checkbox2d">CB 2D</label>
-									</li>
-									<li>
-										<input type="checkbox" id="checkbox2e" name="checkbox2e" />
-										<label for="checkbox2e">CB 2E</label>
-									</li>
-								</ol>
-							</fieldset>
+								<input type="checkbox" id="checkbox1b" name="checkbox1b" />
+								<label for="checkbox1b">Dolor Sit Amet 1B</label>
 
-							<fieldset>
-								<h3>Vertical Radios</h3>
-								<ol class="vertical-fields cb-rb-fields">
-									<li>
-										<input type="radio" id="radio1a" name="radiogroup1" />
-										<label for="radio1a">RB 1A</label>
-									</li>
-									<li>
-										<input type="radio" id="radio1b" name="radiogroup1" disabled="disabled" />
-										<label for="radio1b">RB 1B</label>
-									</li>
-									<li>
-										<input type="radio" id="radio1c" name="radiogroup1" />
-										<label for="radio1c">RB 1C</label>
-									</li>
-								</ol>
-							</fieldset>
+								<input type="checkbox" id="checkbox1c" name="checkbox1c" />
+								<label for="checkbox1c">CB 1C</label>
 
-							<fieldset>
-								<h3>Checkboxes &amp; Radios in Pseudo Columns</h3>
-								<ol class="column-fields cb-rb-fields">
-									<li>
-										<input type="checkbox" id="checkbox3a" name="checkbox3a" />
-										<label for="checkbox3a">Checkbox 3A</label>
-									</li>
-									<li>
-										<input type="checkbox" id="checkbox3b" name="checkbox3b" />
-										<label for="checkbox3b">Checkbox 3B</label>
-									</li>
-									<li>
-										<input type="checkbox" id="checkbox3c" name="checkbox3c" />
-										<label for="checkbox3c">Checkbox 3C</label>
-									</li>
-									<li>
-										<input type="checkbox" id="checkbox3d" name="checkbox3d" />
-										<label for="checkbox3d">Checkbox 3D</label>
-									</li>
-									<li>
-										<input type="checkbox" id="checkbox3e" name="checkbox3e" />
-										<label for="checkbox3e">Checkbox 3E</label>
-									</li>
-								</ol>
-								<ol class="column-fields cb-rb-fields">
-									<li>
-										<input type="radio" id="radio3a" name="radiogroup3" />
-										<label for="radio3a">Radio 3A</label>
-									</li>
-									<li>
-										<input type="radio" id="radio3b" name="radiogroup3" />
-										<label for="radio3b">Radio 3B</label>
-									</li>
-									<li>
-										<input type="radio" id="radio3c" name="radiogroup3" />
-										<label for="radio3c">Radio 3C</label>
-									</li>
-									<li>
-										<input type="radio" id="radio3d" name="radiogroup3" />
-										<label for="radio3d">Radio 3D</label>
-									</li>
-								</ol>
-							</fieldset>
+								<input type="checkbox" id="checkbox1d" name="checkbox1d" disabled="disabled" />
+								<label for="checkbox1d">CB 1D</label>
 
-							<fieldset>
-								<h3>Horizontal Form Fields with Nested Checkboxes</h3>
-								<ol class="horizontal-fields">
-									<li>
-										<label for="Text4A">Text</label>
-										<input type="text" id="Text4A" name="Text4A" data-label="Text" placeholder="Text" />
-									</li>
-									<li>
-										<label for="Password4">Password</label>
-										<input type="password" id="Password4" name="Password4" data-label="Password" placeholder="Password" />
-									</li>
-									<li>
-										<label for="Email4">Email</label>
-										<input type="email" id="Email4" name="Email4" data-label="Email" placeholder="Email" />
-									</li>
-									<li>
-										<label for="Url4">URL</label>
-										<input type="url" id="Url4" name="Url4" data-label="URL" placeholder="URL" />
-									</li>
-									<li>
-										<label for="Tel4">Telephone</label>
-										<input type="tel" id="Tel4" name="Tel4" maxlength="10" data-label="Telephone" placeholder="Tel" />
-									</li>
-									<li>
-										<label for="Range4">Range</label>
-										<input type="range" id="Range4" name="Range4" min="1" max="100" data-label="Range" />
-									</li>
-									<li>
-										<span class="label">Checkboxes</span>
-										<ol class="vertical-fields cb-rb-fields">
-											<li>
-												<input type="checkbox" id="checkbox4a" name="checkbox4a" />
-												<label for="checkbox4a">Lorem Ispum 4A</label>
-											</li>
-											<li>
-												<input type="checkbox" id="checkbox4b" name="checkbox4b" />
-												<label for="checkbox4b">Dolor Sit Amet 4B</label>
-											</li>
-											<li>
-												<input type="checkbox" id="checkbox4c" name="checkbox4c" />
-												<label for="checkbox4c">CB 4C</label>
-											</li>
-											<li>
-												<input type="checkbox" id="checkbox4d" name="checkbox4d" />
-												<label for="checkbox4d">CB 4D</label>
-											</li>
-											<li>
-												<input type="checkbox" id="checkbox4e" name="checkbox4e" />
-												<label for="checkbox4e">CB 4E</label>
-											</li>
-										</ol>
-									</li>
-									<li>
-										<span class="label">Radios</span>
-										<ol class="inline-fields cb-rb-fields">
-											<li>
-												<input type="radio" id="radio4a" name="radiogroup4" />
-												<label for="radio4a">RB 4A</label>
-											</li>
-											<li>
-												<input type="radio" id="radio4b" name="radiogroup4" />
-												<label for="radio4b">RB 4B</label>
-											</li>
-											<li>
-												<input type="radio" id="radio4c" name="radiogroup4" />
-												<label for="radio4c">RB 4C</label>
-											</li>
-										</ol>
-									</li>
-									<li>
-										<!-- <span class="label">More Radios</span> -->
-										<ol class="vertical-fields cb-rb-fields">
-											<li>
-												<input type="radio" id="radio5a" name="radiogroup5" />
-												<label for="radio5a">RB 5A</label>
-											</li>
-											<li>
-												<input type="radio" id="radio5b" name="radiogroup5" />
-												<label for="radio5b">RB 5B</label>
-											</li>
-											<li>
-												<input type="radio" id="radio5c" name="radiogroup5" />
-												<label for="radio5c">RB 5C</label>
-											</li>
-										</ol>
-									</li>
-								</ol>
-							</fieldset>
+								<input type="checkbox" id="checkbox1e" name="checkbox1e" />
+								<label for="checkbox1e">CB 1E</label>
 
-						</form>
+					</fieldset>
 
-					</div>
-				</div>
+					<fieldset>
+						<h3>Inline Radios</h3>
+
+								<input type="radio" id="radio2a" name="radiogroup2" />
+								<label for="radio2a">RB 2A</label>
+
+								<input type="radio" id="radio2b" name="radiogroup2" disabled="disabled" />
+								<label for="radio2b">RB 2B</label>
+
+								<input type="radio" id="radio2c" name="radiogroup2" />
+								<label for="radio2c">RB 2C</label>
+
+					</fieldset>
+
+					<fieldset>
+						<h3>Vertical Checkboxes</h3>
+
+								<input type="checkbox" id="checkbox2a" name="checkbox2a" />
+								<label for="checkbox2a">Lorem Ispum 2A</label>
+
+								<input type="checkbox" id="checkbox2b" name="checkbox2b" />
+								<label for="checkbox2b">Dolor Sit Amet 2B - an example of an exceptionally long label that wraps to multiple lines on smaller screens</label>
+
+								<input type="checkbox" id="checkbox2c" name="checkbox2c" />
+								<label for="checkbox2c">CB 2C</label>
+
+								<input type="checkbox" id="checkbox2d" name="checkbox2d" disabled="disabled" />
+								<label for="checkbox2d">CB 2D</label>
+
+								<input type="checkbox" id="checkbox2e" name="checkbox2e" />
+								<label for="checkbox2e">CB 2E</label>
+
+					</fieldset>
+
+					<fieldset>
+						<h3>Vertical Radios</h3>
+
+								<input type="radio" id="radio1a" name="radiogroup1" />
+								<label for="radio1a">RB 1A</label>
+
+								<input type="radio" id="radio1b" name="radiogroup1" disabled="disabled" />
+								<label for="radio1b">RB 1B</label>
+
+								<input type="radio" id="radio1c" name="radiogroup1" />
+								<label for="radio1c">RB 1C</label>
+
+					</fieldset>
+
+				</form>
 
 			</div>
 		</section>
