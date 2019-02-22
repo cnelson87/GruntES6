@@ -12,7 +12,6 @@ module.exports = function (grunt) {
 		'ajax-content/ajax-modal-form',
 		'index',
 		'forms',
-		'flexbox',
 		'grids',
 		'hero',
 		'promise',

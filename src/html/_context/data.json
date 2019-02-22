@@ -6,41 +6,25 @@
 	"homepage": {
 		"title" : "Homepage",
 		"description" : "Description for the Homepage",
-		"keywords" : "homepage placeholder keywords",
-		"h1" : "Homepage H1",
-		"intro" : "This is the Homepage intro content area. This content is stored in a 'context/data.json' file and compiled server-side via the grunt-handlebars-layouts plugin."
+		"keywords" : "homepage homepage homepage"
 	},
 
 	"forms": {
 		"title" : "Forms",
 		"description" : "Description for the Forms page",
-		"keywords" : "forms forms forms",
-		"h1" : "Forms H1",
-		"intro" : "This is the Forms page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
-	},
-
-	"flexbox": {
-		"title" : "Flexbox",
-		"description" : "Description for the Flexbox page",
-		"keywords" : "flexbox flexbox flexbox",
-		"h1" : "Flexbox H1",
-		"intro" : "This is the Flexbox page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
+		"keywords" : "forms forms forms"
 	},
 
 	"grids": {
 		"title" : "Grids",
 		"description" : "Description for the Grids page",
-		"keywords" : "grids grids grids",
-		"h1" : "Grids H1",
-		"intro" : "This is the Grids page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
+		"keywords" : "grids grids grids"
 	},
 
 	"hero": {
 		"title" : "Hero",
 		"description" : "Description for the Hero page",
-		"keywords" : "hero hero hero",
-		"h1" : "Hero H1",
-		"intro" : "This is the Hero page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
+		"keywords" : "hero hero hero"
 	},
 
 	"promise": {
