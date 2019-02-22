@@ -27,6 +27,12 @@
 		"keywords" : "hero hero hero"
 	},
 
+	"modals": {
+		"title" : "Modals",
+		"description" : "Description for the Modals page",
+		"keywords" : "modals modal window"
+	},
+
 	"promise": {
 		"title" : "Promise",
 		"description" : "Description for the Promise page",
@@ -97,14 +103,6 @@
 		"keywords" : "horizordion widget",
 		"h1" : "Horizordion H1",
 		"intro" : "This is the Horizordion page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
-	},
-
-	"modals": {
-		"title" : "Modals",
-		"description" : "Description for the Modals page",
-		"keywords" : "modals modal window",
-		"h1" : "Modals H1",
-		"intro" : "This is the Modals page intro content. This content is stored in a 'context/data.json' file and compiled server-side."
 	},
 
 	"rangeslider": {

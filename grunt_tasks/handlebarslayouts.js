@@ -14,6 +14,7 @@ module.exports = function (grunt) {
 		'forms',
 		'grids',
 		'hero',
+		'modals',
 		'promise',
 		'videos',
 		'carousel',
@@ -23,7 +24,6 @@ module.exports = function (grunt) {
 		'accordion',
 		'tabswitcher',
 		'horizordion',
-		'modals',
 		'rangeslider',
 		'test',
 		'_blank'
