@@ -24,7 +24,7 @@ module.exports = function (grunt) {
 		'<%= sourceVendor %>/validation/jquery.validate.min.js',
 		'<%= sourceVendor %>/validation/additional-methods.min.js',
 		'<%= sourceVendor %>/moment.min.js',
-		'<%= sourceVendor %>/moment-timezone-with-data-2012-2022.min.js',
+		'<%= sourceVendor %>/moment-timezone-with-data-10-year-range.min.js',
 		'<%= sourceVendor %>/underscore.min.js'
 	];
 

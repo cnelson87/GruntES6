@@ -1,4 +1,4 @@
-# Grunt ES6
+# GruntES6
 
 A Grunt-based ES6 sandbox. Scripts are compiled using Browserify and transpiled using Babelify. All scripts are written as ES6 modules. Instantiable modules are written as ES6 classes.
 
@@ -6,14 +6,14 @@ A Grunt-based ES6 sandbox. Scripts are compiled using Browserify and transpiled 
 ## Base Dependencies
 
 - Install Node.js: [NodeJS Installer](https://nodejs.org/)
-- Install Bower (browser package manager): `npm install -g bower`
-- Install Grunt-CLI (command-line interface):  `npm install -g grunt-cli`
+- Install Grunt-CLI: `npm install grunt-cli -g` (https://gruntjs.com/)
+- Optional / Recommended: Install Yarn: (https://yarnpkg.com/en/)
 
 
 ## NPM Modules
 
-- CD into the repo where `package.json` lives
-- Install dependencies: `npm install`
+- CD into the root directory containing 'package.json'
+- Install dependencies: `yarn install` or `npm install`
 
 
 ## Workflow
@@ -23,11 +23,11 @@ All development work should be done in the 'src' directory. Use the grunt comman
 
 ## Grunt Tasks
 
-- `grunt build`   : Compile, concat, and minify the CSS and JS, and copy assets. Outputs to production 'public' folder.
-- `grunt run`     : Runs build:dev, connect, and watch tasks. Outputs to development 'local' folder.
+- `grunt build` : Default task packages all files for delivery to staging or production, and outputs to a 'public' folder. Copies all static assets, lints and compiles javascript, lints and compiles SASS, optimizes JS and CSS
+- `grunt run` : Same as default grunt task minus JS and CSS optimization, and outputs to a 'local' folder. Runs a local static server with automatic live-reloading, watches all files for changes.
 
 
 ## NPM scripts
 
 - `npm run build` : npm script alias for `grunt build`
-- `npm start`     : npm script alias for `grunt run`
+- `npm start` : npm script alias for `grunt run`
