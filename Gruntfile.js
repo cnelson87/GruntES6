@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 		data: {
 			// Pkg data
 			pkg       : pkg,
-			assetName : pkg.namespace,
+			appName   : pkg.appName,
 			portNum   : pkg.portNumber,
 			lrPortNum : pkg.livereloadPortNum,
 

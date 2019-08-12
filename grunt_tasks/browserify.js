@@ -37,7 +37,7 @@ module.exports = function (grunt) {
 			},
 			files: [{
 				src: '<%= sourceScripts %>/initialize.js',
-				dest: '<%= localScripts %>/<%= assetName %>.js'
+				dest: '<%= localScripts %>/<%= appName %>.js'
 			}]
 		},
 
@@ -47,7 +47,7 @@ module.exports = function (grunt) {
 			},
 			files: [{
 				src: '<%= sourceScripts %>/initialize.js',
-				dest: '<%= publicScripts %>/<%= assetName %>.js'
+				dest: '<%= publicScripts %>/<%= appName %>.js'
 			}]
 		}
 

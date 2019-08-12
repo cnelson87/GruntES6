@@ -5,34 +5,6 @@
 
 module.exports = function (grunt) {
 
-	// list all pages here
-	var pages = [
-		'ajax-content/ajax-content-1',
-		'ajax-content/ajax-content-2',
-		'ajax-content/ajax-modal-form',
-		'index',
-		'forms',
-		'grids',
-		'hero',
-		'modals',
-		'promise',
-		'videos',
-		'widgets',
-		'horizordion',
-		'rangeslider',
-		'test',
-		'_blank'
-	];
-
-	// populate files objects
-	var devFiles = {};
-	var distFiles = {};
-	pages.forEach(function(page) {
-		var sourcePage = '<%= sourceHTML %>/' + page + '.html';
-		devFiles['<%= localPath %>/' + page + '.html'] = sourcePage;
-		distFiles['<%= publicPath %>/' + page + '.html'] = sourcePage;
-	});
-
 	return {
 
 		options: {
@@ -42,15 +14,26 @@ module.exports = function (grunt) {
 				'<%= sourceHTML %>/_partials/**/*.html'
 			],
 			modules: ['<%= sourceHTML %>/_helpers/**/*.js'],
-			context: '<%= sourceHTML %>/_context/data.json'
+			context: [
+				'<%= sourceHTML %>/_context/data.json',
+				{
+					'appName': '<%= appName %>'
+				}
+			]
 		},
 
 		dev: {
-			files: devFiles
+			files: {
+				'<%= localPath %>/*.html': ['<%= sourceHTML %>/*.html'],
+				'<%= localPath %>/ajax-content/*.html': ['<%= sourceHTML %>/ajax-content/*.html']
+			}
 		},
 
 		dist: {
-			files: distFiles
+			files: {
+				'<%= publicPath %>/*.html': ['<%= sourceHTML %>/*.html'],
+				'<%= publicPath %>/ajax-content/*.html': ['<%= sourceHTML %>/ajax-content/*.html']
+			}
 		}
 
 	};
