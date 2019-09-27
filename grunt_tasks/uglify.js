@@ -7,7 +7,7 @@ module.exports = function (grunt) {
 
 	return {
 
-		dist: {
+		prod: {
 			files: [{
 				src: '<%= publicScripts %>/<%= appName %>.js',
 				dest: '<%= publicScripts %>/<%= appName %>.js'

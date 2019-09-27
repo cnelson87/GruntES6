@@ -7,7 +7,7 @@ module.exports = function (grunt) {
 
 	return {
 
-		dist: {
+		prod: {
 			files: [{
 				expand: true,
 				cwd: '<%= publicStyles %>',

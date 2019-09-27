@@ -41,7 +41,7 @@ module.exports = function (grunt) {
 			}]
 		},
 
-		dist: {
+		prod: {
 			options: {
 				debug: false
 			},

@@ -39,7 +39,7 @@ module.exports = function (grunt) {
 			dest: '<%= localScripts %>/vendor.js'
 		},
 
-		dist: {
+		prod: {
 			src: vendorLibs,
 			dest: '<%= publicScripts %>/vendor.js'
 		}

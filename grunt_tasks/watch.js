@@ -8,7 +8,7 @@ module.exports = function (grunt) {
 	return {
 
 		options: {
-			livereload: '<%= lrPortNum %>',
+			livereload: '<%= livereloadPort %>',
 			spawn: false
 		},
 

@@ -29,7 +29,7 @@ module.exports = function (grunt) {
 			}
 		},
 
-		dist: {
+		prod: {
 			files: {
 				'<%= publicPath %>/*.html': ['<%= sourceHTML %>/*.html'],
 				'<%= publicPath %>/ajax-content/*.html': ['<%= sourceHTML %>/ajax-content/*.html']

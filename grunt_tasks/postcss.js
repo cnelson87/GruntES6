@@ -25,7 +25,7 @@ module.exports = function (grunt) {
 			}]
 		},
 
-		dist: {
+		prod: {
 			options: {
 				processors: plugins,
 				map: false

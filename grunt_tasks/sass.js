@@ -26,7 +26,7 @@ module.exports = function (grunt) {
 			}]
 		},
 
-		dist: {
+		prod: {
 			options: {
 				implementation: nodeSass,
 				sourceComments: false,

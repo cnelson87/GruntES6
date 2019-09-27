@@ -7,7 +7,7 @@ module.exports = function (grunt) {
 
 	return {
 		dev: '<%= localPath %>',
-		dist: '<%= publicPath %>',
+		prod: '<%= publicPath %>',
 		temp: '<%= tempPath %>'
 	};
 

@@ -20,7 +20,7 @@ module.exports = function (grunt) {
 			keepClosingSlash: true
 		},
 
-		dist: {
+		prod: {
 			files: [{
 				expand: true,
 				cwd: '<%= publicPath %>',

@@ -11,7 +11,7 @@ module.exports = function (grunt) {
 				hostname: '*',
 				base: '<%= localPath %>',
 				port: '<%= portNum %>',
-				livereload: '<%= lrPortNum %>'
+				livereload: '<%= livereloadPort %>'
 			}
 		}
 	};

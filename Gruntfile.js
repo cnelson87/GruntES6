@@ -14,20 +14,20 @@ module.exports = function(grunt) {
 
 		data: {
 			// Pkg data
-			pkg       : pkg,
-			appName   : pkg.appName,
-			portNum   : pkg.portNumber,
-			lrPortNum : pkg.livereloadPortNum,
+			pkg: pkg,
+			appName: pkg.appName,
+			portNum: pkg.portNumber,
+			livereloadPort: pkg.livereloadPort,
 
 			// source file paths
 			sourcePath      : './src',
 			sourceAssets    : '<%= sourcePath %>/assets',
-			sourceData      : '<%= sourcePath %>/data',
 			sourceHTML      : '<%= sourcePath %>/html',
 			sourceAudio     : '<%= sourceAssets %>/audio',
 			sourceVideo     : '<%= sourceAssets %>/video',
 			sourceFonts     : '<%= sourceAssets %>/fonts',
 			sourceImages    : '<%= sourceAssets %>/images',
+			sourceData      : '<%= sourcePath %>/data',
 			sourceScripts   : '<%= sourcePath %>/scripts',
 			sourceStyles    : '<%= sourcePath %>/styles',
 			sourceTemplates : '<%= sourcePath %>/templates',
@@ -36,23 +36,23 @@ module.exports = function(grunt) {
 
 			// local file paths
 			localPath       : './_builds/local',
-			localData       : '<%= localPath %>/_data',
 			localAssets     : '<%= localPath %>/_assets',
 			localAudio      : '<%= localAssets %>/audio',
 			localVideo      : '<%= localAssets %>/video',
 			localFonts      : '<%= localAssets %>/fonts',
 			localImages     : '<%= localAssets %>/images',
+			localData       : '<%= localAssets %>/data',
 			localScripts    : '<%= localAssets %>/scripts',
 			localStyles     : '<%= localAssets %>/styles',
 
 			// public file paths
 			publicPath      : './_builds/public',
-			publicData      : '<%= publicPath %>/_data',
 			publicAssets    : '<%= publicPath %>/_assets',
 			publicAudio     : '<%= publicAssets %>/audio',
 			publicVideo     : '<%= publicAssets %>/video',
 			publicFonts     : '<%= publicAssets %>/fonts',
 			publicImages    : '<%= publicAssets %>/images',
+			publicData      : '<%= publicAssets %>/data',
 			publicScripts   : '<%= publicAssets %>/scripts',
 			publicStyles    : '<%= publicAssets %>/styles',
 
@@ -70,28 +70,28 @@ module.exports = function(grunt) {
 	});
 
 	/**
-	 * Compile a dist build for deployment
+	 * Compile a prod build for deployment
 	 */
-	grunt.registerTask('build', 'generate a build', function(target) {
-		var target = (target === 'dev') ? 'dev' : 'dist';
+	grunt.registerTask('build', 'generate a build', function(env) {
+		var env = (env === 'dev') ? 'dev' : 'prod';
 		var tasks = [
 			// 'clean:temp',
-			'clean:' + target,
+			'clean:' + env,
 			'lintspaces',
-			'handlebarslayouts:' + target,
-			'copy:' + target,
-			'sasslint:' + target,
-			'sass:' + target,
-			'postcss:' + target,
+			'handlebarslayouts:' + env,
+			'copy:' + env,
+			'sasslint:' + env,
+			'sass:' + env,
+			'postcss:' + env,
 			'eslint',
-			'concat:' + target,
-			'browserify:' + target
+			'concat:' + env,
+			'browserify:' + env
 		];
-		// optimize for dist build only
-		if (target === 'dist') {
-			tasks.push('htmlmin:dist');
-			tasks.push('cssmin:dist');
-			tasks.push('uglify:dist');
+		// optimize for prod build only
+		if (env === 'prod') {
+			tasks.push('htmlmin:prod');
+			tasks.push('cssmin:prod');
+			tasks.push('uglify:prod');
 		}
 		grunt.task.run(tasks);
 	});

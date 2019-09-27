@@ -19,7 +19,7 @@ module.exports = function (grunt) {
 			}]
 		},
 
-		dist: {
+		prod: {
 			options: {
 				config: '.sass-lint.yml',
 				force: true,
