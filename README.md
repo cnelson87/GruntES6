@@ -5,9 +5,9 @@ A Grunt-based ES6 sandbox. Scripts are compiled using Browserify and transpiled 
 
 ## Base Dependencies
 
-- Install Node.js: [NodeJS Installer](https://nodejs.org/)
-- Install Grunt-CLI: `npm install grunt-cli -g` (https://gruntjs.com/)
-- Optional / Recommended: Install Yarn: (https://yarnpkg.com/en/)
+- [Install Node.js:](https://nodejs.org/)
+- [Install Grunt-CLI:](https://gruntjs.com/), `npm install grunt-cli -g`
+- Optional / Recommended: [Install Yarn:](https://yarnpkg.com/en/)
 
 
 ## NPM Modules
