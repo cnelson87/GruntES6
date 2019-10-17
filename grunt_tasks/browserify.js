@@ -8,7 +8,7 @@ var pathmodify = require('pathmodify');
 
 module.exports = function (grunt) {
 
-	var mods = [
+	var pathMods = [
 		pathmodify.mod.dir('config', path.join(__dirname, '../src/scripts/config')),
 		pathmodify.mod.dir('utilities', path.join(__dirname, '../src/scripts/utilities')),
 		pathmodify.mod.dir('views', path.join(__dirname, '../src/scripts/views')),
@@ -24,7 +24,7 @@ module.exports = function (grunt) {
 				['babelify', {presets: ['@babel/preset-env']}]
 			],
 			configure: function(b) {
-				b.plugin(pathmodify, {mods: mods});
+				b.plugin(pathmodify, {mods: pathMods});
 			},
 			browserifyOptions: {
 				fullPaths: false

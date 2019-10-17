@@ -4,9 +4,7 @@
  */
 
 module.exports = function (grunt) {
-
 	return {
-
 		prod: {
 			files: [{
 				expand: true,
@@ -15,7 +13,5 @@ module.exports = function (grunt) {
 				dest: '<%= publicStyles %>'
 			}]
 		}
-
 	};
-
 };

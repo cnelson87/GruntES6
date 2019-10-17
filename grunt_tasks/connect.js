@@ -4,7 +4,6 @@
  */
 
 module.exports = function (grunt) {
-
 	return {
 		localhost: {
 			options: {
@@ -15,5 +14,4 @@ module.exports = function (grunt) {
 			}
 		}
 	};
-
 };
