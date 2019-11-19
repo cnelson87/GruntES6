@@ -39,6 +39,12 @@
 		"keywords" : "promise promise promise"
 	},
 
+	"typography": {
+		"title" : "Typography",
+		"description" : "Description for the Typography page",
+		"keywords" : "typography typography typography"
+	},
+
 	"videos": {
 		"title" : "Videos",
 		"description" : "Description for the Videos page",
