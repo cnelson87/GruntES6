@@ -7,13 +7,13 @@ A Grunt-based ES6 sandbox. Scripts are compiled using Browserify and transpiled 
 
 - [Install Node.js:](https://nodejs.org/)
 - [Install Grunt-CLI:](https://gruntjs.com/), `npm install grunt-cli -g`
-- Optional / Recommended: [Install Yarn:](https://yarnpkg.com/en/)
+- Optional: [Install Yarn:](https://yarnpkg.com/en/)
 
 
 ## NPM Modules
 
-- CD into the root directory containing 'package.json'
-- Install dependencies: `yarn install` or `npm install`
+- `cd` into the root directory containing 'package.json'
+- Install dependencies: `npm install` or `yarn install`
 
 
 ## Workflow
