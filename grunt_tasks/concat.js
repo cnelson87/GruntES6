@@ -36,12 +36,12 @@ module.exports = function (grunt) {
 
 		dev: {
 			src: vendorLibs,
-			dest: '<%= localScripts %>/vendor.js'
+			dest: '<%= devScripts %>/vendor.js'
 		},
 
 		prod: {
 			src: vendorLibs,
-			dest: '<%= publicScripts %>/vendor.js'
+			dest: '<%= prodScripts %>/vendor.js'
 		}
 
 	};

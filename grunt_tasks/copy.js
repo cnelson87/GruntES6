@@ -13,7 +13,7 @@ module.exports = function (grunt) {
 				expand: true,
 				cwd: '<%= sourceData %>',
 				src: '**/*.json',
-				dest: '<%= localData %>'
+				dest: '<%= devData %>'
 			}]
 		},
 
@@ -23,7 +23,7 @@ module.exports = function (grunt) {
 				expand: true,
 				cwd: '<%= sourceAssets %>',
 				src: '**/*.*',
-				dest: '<%= localAssets %>'
+				dest: '<%= devAssets %>'
 			}]
 		},
 
@@ -32,12 +32,12 @@ module.exports = function (grunt) {
 				expand: true,
 				cwd: '<%= sourceData %>',
 				src: '**/*.json',
-				dest: '<%= localData %>'
+				dest: '<%= devData %>'
 			},{
 				expand: true,
 				cwd: '<%= sourceAssets %>',
 				src: '**/*.*',
-				dest: '<%= localAssets %>'
+				dest: '<%= devAssets %>'
 			}]
 		},
 
@@ -46,12 +46,12 @@ module.exports = function (grunt) {
 				expand: true,
 				cwd: '<%= sourceData %>',
 				src: '**/*.json',
-				dest: '<%= publicData %>'
+				dest: '<%= prodData %>'
 			},{
 				expand: true,
 				cwd: '<%= sourceAssets %>',
 				src: '**/*.*',
-				dest: '<%= publicAssets %>'
+				dest: '<%= prodAssets %>'
 			}]
 		}
 

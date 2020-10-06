@@ -3,13 +3,11 @@
  * Apply several post-processors to your CSS using PostCSS.
  */
 
-var autoprefixer = require('autoprefixer');
-
 module.exports = function (grunt) {
 
 	// list all plugins
 	var plugins = [
-		autoprefixer
+		require('autoprefixer')()
 	];
 
 	return {
@@ -20,8 +18,8 @@ module.exports = function (grunt) {
 				map: true
 			},
 			files: [{
-				src: '<%= localStyles %>/<%= appName %>.css',
-				dest: '<%= localStyles %>/<%= appName %>.css'
+				src: '<%= devStyles %>/<%= appName %>.css',
+				dest: '<%= devStyles %>/<%= appName %>.css'
 			}]
 		},
 
@@ -31,8 +29,8 @@ module.exports = function (grunt) {
 				map: false
 			},
 			files: [{
-				src: '<%= publicStyles %>/<%= appName %>.css',
-				dest: '<%= publicStyles %>/<%= appName %>.css'
+				src: '<%= prodStyles %>/<%= appName %>.css',
+				dest: '<%= prodStyles %>/<%= appName %>.css'
 			}]
 		}
 

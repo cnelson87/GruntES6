@@ -3,7 +3,7 @@
  * Compile Sass to CSS using node-sass
  */
 
-var nodeSass = require('node-sass');
+var nodesass = require('node-sass');
 
 module.exports = function (grunt) {
 
@@ -11,35 +11,35 @@ module.exports = function (grunt) {
 
 		dev: {
 			options: {
-				implementation: nodeSass,
+				implementation: nodesass,
 				sourceComments: true,
 				sourceMap: true,
 				sourceMapContents: true,
 				outputStyle: 'expanded'
 			},
 			files: [{
-				src: '<%= sourceStyles %>/app.scss',
-				dest: '<%= localStyles %>/<%= appName %>.css'
+				src: '<%= sourceStyles %>/index.scss',
+				dest: '<%= devStyles %>/<%= appName %>.css'
 			},{
 				src: '<%= sourceStyles %>/print.scss',
-				dest: '<%= localStyles %>/print.css'
+				dest: '<%= devStyles %>/print.css'
 			}]
 		},
 
 		prod: {
 			options: {
-				implementation: nodeSass,
+				implementation: nodesass,
 				sourceComments: false,
 				sourceMap: false,
 				sourceMapContents: false,
 				outputStyle: 'compressed'
 			},
 			files: [{
-				src: '<%= sourceStyles %>/app.scss',
-				dest: '<%= publicStyles %>/<%= appName %>.css'
+				src: '<%= sourceStyles %>/index.scss',
+				dest: '<%= prodStyles %>/<%= appName %>.css'
 			},{
 				src: '<%= sourceStyles %>/print.scss',
-				dest: '<%= publicStyles %>/print.css'
+				dest: '<%= prodStyles %>/print.css'
 			}]
 		}
 

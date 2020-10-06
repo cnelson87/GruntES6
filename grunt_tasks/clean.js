@@ -5,8 +5,8 @@
 
 module.exports = function (grunt) {
 	return {
-		dev: '<%= localPath %>',
-		prod: '<%= publicPath %>',
+		dev: '<%= devPath %>',
+		prod: '<%= prodPath %>',
 		temp: '<%= tempPath %>'
 	};
 };

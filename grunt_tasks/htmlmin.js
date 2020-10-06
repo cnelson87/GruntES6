@@ -23,9 +23,9 @@ module.exports = function (grunt) {
 		prod: {
 			files: [{
 				expand: true,
-				cwd: '<%= publicPath %>',
+				cwd: '<%= prodPath %>',
 				src: '**/*.html',
-				dest: '<%= publicPath %>'
+				dest: '<%= prodPath %>'
 			}]
 		}
 

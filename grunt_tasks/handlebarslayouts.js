@@ -24,15 +24,15 @@ module.exports = function (grunt) {
 
 		dev: {
 			files: {
-				'<%= localPath %>/*.html': ['<%= sourceHTML %>/*.html'],
-				'<%= localPath %>/ajax-content/*.html': ['<%= sourceHTML %>/ajax-content/*.html']
+				'<%= devPath %>/*.html': ['<%= sourceHTML %>/*.html'],
+				'<%= devPath %>/ajax-content/*.html': ['<%= sourceHTML %>/ajax-content/*.html']
 			}
 		},
 
 		prod: {
 			files: {
-				'<%= publicPath %>/*.html': ['<%= sourceHTML %>/*.html'],
-				'<%= publicPath %>/ajax-content/*.html': ['<%= sourceHTML %>/ajax-content/*.html']
+				'<%= prodPath %>/*.html': ['<%= sourceHTML %>/*.html'],
+				'<%= prodPath %>/ajax-content/*.html': ['<%= sourceHTML %>/ajax-content/*.html']
 			}
 		}
 

@@ -8,9 +8,9 @@ module.exports = function (grunt) {
 		prod: {
 			files: [{
 				expand: true,
-				cwd: '<%= publicStyles %>',
+				cwd: '<%= prodStyles %>',
 				src: ['*.css'],
-				dest: '<%= publicStyles %>'
+				dest: '<%= prodStyles %>'
 			}]
 		}
 	};

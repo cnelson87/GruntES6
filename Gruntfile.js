@@ -34,27 +34,27 @@ module.exports = function(grunt) {
 			sourceVendor    : '<%= sourcePath %>/vendor',
 			nodeModules     : './node_modules',
 
-			// local file paths
-			localPath       : './_builds/local',
-			localAssets     : '<%= localPath %>/_assets',
-			localAudio      : '<%= localAssets %>/audio',
-			localVideo      : '<%= localAssets %>/video',
-			localFonts      : '<%= localAssets %>/fonts',
-			localImages     : '<%= localAssets %>/images',
-			localData       : '<%= localAssets %>/data',
-			localScripts    : '<%= localAssets %>/scripts',
-			localStyles     : '<%= localAssets %>/styles',
+			// dev file paths
+			devPath       : './_builds/dev',
+			devAssets     : '<%= devPath %>/_assets',
+			devAudio      : '<%= devAssets %>/audio',
+			devVideo      : '<%= devAssets %>/video',
+			devFonts      : '<%= devAssets %>/fonts',
+			devImages     : '<%= devAssets %>/images',
+			devData       : '<%= devAssets %>/data',
+			devScripts    : '<%= devAssets %>/scripts',
+			devStyles     : '<%= devAssets %>/styles',
 
-			// public file paths
-			publicPath      : './_builds/public',
-			publicAssets    : '<%= publicPath %>/_assets',
-			publicAudio     : '<%= publicAssets %>/audio',
-			publicVideo     : '<%= publicAssets %>/video',
-			publicFonts     : '<%= publicAssets %>/fonts',
-			publicImages    : '<%= publicAssets %>/images',
-			publicData      : '<%= publicAssets %>/data',
-			publicScripts   : '<%= publicAssets %>/scripts',
-			publicStyles    : '<%= publicAssets %>/styles',
+			// prod file paths
+			prodPath      : './_builds/prod',
+			prodAssets    : '<%= prodPath %>/_assets',
+			prodAudio     : '<%= prodAssets %>/audio',
+			prodVideo     : '<%= prodAssets %>/video',
+			prodFonts     : '<%= prodAssets %>/fonts',
+			prodImages    : '<%= prodAssets %>/images',
+			prodData      : '<%= prodAssets %>/data',
+			prodScripts   : '<%= prodAssets %>/scripts',
+			prodStyles    : '<%= prodAssets %>/styles',
 
 			// temp file paths (not currently used)
 			tempPath        : './_builds/temp'
@@ -72,6 +72,7 @@ module.exports = function(grunt) {
 	/**
 	 * Compile a prod build for deployment
 	 */
+	grunt.loadNpmTasks('@lodder/grunt-postcss');
 	grunt.registerTask('build', 'generate a build', function(env) {
 		var env = (env === 'dev') ? 'dev' : 'prod';
 		var tasks = [
@@ -97,7 +98,7 @@ module.exports = function(grunt) {
 	});
 
 	/**
-	 * Compile a dev build and start a static server from the 'local' directory
+	 * Compile a dev build and start a static server from the 'dev' directory
 	 */
 	grunt.registerTask('run', ['build:dev', 'connect', 'watch']);
 

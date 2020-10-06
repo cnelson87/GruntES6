@@ -36,8 +36,8 @@ module.exports = function (grunt) {
 				debug: true
 			},
 			files: [{
-				src: '<%= sourceScripts %>/initialize.js',
-				dest: '<%= localScripts %>/<%= appName %>.js'
+				src: '<%= sourceScripts %>/index.js',
+				dest: '<%= devScripts %>/<%= appName %>.js'
 			}]
 		},
 
@@ -46,8 +46,8 @@ module.exports = function (grunt) {
 				debug: false
 			},
 			files: [{
-				src: '<%= sourceScripts %>/initialize.js',
-				dest: '<%= publicScripts %>/<%= appName %>.js'
+				src: '<%= sourceScripts %>/index.js',
+				dest: '<%= prodScripts %>/<%= appName %>.js'
 			}]
 		}
 
