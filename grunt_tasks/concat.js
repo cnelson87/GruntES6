@@ -7,11 +7,9 @@ module.exports = function (grunt) {
 
 	// list all vendor libs
 	var vendorLibs = [
-		// '<%= sourceVendor %>/modernizr.custom.min.js',
 		'<%= sourceVendor %>/jquery.min.js',
 		'<%= sourceVendor %>/jquery-ui.custom.min.js',
 		'<%= sourceVendor %>/jquery.touchSwipe.min.js',
-		'<%= sourceVendor %>/picturefill.min.js',
 		'<%= sourceVendor %>/nouislider.min.js',
 		'<%= sourceVendor %>/greensock/TweenMax.min.js',
 		'<%= sourceVendor %>/greensock/ScrollToPlugin.min.js',
