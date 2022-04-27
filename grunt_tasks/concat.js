@@ -23,7 +23,7 @@ module.exports = function (grunt) {
 		'<%= sourceVendor %>/validation/additional-methods.min.js',
 		'<%= sourceVendor %>/moment.min.js',
 		'<%= sourceVendor %>/moment-timezone-with-data-10-year-range.min.js',
-		'<%= sourceVendor %>/underscore.min.js'
+		'<%= sourceVendor %>/underscore-umd.min.js'
 	];
 
 	return {
