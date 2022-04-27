@@ -47,7 +47,7 @@
 		"load-grunt-config": "^4.0.1",
 		"load-grunt-tasks": "^5.1.0",
 		"lodash": "^4.17.21",
-		"node-sass": "^6.0.1",
+		"node-sass": "^7.0.0",
 		"pathmodify": "^0.5.0",
 		"postcss": "^8.4.12",
 		"stylelint": "^13.13.1",
