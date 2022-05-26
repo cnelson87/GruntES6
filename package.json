@@ -17,7 +17,7 @@
 		"regenerator-runtime": "^0.13.9"
 	},
 	"devDependencies": {
-		"grunt": "^1.5.2",
+		"grunt": "^1.5.3",
 		"@babel/core": "^7.17.9",
 		"@babel/eslint-parser": "^7.17.0",
 		"@babel/preset-env": "^7.16.11",
