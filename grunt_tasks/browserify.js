@@ -13,7 +13,7 @@ module.exports = function (grunt) {
 		pathmodify.mod.dir('utilities', path.join(__dirname, '../src/scripts/utilities')),
 		pathmodify.mod.dir('views', path.join(__dirname, '../src/scripts/views')),
 		pathmodify.mod.dir('widgets', path.join(__dirname, '../src/scripts/widgets')),
-		pathmodify.mod.dir('templates', path.join(__dirname, '../src/templates'))
+		pathmodify.mod.dir('templates', path.join(__dirname, '../src/scripts/templates'))
 	];
 
 	return {

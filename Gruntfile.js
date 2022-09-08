@@ -30,7 +30,6 @@ module.exports = function(grunt) {
 			sourceData      : '<%= sourcePath %>/data',
 			sourceScripts   : '<%= sourcePath %>/scripts',
 			sourceStyles    : '<%= sourcePath %>/styles',
-			sourceTemplates : '<%= sourcePath %>/templates',
 			sourceVendor    : '<%= sourcePath %>/vendor',
 			nodeModules     : './node_modules',
 

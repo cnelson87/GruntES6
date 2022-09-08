@@ -39,6 +39,12 @@
 		"keywords" : "promise promise promise"
 	},
 
+	"rangeslider": {
+		"title" : "RangeSlider",
+		"description" : "Description for the RangeSlider page",
+		"keywords" : "rangeslider"
+	},
+
 	"typography": {
 		"title" : "Typography",
 		"description" : "Description for the Typography page",
@@ -54,25 +60,7 @@
 	"widgets": {
 		"title" : "Widgets",
 		"description" : "Description for the Widgets page",
-		"keywords" : "widgets accordion carousel tabswitcher"
-	},
-
-	"horizordion": {
-		"title" : "Horizordion",
-		"description" : "Description for the Horizordion page",
-		"keywords" : "horizordion"
-	},
-
-	"rangeslider": {
-		"title" : "RangeSlider",
-		"description" : "Description for the RangeSlider page",
-		"keywords" : "rangeslider"
-	},
-
-	"test": {
-		"title" : "Test",
-		"description" : "Description for the Test page",
-		"keywords" : "test"
+		"keywords" : "accordion carousel tabswitcher widgets"
 	}
 
 }

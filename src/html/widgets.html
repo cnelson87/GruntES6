@@ -4,8 +4,6 @@
 	{{#replace "description"}}{{widgets.description}}{{/replace}}
 	{{#replace "keywords"}}{{keywords}}, {{widgets.keywords}}{{/replace}}
 
-	{{#replace "body-id"}}widgetspage{{/replace}}
-
 	{{#replace "content"}}
 
 		<section class="content">
@@ -22,7 +20,7 @@
 
 				<h2>Hero Carousel</h2>
 
-				<div id="hero-carousel" class="hero-carousel">
+				<div class="hero-carousel" data-widget="HeroCarousel">
 					<div class="carousel--outer-mask">
 						<div class="carousel--inner-track">
 							<div data-id="hero-carousel-panel-01" class="carousel--panel">
@@ -147,8 +145,12 @@
 							</div>
 						</div>
 					</div>
-					<a title="Previous" class="arrow-nav nav-prev"><span class="arrow"></span></a>
-					<a title="Next" class="arrow-nav nav-next"><span class="arrow"></span></a>
+					<button type="button" title="Previous" class="arrow-nav carousel--nav-prev">
+						<span class="fa fa-chevron-left"></span>
+					</button>
+					<button type="button" title="Next" class="arrow-nav carousel--nav-next">
+						<span class="fa fa-chevron-right"></span>
+					</button>
 					<nav class="dot-nav carousel--tabnav">
 						<ul>
 							<li><a href="#hero-carousel-panel-01">panel 01 of 12</a></li>
@@ -171,209 +173,9 @@
 		<section class="content">
 			<div class="container">
 
-				<h2>Accordion w/ default options</h2>
-
-				<div id="accordion-default" class="accordion">
-
-					<div class="accordion--header">
-						<a href="#accordion-panel-1-1">Tab One</a>
-					</div>
-					<article data-id="accordion-panel-1-1" class="accordion--panel">
-						<div class="accordion--panel-content">
-							<h3>Panel One</h3>
-							<p>
-								Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-							</p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-							</p>
-						</div>
-					</article>
-
-					<div class="accordion--header">
-						<a href="#accordion-panel-1-2">Tab Two</a>
-					</div>
-					<article data-id="accordion-panel-1-2" class="accordion--panel">
-						<div class="accordion--panel-content">
-							<h3>Panel Two</h3>
-							<p>
-								Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-							</p>
-						</div>
-					</article>
-
-					<div class="accordion--header">
-						<a href="#accordion-panel-1-3">Tab Three</a>
-					</div>
-					<article data-id="accordion-panel-1-3" class="accordion--panel">
-						<div class="accordion--panel-content">
-							<h3>Panel Three</h3>
-							<p>
-								Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-							</p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
-							</p>
-						</div>
-					</article>
-
-					<div class="accordion--header">
-						<a href="#accordion-panel-1-4">Tab Four <em class="ignore-click small hide-mobile">[ignore-click]</em></a>
-					</div>
-					<article data-id="accordion-panel-1-4" class="accordion--panel">
-						<div class="accordion--panel-content">
-							<h3>Panel Four</h3>
-							<p>
-								Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-							</p>
-						</div>
-					</article>
-
-				</div>
-
-				<br />
-
-				<h2>Accordion w/ custom options</h2>
-				<p>{initialIndex: null, equalizeHeight: true}</p>
-
-				<div id="accordion-custom" class="accordion">
-
-					<div class="accordion--header">
-						<a href="#accordion-panel-2-1">Tab One</a>
-					</div>
-					<article data-id="accordion-panel-2-1" class="accordion--panel">
-						<div class="accordion--panel-content">
-							<h3>Panel One</h3>
-							<p>
-								Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-							</p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-							</p>
-						</div>
-					</article>
-
-					<div class="accordion--header">
-						<a href="#accordion-panel-2-2">Tab Two</a>
-					</div>
-					<article data-id="accordion-panel-2-2" class="accordion--panel">
-						<div class="accordion--panel-content">
-							<h3>Panel Two</h3>
-							<p>
-								Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-							</p>
-						</div>
-					</article>
-
-					<div class="accordion--header">
-						<a href="#accordion-panel-2-3">Tab Three</a>
-					</div>
-					<article data-id="accordion-panel-2-3" class="accordion--panel">
-						<div class="accordion--panel-content">
-							<h3>Panel Three</h3>
-							<p>
-								Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-							</p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
-							</p>
-						</div>
-					</article>
-
-					<div class="accordion--header">
-						<a href="#accordion-panel-2-4">Tab Four</a>
-					</div>
-					<article data-id="accordion-panel-2-4" class="accordion--panel">
-						<div class="accordion--panel-content">
-							<h3>Panel Four</h3>
-							<p>
-								Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-							</p>
-						</div>
-					</article>
-
-				</div>
-
-			</div>
-		</section>
-
-		<section class="content">
-			<div class="container">
-
-				<h2>Mini Accordions</h2>
-				<p>A Mini Accordions is a single accordion panel, not tied to or synced with any other accordion panels.</p>
-
-				<div class="accordion mini-accordion">
-					<div class="accordion--header">
-						<a href="#accordion-panel-1">Tab One</a>
-					</div>
-					<article data-id="accordion-panel-1" class="accordion--panel">
-						<div class="accordion--panel-content">
-							<h3>Panel One</h3>
-							<p>
-								Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-							</p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-							</p>
-						</div>
-					</article>
-				</div>
-
-				<div class="accordion mini-accordion">
-					<div class="accordion--header">
-						<a href="#accordion-panel-2">Tab Two</a>
-					</div>
-					<article data-id="accordion-panel-2" class="accordion--panel">
-						<div class="accordion--panel-content">
-							<h3>Panel Two</h3>
-							<p>
-								Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-							</p>
-						</div>
-					</article>
-				</div>
-
-				<div class="accordion mini-accordion">
-					<div class="accordion--header">
-						<a href="#accordion-panel-3">Tab Three</a>
-					</div>
-					<article data-id="accordion-panel-3" class="accordion--panel">
-						<div class="accordion--panel-content">
-							<h3>Panel Three</h3>
-							<p>
-								Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-							</p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
-							</p>
-						</div>
-					</article>
-				</div>
-
-				<div class="accordion mini-accordion">
-					<div class="accordion--header">
-						<a href="#accordion-panel-4">Tab Four</a>
-					</div>
-					<article data-id="accordion-panel-4" class="accordion--panel">
-						<div class="accordion--panel-content">
-							<h3>Panel Four</h3>
-							<p>
-								Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
-							</p>
-						</div>
-					</article>
-				</div>
-
-			</div>
-		</section>
-
-		<section class="content">
-			<div class="container">
-
 				<h2>Carousel m:1 t:1 d:1</h2>
 
-				<div id="carousel-m1-t1-d1" class="responsive-carousel">
+				<div class="responsive-carousel" data-widget="ResponsiveCarousel" data-options="{loopEndToEnd: false, autoRotate: true}">
 					<div class="carousel--outer-mask">
 						<div class="carousel--inner-track">
 							<article data-id="carousel-panel-1-01" class="carousel--panel">
@@ -486,15 +288,19 @@
 							</article>
 						</div>
 					</div>
-					<a title="Previous" class="arrow-nav nav-prev"><span class="arrow"></span></a>
-					<a title="Next" class="arrow-nav nav-next"><span class="arrow"></span></a>
+					<button type="button" title="Previous" class="arrow-nav carousel--nav-prev">
+						<span class="fa fa-chevron-left"></span>
+					</button>
+					<button type="button" title="Next" class="arrow-nav carousel--nav-next">
+						<span class="fa fa-chevron-right"></span>
+					</button>
 				</div>
 
 				<br />
 
 				<h2>Carousel m:1 t:2 d:3</h2>
 
-				<div id="carousel-m1-t2-d3" class="responsive-carousel">
+				<div class="responsive-carousel" data-widget="ResponsiveCarousel" data-options="{numVisibleItemsMobile: 1, numItemsToAnimateMobile: 1, numVisibleItemsTablet: 2, numItemsToAnimateTablet: 1, numVisibleItemsDesktop: 3, numItemsToAnimateDesktop: 2, staggerActiveItems: true}">
 					<div class="carousel--outer-mask">
 						<div class="carousel--inner-track">
 							<article data-id="carousel-panel-2-01" class="carousel--panel">
@@ -607,15 +413,19 @@
 							</article>
 						</div>
 					</div>
-					<a title="Previous" class="arrow-nav nav-prev"><span class="arrow"></span></a>
-					<a title="Next" class="arrow-nav nav-next"><span class="arrow"></span></a>
+					<button type="button" title="Previous" class="arrow-nav carousel--nav-prev">
+						<span class="fa fa-chevron-left"></span>
+					</button>
+					<button type="button" title="Next" class="arrow-nav carousel--nav-next">
+						<span class="fa fa-chevron-right"></span>
+					</button>
 				</div>
 
 				<br />
 
 				<h2>Carousel m:1 t:3 d:5</h2>
 
-				<div id="carousel-m1-t3-d5" class="responsive-carousel">
+				<div class="responsive-carousel" data-widget="ResponsiveCarousel" data-options="{numVisibleItemsMobile: 1, numItemsToAnimateMobile: 1, numVisibleItemsTablet: 3, numItemsToAnimateTablet: 2, numVisibleItemsDesktop: 5, numItemsToAnimateDesktop: 4}">
 					<div class="carousel--outer-mask">
 						<div class="carousel--inner-track">
 							<article data-id="carousel-panel-3-01" class="carousel--panel">
@@ -680,8 +490,12 @@
 							</article>
 						</div>
 					</div>
-					<a title="Previous" class="arrow-nav nav-prev"><span class="arrow"></span></a>
-					<a title="Next" class="arrow-nav nav-next"><span class="arrow"></span></a>
+					<button type="button" title="Previous" class="arrow-nav carousel--nav-prev">
+						<span class="fa fa-chevron-left"></span>
+					</button>
+					<button type="button" title="Next" class="arrow-nav carousel--nav-next">
+						<span class="fa fa-chevron-right"></span>
+					</button>
 				</div>
 
 			</div>
@@ -692,7 +506,7 @@
 
 				<h2>Tab Carousel m:1 t:1 d:1</h2>
 
-				<div id="tabcarousel-m1-t1-d1" class="responsive-carousel tab-carousel">
+				<div class="responsive-carousel tab-carousel" data-widget="ResponsiveTabCarousel" data-options="{autoRotate: true}">
 					<div class="carousel--outer-mask">
 						<div class="carousel--inner-track">
 							<article data-id="tabcarousel-panel-01" class="carousel--panel">
@@ -805,8 +619,12 @@
 							</article>
 						</div>
 					</div>
-					<a title="Previous" class="arrow-nav nav-prev"><span class="arrow"></span></a>
-					<a title="Next" class="arrow-nav nav-next"><span class="arrow"></span></a>
+					<button type="button" title="Previous" class="arrow-nav carousel--nav-prev">
+						<span class="fa fa-chevron-left"></span>
+					</button>
+					<button type="button" title="Next" class="arrow-nav carousel--nav-next">
+						<span class="fa fa-chevron-right"></span>
+					</button>
 					<nav class="dot-nav carousel--tabnav">
 						<ul>
 							<li><a href="#01">panel 01 of 12</a></li>
@@ -833,7 +651,7 @@
 
 				<h2>Infinite Carousel</h2>
 
-				<div id="infinite-carousel" class="infinite-carousel">
+				<div class="infinite-carousel" data-widget="InfiniteCarousel">
 					<div class="stretch-background"></div>
 					<div class="carousel--outer-mask">
 						<div class="carousel--inner-track">
@@ -959,8 +777,12 @@
 							</div>
 						</div>
 					</div>
-					<a title="Previous" class="arrow-nav nav-prev"><span class="arrow"></span></a>
-					<a title="Next" class="arrow-nav nav-next"><span class="arrow"></span></a>
+					<button type="button" title="Previous" class="arrow-nav carousel--nav-prev">
+						<span class="fa fa-chevron-left"></span>
+					</button>
+					<button type="button" title="Next" class="arrow-nav carousel--nav-next">
+						<span class="fa fa-chevron-right"></span>
+					</button>
 				</div>
 
 			</div>
@@ -971,20 +793,20 @@
 
 				<h2>TabSwitcher w/ default options</h2>
 
-				<div id="tabswitcher-default" class="tabswitcher">
+				<div class="tabswitcher" data-widget="TabSwitcher">
 
 					<nav class="tabswitcher--tabnav">
 						<ul>
 							<li><a href="#tabswitcher-panel-1-1">Tab 1</a></li>
 							<li><a href="#tabswitcher-panel-1-2">Tab 2</a></li>
 							<li><a href="#tabswitcher-panel-1-3">Tab 3</a></li>
-							<li><a href="#tabswitcher-panel-1-4">Tab 4 <em class="ignore-click small hide-mobile">[ignore-click]</em></a></li>
+							<li><a href="#tabswitcher-panel-1-4">Tab 4</a></li>
 						</ul>
 					</nav>
 
 					<div class="tabswitcher--panels-container">
 						<article data-id="tabswitcher-panel-1-1" class="tabswitcher--panel">
-							<div class="tabswitcher--panel-content">
+							<div class="tabswitcher--content">
 								<h3>Panel One</h3>
 								<p>
 									Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
@@ -995,7 +817,7 @@
 							</div>
 						</article>
 						<article data-id="tabswitcher-panel-1-2" class="tabswitcher--panel">
-							<div class="tabswitcher--panel-content">
+							<div class="tabswitcher--content">
 								<h3>Panel Two</h3>
 								<p>
 									Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
@@ -1003,7 +825,7 @@
 							</div>
 						</article>
 						<article data-id="tabswitcher-panel-1-3" class="tabswitcher--panel">
-							<div class="tabswitcher--panel-content">
+							<div class="tabswitcher--content">
 								<h3>Panel Three</h3>
 								<p>
 									Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
@@ -1014,7 +836,7 @@
 							</div>
 						</article>
 						<article data-id="tabswitcher-panel-1-4" class="tabswitcher--panel">
-							<div class="tabswitcher--panel-content">
+							<div class="tabswitcher--content">
 								<h3>Panel Four</h3>
 								<p>
 									Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
@@ -1028,22 +850,22 @@
 				<br />
 
 				<h2>TabSwitcher w/ custom options</h2>
-				<p>{equalizeHeight: true, autoRotate: true}</p>
+				<p>{autoRotate: true, equalizeHeight: true}</p>
 
-				<div id="tabswitcher-custom" class="tabswitcher">
+				<div class="tabswitcher" data-widget="TabSwitcher" data-options="{autoRotate: true, equalizeHeight: true}">
 
 					<nav class="tabswitcher--tabnav">
 						<ul>
 							<li><a href="#tabswitcher-panel-2-1">Tab 1</a></li>
 							<li><a href="#tabswitcher-panel-2-2">Tab 2</a></li>
 							<li><a href="#tabswitcher-panel-2-3">Tab 3</a></li>
-							<li><a href="#tabswitcher-panel-2-4">Tab 4</a></li>
+							<li><a href="#tabswitcher-panel-2-4">Tab 4 <em class="ignore-click small hide-mobile">[ignore-click]</em></a></li>
 						</ul>
 					</nav>
 
 					<div class="tabswitcher--panels-container">
 						<article data-id="tabswitcher-panel-2-1" class="tabswitcher--panel">
-							<div class="tabswitcher--panel-content">
+							<div class="tabswitcher--content">
 								<h3>Panel One</h3>
 								<p>
 									Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
@@ -1054,7 +876,7 @@
 							</div>
 						</article>
 						<article data-id="tabswitcher-panel-2-2" class="tabswitcher--panel">
-							<div class="tabswitcher--panel-content">
+							<div class="tabswitcher--content">
 								<h3>Panel Two</h3>
 								<p>
 									Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
@@ -1062,7 +884,7 @@
 							</div>
 						</article>
 						<article data-id="tabswitcher-panel-2-3" class="tabswitcher--panel">
-							<div class="tabswitcher--panel-content">
+							<div class="tabswitcher--content">
 								<h3>Panel Three</h3>
 								<p>
 									Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
@@ -1073,7 +895,7 @@
 							</div>
 						</article>
 						<article data-id="tabswitcher-panel-2-4" class="tabswitcher--panel">
-							<div class="tabswitcher--panel-content">
+							<div class="tabswitcher--content">
 								<h3>Panel Four</h3>
 								<p>
 									Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
@@ -1089,7 +911,7 @@
 				<h2>SelectTabSwitcher</h2>
 				<p>Subclass of TabSwitcher uses a select dropdown instead of tabs</p>
 
-				<div id="select-tabswitcher" class="tabswitcher select-tabswitcher">
+				<div class="tabswitcher select-tabswitcher" data-widget="SelectTabSwitcher">
 
 					<nav class="tabswitcher--tabnav">
 						<select>
@@ -1102,7 +924,7 @@
 
 					<div class="tabswitcher--panels-container">
 						<article data-id="tabswitcher-panel-3-1" class="tabswitcher--panel">
-							<div class="tabswitcher--panel-content">
+							<div class="tabswitcher--content">
 								<h3>Panel One</h3>
 								<p>
 									Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
@@ -1113,7 +935,7 @@
 							</div>
 						</article>
 						<article data-id="tabswitcher-panel-3-2" class="tabswitcher--panel">
-							<div class="tabswitcher--panel-content">
+							<div class="tabswitcher--content">
 								<h3>Panel Two</h3>
 								<p>
 									Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
@@ -1121,7 +943,7 @@
 							</div>
 						</article>
 						<article data-id="tabswitcher-panel-3-3" class="tabswitcher--panel">
-							<div class="tabswitcher--panel-content">
+							<div class="tabswitcher--content">
 								<h3>Panel Three</h3>
 								<p>
 									Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
@@ -1132,7 +954,7 @@
 							</div>
 						</article>
 						<article data-id="tabswitcher-panel-3-4" class="tabswitcher--panel">
-							<div class="tabswitcher--panel-content">
+							<div class="tabswitcher--content">
 								<h3>Panel Four</h3>
 								<p>
 									Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
@@ -1140,6 +962,384 @@
 							</div>
 						</article>
 					</div>
+
+				</div>
+
+			</div>
+		</section>
+
+		<section class="content">
+			<div class="container">
+
+				<h2>Accordion w/ default options</h2>
+
+				<div class="accordion" data-widget="Accordion">
+
+					<div class="accordion--header">
+						<a class="accordion--tab" href="#accordion-panel-1-1">
+							<span class="accordion--tab-text">Tab One</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="accordion-panel-1-1" class="accordion--panel">
+						<div class="accordion--content">
+							<h3>Panel One</h3>
+							<p>
+								Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+						</div>
+					</article>
+
+					<div class="accordion--header">
+						<a class="accordion--tab" href="#accordion-panel-1-2">
+							<span class="accordion--tab-text">Tab Two</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="accordion-panel-1-2" class="accordion--panel">
+						<div class="accordion--content">
+							<h3>Panel Two</h3>
+							<p>
+								Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+						</div>
+					</article>
+
+					<div class="accordion--header">
+						<a class="accordion--tab" href="#accordion-panel-1-3">
+							<span class="accordion--tab-text">Tab Three</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="accordion-panel-1-3" class="accordion--panel">
+						<div class="accordion--content">
+							<h3>Panel Three</h3>
+							<p>
+								Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
+							</p>
+						</div>
+					</article>
+
+					<div class="accordion--header">
+						<a class="accordion--tab" href="#accordion-panel-1-4">
+							<span class="accordion--tab-text">Tab Four <em class="ignore-click small hide-mobile">[ignore-click]</em></span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="accordion-panel-1-4" class="accordion--panel">
+						<div class="accordion--content">
+							<h3>Panel Four</h3>
+							<p>
+								Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+						</div>
+					</article>
+
+				</div>
+
+				<br />
+
+				<h2>Accordion w/ custom options</h2>
+				<p>{initialIndex: -1}, equalizeHeight: true}</p>
+
+				<div class="accordion" data-widget="Accordion" data-options="{initialIndex: -1, equalizeHeight: true}">
+
+					<div class="accordion--header">
+						<a class="accordion--tab" href="#accordion-panel-2-1">
+							<span class="accordion--tab-text">Tab One</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="accordion-panel-2-1" class="accordion--panel">
+						<div class="accordion--content">
+							<h3>Panel One</h3>
+							<p>
+								Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+						</div>
+					</article>
+
+					<div class="accordion--header">
+						<a class="accordion--tab" href="#accordion-panel-2-2">
+							<span class="accordion--tab-text">Tab Two</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="accordion-panel-2-2" class="accordion--panel">
+						<div class="accordion--content">
+							<h3>Panel Two</h3>
+							<p>
+								Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+						</div>
+					</article>
+
+					<div class="accordion--header">
+						<a class="accordion--tab" href="#accordion-panel-2-3">
+							<span class="accordion--tab-text">Tab Three</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="accordion-panel-2-3" class="accordion--panel">
+						<div class="accordion--content">
+							<h3>Panel Three</h3>
+							<p>
+								Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
+							</p>
+						</div>
+					</article>
+
+					<div class="accordion--header">
+						<a class="accordion--tab" href="#accordion-panel-2-4">
+							<span class="accordion--tab-text">Tab Four</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="accordion-panel-2-4" class="accordion--panel">
+						<div class="accordion--content">
+							<h3>Panel Four</h3>
+							<p>
+								Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+						</div>
+					</article>
+
+				</div>
+
+			</div>
+		</section>
+
+		<section class="content">
+			<div class="container">
+
+				<h2>Mini Accordions</h2>
+				<p>A Mini Accordion is a single accordion panel, not tied to or synced with any other accordion panels.</p>
+
+				<div class="accordion mini-accordion" data-widget="MiniAccordion" data-options="{initialOpen: true}">
+					<div class="accordion--header">
+						<a class="accordion--tab" href="#accordion-panel-1">
+							<span class="accordion--tab-text">Tab One</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="accordion-panel-1" class="accordion--panel">
+						<div class="accordion--content">
+							<h3>Panel One</h3>
+							<p>
+								Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+						</div>
+					</article>
+				</div>
+
+				<div class="accordion mini-accordion" data-widget="MiniAccordion" data-options="{initialOpen: false}">
+					<div class="accordion--header">
+						<a class="accordion--tab" href="#accordion-panel-2">
+							<span class="accordion--tab-text">Tab Two</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="accordion-panel-2" class="accordion--panel">
+						<div class="accordion--content">
+							<h3>Panel Two</h3>
+							<p>
+								Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+						</div>
+					</article>
+				</div>
+
+				<div class="accordion mini-accordion" data-widget="MiniAccordion" data-options="{initialOpen: false}">
+					<div class="accordion--header">
+						<a class="accordion--tab" href="#accordion-panel-3">
+							<span class="accordion--tab-text">Tab Three</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="accordion-panel-3" class="accordion--panel">
+						<div class="accordion--content">
+							<h3>Panel Three</h3>
+							<p>
+								Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
+							</p>
+						</div>
+					</article>
+				</div>
+
+				<div class="accordion mini-accordion" data-widget="MiniAccordion" data-options="{initialOpen: false}">
+					<div class="accordion--header">
+						<a class="accordion--tab" href="#accordion-panel-4">
+							<span class="accordion--tab-text">Tab Four</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="accordion-panel-4" class="accordion--panel">
+						<div class="accordion--content">
+							<h3>Panel Four</h3>
+							<p>
+								Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+						</div>
+					</article>
+				</div>
+
+			</div>
+		</section>
+
+		<section class="content">
+			<div class="container">
+
+				<h2>Horizordion w/ default options</h2>
+				<p>Like an Accordion, but sideways.</p>
+
+				<div class="horizordion" data-widget="Horizordion">
+
+					<div class="horizordion--header">
+						<a class="horizordion--tab" href="#panel-1-1">
+							<span class="horizordion--tab-text">Tab One</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="panel-1-1" class="horizordion--panel">
+						<div class="horizordion--content">
+							<h3>Panel One</h3>
+							<p>
+								Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
+							</p>
+						</div>
+					</article>
+
+					<div class="horizordion--header">
+						<a class="horizordion--tab" href="#panel-1-2">
+							<span class="horizordion--tab-text">Tab Two</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="panel-1-2" class="horizordion--panel">
+						<div class="horizordion--content">
+							<h3>Panel Two</h3>
+							<p>
+								Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+						</div>
+					</article>
+
+					<div class="horizordion--header">
+						<a class="horizordion--tab" href="#panel-1-3">
+							<span class="horizordion--tab-text">Tab Three</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="panel-1-3" class="horizordion--panel">
+						<div class="horizordion--content">
+							<h3>Panel Three</h3>
+							<p>
+								Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
+							</p>
+						</div>
+					</article>
+
+					<div class="horizordion--header">
+						<a class="horizordion--tab" href="#panel-1-4">
+							<span class="horizordion--tab-text">Tab Four</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="panel-1-4" class="horizordion--panel">
+						<div class="horizordion--content">
+							<h3>Panel Four</h3>
+							<p>
+								Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+						</div>
+					</article>
+
+				</div>
+
+				<br />
+
+				<h2>Horizordion w/ custom options</h2>
+				<p>{initialIndex: -1}</p>
+
+				<div class="horizordion" data-widget="Horizordion" data-options="{initialIndex: -1}">
+
+					<div class="horizordion--header">
+						<a class="horizordion--tab" href="#panel-2-1">
+							<span class="horizordion--tab-text">Tab One</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="panel-2-1" class="horizordion--panel">
+						<div class="horizordion--content">
+							<h3>Panel One</h3>
+							<p>
+								Tab Panel One content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
+							</p>
+						</div>
+					</article>
+
+					<div class="horizordion--header">
+						<a class="horizordion--tab" href="#panel-2-2">
+							<span class="horizordion--tab-text">Tab Two</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="panel-2-2" class="horizordion--panel">
+						<div class="horizordion--content">
+							<h3>Panel Two</h3>
+							<p>
+								Tab Panel Two content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+						</div>
+					</article>
+
+					<div class="horizordion--header">
+						<a class="horizordion--tab" href="#panel-2-3">
+							<span class="horizordion--tab-text">Tab Three</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="panel-2-3" class="horizordion--panel">
+						<div class="horizordion--content">
+							<h3>Panel Three</h3>
+							<p>
+								Tab Panel Three content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit.
+							</p>
+						</div>
+					</article>
+
+					<div class="horizordion--header">
+						<a class="horizordion--tab" href="#panel-2-4">
+							<span class="horizordion--tab-text">Tab Four</span>
+							<span class="fa fa-plus"></span>
+						</a>
+					</div>
+					<article data-id="panel-2-4" class="horizordion--panel">
+						<div class="horizordion--content">
+							<h3>Panel Four</h3>
+							<p>
+								Tab Panel Four content. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras vitae ante. Cras accumsan augue sit amet velit. Morbi ac enim at libero sollicitudin varius. Vivamus dignissim sagittis lectus.
+							</p>
+						</div>
+					</article>
 
 				</div>
 

@@ -32,16 +32,16 @@ module.exports = function (grunt) {
 
 		styles: {
 			files: ['<%= sourceStyles %>/**/*.scss'],
-			tasks: ['newer:sasslint:dev', 'sass:dev', 'postcss:dev']
+			tasks: ['stylelint', 'sass:dev', 'postcss:dev']
 		},
 
 		scripts: {
 			files: ['<%= sourceScripts %>/**/*.js'],
-			tasks: ['newer:eslint', 'browserify:dev']
+			tasks: ['eslint', 'browserify:dev']
 		},
 
 		templates: {
-			files: ['<%= sourceTemplates %>/**/*.hbs', '<%= sourceScripts %>/**/*.hbs'],
+			files: ['<%= sourceScripts %>/**/*.hbs'],
 			tasks: ['browserify:dev']
 		},
 
