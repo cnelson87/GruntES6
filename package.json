@@ -13,19 +13,19 @@
 		"build": "grunt build"
 	},
 	"dependencies": {
-		"core-js": "^3.25.2",
+		"core-js": "^3.25.5",
 		"regenerator-runtime": "^0.13.9"
 	},
 	"devDependencies": {
 		"grunt": "^1.5.3",
-		"@babel/core": "^7.19.1",
+		"@babel/core": "^7.19.3",
 		"@babel/eslint-parser": "^7.19.1",
-		"@babel/preset-env": "^7.19.1",
+		"@babel/preset-env": "^7.19.3",
 		"autoprefixer": "^10.4.12",
 		"babelify": "^10.0.0",
 		"browserify": "^17.0.0",
 		"browserslist": "^4.21.4",
-		"eslint": "^8.23.1",
+		"eslint": "^8.24.0",
 		"grunt-browserify": "^6.0.0",
 		"grunt-contrib-clean": "^2.0.1",
 		"grunt-contrib-concat": "^2.1.0",
@@ -49,10 +49,10 @@
 		"lodash": "^4.17.21",
 		"node-sass": "^6.0.1",
 		"pathmodify": "^0.5.0",
-		"postcss": "^8.4.16",
-		"stylelint": "^14.12.0",
+		"postcss": "^8.4.17",
+		"stylelint": "^14.13.0",
 		"stylelint-config-sass-guidelines": "^9.0.1",
-		"uglify-js": "^3.17.1"
+		"uglify-js": "^3.17.2"
 	},
 	"repository": {
 		"type": "git",
