@@ -1,8 +1,6 @@
 module.exports = function(grunt) {
-
-	var path = require('path');
-	var cwd = process.cwd();
-	var pkg = grunt.file.readJSON('package.json');
+	const path = require('path');
+	const cwd = process.cwd();
 
 	/**
 	 * Grunt init
@@ -13,11 +11,9 @@ module.exports = function(grunt) {
 		init: true,
 
 		data: {
-			// Pkg data
-			pkg: pkg,
-			appName: pkg.appName,
-			portNum: pkg.portNumber,
-			livereloadPort: pkg.livereloadPort,
+			appName: 'gruntes6',
+			portNum: 8047,
+			livereloadPort: 30047,
 
 			// source file paths
 			sourcePath      : './src',
